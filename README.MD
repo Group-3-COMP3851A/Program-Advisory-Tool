@@ -24,7 +24,9 @@ In order to run the backend and frontend instances, you'll need to install the a
 
 `npx create-react-app .`
 
-To start the tool itself, run the following commands in their respective folders:
+
+
+## To start the tool itself, run the following commands in their respective folders:
 
 NOTE: The backend needs to be started BEFORE the frontend
 
