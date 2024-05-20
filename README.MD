@@ -11,14 +11,17 @@ In order to run the backend and frontend instances, you'll need to install the a
 
 ### Backend:
 `npm init -y`
+
 `npm install express`
 
 (This will be removed once network configuration and port issues have been resolved)
+
 `npm install cors`
 
 ### Frontend:
 (This isn't neccessary for the code to run, but what it does is create a new dedicated react application)
 (FOR DOCUMENTATION PURPOSES ONLY)
+
 `npx create-react-app .`
 
 To start the tool itself, run the following commands in their respective folders:
