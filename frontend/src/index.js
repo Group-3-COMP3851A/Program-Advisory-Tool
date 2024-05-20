@@ -4,6 +4,8 @@ import { LogIn } from "./screens/LogIn";
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Specifies the page to be loaded
 root.render(<LogIn />);
 
 // If you want to start measuring performance in your app, pass a function
