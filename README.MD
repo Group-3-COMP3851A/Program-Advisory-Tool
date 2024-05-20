@@ -11,7 +11,7 @@ Student selects a degree and major, and provides the courses that they have alre
 In order to run the backend and frontend instances, you'll need to install the associated dependencies. You will require node package manager (NPM) in order to run the specified commands. 
 Node Package Manager is automatically installed when you install Node.js.  
 You can download Node.js here:  
-https://nodejs.org/en/download/package-manager  
+https://nodejs.org/en/download/prebuilt-installer   
 
 Assuming you have NPM installed, the associated dependencies can be installed by running the following commands:
 
