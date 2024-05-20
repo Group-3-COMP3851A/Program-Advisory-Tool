@@ -1,0 +1,37 @@
+.password {
+  height: 14px;
+  width: 353px;
+}
+
+.password .overlap-group-2 {
+  height: 15px;
+  left: 126px;
+  position: relative;
+  top: -1px;
+  width: 101px;
+}
+
+.password .rectangle-2 {
+  background-color: #ffffff;
+  border-radius: 2px;
+  height: 14px;
+  left: 0;
+  position: absolute;
+  top: 1px;
+  width: 101px;
+}
+
+.password .div-2 {
+  color: #6d6d6d;
+  font-family: "Inter", Helvetica;
+  font-size: 8px;
+  font-weight: 500;
+  left: 0;
+  letter-spacing: -0.15px;
+  line-height: 12px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 101px;
+}

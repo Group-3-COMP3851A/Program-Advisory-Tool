@@ -1,0 +1,142 @@
+.log-in {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.log-in .overlap-wrapper {
+  height: 521px;
+  width: 694px;
+}
+
+.log-in .overlap {
+  height: 521px;
+  position: relative;
+}
+
+.log-in .background {
+  background-color: #fafafa;
+  height: 492px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 685px;
+}
+
+.log-in .low-fidelity {
+  height: 521px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 694px;
+}
+
+.log-in .rectangle-wrapper {
+  height: 164px;
+  left: 195px;
+  position: absolute;
+  top: 188px;
+  width: 353px;
+}
+
+.log-in .rectangle-3 {
+  background-color: #1090d540;
+  border-radius: 2px;
+  height: 164px;
+  left: 61px;
+  position: relative;
+  width: 226px;
+}
+
+.log-in .group {
+  height: 197px;
+  left: 195px;
+  position: absolute;
+  top: 160px;
+  width: 353px;
+}
+
+.log-in .overlap-2 {
+  height: 72px;
+  left: 0;
+  position: absolute;
+  top: 50px;
+  width: 353px;
+}
+
+.log-in .text-wrapper {
+  color: #000000;
+  font-family: "Inter", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+  left: 5px;
+  letter-spacing: -0.38px;
+  line-height: 23px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 343px;
+}
+
+.log-in .username-instance {
+  left: 0 !important;
+  position: absolute !important;
+  top: 41px !important;
+}
+
+.log-in .login-button {
+  all: unset;
+  box-sizing: border-box;
+  height: 23px;
+  left: 115px;
+  position: absolute;
+  top: 144px;
+  width: 124px;
+}
+
+.log-in .div-wrapper {
+  background-color: #335fa1;
+  border-radius: 5px;
+  height: 23px;
+  position: relative;
+  width: 122px;
+}
+
+.log-in .text-wrapper-2 {
+  color: #ffffff;
+  font-family: "Inter", Helvetica;
+  font-size: 8px;
+  font-weight: 500;
+  height: 23px;
+  left: 0;
+  letter-spacing: -0.15px;
+  line-height: 12px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 121px;
+}
+
+.log-in .password-instance {
+  left: 195px !important;
+  position: absolute !important;
+  top: 273px !important;
+}
+
+.log-in .change {
+  color: #1f1f1f;
+  font-family: "Inter", Helvetica;
+  font-size: 7px;
+  font-weight: 400;
+  left: 194px;
+  letter-spacing: -0.13px;
+  line-height: 10.5px;
+  position: absolute;
+  text-align: center;
+  text-shadow: 0px 4px 4px #00000040;
+  top: 331px;
+  width: 353px;
+}
