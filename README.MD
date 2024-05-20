@@ -15,13 +15,14 @@ https://nodejs.org/en/download/package-manager
 Assuming you have NPM installed, the associated dependencies can be installed by running the following commands:
 
 ### Backend:
-`npm init -y`
-`npm install express`
-`npm install cors` (This will be removed once network configuration and port issues have been resolved)
+`npm init -y`  
+`npm install express`  
+`npm install cors` (This will be removed once network configuration and port issues have been resolved)  
 
 ### Frontend:
-(This isn't neccessary for the code to run, but what it does is create a new dedicated react application) (FOR DOCUMENTATION PURPOSES ONLY)
-`npx create-react-app .`
+(This isn't neccessary for the code to run, but what it does is create a new dedicated react application)  
+(FOR DOCUMENTATION PURPOSES ONLY)  
+`npx create-react-app .`  
 
 
 
