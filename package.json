@@ -1,0 +1,16 @@
+{
+  "name": "downloads",
+  "version": "1.0.0",
+  "description": "The goal of this tool is to help students find a pathway to completion for their degree, at any stage of their studies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
