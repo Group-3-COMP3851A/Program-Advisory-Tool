@@ -25,7 +25,7 @@ export const Password = ({ property1, className }) => {
         <div className="div-2">
           {state.property1 === "default" && <>Password</>}
 
-          {state.property1 === "variant-3" && <>●●●●●●●</>}
+          {state.property1 === "variant-3" && <>Jake</>}
         </div>
       </div>
     </div>
