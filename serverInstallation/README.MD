@@ -19,6 +19,10 @@ More likely than not, your connection string for a locally hosted instance will 
 
 If it is not this, it likely means you changed it during the installation/running process. If this is the case, use whatever port you put there.
 
+If for some reason you are using mongoDB Atlas, the connection string can be found in the settings for a given database.
+
+If you still can't find it, use this: https://www.mongodb.com/docs/manual/reference/connection-string/
+
 ### MongoDB Compass:
 
 It is also recommended to download and install mongoDB Compass to provide a GUI for CRUD operations on the database.
