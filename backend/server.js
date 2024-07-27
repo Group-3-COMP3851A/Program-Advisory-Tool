@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 
 // Can be modified at a later date
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // TODO: Remove the need for cors, as currently this is a potential security concern, as the ports are public :/
 // Cors is enabled to bypass certain network configurations which may affect testing
