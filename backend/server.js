@@ -1,22 +1,12 @@
+import student from "./api/student.route.js";
 const express = require('express');
 const cors = require('cors');
 const app = express();
-
-// Can be modified at a later date
-const port = process.env.PORT || 3001;
 
 // TODO: Remove the need for cors, as currently this is a potential security concern, as the ports are public :/
 // Cors is enabled to bypass certain network configurations which may affect testing
 app.use(cors());
 
-app.get('/api', (req, res) => {
-  // TODO: Setup/Add API framework
-  // Currently only basic API calls are implemented
-  res.send('Hello World!');
-});
+app.use('/api/student', student); //when accessing the "/api/student" url, they are routed using the student route file
 
-// Just confirms that the server is running :)
-app.listen(port, () => {
-  console.log(`Backend server is running at http://localhost:${port}`);
-});
-
+export default app;
