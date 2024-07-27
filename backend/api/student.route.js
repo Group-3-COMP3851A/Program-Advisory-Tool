@@ -8,5 +8,6 @@ import studentCtrl from "./student.controller.js"; // import the student control
 const router = express.Router();
 
 router.route("/").get(studentCtrl.apiGetStudent);
+router.route("/login").post(studentCtrl.apiLogin);
 
 export default router;

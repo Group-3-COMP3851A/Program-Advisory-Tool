@@ -4,6 +4,7 @@ import cors from "cors";
 
 
 const app = express();
+app.use(express.json());
 
 // TODO: Remove the need for cors, as currently this is a potential security concern, as the ports are public :/
 // Cors is enabled to bypass certain network configurations which may affect testing
