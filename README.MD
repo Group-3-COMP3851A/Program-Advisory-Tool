@@ -20,6 +20,7 @@ Assuming you have NPM installed, the associated dependencies can be installed by
 `npm install express`  
 `npm install mongodb`
 `npm install cors` (This will be removed once network configuration and port issues have been resolved) 
+optional: `npm i -g nodemon` this will install nodemon which removes the need to constantly restart the backend after you make a change, doing it automatically.
 
 You will also need to edit the config.env `DATABASE_URI` value to be the connection string for your mongoDB database instance. Explained further in the server setup.
 
@@ -53,7 +54,8 @@ Assuming that you followed the tutorial including starting and running the serve
 `docker start mongodb`
 
 ## Backend:
-`node server.js`
+`node --env-file=config.env start`
+`nodemon --env-file=config.env` - if using nodemon
 
 ## Frontend:
 `npm start`

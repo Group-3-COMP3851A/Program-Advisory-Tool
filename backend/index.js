@@ -13,13 +13,13 @@ const mongoClient = new mongodb.MongoClient(process.env.DATABASE_URI, {
     }
 });
 
-mongoClient.connect().catch(err => {
+mongoClient.connect().catch(err => { //trying to connect, if there is an error, print it
     console.error(err);
     process.exit(1);
-}).then(async client => {
+}).then(async client => { //if we can connect then we can continue on to starting the server
     console.log("Connection Established");
-    await studentDAO.injectDB(client);
-    app.listen(port, () => {
+    await studentDAO.injectDB(client); //essentially just getting the database
+    app.listen(port, () => { //starting the server
         console.log(`listening on port ${port}`);
     });
 });
