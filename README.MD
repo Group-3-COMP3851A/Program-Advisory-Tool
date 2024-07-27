@@ -29,7 +29,9 @@ Assuming you have NPM installed, the associated dependencies can be installed by
 To see instructions for installing and setting up the server, go to [the server installation instructions](/serverInstallation/README.MD).
 
 
-# To start the tool itself, run the following commands in their respective folders:
+# Running:
+### To start the tool itself, run the following commands in their respective folders:
+
 NOTE: These commands should be completed in order as they appear (i.e start the server before the backend)
 ## Server:
 ### Windows (from the Windows installation guide):
