@@ -25,14 +25,30 @@ Assuming you have NPM installed, the associated dependencies can be installed by
 (FOR DOCUMENTATION PURPOSES ONLY)  
 `npx create-react-app .`  
 
+### Server:
+To see instructions for installing and setting up the server, go to [the server installation instructions](/serverInstallation/README.MD).
 
 
-## To start the tool itself, run the following commands in their respective folders:
+# To start the tool itself, run the following commands in their respective folders:
+NOTE: These commands should be completed in order as they appear (i.e start the server before the backend)
+## Server:
+### Windows (from the Windows installation guide):
+1. From the Services console, locate the MongoDB service.
+2. Right-click on the MongoDB service and click Start.
 
-NOTE: The backend needs to be started BEFORE the frontend
+### Linux:
+Follow the guide for your given distribution.
 
-### Backend:
+### MacOS:
+`brew services start mongodb-community@7.0`
+
+### Docker:
+Assuming that you followed the tutorial including starting and running the server at least once:
+
+`docker start mongodb`
+
+## Backend:
 `node server.js`
 
-### Frontend:
+## Frontend:
 `npm start`
