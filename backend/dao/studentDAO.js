@@ -21,6 +21,9 @@ export default class studentsDAO{
         let query; //the query that will be used to query the database
         query = {"_id": studentNo};
 
+        console.log(`\n Querying the database with the following:`);
+        console.log(query);
+
         let cursor; //cursor is essentially just query results
 
         try {

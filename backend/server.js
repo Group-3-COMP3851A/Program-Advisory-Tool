@@ -1,6 +1,8 @@
 import student from "./api/student.route.js";
-const express = require('express');
-const cors = require('cors');
+import express from "express";
+import cors from "cors";
+
+
 const app = express();
 
 // TODO: Remove the need for cors, as currently this is a potential security concern, as the ports are public :/
