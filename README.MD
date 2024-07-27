@@ -18,6 +18,7 @@ Assuming you have NPM installed, the associated dependencies can be installed by
 ### Backend:
 `npm init -y`  
 `npm install express`  
+`npm install mongodb`
 `npm install cors` (This will be removed once network configuration and port issues have been resolved)  
 
 ### Frontend:
