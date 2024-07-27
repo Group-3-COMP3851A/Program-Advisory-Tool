@@ -14,6 +14,11 @@ No matter what version you install, you will also need to install mongosh - a CL
 Tutorial for installing mongosh available here:
 https://www.mongodb.com/docs/mongodb-shell/install/
 
+### Finding the Connection String:
+More likely than not, your connection string for a locally hosted instance will be `mongodb://localhost:27017/<database>` where `<database>` is whatever you called your database. 
+
+If it is not this, it likely means you changed it during the installation/running process. If this is the case, use whatever port you put there.
+
 ### MongoDB Compass:
 
 It is also recommended to download and install mongoDB Compass to provide a GUI for CRUD operations on the database.

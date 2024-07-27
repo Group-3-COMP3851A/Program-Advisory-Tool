@@ -19,7 +19,9 @@ Assuming you have NPM installed, the associated dependencies can be installed by
 `npm init -y`  
 `npm install express`  
 `npm install mongodb`
-`npm install cors` (This will be removed once network configuration and port issues have been resolved)  
+`npm install cors` (This will be removed once network configuration and port issues have been resolved) 
+
+You will also need to edit the config.env `DATABASE_URI` value to be the connection string for your mongoDB database instance. Explained further in the server setup.
 
 ### Frontend:
 (This isn't neccessary for the code to run, but what it does is create a new dedicated react application)  
