@@ -22,7 +22,13 @@ Assuming you have NPM installed, the associated dependencies can be installed by
 `npm install cors` (This will be removed once network configuration and port issues have been resolved) 
 optional: `npm i -g nodemon` this will install nodemon which removes the need to constantly restart the backend after you make a change, doing it automatically.
 
-You will also need to edit the config.env `DATABASE_URI` value to be the connection string for your mongoDB database instance. Explained further in the server setup.
+You will also need to create a file "config.env" in the /backend directory. This file should be 2 lines:
+
+```
+DATABASE_URI=<connection string>
+PORT=3001
+```
+For more information about finding your mongoDB database connection string, see the below server installation instructions.
 
 ### Frontend:
 (This isn't neccessary for the code to run, but what it does is create a new dedicated react application)  
