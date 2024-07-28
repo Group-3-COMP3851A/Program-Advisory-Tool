@@ -7,7 +7,9 @@ import studentCtrl from "./student.controller.js"; // import the student control
 
 const router = express.Router();
 
-router.route("/").get(studentCtrl.apiGetStudent);
-router.route("/login").post(studentCtrl.apiLogin);
+router.route("/").get(studentCtrl.apiGetStudent); //get requests to get a student, test function
+router.route("/login").post(studentCtrl.apiLogin); //api login post request
+
+router.route("")
 
 export default router;

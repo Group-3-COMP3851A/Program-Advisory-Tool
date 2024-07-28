@@ -61,6 +61,7 @@ Assuming that you followed the tutorial including starting and running the serve
 
 ## Backend:
 `node --env-file=config.env start`
+
 `nodemon --env-file=config.env` - if using nodemon
 
 ## Frontend:
