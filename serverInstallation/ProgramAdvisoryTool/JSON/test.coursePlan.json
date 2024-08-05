@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "66ada2b44543fddba57c87a2"
+  },
+  "student_id": "",
+  "semester_id": "",
+  "courses_per_semester": {
+    "$numberLong": "1"
+  },
+  "course_order": ""
+}]

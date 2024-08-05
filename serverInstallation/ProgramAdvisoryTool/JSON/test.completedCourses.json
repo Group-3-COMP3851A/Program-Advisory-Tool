@@ -1,0 +1,8 @@
+[{
+  "_id": {
+    "$oid": "66ada23f4543fddba57c87a0"
+  },
+  "student_id": "",
+  "course_id": "",
+  "current": true
+}]
