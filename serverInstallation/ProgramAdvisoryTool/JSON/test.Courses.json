@@ -5,7 +5,7 @@
     "1510ma"
   ],
   "assumed_warning": "",
-  "course_name": "Algoritms",
+  "course_name": "Algorithms",
   "course_replacement": [],
   "credits": 10,
   "require_degree": [],
@@ -19,7 +19,7 @@
     "1120se"
   ],
   "assumed_warning": "",
-  "course_name": "Operating systems",
+  "course_name": "Operating Systems",
   "course_replacement": [],
   "require_degree": [],
   "requisites": [],
@@ -34,7 +34,7 @@
     "1120se"
   ],
   "assumed_warning": "",
-  "course_name": "Theory of computation",
+  "course_name": "Theory of Computation",
   "course_replacement": [],
   "credits": 10,
   "require_degree": [],
@@ -48,7 +48,7 @@
     "140us"
   ],
   "assumed_warning": "",
-  "course_name": "Computering and Information Science Work Integrated learning part A",
+  "course_name": "Computing and Information Science Work Integrated learning Part A",
   "course_replacement": [
     "3850co"
   ],
@@ -64,7 +64,7 @@
   ],
   "requisites": [],
   "requisites_warning": "",
-  "semester_offered": 1
+  "semester_offered": 0
 },
 {
   "_id": "3851Bco",
@@ -72,13 +72,13 @@
     "3851Aco"
   ],
   "assumed_warning": "",
-  "course_name": "Computering and Information Science Work Integrated Learning part b",
+  "course_name": "Computing and Information Science Work Integrated Learning Part b",
   "course_replacement": [],
   "credits": 10,
   "require_degree": [],
   "requisites": [],
   "requisites_warning": "",
-  "semester_offered": 2
+  "semester_offered": 0
 },
 {
   "_id": "3800in",
@@ -103,7 +103,7 @@
     "1002fn"
   ],
   "assumed_warning": "",
-  "course_name": "Mathemactics for Engineering Science and technology 1",
+  "course_name": "Mathematics for Engineering, Science and Technology 1",
   "course_replacement": [],
   "require_degree": [],
   "semester_offered": 0,
@@ -118,7 +118,7 @@
   "course_name": "Discrete Mathematics",
   "course_replacement": [],
   "require_degree": [],
-  "semester_offered": 1,
+  "semester_offered": 2,
   "credits": 10,
   "requisites": [],
   "requisites_warning": ""
@@ -144,7 +144,7 @@
   "credits": 10,
   "require_degree": [],
   "requisites": [],
-  "semester_offered": 1,
+  "semester_offered": 0,
   "requisites_warning": ""
 },
 {
@@ -159,13 +159,13 @@
   "credits": 10,
   "require_degree": [],
   "requisites_warning": "",
-  "semester_offered": 1,
+  "semester_offered": 0,
   "requisites": []
 },
 {
   "_id": "2130se",
   "assumed_warning": "",
-  "course_name": "Systems Analysis and Desgin",
+  "course_name": "Systems Analysis and Design",
   "course_replacement": [
     "2009in"
   ],
@@ -246,10 +246,10 @@
   "requisites_warning": ""
 },
 {
-  "_id": "1040co",
+  "_id": "1140co",
   "assumed_knowledge": [],
   "assumed_warning": "Knowledge of and experience in programming",
-  "course_name": "Database and Information management",
+  "course_name": "Database and Information Management",
   "course_replacement": [
     "2040in"
   ],

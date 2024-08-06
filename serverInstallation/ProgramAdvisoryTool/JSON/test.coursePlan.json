@@ -4,8 +4,6 @@
   },
   "student_id": "",
   "semester_id": "",
-  "courses_per_semester": {
-    "$numberLong": "1"
-  },
+  "courses_per_semester": 1,
   "course_order": ""
 }]
