@@ -72,7 +72,7 @@
     "3851Aco"
   ],
   "assumed_warning": "",
-  "course_name": "Computing and Information Science Work Integrated Learning Part b",
+  "course_name": "Computing and Information Science Work Integrated Learning Part B",
   "course_replacement": [],
   "credits": 10,
   "require_degree": [],
@@ -258,4 +258,184 @@
   "requisites": [],
   "semester_offered": 2,
   "requisites_warning": ""
+},
+{
+  "_id": "2051in",
+  "assumed_knowledge": [
+    "2012in",
+    "1110se"
+  ],
+  "assumed_warning": "",
+  "course_name": "Mobile Application Programming",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 2,
+  "requisites_warning": ""
+},
+{
+  "_id": "3330co",
+  "assumed_knowledge": [],
+  "assumed_warning": "The assumed knowledge is equivalent to that of a completed 2nd year Bachelor of Computer Science or a similar degree and should include: basic statistics and mathematics, including mean, standard deviation, vectors, dot product, hyperplanes, basic multivariable calculus, sets and basic first order logic. It also includes some basic programming skills in a language such as Python, Matlab, Java, C# or C/C++. The course will provide a brief mathematics workshop and a quick introduction to Python to refresh some of the assumed knowledge.\n\n",
+  "course_name": "Machine Intelligence",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "3340co",
+  "assumed_knowledge": [
+    "1510ma",
+    "1110se"
+  ],
+  "assumed_warning": "",
+  "course_name": "Data Mining",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 2,
+  "requisites_warning": ""
+},
+{
+  "_id": "3350co",
+  "assumed_knowledge": [
+    "1140co",
+    "1004se",
+    "1110se"
+  ],
+  "assumed_warning": "",
+  "course_name": "Advanced Database",
+  "course_replacement": [
+    "3007in"
+  ],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "3050in",
+  "assumed_knowledge": [
+    "1140co",
+    "1050se",
+    "1110se",
+    "2012in"
+  ],
+  "assumed_warning": "",
+  "course_name": "Web Programming",
+  "course_replacement": [
+    "2008in"
+  ],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 2,
+  "requisites_warning": ""
+},
+{
+  "_id": "3100in",
+  "assumed_knowledge": [],
+  "assumed_warning": "Basic competency in Microsoft Office packages including Excel.",
+  "course_name": "Project Management",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "3320se",
+  "assumed_knowledge": [
+    "2130se"
+  ],
+  "assumed_warning": "",
+  "course_name": "Software Verification and Validation",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "4430se",
+  "assumed_knowledge": [
+    "2130se"
+  ],
+  "assumed_warning": "",
+  "course_name": "Software Quality",
+  "course_replacement": [
+    "3130se"
+  ],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "requisites_warning": "",
+  "semester_offered": 1
+},
+{
+  "_id": "2031in",
+  "assumed_knowledge": [
+    "1050se",
+    "1004in"
+  ],
+  "assumed_warning": "",
+  "course_name": "Systems and Network Administration",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "3260co",
+  "assumed_knowledge": [
+    "1110se",
+    "1120se",
+    "1510ma"
+  ],
+  "assumed_warning": "Equivalents to 1110SENG,1120SENG and 1510MATH",
+  "course_name": "Data Security",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "3500co",
+  "assumed_knowledge": [
+    "2031in",
+    "2240co",
+    "2720el"
+  ],
+  "assumed_warning": "",
+  "course_name": "Security Attacks: Analysis and Mitigation Strategies",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "3600co",
+  "assumed_knowledge": [],
+  "assumed_warning": "",
+  "course_name": "Cyber Security Governance, Risk, and Compliance",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "requisites_warning": "",
+  "semester_offered": 2
 }]
