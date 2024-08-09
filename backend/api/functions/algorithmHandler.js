@@ -37,17 +37,27 @@ class AlgorithmHandler {
         //course list will be passed to the algorithm or will be used to make the prio queue
         //courseCodeList = [courseID1, courseID2, etc]
         
+        
+        //graph[course that has required courses][required courses]
+            //all course codes can be identified by the fact that the indexes of the course in the input array is how the graph is mapped
+            //e.g if the first course in the input array is comp2230, everything in graph[0] is a required course for comp2230
+            //further, by checking if a course has an empty array in its given index, in-degree can be quickly determined
+            //this, in theory I believe, should remove any needs for searching through arrays for (most of) the algorithm.
         //once completed courses are introduced, I believe most of the below map function will need to be remade since if a course is already completed it shouldn't have an edge in the graph
         this.graph = this.courseArray.map((course, i, courseList) => {
             let outputArray = []; //output array will be an array of numbers such that if a number is in the array, the course has a connection (assumed or requisite) on it
             course.assumed_knowledge.forEach(assCourse => {
                 if (Array.isArray(assCourse)){ 
                     //check which of the options are in the list of courses
-                    assCourse.filter(course => this.courseCodeList.includes(course)); //this is a wildly inefficient method of doing this and if the arrays were going to actually be long, I would consider changing it, however, given that the codeList is at most extreme 48 objects long and the requirement intersection at most 4 long, I believe this is suitable
-                    outputArray.push(this.courseCodeList.indexOf(assCourse[0])); //need to put [0] since .filter returns an array
+                    assCourse = assCourse.filter(course => this.courseCodeList.includes(course)); //this is a wildly inefficient method of doing this and if the arrays were going to actually be long, I would consider changing it, however, given that the codeList is at most extreme 48 objects long and the requirement intersection at most 4 long, I believe this is suitable
+                    let index = this.courseCodeList.indexOf(assCourse[0]);
+                    if (index === -1) return "Error: Course "+assCourse[0]+" is required but not planned"; //if the course attempting to be added is not planned, return an error
+                    outputArray.push(index); //need to put [0] since .filter returns an array
                 }
                 else if (!(assCourse.slice(assCourse.length-2) === "us")) { //checking if the requirement we are adding is not a unit of study requirement
-                    outputArray.push(this.courseCodeList.indexOf(assCourse))
+                    let index = this.courseCodeList.indexOf(assCourse);
+                    if (index === -1) return "Error: Course "+assCourse+" is required but not planned"; 
+                    outputArray.push(index);
                 }
             });
             course.requisites.forEach(reqCourse => {
@@ -57,18 +67,31 @@ class AlgorithmHandler {
             return outputArray;
         });
 
-        //graph[course that has required courses][required courses]
-            //all course codes can be identified by the fact that the indexes of the course in the input array is how the graph is mapped
-            //e.g if the first course in the input array is comp2230, everything in graph[0] is a required course for comp2230
-            //further, by checking if a course has an empty array in its given index, in-degree can be quickly determined
-            //this, in theory I believe, should remove any needs for searching through arrays for (most of) the algorithm.
         this.prioQueue = new PriorityQueue()
         //now need to find all the courses with 0 indegree, as mentioned above, this can be done by simply checking if any nodes in the graph have an empty array
+            //this can probably be moved into the actual algorithm class, though I think having it here is nice since it removes any need to iterate through the entire array in the alg clas
         this.graph.forEach((required, i) => {
             if (!(required.length)) {
                 this.prioQueue.enqueue(this.courseCodeList[i], i); //if we find a course with 0 indegree, lookup the courseCode from the array and queue it up
             }
         })
+    }
+    // add some getters so that milestone 1 can be achieved
+
+    getCourseCodeList = () => {
+        return this.courseCodeList;
+    }
+
+    getReqGraph = () => {
+        return this.graph;
+    }
+
+    getCourseList = () => {
+        return this.courseArray;
+    }
+
+    getSemCout = () => {
+        return this.semesterCount;
     }
 }
 
