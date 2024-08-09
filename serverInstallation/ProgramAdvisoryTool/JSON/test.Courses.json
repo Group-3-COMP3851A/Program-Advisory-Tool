@@ -11,36 +11,8 @@
   "require_degree": [],
   "requisites": [],
   "requisites_warning": "",
-  "semester_offered": 2
-},
-{
-  "_id": "2240co",
-  "assumed_knowledge": [
-    "1120se"
-  ],
-  "assumed_warning": "",
-  "course_name": "Operating Systems",
-  "course_replacement": [],
-  "require_degree": [],
-  "requisites": [],
-  "requisites_warning": "",
   "semester_offered": 2,
-  "credits": 10
-},
-{
-  "_id": "2270co",
-  "assumed_knowledge": [
-    "1510ma",
-    "1120se"
-  ],
-  "assumed_warning": "",
-  "course_name": "Theory of Computation",
-  "course_replacement": [],
-  "credits": 10,
-  "require_degree": [],
-  "requisites": [],
-  "requisites_warning": "",
-  "semester_offered": 1
+  "course_follows": ""
 },
 {
   "_id": "3851Aco",
@@ -64,37 +36,8 @@
   ],
   "requisites": [],
   "requisites_warning": "",
-  "semester_offered": 0
-},
-{
-  "_id": "3851Bco",
-  "assumed_knowledge": [
-    "3851Aco"
-  ],
-  "assumed_warning": "",
-  "course_name": "Computing and Information Science Work Integrated Learning Part B",
-  "course_replacement": [],
-  "credits": 10,
-  "require_degree": [],
-  "requisites": [],
-  "requisites_warning": "",
-  "semester_offered": 0
-},
-{
-  "_id": "3800in",
-  "assumed_warning": "",
-  "course_name": "Professional Practice in IT",
-  "course_replacement": [],
-  "credits": 10,
-  "require_degree": [],
-  "requisites": [],
-  "semester_offered": 1,
-  "assumed_knowledge": [
-    "2130se",
-    "2150in",
-    "100us"
-  ],
-  "requisites_warning": ""
+  "semester_offered": 0,
+  "course_follows": ""
 },
 {
   "_id": "1110ma",
@@ -109,43 +52,8 @@
   "semester_offered": 0,
   "credits": 10,
   "requisites": [],
-  "requisites_warning": "Students must have completed the specified previous studies to enrol in this course.To enrol in this course,you must meet one of the following requirement 1 Passed Math1002 or FNMT10022. Within two years before the commencement of the course,have achieved one of the following -A Band 5 or better in the NSW HSC course Mathematics Advanced- Completion of Extension 1 or Extension 2 Mathematics in NSW HSC- a pass in both FMTH001 and FMTH002 (NIC courses)3.Within 12 months before the commencement of the course,have enrolled in either MATH1110 or MATH1210 but obtained an FF grade5.Immediately before the commencement of the course,have obtained approval from head of the School of Mathematical and Physical Sciences, on the grounds that you have equivalent qualification please email the details of your qualification to CESE-SIPS-Admin@newcastle.edu.au "
-},
-{
-  "_id": "1510ma",
-  "assumed_knowledge": [],
-  "assumed_warning": "HSC Advanced Mathematics(Bands 5 or 6),or equivalent",
-  "course_name": "Discrete Mathematics",
-  "course_replacement": [],
-  "require_degree": [],
-  "semester_offered": 2,
-  "credits": 10,
-  "requisites": [],
-  "requisites_warning": ""
-},
-{
-  "_id": "1050se",
-  "assumed_knowledge": [],
-  "assumed_warning": "",
-  "course_name": "Web Technologies",
-  "course_replacement": [],
-  "credits": 10,
-  "require_degree": [],
-  "requisites": [],
-  "semester_offered": 2,
-  "requisites_warning": ""
-},
-{
-  "_id": "1110se",
-  "assumed_knowledge": [],
-  "assumed_warning": "",
-  "course_name": "Object Oriented Programming",
-  "course_replacement": [],
-  "credits": 10,
-  "require_degree": [],
-  "requisites": [],
-  "semester_offered": 0,
-  "requisites_warning": ""
+  "requisites_warning": "Students must have completed the specified previous studies to enrol in this course.To enrol in this course,you must meet one of the following requirement 1 Passed Math1002 or FNMT10022. Within two years before the commencement of the course,have achieved one of the following -A Band 5 or better in the NSW HSC course Mathematics Advanced- Completion of Extension 1 or Extension 2 Mathematics in NSW HSC- a pass in both FMTH001 and FMTH002 (NIC courses)3.Within 12 months before the commencement of the course,have enrolled in either MATH1110 or MATH1210 but obtained an FF grade5.Immediately before the commencement of the course,have obtained approval from head of the School of Mathematical and Physical Sciences, on the grounds that you have equivalent qualification please email the details of your qualification to CESE-SIPS-Admin@newcastle.edu.au ",
+  "course_follows": ""
 },
 {
   "_id": "1120se",
@@ -160,24 +68,8 @@
   "require_degree": [],
   "requisites_warning": "",
   "semester_offered": 0,
-  "requisites": []
-},
-{
-  "_id": "2130se",
-  "assumed_warning": "",
-  "course_name": "Systems Analysis and Design",
-  "course_replacement": [
-    "2009in"
-  ],
-  "require_degree": [],
-  "semester_offered": 1,
-  "assumed_knowledge": [
-    "1110se",
-    "1004in"
-  ],
-  "credits": 10,
   "requisites": [],
-  "requisites_warning": ""
+  "course_follows": ""
 },
 {
   "_id": "2250se",
@@ -189,14 +81,17 @@
   "require_degree": [],
   "requisites": [],
   "semester_offered": 2,
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "2260se",
   "assumed_knowledge": [
     "1050se",
-    "1110se",
-    "1004in"
+    {
+      "1": "1004in",
+      "2": "1110se"
+    }
   ],
   "assumed_warning": "",
   "course_name": "Human-Computer Interaction",
@@ -207,7 +102,112 @@
   "require_degree": [],
   "requisites": [],
   "semester_offered": 2,
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
+},
+{
+  "_id": "1140co",
+  "assumed_knowledge": [],
+  "assumed_warning": "Knowledge of and experience in programming",
+  "course_name": "Database and Information Management",
+  "course_replacement": [
+    "2040in"
+  ],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 2,
+  "requisites_warning": "",
+  "course_follows": ""
+},
+{
+  "_id": "2240co",
+  "assumed_knowledge": [
+    "1120se"
+  ],
+  "assumed_warning": "",
+  "course_name": "Operating Systems",
+  "course_replacement": [],
+  "require_degree": [],
+  "requisites": [],
+  "requisites_warning": "",
+  "semester_offered": 2,
+  "credits": 10,
+  "course_follows": ""
+},
+{
+  "_id": "3851Bco",
+  "assumed_knowledge": [
+    "3851Aco"
+  ],
+  "assumed_warning": "",
+  "course_name": "Computing and Information Science Work Integrated Learning Part B",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "requisites_warning": "",
+  "semester_offered": 0,
+  "course_follows": "3851Aco"
+},
+{
+  "_id": "1510ma",
+  "assumed_knowledge": [],
+  "assumed_warning": "HSC Advanced Mathematics(Bands 5 or 6),or equivalent",
+  "course_name": "Discrete Mathematics",
+  "course_replacement": [],
+  "require_degree": [],
+  "semester_offered": 2,
+  "credits": 10,
+  "requisites": [],
+  "requisites_warning": "",
+  "course_follows": ""
+},
+{
+  "_id": "1050se",
+  "assumed_knowledge": [],
+  "assumed_warning": "",
+  "course_name": "Web Technologies",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 2,
+  "requisites_warning": "",
+  "course_follows": ""
+},
+{
+  "_id": "1110se",
+  "assumed_knowledge": [],
+  "assumed_warning": "",
+  "course_name": "Object Oriented Programming",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 0,
+  "requisites_warning": "",
+  "course_follows": ""
+},
+{
+  "_id": "2130se",
+  "assumed_warning": "",
+  "course_name": "Systems Analysis and Design",
+  "course_replacement": [
+    "2009in"
+  ],
+  "require_degree": [],
+  "semester_offered": 1,
+  "assumed_knowledge": [
+    {
+      "1": "1004in",
+      "2": "1110se"
+    }
+  ],
+  "credits": 10,
+  "requisites": [],
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "4500se",
@@ -226,7 +226,41 @@
   "require_degree": [],
   "semester_offered": 2,
   "requisites": [],
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
+},
+{
+  "_id": "2270co",
+  "assumed_knowledge": [
+    "1510ma",
+    "1120se"
+  ],
+  "assumed_warning": "",
+  "course_name": "Theory of Computation",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "requisites_warning": "",
+  "semester_offered": 1,
+  "course_follows": ""
+},
+{
+  "_id": "3800in",
+  "assumed_warning": "",
+  "course_name": "Professional Practice in IT",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "assumed_knowledge": [
+    "2130se",
+    "2150in",
+    "100us"
+  ],
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "1010co",
@@ -239,25 +273,10 @@
   ],
   "credits": 10,
   "require_degree": [],
-  "requisites": [
-    ""
-  ],
-  "semester_offered": 1,
-  "requisites_warning": ""
-},
-{
-  "_id": "1140co",
-  "assumed_knowledge": [],
-  "assumed_warning": "Knowledge of and experience in programming",
-  "course_name": "Database and Information Management",
-  "course_replacement": [
-    "2040in"
-  ],
-  "credits": 10,
-  "require_degree": [],
   "requisites": [],
-  "semester_offered": 2,
-  "requisites_warning": ""
+  "semester_offered": 1,
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "2051in",
@@ -272,7 +291,8 @@
   "require_degree": [],
   "requisites": [],
   "semester_offered": 2,
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "3330co",
@@ -284,7 +304,8 @@
   "require_degree": [],
   "requisites": [],
   "semester_offered": 1,
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "3340co",
@@ -299,7 +320,8 @@
   "require_degree": [],
   "requisites": [],
   "semester_offered": 2,
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "3350co",
@@ -317,7 +339,8 @@
   "require_degree": [],
   "requisites": [],
   "semester_offered": 1,
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "3050in",
@@ -336,7 +359,8 @@
   "require_degree": [],
   "requisites": [],
   "semester_offered": 2,
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "3100in",
@@ -348,7 +372,8 @@
   "require_degree": [],
   "requisites": [],
   "semester_offered": 1,
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "3320se",
@@ -362,7 +387,8 @@
   "require_degree": [],
   "requisites": [],
   "semester_offered": 1,
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "4430se",
@@ -378,7 +404,8 @@
   "require_degree": [],
   "requisites": [],
   "requisites_warning": "",
-  "semester_offered": 1
+  "semester_offered": 1,
+  "course_follows": ""
 },
 {
   "_id": "2031in",
@@ -393,7 +420,8 @@
   "require_degree": [],
   "requisites": [],
   "semester_offered": 1,
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "3260co",
@@ -409,7 +437,8 @@
   "require_degree": [],
   "requisites": [],
   "semester_offered": 1,
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "3500co",
@@ -425,7 +454,8 @@
   "require_degree": [],
   "requisites": [],
   "semester_offered": 1,
-  "requisites_warning": ""
+  "requisites_warning": "",
+  "course_follows": ""
 },
 {
   "_id": "3600co",
@@ -437,5 +467,6 @@
   "require_degree": [],
   "requisites": [],
   "requisites_warning": "",
-  "semester_offered": 2
+  "semester_offered": 2,
+  "course_follows": ""
 }]
