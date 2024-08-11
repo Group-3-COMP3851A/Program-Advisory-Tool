@@ -42,26 +42,32 @@ class AlgorithmHandler {
             //all course codes can be identified by the fact that the indexes of the course in the input array is how the graph is mapped
             //e.g if the first course in the input array is comp2230, everything in graph[0] is a required course for comp2230
             //further, by checking if a course has an empty array in its given index, in-degree can be quickly determined
-            //this, in theory I believe, should remove any needs for searching through arrays for (most of) the algorithm.
         //once completed courses are introduced, I believe most of the below map function will need to be remade since if a course is already completed it shouldn't have an edge in the graph
+        this.reverseGraph = Array(this.courseArray.length).fill(0).map(() => Array());
+        //reverseGraph will be the reverse of the normal graph
+            //where normal graph has [course][courses that need to be completed to do course], reverseGraph will have [course][courses that can be completed after doing the course]
         this.graph = this.courseArray.map((course, i, courseList) => {
             let outputArray = []; //output array will be an array of numbers such that if a number is in the array, the course has a connection (assumed or requisite) on it
             course.assumed_knowledge.forEach(assCourse => {
                 if (Array.isArray(assCourse)){ 
                     //check which of the options are in the list of courses
                     assCourse = assCourse.filter(course => this.courseCodeList.includes(course)); //this is a wildly inefficient method of doing this and if the arrays were going to actually be long, I would consider changing it, however, given that the codeList is at most extreme 48 objects long and the requirement intersection at most 4 long, I believe this is suitable
-                    let index = this.courseCodeList.indexOf(assCourse[0]);
+                    let index = this.courseCodeList.indexOf(assCourse[0]); //finding the index of the course in the courseCodeList
                     if (index === -1) return "Error: Course "+assCourse[0]+" is required but not planned"; //if the course attempting to be added is not planned, return an error
-                    outputArray.push(index); //need to put [0] since .filter returns an array
+                    outputArray.push(index);
+                    this.reverseGraph[index].push(i);
                 }
                 else if (!(assCourse.slice(assCourse.length-2) === "us")) { //checking if the requirement we are adding is not a unit of study requirement
                     let index = this.courseCodeList.indexOf(assCourse);
-                    if (index === -1) return "Error: Course "+assCourse+" is required but not planned"; 
+                    if (index === -1) return "Error: Course "+assCourse+" is required but not planned"; // this should not be done, need to think of a better way to handle this error
                     outputArray.push(index);
+                    this.reverseGraph[index].push(i);
                 }
             });
             course.requisites.forEach(reqCourse => {
-                outputArray.push(this.courseCodeList.indexOf(reqCourse)) 
+                index = this.courseCodeList.indexOf(reqCourse);
+                outputArray.push(index);
+                this.reverseGraph[index].push(i);
             });
 
             return outputArray;
