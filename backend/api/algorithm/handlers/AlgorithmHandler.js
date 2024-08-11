@@ -6,7 +6,7 @@
     //priority queues do not exist in java - will have to make (copy) one 
 //kahn's algorithm functions based on an input queue - this input queue will instead be changed to a priority queue
 
-import PriorityQueue from "./prioQueue.js";
+import PriorityQueue from "../functions/PriorityQueue.js";
 
 //course example: 
 

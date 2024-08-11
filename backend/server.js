@@ -1,4 +1,4 @@
-import student from "./api/student.route.js";
+import student from "./api/routes/student.route.js";
 import express from "express";
 import cors from "cors";
 

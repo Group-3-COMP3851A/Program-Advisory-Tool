@@ -2,7 +2,7 @@
 //this is done through the class it exports
 //this file I believe should also control general backend program logic.
 
-import studentDAO from "../dao/studentDAO.js";
+import studentDAO from "../../dao/studentDAO.js";
 
 export default class studentCtrl {
     static async apiGetStudent (req, res, next) {
