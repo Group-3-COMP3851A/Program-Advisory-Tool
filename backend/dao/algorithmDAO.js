@@ -42,7 +42,8 @@ export default class algorithmDAO{
             let degreeCoursesData = await degreeCourses
                 .find({ degree_id: degreeData._id })
                 .toArray();
-
+                
+            // Gets the list of courses where the course major_id and _id match
             let majorCoursesData = await majorCourses
                 .find({ major_id:  majorData._id})
                 .toArray();
