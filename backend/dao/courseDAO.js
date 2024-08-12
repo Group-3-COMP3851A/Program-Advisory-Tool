@@ -46,7 +46,7 @@ export default class courseDAO{
     
             // Gets a list of all courses where the course_id matches the course ids in the map
             let coursesData = await courses
-                .find({ course_id: { $in: courseIds } })
+                .find({ _id: { $in: courseIds } })
                 .toArray();
     
             // Returns the list of courses

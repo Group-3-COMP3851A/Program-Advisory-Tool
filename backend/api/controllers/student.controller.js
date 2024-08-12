@@ -61,8 +61,9 @@ export default class studentCtrl {
             // Perform recursive database query in order to get the course list
             const courseList = await courseDAO.getCourseList(degree, major);
 
-            //console.log(`Course List:`);
-            //console.log(courseList);
+            // Debug output for testing
+            console.log(`Course List:`);
+            console.log(courseList);
 
             // Pass course list into algorithm handler, and return sorted course list
             
