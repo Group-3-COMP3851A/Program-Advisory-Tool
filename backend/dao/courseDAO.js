@@ -4,6 +4,7 @@ let degree;
 let major;
 let degreeCourses;
 let courses;
+let majorCourses;
 
 export default class courseDAO{
     static async injectDB(conn) {
@@ -16,6 +17,7 @@ export default class courseDAO{
             major = await conn.db("ProgramAdvisoryTool").collection("major");
             degreeCourses = await conn.db("ProgramAdvisoryTool").collection("degreeCourses");
             courses = await conn.db("ProgramAdvisoryTool").collection("courses");
+            majorCourses = await conn.db("ProgramAdvisoryTool").collection("majorCourses");
         } catch (e) {
             console.error(`Unable to establish collection name in courseDAO, you probably named the collection wrong: ${e}`);
         }
@@ -40,14 +42,24 @@ export default class courseDAO{
             let degreeCoursesData = await degreeCourses
                 .find({ degree_id: degreeData._id })
                 .toArray();
+
+            let majorCoursesData = await majorCourses
+                .find({ major_id:  majorData._id})
+                .toArray();
     
             // Creates a map of all the courses based on their course_id
-            let courseIds = degreeCoursesData.map(dc => dc.course_id);
+            let degreeCourseIds = degreeCoursesData.map(dc => dc.course_id);
+            let majorCourseIds = majorCoursesData.map(mc => mc.course_id);
     
             // Gets a list of all courses where the course_id matches the course ids in the map
             let coursesData = await courses
-                .find({ _id: { $in: courseIds } })
+                .find({ _id: { $in: degreeCourseIds } })
                 .toArray();
+
+            // Gets a list of all courses where the course_id matches the course ids in the map
+            coursesData = coursesData.concat(await courses
+                .find({ _id: { $in: majorCourseIds } })
+                .toArray());
     
             // Returns the list of courses
             return coursesData;
