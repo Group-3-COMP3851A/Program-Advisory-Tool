@@ -8,7 +8,8 @@ function App() {
   
   const [currentSection, setCurrentSection] = useState(1);  
   const [degree, setDegree] = useState('');  
-  const [major, setMajor] = useState('');  
+  const [major, setMajor] = useState('');
+  const [courseList, setCourseList] = useState([]);  
   const showMajor = (e) => {  
 
   setDegree(e.target.value);  
@@ -34,6 +35,7 @@ const nextSection = () => {
       .then(response => response.json())
       .then(data => {
         console.log('Data sent to backend');
+        setCourseList(JSON.stringify(data.courseList, null, 2)); // This is just so its readable on the frontend
         setCurrentSection(currentSection + 1);
       })
       .catch((error) => {
@@ -129,7 +131,9 @@ return (
       <div style={{ textAlign: 'left', fontSize: '14px', overflowY: 'auto' }}>  
         <p>This program plan is for students commencing in the {major} major in Semester 1 2025. </p> 
         <p>Total Units Required: 240 Units | Completed: 0 units | Program Duration: 3 years full-time  </p>
-        <p>{}</p>
+        <pre style={{ backgroundColor: '#f0f0f0', padding: '10px', borderRadius: '5px', overflow: 'auto' }}>
+          {courseList}
+        </pre>
       </div>  
     )}  
   </div>  
