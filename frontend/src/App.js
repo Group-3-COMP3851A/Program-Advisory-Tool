@@ -18,7 +18,7 @@ function App() {
 
 const nextSection = () => {  
   if (currentSection === 1) {  
-    if (degree === 'Computer Science' && major === 'Cybersecurity') {  
+    if (degree === 'Computer Science' && major === 'Cyber Security') {  
       // Send data to backend (we really need to create a better backend URL, because exposing our port is bad lol)
       fetch('http://localhost:3001/api/student/loadCourseList', {
         method: 'POST',
@@ -94,7 +94,7 @@ return (
               {degree === 'Computer Science' && (  
                 <>  
                   <option value="Software Developer">Software Developer</option>  
-                  <option value="Cybersecurity">Cybersecurity</option>  
+                  <option value="Cyber Security">Cybersecurity</option>  
                 </>  
               )}  
             </select>  
