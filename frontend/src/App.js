@@ -19,7 +19,26 @@ function App() {
 const nextSection = () => {  
   if (currentSection === 1) {  
     if (degree === 'Computer Science' && major === 'Cybersecurity') {  
-      setCurrentSection(currentSection + 1);  
+      // Send data to backend (we really need to create a better backend URL, because exposing our port is bad lol)
+      fetch('http://localhost:3001/api/student/loadCourseList', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          studentNo: 69420, // static until we add login functionality to the frontend
+          degree,
+          major,
+        }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Data sent to backend');
+        setCurrentSection(currentSection + 1);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
     }  
   } else {  
     setCurrentSection(currentSection + 1);  
@@ -108,41 +127,9 @@ return (
     {currentSection === 4 && (  
 
       <div style={{ textAlign: 'left', fontSize: '14px', overflowY: 'auto' }}>  
-        <p>This program plan is for students commencing in the Cybersecurity major in Semester 1 2025. </p> 
-        <p> Total Units Required: 240 Units | Completed: 0units | Program Duration: 3 years full-time  </p>  
-<p>Year 1  </p>  
-      <p>Semester 1 </p>  
-      <p>COMP1010 Computing Fundamentals (CORE) </p>  
-      <p>MATH1110 Mathematics for Engineering, Science & Technology 1 (CORE)  </p>  
-      <p>SENG1110 Object Oriented Programming (CORE)  </p>  
-      <p>SENG1120 Data Structure (CORE) </p>  
-      <p>Semester 2  </p>  
-      <p>COMP1140 Database and Information Management (CORE)  </p>  
-      <p>SENG1050 Web Technologies (CORE)  </p>  
-      <p>MATH1510 Discrete Mathematics (CORE)  </p>  
-      <p>SENG2230 Algorithms (CORE) </p>  
-      <p>Year 2</p>  
-      <p>Semester 1 (CORE) </p>  
-      <p>SENG2130 Systems Analysis and Design (CORE)  </p>  
-      <p>COMP2270 Theory of Computation (CORE)  </p>  
-      <p>INFT2031 Systems and Network Administration (MAJOR)  </p>  
-      <p>COMP3330 Machine Intelligence (DIRECTED)  </p>  
-      <p>Semester 2  </p>  
-      <p>INFT2051 Mobile Application Programming (ELECTIVE)  </p>  
-      <p>COMP2240 Operating Systems (CORE) </p>  
-      <p>SENG2260 Human-Computer Interaction (CORE)  </p>  
-      <p>SENG2250 System and Network Security (CORE)  </p>  
-      <p>Year 3  </p>  
-      <p>Semester 1 </p>  
-      <p>COMP3851A Computer Science and Information Technology WIL Part A (CORE) </p>  
-      <p>INFT 3800 Professional Practice in Information Technology (CORE)  </p>  
-      <p>COMP3260 Data Security (MAJOR)  </p>  
-      <p>COMP3500 Security Attacks: Analysis and Mitigation Strategies (MAJOR) </p>  
-      <p>Semester 2 </p>  
-      <p>COMP3851B Computer Science and Information Technology WIL Part B (CORE)  </p>  
-      <p>COMP3600 Cybersecurity Governance, Risk and Compliance (MAJOR)  </p>  
-      <p>SENG4500 Network and Distributed Computing (CORE)  </p>  
-      <p>COMP3340 Data Mining (DIRECTED) </p>  
+        <p>This program plan is for students commencing in the {major} major in Semester 1 2025. </p> 
+        <p>Total Units Required: 240 Units | Completed: 0 units | Program Duration: 3 years full-time  </p>
+        <p>{}</p>
       </div>  
     )}  
   </div>  
