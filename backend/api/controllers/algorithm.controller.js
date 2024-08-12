@@ -1,4 +1,4 @@
-import courseDAO from "../../dao/courseDAO.js";
+import algorithmDAO from "../../dao/algorithmDAO.js";
 
 export default class algorithmCtrl {
     static async apiGetCourseList(req, res, next){
@@ -12,7 +12,7 @@ export default class algorithmCtrl {
 
         try {
             // Perform recursive database query in order to get the course list
-            const courseList = await courseDAO.getCourseList(degree, major);
+            const courseList = await algorithmDAO.getCourseList(degree, major);
 
             // Debug output for testing
             console.log(`Course List:`);

@@ -6,7 +6,7 @@ let degreeCourses;
 let courses;
 let majorCourses;
 
-export default class courseDAO{
+export default class algorithmDAO{
     static async injectDB(conn) {
         if (degree) return
         if (major) return
@@ -19,7 +19,7 @@ export default class courseDAO{
             courses = await conn.db("ProgramAdvisoryTool").collection("courses");
             majorCourses = await conn.db("ProgramAdvisoryTool").collection("majorCourses");
         } catch (e) {
-            console.error(`Unable to establish collection name in courseDAO, you probably named the collection wrong: ${e}`);
+            console.error(`Unable to establish collection name in algorithmDAO, you probably named the collection wrong: ${e}`);
         }
     }
 

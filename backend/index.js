@@ -1,7 +1,7 @@
 import app from "./server.js";
 import mongodb, { ServerApiVersion } from "mongodb";
 import studentDAO from "./dao/studentDAO.js";
-import courseDAO from "./dao/courseDAO.js";
+import algorithmDAO from "./dao/algorithmDAO.js";
 
 // Can be modified at a later date
 const port = process.env.PORT || 3001;
@@ -20,7 +20,7 @@ mongoClient.connect().catch(err => { //trying to connect, if there is an error, 
 }).then(async client => { //if we can connect then we can continue on to starting the server
     console.log("Connection Established");
     await studentDAO.injectDB(client); //essentially just getting the database`
-    await courseDAO.injectDB(client);
+    await algorithmDAO.injectDB(client);
     app.listen(port, () => { //starting the server
         console.log(`listening on port ${port}`);
     });
