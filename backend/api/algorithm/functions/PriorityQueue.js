@@ -31,7 +31,7 @@ class PriorityQueue {
         if (this.isEmpty()) {
             return null;
         }
-        return this.queue.shift().index;
+        return this.queue.shift();
     }
 
     // method to check if the queue is empty

@@ -7,6 +7,7 @@
 //kahn's algorithm functions based on an input queue - this input queue will instead be changed to a priority queue
 
 import PriorityQueue from "../functions/PriorityQueue.js";
+import Algorithm from "../functions/algorithm.js";
 
 //course example: 
 
@@ -30,6 +31,7 @@ class AlgorithmHandler {
         this.courseArray = structuredClone(inputCourses);
         this.semesterCount = semesterCount;
         this.preprocessData();
+        this.runAlgorithm();
     }
 
     preprocessData = () => {
@@ -81,6 +83,12 @@ class AlgorithmHandler {
                 this.prioQueue.enqueue(this.courseCodeList[i], i); //if we find a course with 0 indegree, lookup the courseCode from the array and queue it up
             }
         })
+    }
+
+    runAlgorithm = () => {
+        let algorithm = new Algorithm(this.prioQueue, this.graph, this.reverseGraph, this.courseCodeList, this.courseArray);
+        algorithm.topologicalSort();
+        return algorithm.sortedCourses;
     }
     // add some getters so that milestone 1 can be achieved
 
