@@ -3,7 +3,6 @@
 //this file I believe should also control general backend program logic.
 
 import studentDAO from "../../dao/studentDAO.js";
-import courseDAO from "../../dao/courseDAO.js";
 
 export default class studentCtrl {
     static async apiGetStudent (req, res, next) {
@@ -44,38 +43,5 @@ export default class studentCtrl {
             5. when user logs out, delete the token*/
         if (inputPassword === password) res.send(true);
         else res.send(false);
-    }
-
-    // This will get moved into its own controller at some point, it'll stay here temporarily for testing
-    static async apiLoadCourseList(req, res, next){
-        const { studentNo, degree, major } = req.body;
-
-        // Test ouput (jsut to ensure that the data is actually being sent to the backend)
-        console.log(`Received degree info:`);
-        console.log(`Student No: ${studentNo}`);
-        console.log(`Degree: ${degree}`);
-        console.log(`Major: ${major}`);
-
-        try {
-            
-            // Perform recursive database query in order to get the course list
-            const courseList = await courseDAO.getCourseList(degree, major);
-
-            // Debug output for testing
-            console.log(`Course List:`);
-            console.log(courseList);
-
-            // Pass course list into algorithm handler, and return sorted course list
-            
-            // I'll update the response structure once I get everything working correctly
-            let response = {
-                status: "success",
-                message: "Degree information received",
-                courseList: courseList,
-            };
-            res.json(response);
-        } catch (e) {
-            res.status(500).json({ error: e.message });
-        }
     }
 }

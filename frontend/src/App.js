@@ -21,7 +21,7 @@ const nextSection = () => {
   if (currentSection === 1) {  
     if (degree === 'Computer Science' && major === 'Cyber Security') {  
       // Send data to backend (we really need to create a better backend URL, because exposing our port is bad lol)
-      fetch('http://localhost:3001/api/student/loadCourseList', {
+      fetch('http://localhost:3001/api/algorithm/getCourseList', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

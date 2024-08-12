@@ -1,4 +1,5 @@
 import student from "./api/routes/student.route.js";
+import algorithm from "./api/routes/algorithm.route.js";
 import express from "express";
 import cors from "cors";
 
@@ -11,5 +12,6 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/student', student); //when accessing the "/api/student" url, they are routed using the student route file
+app.use('/api/algorithm', algorithm); //when accessing the "/api/student" url, they are routed using the student route file
 
 export default app;
