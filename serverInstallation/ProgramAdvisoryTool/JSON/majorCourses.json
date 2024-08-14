@@ -4,14 +4,14 @@
   },
   "course_id": "3100in",
   "major_id": "40103M5",
-  "directed_status": false
+  "directed_status": true
 },
 {
   "_id": {
     "$oid": "66b0b27d7482c540b691f8a1"
   },
-  "course_id": "3050co",
-  "directed_status": false,
+  "course_id": "3050in",
+  "directed_status": true,
   "major_id": "40103M5"
 },
 {
@@ -19,7 +19,7 @@
     "$oid": "66b0b27d7482c540b691f8a2"
   },
   "course_id": "2051in",
-  "directed_status": false,
+  "directed_status": true,
   "major_id": "40103M5"
 },
 {
@@ -27,7 +27,7 @@
     "$oid": "66b0b27d7482c540b691f8a3"
   },
   "course_id": "3350co",
-  "directed_status": false,
+  "directed_status": true,
   "major_id": "40103M5"
 },
 {
@@ -35,7 +35,7 @@
     "$oid": "66b0b27d7482c540b691f8a4"
   },
   "course_id": "3340co",
-  "directed_status": false,
+  "directed_status": true,
   "major_id": "40103M5"
 },
 {
@@ -43,7 +43,7 @@
     "$oid": "66b0b27d7482c540b691f8a5"
   },
   "course_id": "3260co",
-  "directed_status": true,
+  "directed_status": false,
   "major_id": "40103M5"
 },
 {
@@ -51,7 +51,7 @@
     "$oid": "66b0b27d7482c540b691f8a6"
   },
   "course_id": "3500co",
-  "directed_status": true,
+  "directed_status": false,
   "major_id": "40103M5"
 },
 {
@@ -59,7 +59,7 @@
     "$oid": "66b0b27d7482c540b691f8a7"
   },
   "course_id": "3600co",
-  "directed_status": true,
+  "directed_status": false,
   "major_id": "40103M5"
 },
 {
@@ -67,7 +67,7 @@
     "$oid": "66b0b27d7482c540b691f8a8"
   },
   "course_id": "2031in",
-  "directed_status": true,
+  "directed_status": false,
   "major_id": "40103M5"
 },
 {
@@ -75,7 +75,7 @@
     "$oid": "66b0b27d7482c540b691f8a9"
   },
   "course_id": "4430se",
-  "directed_status": false,
+  "directed_status": true,
   "major_id": "40103M5"
 },
 {
@@ -83,6 +83,6 @@
     "$oid": "66b0b41c7482c540b691f8ab"
   },
   "course_id": "3320se",
-  "directed_status": false,
+  "directed_status": true,
   "major_id": "40103M5"
 }]

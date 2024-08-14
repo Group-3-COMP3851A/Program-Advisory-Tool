@@ -1,0 +1,24 @@
+[{
+  "_id": "40103M5p",
+  "semester_placements": [
+    {
+      "year": 3,
+      "semester": 1
+    },
+    {
+      "year": 3,
+      "semester": 2
+    }
+  ],
+  "assumed_knowledge": [
+    "1510ma",
+    [
+      "1110se",
+      "1004in",
+      "2012in"
+    ],
+    "1140co",
+    "1050se",
+    "2130se"
+  ]
+}]

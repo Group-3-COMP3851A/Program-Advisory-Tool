@@ -1,459 +1,473 @@
 [{
-    "_id": "2230co",
-    "assumed_knowledge": [
-      "1120se",
-      "1510ma"
+  "_id": "2230co",
+  "assumed_knowledge": [
+    "1120se",
+    "1510ma"
+  ],
+  "assumed_warning": "",
+  "course_name": "Algorithms",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "requisites_warning": "",
+  "semester_offered": 2
+},
+{
+  "_id": "2240co",
+  "assumed_knowledge": [
+    "1120se"
+  ],
+  "assumed_warning": "",
+  "course_name": "Operating Systems",
+  "course_replacement": [],
+  "require_degree": [],
+  "requisites": [],
+  "requisites_warning": "",
+  "semester_offered": 2,
+  "credits": 10
+},
+{
+  "_id": "2270co",
+  "assumed_knowledge": [
+    "1510ma",
+    "1120se"
+  ],
+  "assumed_warning": "",
+  "course_name": "Theory of Computation",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "requisites_warning": "",
+  "semester_offered": 1
+},
+{
+  "_id": "3851Aco",
+  "assumed_knowledge": [
+    "140us"
+  ],
+  "assumed_warning": "",
+  "course_name": "Computing and Information Science Work Integrated learning Part A",
+  "course_replacement": [
+    "3850co"
+  ],
+  "credits": 10,
+  "require_degree": [
+    "11497",
+    "12238",
+    "40103",
+    "10253",
+    "40276",
+    "40277",
+    "40278"
+  ],
+  "requisites": [],
+  "requisites_warning": "",
+  "semester_offered": 0
+},
+{
+  "_id": "3851Bco",
+  "assumed_knowledge": [
+    "3851Aco"
+  ],
+  "assumed_warning": "",
+  "course_name": "Computing and Information Science Work Integrated Learning Part B",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "requisites_warning": "",
+  "semester_offered": 0
+},
+{
+  "_id": "3800in",
+  "assumed_warning": "",
+  "course_name": "Professional Practice in IT",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "assumed_knowledge": [
+    [
+      "2130se",
+      "2150in"
     ],
-    "assumed_warning": "",
-    "course_name": "Algorithms",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "requisites_warning": "",
-    "semester_offered": 2
-  },
-  {
-    "_id": "2240co",
-    "assumed_knowledge": [
-      "1120se"
-    ],
-    "assumed_warning": "",
-    "course_name": "Operating Systems",
-    "course_replacement": [],
-    "require_degree": [],
-    "requisites": [],
-    "requisites_warning": "",
-    "semester_offered": 2,
-    "credits": 10
-  },
-  {
-    "_id": "2270co",
-    "assumed_knowledge": [
-      "1510ma",
-      "1120se"
-    ],
-    "assumed_warning": "",
-    "course_name": "Theory of Computation",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "requisites_warning": "",
-    "semester_offered": 1
-  },
-  {
-    "_id": "3851Aco",
-    "assumed_knowledge": [
-      "140us"
-    ],
-    "assumed_warning": "",
-    "course_name": "Computing and Information Science Work Integrated learning Part A",
-    "course_replacement": [
-      "3850co"
-    ],
-    "credits": 10,
-    "require_degree": [
-      "11497",
-      "12238",
-      "40103",
-      "10253",
-      "40276",
-      "40277",
-      "40278"
-    ],
-    "requisites": [],
-    "requisites_warning": "",
-    "semester_offered": 0
-  },
-  {
-    "_id": "3851Bco",
-    "assumed_knowledge": [
-      "3851Aco"
-    ],
-    "assumed_warning": "",
-    "course_name": "Computing and Information Science Work Integrated Learning Part B",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "requisites_warning": "",
-    "semester_offered": 0
-  },
-  {
-    "_id": "3800in",
-    "assumed_warning": "",
-    "course_name": "Professional Practice in IT",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 1,
-    "assumed_knowledge": [
-      [
-        "2130se",
-        "2150in"
-      ],
-      "100us"
-    ],
-    "requisites_warning": ""
-  },
-  {
-    "_id": "1110ma",
-    "assumed_knowledge": [],
-    "assumed_warning": "",
-    "course_name": "Mathematics for Engineering, Science and Technology 1",
-    "course_replacement": [],
-    "require_degree": [],
-    "semester_offered": 0,
-    "credits": 10,
-    "requisites": [],
-    "requisites_warning": "Students must have completed the specified previous studies to enrol in this course.To enrol in this course,you must meet one of the following requirement 1 Passed Math1002 or FNMT10022. Within two years before the commencement of the course,have achieved one of the following -A Band 5 or better in the NSW HSC course Mathematics Advanced- Completion of Extension 1 or Extension 2 Mathematics in NSW HSC- a pass in both FMTH001 and FMTH002 (NIC courses)3.Within 12 months before the commencement of the course,have enrolled in either MATH1110 or MATH1210 but obtained an FF grade5.Immediately before the commencement of the course,have obtained approval from head of the School of Mathematical and Physical Sciences, on the grounds that you have equivalent qualification please email the details of your qualification to CESE-SIPS-Admin@newcastle.edu.au "
-  },
-  {
-    "_id": "1510ma",
-    "assumed_knowledge": [],
-    "assumed_warning": "HSC Advanced Mathematics(Bands 5 or 6),or equivalent",
-    "course_name": "Discrete Mathematics",
-    "course_replacement": [],
-    "require_degree": [],
-    "semester_offered": 2,
-    "credits": 10,
-    "requisites": [],
-    "requisites_warning": ""
-  },
-  {
-    "_id": "1050se",
-    "assumed_knowledge": [],
-    "assumed_warning": "",
-    "course_name": "Web Technologies",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 2,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "1110se",
-    "assumed_knowledge": [],
-    "assumed_warning": "",
-    "course_name": "Object Oriented Programming",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 0,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "1120se",
-    "assumed_knowledge": [
-      [
-        "2012in",
-        "1110se"
-      ]
-    ],
-    "assumed_warning": "",
-    "course_name": "Data Structures",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites_warning": "",
-    "semester_offered": 0,
-    "requisites": []
-  },
-  {
-    "_id": "2130se",
-    "assumed_warning": "",
-    "course_name": "Systems Analysis and Design",
-    "course_replacement": [
-      "2009in"
-    ],
-    "require_degree": [],
-    "semester_offered": 1,
-    "assumed_knowledge": [
-      [
-        "1110se",
-        "1004in"
-      ]
-    ],
-    "credits": 10,
-    "requisites": [],
-    "requisites_warning": ""
-  },
-  {
-    "_id": "2250se",
-    "assumed_knowledge": [],
-    "assumed_warning": "1.A basic understanding of the structure and function of operating systems 2. A basic understanding of computer networks and network protocols 3. Discrete maths (number theory) 4. Programming skills (Java or Python or C++)",
-    "course_name": "System and Network Security",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 2,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "2260se",
-    "assumed_knowledge": [
-      "1050se",
-      [
-        "1110se",
-        "1004in"
-      ]
-    ],
-    "assumed_warning": "",
-    "course_name": "Human-Computer Interaction",
-    "course_replacement": [
-      "3300se"
-    ],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 2,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "4500se",
-    "assumed_knowledge": [
-      [
-        "1110se",
-        "6110se"
-      ]
-    ],
-    "assumed_warning": "",
-    "course_name": "Network and Distributed Computing",
-    "course_replacement": [
-      "6400se",
-      "3500el",
-      "3400se"
-    ],
-    "credits": 10,
-    "require_degree": [],
-    "semester_offered": 2,
-    "requisites": [],
-    "requisites_warning": ""
-  },
-  {
-    "_id": "1010co",
-    "assumed_knowledge": [],
-    "assumed_warning": "",
-    "course_name": "Computing Fundamentals",
-    "course_replacement": [
-      "1001in",
-      "1150in"
-    ],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 1,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "1140co",
-    "assumed_knowledge": [],
-    "assumed_warning": "Knowledge of and experience in programming",
-    "course_name": "Database and Information Management",
-    "course_replacement": [
-      "2040in"
-    ],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 2,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "2051in",
-    "assumed_knowledge": [
-      [
-        "2012in",
-        "1110se"
-      ]
-    ],
-    "assumed_warning": "",
-    "course_name": "Mobile Application Programming",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 2,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "3330co",
-    "assumed_knowledge": [],
-    "assumed_warning": "The assumed knowledge is equivalent to that of a completed 2nd year Bachelor of Computer Science or a similar degree and should include: basic statistics and mathematics, including mean, standard deviation, vectors, dot product, hyperplanes, basic multivariable calculus, sets and basic first order logic. It also includes some basic programming skills in a language such as Python, Matlab, Java, C# or C/C++. The course will provide a brief mathematics workshop and a quick introduction to Python to refresh some of the assumed knowledge.\n\n",
-    "course_name": "Machine Intelligence",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 1,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "3340co",
-    "assumed_knowledge": [
-      "1510ma",
+    "100us"
+  ],
+  "requisites_warning": ""
+},
+{
+  "_id": "1110ma",
+  "assumed_knowledge": [],
+  "assumed_warning": "",
+  "course_name": "Mathematics for Engineering, Science and Technology 1",
+  "course_replacement": [],
+  "require_degree": [],
+  "semester_offered": 0,
+  "credits": 10,
+  "requisites": [],
+  "requisites_warning": "Students must have completed the specified previous studies to enrol in this course.To enrol in this course,you must meet one of the following requirement 1 Passed Math1002 or FNMT10022. Within two years before the commencement of the course,have achieved one of the following -A Band 5 or better in the NSW HSC course Mathematics Advanced- Completion of Extension 1 or Extension 2 Mathematics in NSW HSC- a pass in both FMTH001 and FMTH002 (NIC courses)3.Within 12 months before the commencement of the course,have enrolled in either MATH1110 or MATH1210 but obtained an FF grade5.Immediately before the commencement of the course,have obtained approval from head of the School of Mathematical and Physical Sciences, on the grounds that you have equivalent qualification please email the details of your qualification to CESE-SIPS-Admin@newcastle.edu.au "
+},
+{
+  "_id": "1510ma",
+  "assumed_knowledge": [],
+  "assumed_warning": "HSC Advanced Mathematics(Bands 5 or 6),or equivalent",
+  "course_name": "Discrete Mathematics",
+  "course_replacement": [],
+  "require_degree": [],
+  "semester_offered": 2,
+  "credits": 10,
+  "requisites": [],
+  "requisites_warning": ""
+},
+{
+  "_id": "1050se",
+  "assumed_knowledge": [],
+  "assumed_warning": "",
+  "course_name": "Web Technologies",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 2,
+  "requisites_warning": ""
+},
+{
+  "_id": "1110se",
+  "assumed_knowledge": [],
+  "assumed_warning": "",
+  "course_name": "Object Oriented Programming",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 0,
+  "requisites_warning": ""
+},
+{
+  "_id": "1120se",
+  "assumed_knowledge": [
+    [
+      "2012in",
       "1110se"
-    ],
-    "assumed_warning": "",
-    "course_name": "Data Mining",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 2,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "3350co",
-    "assumed_knowledge": [
-      "1140co",
-      [
-        "1004in",
-        "1110se"
-      ]
-    ],
-    "assumed_warning": "",
-    "course_name": "Advanced Database",
-    "course_replacement": [
-      "3007in"
-    ],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 1,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "3050in",
-    "assumed_knowledge": [
-      [
-        "1050se",
-        "1140co"
-      ],
-      [
-        "2012in",
-        "1110se"
-      ]
-    ],
-    "assumed_warning": "",
-    "course_name": "Web Programming",
-    "course_replacement": [
-      "2008in"
-    ],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 2,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "3100in",
-    "assumed_knowledge": [],
-    "assumed_warning": "Basic competency in Microsoft Office packages including Excel.",
-    "course_name": "Project Management",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 1,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "3320se",
-    "assumed_knowledge": [
-      "2130se"
-    ],
-    "assumed_warning": "",
-    "course_name": "Software Verification and Validation",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 1,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "4430se",
-    "assumed_knowledge": [
-      "2130se"
-    ],
-    "assumed_warning": "",
-    "course_name": "Software Quality",
-    "course_replacement": [
-      "3130se"
-    ],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "requisites_warning": "",
-    "semester_offered": 1
-  },
-  {
-    "_id": "2031in",
-    "assumed_knowledge": [
-      [
-        "1050se",
-        "1050co",
-        "1004in"
-      ]
-    ],
-    "assumed_warning": "",
-    "course_name": "Systems and Network Administration",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 1,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "3260co",
-    "assumed_knowledge": [
+    ]
+  ],
+  "assumed_warning": "",
+  "course_name": "Data Structures",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites_warning": "",
+  "semester_offered": 0,
+  "requisites": []
+},
+{
+  "_id": "2130se",
+  "assumed_warning": "",
+  "course_name": "Systems Analysis and Design",
+  "course_replacement": [
+    "2009in"
+  ],
+  "require_degree": [],
+  "semester_offered": 1,
+  "assumed_knowledge": [
+    [
       "1110se",
-      "1120se",
-      "1510ma"
+      "1004in"
+    ]
+  ],
+  "credits": 10,
+  "requisites": [],
+  "requisites_warning": ""
+},
+{
+  "_id": "2250se",
+  "assumed_knowledge": [
+    [
+      "1110se",
+      "1004in"
     ],
-    "assumed_warning": "Equivalents to 1110SENG,1120SENG and 1510MATH",
-    "course_name": "Data Security",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 1,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "3500co",
-    "assumed_knowledge": [
-      [
-        "2031in",
-        "2240co",
-        "2720el"
-      ]
+    "1510ma"
+  ],
+  "assumed_warning": "1.A basic understanding of the structure and function of operating systems 2. A basic understanding of computer networks and network protocols 3. Discrete maths (number theory) 4. Programming skills (Java or Python or C++)",
+  "course_name": "System and Network Security",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 2,
+  "requisites_warning": ""
+},
+{
+  "_id": "2260se",
+  "assumed_knowledge": [
+    "1050se",
+    [
+      "1110se",
+      "1004in"
+    ]
+  ],
+  "assumed_warning": "",
+  "course_name": "Human-Computer Interaction",
+  "course_replacement": [
+    "3300se"
+  ],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 2,
+  "requisites_warning": ""
+},
+{
+  "_id": "4500se",
+  "assumed_knowledge": [
+    [
+      "1110se",
+      "6110se"
+    ]
+  ],
+  "assumed_warning": "",
+  "course_name": "Network and Distributed Computing",
+  "course_replacement": [
+    "6400se",
+    "3500el",
+    "3400se"
+  ],
+  "credits": 10,
+  "require_degree": [],
+  "semester_offered": 2,
+  "requisites": [],
+  "requisites_warning": ""
+},
+{
+  "_id": "1010co",
+  "assumed_knowledge": [],
+  "assumed_warning": "",
+  "course_name": "Computing Fundamentals",
+  "course_replacement": [
+    "1001in",
+    "1150in"
+  ],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "1140co",
+  "assumed_knowledge": [
+    "1110se"
+  ],
+  "assumed_warning": "Knowledge of and experience in programming",
+  "course_name": "Database and Information Management",
+  "course_replacement": [
+    "2040in"
+  ],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 2,
+  "requisites_warning": ""
+},
+{
+  "_id": "2051in",
+  "assumed_knowledge": [
+    [
+      "2012in",
+      "1110se"
+    ]
+  ],
+  "assumed_warning": "",
+  "course_name": "Mobile Application Programming",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 2,
+  "requisites_warning": ""
+},
+{
+  "_id": "3330co",
+  "assumed_knowledge": [
+    "1510ma",
+    [
+      "1110se",
+      "1004in"
+    ]
+  ],
+  "assumed_warning": "The assumed knowledge is equivalent to that of a completed 2nd year Bachelor of Computer Science or a similar degree and should include: basic statistics and mathematics, including mean, standard deviation, vectors, dot product, hyperplanes, basic multivariable calculus, sets and basic first order logic. It also includes some basic programming skills in a language such as Python, Matlab, Java, C# or C/C++. The course will provide a brief mathematics workshop and a quick introduction to Python to refresh some of the assumed knowledge.\n\n",
+  "course_name": "Machine Intelligence",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "3340co",
+  "assumed_knowledge": [
+    "1510ma",
+    "1110se"
+  ],
+  "assumed_warning": "",
+  "course_name": "Data Mining",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 2,
+  "requisites_warning": ""
+},
+{
+  "_id": "3350co",
+  "assumed_knowledge": [
+    "1140co",
+    [
+      "1004in",
+      "1110se"
+    ]
+  ],
+  "assumed_warning": "",
+  "course_name": "Advanced Database",
+  "course_replacement": [
+    "3007in"
+  ],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "3050in",
+  "assumed_knowledge": [
+    [
+      "1050se",
+      "1140co"
     ],
-    "assumed_warning": "",
-    "course_name": "Security Attacks: Analysis and Mitigation Strategies",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "semester_offered": 1,
-    "requisites_warning": ""
-  },
-  {
-    "_id": "3600co",
-    "assumed_knowledge": [],
-    "assumed_warning": "",
-    "course_name": "Cyber Security Governance, Risk, and Compliance",
-    "course_replacement": [],
-    "credits": 10,
-    "require_degree": [],
-    "requisites": [],
-    "requisites_warning": "",
-    "semester_offered": 2
-  }]
+    [
+      "2012in",
+      "1110se"
+    ]
+  ],
+  "assumed_warning": "",
+  "course_name": "Web Programming",
+  "course_replacement": [
+    "2008in"
+  ],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 2,
+  "requisites_warning": ""
+},
+{
+  "_id": "3100in",
+  "assumed_knowledge": [],
+  "assumed_warning": "Basic competency in Microsoft Office packages including Excel.",
+  "course_name": "Project Management",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "3320se",
+  "assumed_knowledge": [
+    "2130se"
+  ],
+  "assumed_warning": "",
+  "course_name": "Software Verification and Validation",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "4430se",
+  "assumed_knowledge": [
+    "2130se"
+  ],
+  "assumed_warning": "",
+  "course_name": "Software Quality",
+  "course_replacement": [
+    "3130se"
+  ],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "requisites_warning": "",
+  "semester_offered": 1
+},
+{
+  "_id": "2031in",
+  "assumed_knowledge": [
+    [
+      "1050se",
+      "1050co",
+      "1004in"
+    ]
+  ],
+  "assumed_warning": "",
+  "course_name": "Systems and Network Administration",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "3260co",
+  "assumed_knowledge": [
+    "1110se",
+    "1120se",
+    "1510ma"
+  ],
+  "assumed_warning": "Equivalents to 1110SENG,1120SENG and 1510MATH",
+  "course_name": "Data Security",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "3500co",
+  "assumed_knowledge": [
+    [
+      "2031in",
+      "2240co",
+      "2720el"
+    ]
+  ],
+  "assumed_warning": "",
+  "course_name": "Security Attacks: Analysis and Mitigation Strategies",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "semester_offered": 1,
+  "requisites_warning": ""
+},
+{
+  "_id": "3600co",
+  "assumed_knowledge": [],
+  "assumed_warning": "",
+  "course_name": "Cyber Security Governance, Risk, and Compliance",
+  "course_replacement": [],
+  "credits": 10,
+  "require_degree": [],
+  "requisites": [],
+  "requisites_warning": "",
+  "semester_offered": 2
+}]
