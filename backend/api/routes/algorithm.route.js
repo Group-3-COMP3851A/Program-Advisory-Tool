@@ -3,11 +3,13 @@
 //route file controls which URL points to which location - controls routing around the website
 
 import express from "express"; //import express for the Router
-import algorithmCtrl from "../controllers/algorithm.controller.js"; // import the student controller for student info
+import algorithmCtrl from "../controllers/algorithm.controller.js"; // import the algorithm controller for generating input data for the algorithm
 
 const router = express.Router();
 
-router.route("/getCourseList").post(algorithmCtrl.apiGetCourseList); // api request to load course list based (might move this elsewhere at somepoint, stil haven't finalized API topography yet)
+// TODO: Separate this into 2 API requests, if I can :/
+// There is an issue here with this request acting as a get and a post request, as it both retrieves and sends data
+router.route("/getCourseList").post(algorithmCtrl.apiGetCourseList); // API request to get the course list
 
 router.route("")
 
