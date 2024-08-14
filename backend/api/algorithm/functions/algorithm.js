@@ -58,6 +58,64 @@ class Algorithm {
             }
         }
     }
+
+    createSchedule = (semesterCount = 6, coursesPerSem = 4, directedCourses) => {
+        let schedule = Array(semesterCount).fill(0).map(() => Array(coursesPerSem).fill(null)); //creating array: [semesterCount][coursesPerSem]
+        //the way to handle a schedule that has already begun would be to subtract the number of courses completed divided by the coursesPerSem from the semester count OR handle it beforehand somehow
+        //this would also have to be passed through to the placeDirecteds somehow
+
+        if (semesterCount < 4) {
+            //if the student is doing a less than full time plan, need to find where the directeds would fit given the reqs
+            this.sortDirected(directedCourses);
+        } else this.placeDirecteds(directedCourses, schedule) //if we're doing a full time plan, can just place the directeds where they belong normally
+        this.planSchedule = schedule;
+    }
+
+    //finds the earliest semester that a course can be taken given reqs and other info
+    findEarliestSemester = () => {
+        
+    }
+
+    //takes directed course array as input, will read from the directed courses whereabouts they should go in the schedule and will add them to the schedule
+    placeDirecteds = (directedCourses, schedule) => {
+        directedCourses.forEach((directed) => {
+            let placements = directed.semester_placements;
+            placements.forEach((placement) => {
+                //since directeds store the year and semester of the directed, year-1 * 2 + semester will find the correct semester (e.g year 3 sem 1 = 3-1 * 2 + 1 = 5th semester which is correct)
+                //note the -1 on the end because arrays start at 0 not 1
+                schedule[(placement.year-1)*2 + placement.semester - 1][0] = {code: "placeholder"};
+            })
+        })
+    }
+
+    //since every directed course for a given major will always have the same requirements, we only need to find at which point it is able to be sorted once and then we can just as many placeholders as necessary there
+    sortDirected = (directedCourses) => {
+        //doesn't matter which directed course we get the assumed knowledge of, they're all the same
+        let assumedKnowledge = structuredClone(directedCourses[0].assumed_knowledge); //directedCourses[0].assumed_knowledge;
+        //go through each assumed knowledge and "cross them off" as they go past in the sortedCourses array, once all assumed knowledge is accounted for, add the course to the sortedCourses array
+        let index;
+        for (index = 0; assumedKnowledge.length > 0 && index < this.sortedCourses.length; index++) {
+            let course = this.sortedCourses[index];
+            //check if the course currently indexed is in the assumed knowledge
+            assumedKnowledge.forEach((assumedCourse, i) => { //forEach replacing an indexOf call
+                if (Array.isArray(assumedCourse) && assumedCourse.includes(course.code)) { //if the assumed knowledge is an array and it contains the courseCode, remove it from the assumed knowledge
+                    assumedKnowledge.splice(i, 1);
+                }
+                else if (assumedCourse === course.code) { //if the assumed knowledge is just the courseCode, remove it from the assumed knowledge
+                    assumedKnowledge.splice(i, 1);
+                }
+            })
+        }
+        if (assumedKnowledge.length === 0)
+            for (let i = 0; i < directedCourses.length; i++) 
+                this.sortedCourses = this.sortedCourses.splice(index, 0, {code: "placeholder"}); //place as many placeholders as there are directeds in the course
+        else console.log("assumed knowledge not accounted for");
+    }
+
+    //returns the sorted courses
+    getSortedCourses = () => {
+        return this.sortedCourses;
+    }
 }
 
 export default Algorithm;

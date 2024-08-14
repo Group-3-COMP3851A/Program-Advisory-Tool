@@ -27,11 +27,12 @@ import Algorithm from "../functions/algorithm.js";
     // }
 
 class AlgorithmHandler {
-    constructor(inputCourses, semesterCount = 6){
+    constructor(inputCourses, directedCourses, semesterCount = 6, coursesPerSem = 4){
         this.courseArray = structuredClone(inputCourses);
         this.semesterCount = semesterCount;
+        this.coursesPerSem = coursesPerSem;
         this.preprocessData();
-        this.runAlgorithm();
+        this.runAlgorithm(directedCourses);
     }
 
     preprocessData = () => {
@@ -85,9 +86,14 @@ class AlgorithmHandler {
         })
     }
 
-    runAlgorithm = () => {
+    //This method will run everything needed for the algorithm:
+        //topological sort
+        //scheduling
+    runAlgorithm = (directedCourses) => {
         let algorithm = new Algorithm(this.prioQueue, this.graph, this.reverseGraph, this.courseCodeList, this.courseArray);
         algorithm.topologicalSort();
+        this.sortedCourses = structuredClone(algorithm.sortedCourses); //take a deep copy of the sorted courses so we don't have to rerun the topoligcal sort when checking a course list after a user makes their own
+        algorithm.createSchedule(this.semesterCount, this.coursesPerSem, directedCourses)
         return algorithm.sortedCourses;
     }
     // add some getters so that milestone 1 can be achieved
