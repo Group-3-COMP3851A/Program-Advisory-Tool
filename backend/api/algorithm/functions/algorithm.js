@@ -28,12 +28,14 @@ class Algorithm {
                 })
             }
             let course = this.queue.dequeue(); //this dequeues a course object: course = {courseCode, priority, index}
+            let graph = structuredClone(this.normalGraph); //create a copy of the normal graph
+            //we don't want to change the normalGraph since we do still need it for determining where exactly where should place courses in a given semester to make sure a course is no scheduled with it's dependency
             if (this.reverseGraph[course.index]) { //check if there are any courses reliant on this course - if there are no reliant courses, this value will be undefined and, thus, falsey
                 this.reverseGraph[course.index].forEach((reliantCourse) => {
                     //for each course with a reliance on the current course object, remove the current course (course.index) from its list of dependencies
-                    this.normalGraph[reliantCourse].splice(this.normalGraph[reliantCourse].indexOf(course.index), 1); 
+                    graph[reliantCourse].splice(graph[reliantCourse].indexOf(course.index), 1); 
                     //check if removing the dependency caused the course to have no more dependencies
-                    if (this.normalGraph[reliantCourse].length === 0) {
+                    if (graph[reliantCourse].length === 0) {
                         //if there are no more dependencies, we can add it to the queue. 
                         this.queue.enqueue(this.courseCodeList[reliantCourse], reliantCourse);
                     }
@@ -63,17 +65,43 @@ class Algorithm {
         let schedule = Array(semesterCount).fill(0).map(() => Array(coursesPerSem).fill(null)); //creating array: [semesterCount][coursesPerSem]
         //the way to handle a schedule that has already begun would be to subtract the number of courses completed divided by the coursesPerSem from the semester count OR handle it beforehand somehow
         //this would also have to be passed through to the placeDirecteds somehow
-
+        this.coursesPerSem = coursesPerSem;
         if (semesterCount < 4) {
             //if the student is doing a less than full time plan, need to find where the directeds would fit given the reqs
             this.sortDirected(directedCourses);
         } else this.placeDirecteds(directedCourses, schedule) //if we're doing a full time plan, can just place the directeds where they belong normally
+        this.findEarliestSemester(schedule);
         this.planSchedule = schedule;
     }
 
     //finds the earliest semester that a course can be taken given reqs and other info
-    findEarliestSemester = () => {
-        
+    findEarliestSemester = (schedule) => {
+        let semester_offered, placement = [0, 0];
+        while(!(this.sortedCourses.length === 0)){
+            let course = this.sortedCourses.shift(); //take the first course
+            semester_offered = this.courseArray[course.index].semester_offered; //get the semester offering/s for the course
+            if (this.normalGraph[course.index].length === 0) { //the course has no dependencies so we can just place it as soon as possible
+                //looping through the schedule and finding the earliest placement that has no course scheduled
+                let placed = false;
+                for (let i = 0; i < schedule.length && !placed; i++) {
+                    //if the course is not offered in the current semester, skip the semester
+                    //below condition checks if the semestered offered is NOT 0 AND is the semester offered is the same parity
+                        //note on the parity: it checks if it is the SAME parity because arrays start at 0 so semester 1 is even parity and semester 2 is odd parity
+                        //e.g semester_offered = 1 and i = 0 (sem 1), 1+0%2 = 1, hence on odd parity, we should check if the course can fit
+                    if ((!(semester_offered === 0))&&((semester_offered+ i) % 2 === 0)) {
+                        continue;
+                    }
+                    for (let j = 0; j < schedule[i].length; j++) {
+                        if (schedule[i][j] === null) {
+                            placement = [i, j];
+                            placed = true;
+                            break;
+                        }
+                    }
+                }
+                schedule[placement[0]][placement[1]] = course;
+            }
+        }
     }
 
     //takes directed course array as input, will read from the directed courses whereabouts they should go in the schedule and will add them to the schedule

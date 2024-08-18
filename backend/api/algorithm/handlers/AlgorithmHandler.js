@@ -29,7 +29,7 @@ import Algorithm from "../functions/algorithm.js";
 class AlgorithmHandler {
     constructor(inputCourses, directedCourses, semesterCount = 6, coursesPerSem = 4){
         this.courseArray = structuredClone(inputCourses);
-        this.semesterCount = semesterCount;
+        this.semesterCount = semesterCount; //semester count could be inferred from the number of courses remaining and the number of courses they wish to complete per semester
         this.coursesPerSem = coursesPerSem;
         this.preprocessData();
         this.runAlgorithm(directedCourses);
@@ -110,7 +110,7 @@ class AlgorithmHandler {
         return this.courseArray;
     }
 
-    getSemCout = () => {
+    getSemCount = () => {
         return this.semesterCount;
     }
 }
