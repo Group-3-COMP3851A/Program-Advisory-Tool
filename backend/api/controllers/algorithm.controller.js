@@ -12,7 +12,7 @@ export default class algorithmCtrl {
 
             // Pass course list into algorithm handler, and return sorted course list
             // TODO: Maybe wrap the handler in its own algorithm object?
-            let handler = new AlgorithmHandler(courseList);
+            //let handler = new AlgorithmHandler(courseList);
             
             // I'll update the response structure once I get everything working correctly
             let response = {
