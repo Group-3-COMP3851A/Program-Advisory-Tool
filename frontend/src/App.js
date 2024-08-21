@@ -8,7 +8,9 @@ function App() {
   
   const [currentSection, setCurrentSection] = useState(1);  
   const [degree, setDegree] = useState('');  
+  const [degreeList, setDegreeList] = useState([]);
   const [major, setMajor] = useState('');
+  const [majorList, setMajorList] = useState([]);
   const [courseList, setCourseList] = useState([]);  
   const showMajor = (e) => {  
 
@@ -16,6 +18,43 @@ function App() {
   setMajor('');  
 
 };  
+
+const getDegreeList = () => {
+  fetch('http://localhost:3001/api/degree/getDegreeList', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    })
+    .then(response => response.json())
+    .then(data => {
+      //console.log(data.degreeList);
+      setDegreeList(data.degreeList);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+const getMajorList = () => {
+  fetch('http://localhost:3001/api/major/getMajorList', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      degree,
+    }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      //console.log(data.majorList);
+      setMajorList(data.majorList);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
 
 const nextSection = () => {  
   if (currentSection === 1) {  
