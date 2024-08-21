@@ -24,4 +24,19 @@ export default class courseDAO{
             return [];
         }
     }
+
+    static async getCourseListFromSemester(semester){
+        try {
+            let courseData = await courses
+            .find({ semester_offered: semester })
+            .toArray();
+            if (!courseData) throw new Error("Course not found");
+
+            return courseData;
+            
+        } catch (e) {
+            console.error(`Unable to get course: ${e}`);
+            return [];
+        }
+    }
 }

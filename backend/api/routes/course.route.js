@@ -4,6 +4,7 @@ import courseCtrl from "../controllers/course.controller.js"; // import the cour
 const router = express.Router();
 
 router.route("/getCourse").post(courseCtrl.apiGetCourse); // API request to get the specified course
+router.route("/getCourseListFromSemester").post(courseCtrl.apiGetCourseListFromSemester); // API request to return a list of courses based on the provided semester
 
 router.route("")
 
