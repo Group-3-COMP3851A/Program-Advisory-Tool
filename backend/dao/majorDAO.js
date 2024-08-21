@@ -21,9 +21,9 @@ export default class majorDAO{
             if (!degreeData) throw new Error("Degree not found");
 
             // Gets the major based off of the degree's id
-            let majorData = await major.findOne({ 
-                degree_id: degreeData._id 
-            });
+            let majorData = await major
+            .find({ degree_id: degreeData._id })
+            .toArray();
             if (!majorData) throw new Error("Major not found for this degree");
 
             // Returns the list of majors

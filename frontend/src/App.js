@@ -12,11 +12,15 @@ function App() {
   const [major, setMajor] = useState('');
   const [majorList, setMajorList] = useState([]);
   const [courseList, setCourseList] = useState([]);  
-  const showMajor = (e) => {  
-
-  setDegree(e.target.value);  
-  setMajor('');  
-
+  const showMajor = (e) => {
+    const selectedDegree = e.target.value;
+    setDegree(selectedDegree);
+    setMajor('');
+    if (selectedDegree) {
+      getMajorList(selectedDegree);
+    } else {
+      setMajorList([]);
+    }
 };  
 
 const getDegreeList = () => {
@@ -29,27 +33,27 @@ const getDegreeList = () => {
     .then(response => response.json())
     .then(data => {
       //console.log(data.degreeList);
-      setDegreeList(data.degreeList);
+      setDegreeList(data.degreeList || []);
     })
     .catch((error) => {
       console.error('Error:', error);
     });
 }
 
-const getMajorList = () => {
+const getMajorList = (selectedDegree) => {
   fetch('http://localhost:3001/api/major/getMajorList', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      degree,
+      degree: selectedDegree,
     }),
     })
     .then(response => response.json())
     .then(data => {
       //console.log(data.majorList);
-      setMajorList(data.majorList);
+      setMajorList(data.majorList || []);
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -59,6 +63,7 @@ const getMajorList = () => {
 const nextSection = () => {  
   if (currentSection === 1) {  
     if (degree === 'Computer Science' && major === 'Cyber Security') {  
+      // TODO: Remove the need to expose the port to the client, this information should be as hidden as possible
       // Send data to backend (we really need to create a better backend URL, because exposing our port is bad lol)
       fetch('http://localhost:3001/api/algorithm/getCourseList', {
         method: 'POST',
@@ -91,16 +96,7 @@ const generatePlanner = () => {
 };  
 
 useEffect(() => {
-
-  // TODO: Remove the need to expose the port to the client, this information should be as hidden as possible
-  //fetch('http://localhost:3001/api')
-
-    // Issues a response to the backend, polling for a specific test string
-    //.then(response => response.text())
-
-    // Sets the data received from the backend to equal the test message
-    //.then(data => setMessage(data));
-
+  getDegreeList();
 }, []);
 
 //TODO: Add Figma Prototype UI
@@ -116,30 +112,22 @@ return (
         <h1>Welcome to Program Planner</h1>  
         <h2>Hi Student! Choose your degree and major</h2>  
         <label htmlFor="degree">Select degree:</label>  
-        <select id="degree" value={degree} onChange={showMajor}>  
-          <option value="">--Select Degree--</option>  
-          <option value="Information Technology">Information Technology</option>  
-          <option value="Computer Science">Computer Science</option>  
+        <select id="degree" value={degree} onChange={showMajor}>
+          <option value="">--Select Degree--</option>
+          {degreeList.map((deg, index) => (
+            <option key={index} value={deg.degree_name}>{deg.degree_name}</option>
+          ))}
         </select>  
-        {degree && (  
-          <div>  
-            <label htmlFor="major">Select major:</label>  
-            <select id="major" value={major} onChange={(e) => setMajor(e.target.value)}>  
-              <option value="">--Select Major--</option>  
-              {degree === 'Information Technology' && (  
-                <>  
-                  <option value="ICT Developer">ICT Developer</option>  
-                  <option value="ICT Professional">ICT Professional</option>  
-                </>  
-              )}  
-              {degree === 'Computer Science' && (  
-                <>  
-                  <option value="Software Developer">Software Developer</option>  
-                  <option value="Cyber Security">Cybersecurity</option>  
-                </>  
-              )}  
-            </select>  
-          </div>  
+        {degree && (
+          <div>
+            <label htmlFor="major">Select major:</label>
+            <select id="major" value={major} onChange={(e) => setMajor(e.target.value)}>
+              <option value="">--Select Major--</option>
+              {majorList.map((maj, index) => (
+                <option key={index} value={maj.major_name}>{maj.major_name}</option>
+              ))}
+            </select>
+          </div>
         )}  
         <button onClick={nextSection}>Next</button>  
       </div>  

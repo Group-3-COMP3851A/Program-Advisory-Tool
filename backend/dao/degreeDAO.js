@@ -13,7 +13,9 @@ export default class degreeDAO{
     static async getDegreeList(){
         try {
             // Gets all degrees in the collection
-            let degreeData = await degree.find({});
+            let degreeData = await degree
+            .find({})
+            .toArray();
             if (!degreeData) throw new Error("Degree not found");
             
             // Returns the list of degrees
