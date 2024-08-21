@@ -4,6 +4,7 @@ import studentDAO from "./dao/studentDAO.js";
 import algorithmDAO from "./dao/algorithmDAO.js";
 import degreeDAO from "./dao/degreeDAO.js";
 import majorDAO from "./dao/majorDAO.js";
+import courseDAO from "./dao/courseDAO.js";
 
 // Can be modified at a later date
 const port = process.env.PORT || 3001;
@@ -28,6 +29,7 @@ mongoClient.connect().catch(err => { //trying to connect, if there is an error, 
     await algorithmDAO.injectDB(client);
     await degreeDAO.injectDB(client);
     await majorDAO.injectDB(client);
+    await courseDAO.injectDB(client);
 
     app.listen(port, () => { //starting the server
         console.log(`listening on port ${port}`);

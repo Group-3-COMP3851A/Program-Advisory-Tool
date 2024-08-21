@@ -22,7 +22,7 @@ export default class degreeDAO{
             return degreeData;
 
         } catch (e) {
-            console.error(`Unable to get major list: ${e}`);
+            console.error(`Unable to get degree list: ${e}`);
             return [];
         }
     }
