@@ -60,31 +60,34 @@ const getMajorList = (selectedDegree) => {
     });
 }
 
+const getCourseList = (degree, major) => {
+  fetch('http://localhost:3001/api/algorithm/getCourseList', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      degree,
+      major,
+    }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      //console.log(data.courseList);
+      setCourseList(data.courseList || []);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
 const nextSection = () => {  
   if (currentSection === 1) {  
     if (degree === 'Computer Science' && major === 'Cyber Security') {  
       // TODO: Remove the need to expose the port to the client, this information should be as hidden as possible
       // Send data to backend (we really need to create a better backend URL, because exposing our port is bad lol)
-      fetch('http://localhost:3001/api/algorithm/getCourseList', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          studentNo: 69420, // static until we add login functionality to the frontend
-          degree,
-          major,
-        }),
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Data sent to backend');
-        setCourseList(data.courseList);
-        setCurrentSection(currentSection + 1);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+      getCourseList(degree, major);
+      setCurrentSection(currentSection + 1);
     }  
   } else {  
     setCurrentSection(currentSection + 1);  
