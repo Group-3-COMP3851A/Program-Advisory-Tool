@@ -1,11 +1,12 @@
 //this will take the data from the algorithmHandler and it will run the topological sort and scheduling 
 class Algorithm {
-    constructor(queue, graph, reverseGraph, courseCodeList, courseArray) {
+    constructor(queue, graph, reverseGraph, courseCodeList, courseArray, completedCourseCount = 0) {
         this.queue = queue;
         this.normalGraph = graph;
         this.reverseGraph = reverseGraph;
         this.courseCodeList = courseCodeList;
         this.courseArray = courseArray;
+        this.completedCourseCount = completedCourseCount;
     }
 
     topologicalSort = () => {
@@ -82,12 +83,22 @@ class Algorithm {
             semester_offered = this.courseArray[course.index].semester_offered; //get the semester offering/s for the course
             if (this.normalGraph[course.index].length === 0) { //the course has no dependencies so we can just place it as soon as possible
                 //looping through the schedule and finding the earliest placement that has no course scheduled
+                let startingSemester = 0;
+                if ((course.us)) {
+                    //remaining units is the number of units that need to be completed before a course can be taken - i.e the earliest possible semester placement
+                    let remainingUnits = course.us/10 - this.completedCourseCount;
+                    if (remainingUnits >= 0){
+                        startingSemester = Math.ceil(remainingUnits/this.coursesPerSem);
+                    }
+                }
                 let placed = false;
-                for (let i = 0; i < schedule.length && !placed; i++) {
+                for (let i = startingSemester; i < schedule.length && !placed; i++) {
                     //if the course is not offered in the current semester, skip the semester
                     //below condition checks if the semestered offered is NOT 0 AND is the semester offered is the same parity
                         //note on the parity: it checks if it is the SAME parity because arrays start at 0 so semester 1 is even parity and semester 2 is odd parity
                         //e.g semester_offered = 1 and i = 0 (sem 1), 1+0%2 = 1, hence on odd parity, we should check if the course can fit
+                    //TODO: add checks for UOS requirements here
+                        //divide us by 10, round up and add 1 that is the earliest semester that the course can be taken
                     if ((!(semester_offered === 0))&&((semester_offered+ i) % 2 === 0)) {
                         continue;
                     }
@@ -99,8 +110,18 @@ class Algorithm {
                         }
                     }
                 }
+                //TODO: After adding any course, need to check if there is a following course
+                    //need to also check that it actually found a place.
                 schedule[placement[0]][placement[1]] = course;
             }
+            //TODO: handle courses with dependencies
+                //if a course does have dependencies, what do we need to check before we place it?
+                    //check if the earliest possible place has courses that are dependencies
+                    //check that all dependencies have been placed - unfortunately this is required
+                        //ex: comp3260 has dependencies on seng1120 and math1510, if a student is doing 2 courses per sem, sem 2 year 1 may not have seng1120 or math1510 (note: both sem 2 courses and comp3260 is sem 1)
+                        //if we don't check that dependencies are placed before and assume they are, comp3260 may be placed before seng1120 or math1510, violating assumed knowledge
+                        //because of this reason we also can't just remove the dependency when it gets placed like we did for sorting the courses
+                    
         }
     }
 
@@ -143,6 +164,10 @@ class Algorithm {
     //returns the sorted courses
     getSortedCourses = () => {
         return this.sortedCourses;
+    }
+
+    getPlanSchedule = () => {
+        return this.planSchedule;
     }
 }
 

@@ -94,7 +94,7 @@ class AlgorithmHandler {
         algorithm.topologicalSort();
         this.sortedCourses = structuredClone(algorithm.sortedCourses); //take a deep copy of the sorted courses so we don't have to rerun the topoligcal sort when checking a course list after a user makes their own
         algorithm.createSchedule(this.semesterCount, this.coursesPerSem, directedCourses)
-        return algorithm.sortedCourses;
+        this.planSchedule = algorithm.getPlanSchedule();
     }
     // add some getters so that milestone 1 can be achieved
 

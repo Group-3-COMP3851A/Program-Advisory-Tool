@@ -34,7 +34,7 @@ If you still can't find it, use this: https://www.mongodb.com/docs/manual/refere
 
 Note that method 1 and 3, I don't know if they work or how to make it work for MongoDB Atlas. Method 2 should work though.
 
-### Method 1 - mongorestore from BSON (shortest, requires install):
+### Method 1 - mongorestore from BSON (shortest, requires install) - Currently not Updated, Use other Methods:
 
 Ensure you have installed/have access to the `mongorestore` command. If you do not, download the MongoDB Database Tools from here: https://www.mongodb.com/try/download/database-tools
 
