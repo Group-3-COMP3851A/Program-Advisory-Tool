@@ -79,7 +79,7 @@ const nextSection = () => {
       .then(response => response.json())
       .then(data => {
         console.log('Data sent to backend');
-        setCourseList(JSON.stringify(data.courseList, null, 2)); // This is just so its readable on the frontend
+        setCourseList(data.courseList);
         setCurrentSection(currentSection + 1);
       })
       .catch((error) => {
@@ -98,6 +98,35 @@ const generatePlanner = () => {
 useEffect(() => {
   getDegreeList();
 }, []);
+
+function getFullCourseCode(internalId)
+{
+  let courseId = internalId.slice(-2);
+  let courseName = internalId.slice(0, -2);
+  let fullName = "";
+
+  switch(courseId)
+  {
+    // We can add extra cases if extra courses are added to the database
+    case "co":
+      fullName = "COMP";
+      break;
+    case "se":
+      fullName = "SENG";
+      break;
+    case "ma":
+      fullName = "MATH";
+      break;
+    case "in":
+      fullName = "INFT";
+      break;
+    case "el":
+      fullName = "ELEC";
+      break;
+  }
+
+  return fullName + courseName
+}
 
 //TODO: Add Figma Prototype UI
 //This will be replace with our own converted HTML
@@ -154,13 +183,19 @@ return (
       </div>  
     )}  
     {currentSection === 4 && (  
-
       <div style={{ textAlign: 'left', fontSize: '14px', overflowY: 'auto' }}>  
         <p>This program plan is for students commencing in the {major} major in Semester 1 2025. </p> 
         <p>Total Units Required: 240 Units | Completed: 0 units | Program Duration: 3 years full-time  </p>
-        <pre style={{ backgroundColor: '#f0f0f0', padding: '10px', borderRadius: '5px', overflow: 'auto' }}>
-          {courseList}
-        </pre>
+        <div>
+          {courseList.map((course, index) => (
+            <div key={index} style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}>
+              <h2>{getFullCourseCode(course._id)} - {course.course_name}</h2>
+              <p>Units: {course.credits}</p>
+              <p>Semesters Offered: {course.semester_offered}</p>
+              <p>Prerequisites: {course.prerequisites || 'None'}</p>
+            </div>
+          ))}
+        </div>
       </div>  
     )}  
   </div>  
