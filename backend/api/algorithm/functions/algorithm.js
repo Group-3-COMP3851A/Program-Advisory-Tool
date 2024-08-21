@@ -12,6 +12,7 @@ class Algorithm {
     topologicalSort = () => {
         this.sortedCourses = []; //sorted array to be returned
         let uosQueue = [];
+        let graph = structuredClone(this.normalGraph); //create a copy of the normal graph
 
         while (!this.queue.isEmpty()) {
             // Check if there are courses in the uosQueue that have met their units of study requirement
@@ -29,7 +30,6 @@ class Algorithm {
                 })
             }
             let course = this.queue.dequeue(); //this dequeues a course object: course = {courseCode, priority, index}
-            let graph = structuredClone(this.normalGraph); //create a copy of the normal graph
             //we don't want to change the normalGraph since we do still need it for determining where exactly where should place courses in a given semester to make sure a course is no scheduled with it's dependency
             if (this.reverseGraph[course.index]) { //check if there are any courses reliant on this course - if there are no reliant courses, this value will be undefined and, thus, falsey
                 this.reverseGraph[course.index].forEach((reliantCourse) => {
@@ -77,6 +77,7 @@ class Algorithm {
 
     //finds the earliest semester that a course can be taken given reqs and other info
     findEarliestSemester = (schedule) => {
+        let placed;
         let semester_offered, placement = [0, 0];
         while(!(this.sortedCourses.length === 0)){
             let course = this.sortedCourses.shift(); //take the first course
@@ -91,14 +92,12 @@ class Algorithm {
                         startingSemester = Math.ceil(remainingUnits/this.coursesPerSem);
                     }
                 }
-                let placed = false;
+                placed = false;
                 for (let i = startingSemester; i < schedule.length && !placed; i++) {
                     //if the course is not offered in the current semester, skip the semester
                     //below condition checks if the semestered offered is NOT 0 AND is the semester offered is the same parity
                         //note on the parity: it checks if it is the SAME parity because arrays start at 0 so semester 1 is even parity and semester 2 is odd parity
                         //e.g semester_offered = 1 and i = 0 (sem 1), 1+0%2 = 1, hence on odd parity, we should check if the course can fit
-                    //TODO: add checks for UOS requirements here
-                        //divide us by 10, round up and add 1 that is the earliest semester that the course can be taken
                     if ((!(semester_offered === 0))&&((semester_offered+ i) % 2 === 0)) {
                         continue;
                     }
@@ -112,16 +111,47 @@ class Algorithm {
                 }
                 //TODO: After adding any course, need to check if there is a following course
                     //need to also check that it actually found a place.
-                schedule[placement[0]][placement[1]] = course;
             }
-            //TODO: handle courses with dependencies
+            else {
+                let dependencies = structuredClone(this.normalGraph[course.index]); //take a clone of the dependencies
+                let dependencyInSemester = false;
+                placed = false;
+                for (let i = 0; i < schedule.length && !placed; i++) {
+                    //if the course is not offered in the current semester, skip the semester
+                    //below condition checks if the semestered offered is NOT 0 AND is the semester offered is the same parity
+                        //note on the parity: it checks if it is the SAME parity because arrays start at 0 so semester 1 is even parity and semester 2 is odd parity
+                        //e.g semester_offered = 1 and i = 0 (sem 1), 1+0%2 = 1, hence on odd parity, we should check if the course can fit
+                    for (let j = 0; j < schedule[i].length; j++) {
+                        if ((schedule[i][j] === null)&&(dependencies.length === 0)) {
+                            placement = [i, j];
+                            placed = true;
+                            break;
+                        } else if ((schedule[i][j] !== null)&&(dependencies.includes(schedule[i][j].index))) {
+                            dependencies.splice(dependencies.indexOf(schedule[i][j].index), 1);
+                            dependencyInSemester = true;
+                        }
+                    }
+                    if ((course.us) && (i<=(course.us/10 - this.completedCourseCount)/this.coursesPerSem)) { //uos checking
+                        placed = false;
+                    }
+                    if ((!(semester_offered === 0))&&((semester_offered + i) % 2 === 0)) {
+                        placed = false;
+                    }
+                    if (dependencyInSemester) {
+                        placed = false;
+                        dependencyInSemester = false;
+                    }
+                }
+
+                //TODO: handle courses with dependencies
                 //if a course does have dependencies, what do we need to check before we place it?
                     //check if the earliest possible place has courses that are dependencies
                     //check that all dependencies have been placed - unfortunately this is required
                         //ex: comp3260 has dependencies on seng1120 and math1510, if a student is doing 2 courses per sem, sem 2 year 1 may not have seng1120 or math1510 (note: both sem 2 courses and comp3260 is sem 1)
                         //if we don't check that dependencies are placed before and assume they are, comp3260 may be placed before seng1120 or math1510, violating assumed knowledge
                         //because of this reason we also can't just remove the dependency when it gets placed like we did for sorting the courses
-                    
+            }
+            if (placed) schedule[placement[0]][placement[1]] = course;
         }
     }
 
