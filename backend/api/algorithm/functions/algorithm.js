@@ -112,6 +112,12 @@ class Algorithm {
                 //TODO: After adding any course, need to check if there is a following course
                     //need to also check that it actually found a place.
             }
+                //checks needing to be done before being able to place a course with dependencies:
+                    //check if the earliest possible place has courses that are dependencies
+                    //check that all dependencies have been placed - unfortunately this is required
+                        //ex: comp3260 has dependencies on seng1120 and math1510, if a student is doing 2 courses per sem, sem 2 year 1 may not have seng1120 or math1510 (note: both sem 2 courses and comp3260 is sem 1)
+                        //if we don't check that dependencies are placed before and assume they are, comp3260 may be placed before seng1120 or math1510, violating assumed knowledge
+                        //because of this reason we also can't just remove the dependency when it gets placed like we did for sorting the courses
             else {
                 let dependencies = structuredClone(this.normalGraph[course.index]); //take a clone of the dependencies
                 let dependencyInSemester = false;
@@ -122,34 +128,28 @@ class Algorithm {
                         //note on the parity: it checks if it is the SAME parity because arrays start at 0 so semester 1 is even parity and semester 2 is odd parity
                         //e.g semester_offered = 1 and i = 0 (sem 1), 1+0%2 = 1, hence on odd parity, we should check if the course can fit
                     for (let j = 0; j < schedule[i].length; j++) {
-                        if ((schedule[i][j] === null)&&(dependencies.length === 0)) {
+                        if ((schedule[i][j] === null)&&(dependencies.length === 0)) { //checking that there are no dependencies and that the course can be placed
                             placement = [i, j];
                             placed = true;
                             break;
-                        } else if ((schedule[i][j] !== null)&&(dependencies.includes(schedule[i][j].index))) {
+                        //if there is a dependency in the current place, remove it from the dependency list and set dependencyInSemester to true
+                        } else if ((schedule[i][j] !== null)&&(dependencies.includes(schedule[i][j].index))) { 
                             dependencies.splice(dependencies.indexOf(schedule[i][j].index), 1);
                             dependencyInSemester = true;
                         }
                     }
+                    //note that this checking is instead done after looping through the semester, this is because we need to check if there is a dependency in the current semester instead of just skipping it
                     if ((course.us) && (i<=(course.us/10 - this.completedCourseCount)/this.coursesPerSem)) { //uos checking
                         placed = false;
                     }
                     if ((!(semester_offered === 0))&&((semester_offered + i) % 2 === 0)) {
                         placed = false;
                     }
-                    if (dependencyInSemester) {
+                    if (dependencyInSemester) { //if there was a dependency in the current semester, don't place the course
                         placed = false;
                         dependencyInSemester = false;
                     }
                 }
-
-                //TODO: handle courses with dependencies
-                //if a course does have dependencies, what do we need to check before we place it?
-                    //check if the earliest possible place has courses that are dependencies
-                    //check that all dependencies have been placed - unfortunately this is required
-                        //ex: comp3260 has dependencies on seng1120 and math1510, if a student is doing 2 courses per sem, sem 2 year 1 may not have seng1120 or math1510 (note: both sem 2 courses and comp3260 is sem 1)
-                        //if we don't check that dependencies are placed before and assume they are, comp3260 may be placed before seng1120 or math1510, violating assumed knowledge
-                        //because of this reason we also can't just remove the dependency when it gets placed like we did for sorting the courses
             }
             if (placed) schedule[placement[0]][placement[1]] = course;
         }
