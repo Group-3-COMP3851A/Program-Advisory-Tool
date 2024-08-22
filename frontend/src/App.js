@@ -84,19 +84,11 @@ const getCourseList = (degree, major) => {
 
 const nextSection = () => {  
   if (currentSection === 1) {  
-    if (degree === 'Computer Science' && major === 'Cyber Security') {  
-      // TODO: Remove the need to expose the port to the client, this information should be as hidden as possible
-      // Send data to backend (we really need to create a better backend URL, because exposing our port is bad lol)
-      getCourseList(degree, major);
-      setCurrentSection(currentSection + 1);
-    }  
+    getCourseList(degree, major);
+    setCurrentSection(currentSection + 1); 
   } else {  
     setCurrentSection(currentSection + 1);  
   }  
-};  
-
-const generatePlanner = () => {  
-  setCurrentSection(currentSection + 1);  
 };  
 
 useEffect(() => {
@@ -185,7 +177,7 @@ function getFullCourseCode(internalId)
             <option value="3">3</option>  
             <option value="4">4</option>  
           </select>  
-          <button onClick={generatePlanner}>Generate Planner</button>  
+          <button onClick={nextSection}>Generate Planner</button>  
         </div>  
       )}  
       {currentSection === 4 && (  
