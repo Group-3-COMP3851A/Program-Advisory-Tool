@@ -3,25 +3,26 @@ import React, { useState, useEffect } from "react";
 
 function App() {  
 
-  //This is just a test message to show that the backend is running, and is able to send data to the frontend
-  //const [message, setmessage] = useState();
-  
-  const [currentSection, setCurrentSection] = useState(1);  
-  const [degree, setDegree] = useState('');  
-  const [degreeList, setDegreeList] = useState([]);
-  const [major, setMajor] = useState('');
-  const [majorList, setMajorList] = useState([]);
-  const [courseList, setCourseList] = useState([]);  
-  const showMajor = (e) => {
-    const selectedDegree = e.target.value;
-    setDegree(selectedDegree);
-    setMajor('');
-    if (selectedDegree) {
-      getMajorList(selectedDegree);
-    } else {
-      setMajorList([]);
-    }
-};  
+//This is just a test message to show that the backend is running, and is able to send data to the frontend
+//const [message, setmessage] = useState();
+
+const [currentSection, setCurrentSection] = useState(1);  
+const [degree, setDegree] = useState('');  
+const [degreeList, setDegreeList] = useState([]);
+const [major, setMajor] = useState('');
+const [majorList, setMajorList] = useState([]);
+const [courseList, setCourseList] = useState([]);
+
+const showMajor = (e) => {
+  const selectedDegree = e.target.value;
+  setDegree(selectedDegree);
+  setMajor('');
+  if (selectedDegree) {
+    getMajorList(selectedDegree);
+  } else {
+    setMajorList([]);
+  }
+};
 
 const getDegreeList = () => {
   fetch('http://localhost:3001/api/degree/getDegreeList', {
@@ -128,7 +129,7 @@ function getFullCourseCode(internalId)
       break;
   }
 
-  return fullName + courseName
+  return fullName + courseName;
 }
 
 //This is where the imported screens components will be imported into app.js which is then imported to index.js to be shown to the user
