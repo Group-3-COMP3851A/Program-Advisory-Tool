@@ -1,0 +1,48 @@
+.navigation  {
+  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  line-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  text-align:center;
+  padding-left: 20%;
+
+}
+
+ /* 
+button {
+  padding: 10px 20px;
+  border: none;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-top: 15px;
+  width: 150px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+ 
+
+}
+
+ .button-disabled {
+  background-color: grey;
+  color: white;
+}
+.button-enabled {
+  background-color:  #007BE5;
+  text-decoration-color: white;
+  cursor: pointer;
+} */
+
+
+button.pink {
+  background-color: pink;
+  color: white;
+}
+
+
