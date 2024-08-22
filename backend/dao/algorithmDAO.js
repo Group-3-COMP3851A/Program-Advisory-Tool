@@ -30,6 +30,8 @@ export default class algorithmDAO{
                 degree_name: degreeName 
             });
             if (!degreeData) throw new Error("Degree not found");
+
+            //console.log(degreeData);
     
             // Gets the major based off of the input major name
             let majorData = await major.findOne({ 
@@ -37,30 +39,43 @@ export default class algorithmDAO{
                 degree_id: degreeData._id 
             });
             if (!majorData) throw new Error("Major not found for this degree");
+
+            //console.log(majorData);
     
             // Gets the list of courses where the course degree_id and _id match
             let degreeCoursesData = await degreeCourses
                 .find({ degree_id: degreeData._id })
                 .toArray();
+            
+            //console.log(degreeCoursesData);
                 
             // Gets the list of courses where the course major_id and _id match
             let majorCoursesData = await majorCourses
                 .find({ major_id:  majorData._id})
                 .toArray();
+
+            //console.log(majorCoursesData);
     
             // Creates a map of all the courses based on their course_id
             let degreeCourseIds = degreeCoursesData.map(dc => dc.course_id);
             let majorCourseIds = majorCoursesData.map(mc => mc.course_id);
+            
+            //console.log(degreeCourseIds);
+            //console.log(majorCourseIds);
     
             // Gets a list of all courses where the course_id matches the course ids in the map
             let coursesData = await courses
                 .find({ _id: { $in: degreeCourseIds } })
                 .toArray();
 
+            //console.log(coursesData);
+
             // Gets a list of all courses where the course_id matches the course ids in the map
             coursesData = coursesData.concat(await courses
                 .find({ _id: { $in: majorCourseIds } })
                 .toArray());
+
+            //console.log(coursesData);
     
             // Returns the list of courses
             return coursesData;
