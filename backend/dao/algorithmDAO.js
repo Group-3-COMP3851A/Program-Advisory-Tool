@@ -59,21 +59,13 @@ export default class algorithmDAO{
             // Creates a map of all the courses based on their course_id
             let degreeCourseIds = degreeCoursesData.map(dc => dc.course_id);
             let majorCourseIds = majorCoursesData.map(mc => mc.course_id);
+            let courseIds = degreeCourseIds.concat(majorCourseIds);
             
-            //console.log(degreeCourseIds);
-            //console.log(majorCourseIds);
-    
-            // Gets a list of all courses where the course_id matches the course ids in the map
+            //console.log(courseIds.sort());
+
             let coursesData = await courses
-                .find({ _id: { $in: degreeCourseIds } })
+                .find({ _id: { $in: courseIds } })
                 .toArray();
-
-            //console.log(coursesData);
-
-            // Gets a list of all courses where the course_id matches the course ids in the map
-            coursesData = coursesData.concat(await courses
-                .find({ _id: { $in: majorCourseIds } })
-                .toArray());
 
             //console.log(coursesData);
     
