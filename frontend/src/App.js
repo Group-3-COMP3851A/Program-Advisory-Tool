@@ -133,75 +133,78 @@ function getFullCourseCode(internalId)
 
 //This is where the imported screens components will be imported into app.js which is then imported to index.js to be shown to the user
 
-// unit test for backend
-// I need this for unit testing, as I need something to actually interact with my API request functions, while this may not be used in the final product
-// I still need in order to confirm that the data that my API requests are obtaining is actually valid, and can be converted into HTML, or at least is being
-// read as an array of objects. 
-// return (  
-//   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>  
-//     {currentSection === 1 && (  
-//       <div style={{ textAlign: 'center' }}>  
-//         <h1>Welcome to Program Planner</h1>  
-//         <h2>Hi Student! Choose your degree and major</h2>  
-//         <label htmlFor="degree">Select degree:</label>  
-//         <select id="degree" value={degree} onChange={showMajor}>
-//           <option value="">--Select Degree--</option>
-//           {degreeList.map((deg, index) => (
-//             <option key={index} value={deg.degree_name}>{deg.degree_name}</option>
-//           ))}
-//         </select>  
-//         {degree && (
-//           <div>
-//             <label htmlFor="major">Select major:</label>
-//             <select id="major" value={major} onChange={(e) => setMajor(e.target.value)}>
-//               <option value="">--Select Major--</option>
-//               {majorList.map((maj, index) => (
-//                 <option key={index} value={maj.major_name}>{maj.major_name}</option>
-//               ))}
-//             </select>
-//           </div>
-//         )}  
-//         <button onClick={nextSection}>Next</button>  
-//       </div>  
-//     )}  
-//     {currentSection === 2 && (  
-//       <div style={{ textAlign: 'center' }}>  
-//         <p>Step 2</p>  
-//         <h2>Have you completed any courses?</h2>  
-//         <button>Yes</button>  
-//         <button onClick={nextSection}>No</button>  
-//       </div>  
-//     )}  
-//     {currentSection === 3 && (  
-//       <div style={{ textAlign: 'center' }}>  
-//         <p>Step 3</p>  
-//         <h2>How many courses do you plan to take?</h2>  
-//         <label htmlFor="courses">Select number of courses:</label>  
-//         <select id="courses">  
-//           <option value="2">2</option>  
-//           <option value="3">3</option>  
-//           <option value="4">4</option>  
-//         </select>  
-//         <button onClick={generatePlanner}>Generate Planner</button>  
-//       </div>  
-//     )}  
-//     {currentSection === 4 && (  
-//       <div style={{ textAlign: 'left', fontSize: '14px', overflowY: 'auto' }}>  
-//         <p>This program plan is for students commencing in the {major} major in Semester 1 2025. </p> 
-//         <p>Total Units Required: 240 Units | Completed: 0 units | Program Duration: 3 years full-time  </p>
-//         <div>
-//           {courseList.map((course, index) => (
-//             <div key={index} style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}>
-//               <h2>{getFullCourseCode(course._id)} - {course.course_name}</h2>
-//               <p>Units: {course.credits}</p>
-//               <p>Semesters Offered: {course.semester_offered}</p>
-//               <p>Prerequisites: {course.prerequisites || 'None'}</p>
-//             </div>
-//           ))}
-//         </div>
-//       </div>  
-//     )}  
-//   </div>  
-// );  
+//unit test for backend
+//I need this for unit testing, as I need something to actually interact with my API request functions, while this may not be used in the final product
+//I still need in order to confirm that the data that my API requests are obtaining is actually valid, and can be converted into HTML, or at least is being
+//read as an array of objects. 
+
+/*
+  return (  
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>  
+      {currentSection === 1 && (  
+        <div style={{ textAlign: 'center' }}>  
+          <h1>Welcome to Program Planner</h1>  
+          <h2>Hi Student! Choose your degree and major</h2>  
+          <label htmlFor="degree">Select degree:</label>  
+          <select id="degree" value={degree} onChange={showMajor}>
+            <option value="">--Select Degree--</option>
+            {degreeList.map((deg, index) => (
+              <option key={index} value={deg.degree_name}>{deg.degree_name}</option>
+            ))}
+          </select>  
+          {degree && (
+            <div>
+              <label htmlFor="major">Select major:</label>
+              <select id="major" value={major} onChange={(e) => setMajor(e.target.value)}>
+                <option value="">--Select Major--</option>
+                {majorList.map((maj, index) => (
+                  <option key={index} value={maj.major_name}>{maj.major_name}</option>
+                ))}
+              </select>
+            </div>
+          )}  
+          <button onClick={nextSection}>Next</button>  
+        </div>  
+      )}  
+      {currentSection === 2 && (  
+        <div style={{ textAlign: 'center' }}>  
+          <p>Step 2</p>  
+          <h2>Have you completed any courses?</h2>  
+          <button>Yes</button>  
+          <button onClick={nextSection}>No</button>  
+        </div>  
+      )}  
+      {currentSection === 3 && (  
+        <div style={{ textAlign: 'center' }}>  
+          <p>Step 3</p>  
+          <h2>How many courses do you plan to take?</h2>  
+          <label htmlFor="courses">Select number of courses:</label>  
+          <select id="courses">  
+            <option value="2">2</option>  
+            <option value="3">3</option>  
+            <option value="4">4</option>  
+          </select>  
+          <button onClick={generatePlanner}>Generate Planner</button>  
+        </div>  
+      )}  
+      {currentSection === 4 && (  
+        <div style={{ textAlign: 'left', fontSize: '14px', overflowY: 'auto' }}>  
+          <p>This program plan is for students commencing in the {major} major in Semester 1 2025. </p> 
+          <p>Total Units Required: 240 Units | Completed: 0 units | Program Duration: 3 years full-time  </p>
+          <div>
+            {courseList.map((course, index) => (
+              <div key={index} style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}>
+                <h2>{getFullCourseCode(course._id)} - {course.course_name}</h2>
+                <p>Units: {course.credits}</p>
+                <p>Semesters Offered: {course.semester_offered}</p>
+                <p>Prerequisites: {course.prerequisites || 'None'}</p>
+              </div>
+            ))}
+          </div>
+        </div>  
+      )}  
+    </div>  
+  ); 
+*/ 
 }  
 export default App;
