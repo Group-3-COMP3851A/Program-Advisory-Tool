@@ -1,5 +1,5 @@
 :root {
-  --body-font-family: "Helvetica", Arial;
+  --body-font-family: "Work Sans", Helvetica;
   --body-font-size: 13px;
   --body-font-style: normal;
   --body-font-weight: 400;
@@ -23,5 +23,4 @@
   --iris-100: rgba(93, 95, 239, 1);
   --iris-60: rgba(165, 166, 246, 1);
   --iris-80: rgba(120, 121, 241, 1);
-
 }
