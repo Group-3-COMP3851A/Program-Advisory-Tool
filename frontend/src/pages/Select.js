@@ -71,7 +71,7 @@ const Select = () => {
                 <Link to="/profile" text="Profile" external />
                 <Link to="/create-new-planner" text="Create New Planner" />
                 <Link to="/view-planner" text="View Planner" />
-                <Link to="/logout" text="Logout" />
+                <Link to="/logout" text="Log out" />
                 <Link to="/help" text="Help" external />
                 <Link to="https://askuon.newcastle.edu.au/" text="Ask Uon" external />
             </div>
