@@ -119,6 +119,8 @@ function getFullCourseCode(internalId)
     case "el":
       fullName = "ELEC";
       break;
+    default:
+      fullName = courseId.toUpper();
   }
 
   return fullName + courseName;
