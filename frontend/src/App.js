@@ -1,11 +1,16 @@
-import './App.css';
-import React, { useState, useEffect } from "react";
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Select from './pages/Select';
+import Profile from './pages/Profile';
+import CreateNewPlanner from './pages/CreateNewPlanner';
+import ViewPlanner from './pages/ViewPlanner';
+import Logout from './pages/Logout';
+import Help from './pages/Help';
+import AskUon from './pages/AskUon';
 function App() {  
-
 //This is just a test message to show that the backend is running, and is able to send data to the frontend
 //const [message, setmessage] = useState();
-
+/* Backend testing 
 const [currentSection, setCurrentSection] = useState(1);  
 const [degree, setDegree] = useState('');  
 const [degreeList, setDegreeList] = useState([]);
@@ -133,7 +138,6 @@ function getFullCourseCode(internalId)
 //I still need in order to confirm that the data that my API requests are obtaining is actually valid, and can be converted into HTML, or at least is being
 //read as an array of objects. 
 
-
   return (  
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>  
       {currentSection === 1 && (  
@@ -202,4 +206,20 @@ function getFullCourseCode(internalId)
   ); 
 
 }  
+export default App;
+*/
+return (
+  <Router>
+    <Routes>
+    <Route path="/" element={<Select />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/create-new-planner" element={<CreateNewPlanner />} />
+        <Route path="/view-planner" element={<ViewPlanner />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/help" element={<Help />} />
+        <Route path="/ask-uon" element={<AskUon />} />
+    </Routes>
+  </Router>
+);
+}
 export default App;
