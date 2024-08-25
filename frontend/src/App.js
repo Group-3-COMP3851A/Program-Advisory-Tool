@@ -131,7 +131,7 @@ function getFullCourseCode(internalId)
 //I still need in order to confirm that the data that my API requests are obtaining is actually valid, and can be converted into HTML, or at least is being
 //read as an array of objects. 
 
-/*
+
   return (  
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>  
       {currentSection === 1 && (  
@@ -198,6 +198,6 @@ function getFullCourseCode(internalId)
       )}  
     </div>  
   ); 
-*/ 
+
 }  
 export default App;
