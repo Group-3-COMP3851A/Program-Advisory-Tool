@@ -19,7 +19,7 @@ const Logout = () => {
     <div style={{ display: 'flex' }}>
       <Menu />
       <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
-        <Text type="h1">Log In Page</Text>
+        <Text type="h1">Log In</Text>
         <Text type="h2">Please enter your details to log in</Text>
         
         {/* Combined Login Form */}

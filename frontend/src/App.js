@@ -6,7 +6,9 @@ import CreateNewPlanner from './pages/CreateNewPlanner';
 import ViewPlanner from './pages/ViewPlanner';
 import Logout from './pages/Logout';
 import Help from './pages/Help';
-
+import AddElectives from './pages/AddElectives';
+import Completed from './pages/Completed';
+import GeneratePlan from './pages/GeneratePlan';
 function App() {  
 //This is just a test message to show that the backend is running, and is able to send data to the frontend
 //const [message, setmessage] = useState();
@@ -217,7 +219,9 @@ return (
         <Route path="/view-planner" element={<ViewPlanner />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/help" element={<Help />} />
-        
+        <Route path="/completed" element={<Completed />} />
+        <Route path="/add-electives" element={<AddElectives />} />
+        <Route path="/generate-plan" element={<GeneratePlan/>}/>
     </Routes>
   </Router>
 );
