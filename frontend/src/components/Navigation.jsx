@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../styles/navigation.css';
-import Continue from "./Button";
+import Continue from "../buttons/Continue";
 import Card from "./Card";
 
 
