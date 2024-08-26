@@ -44,7 +44,7 @@ const AddElectives = () => {
             <Menu />
             <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
                 <Text type="h1">Add Electives</Text>
-                <Text type="h2">Choose your electives for this semester</Text>
+                <Text type="h2">Choose your directed and other electives</Text>
                 <Dropdown
                     id="electives"
                     label="Select Electives:"
