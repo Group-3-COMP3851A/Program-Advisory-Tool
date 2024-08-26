@@ -9,7 +9,7 @@ const Completed = () => {
     const navigate = useNavigate();
 
     const handleNext = () => {
-        navigate('/generate_plan'); // Correct path for navigation
+        navigate('/generate-plan'); // Correct path for navigation
     };
 
     return (

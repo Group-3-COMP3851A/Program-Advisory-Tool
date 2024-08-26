@@ -36,7 +36,7 @@ const AddElectives = () => {
     const handleNext = () => {
         console.log('Selected Electives:', selectedElectives);
         // Navigate to the Generate Plan page
-        navigate('/generate-plan'); // Ensure this path matches your route setup
+        navigate('/view-planner'); // Ensure this path matches your route setup
     };
 
     return (

@@ -91,7 +91,7 @@ const Select = () => {
             setErrorMessage('Please select both degree and major before continuing.');
             return;
         }
-        navigate('/generate_plan'); // Ensure this path is correct
+        navigate('/generate-plan'); // Ensure this path is correct
     };
 
     return (
