@@ -27,10 +27,21 @@ import Algorithm from "../functions/algorithm.js";
     // }
 
 class AlgorithmHandler {
-    constructor(inputCourses, directedCourses, semesterCount = 6, coursesPerSem = 4){
+    /**
+     * Constructs a new AlgorithmHandler object
+     * @constructor
+     * @param {Array} inputCourses - Array of any courses to be completed
+     * @param {Object} directedCourses - Object of directed course placeholders
+     * @param {Array} completedCourses - Array of completed course codes
+     * @param {Number} semesterCount - Number of semesters required to complete the degree
+     * @param {Number} coursesPerSem - The number of courses the student wishes to complete per semester
+     */
+    constructor(inputCourses, directedCourses, completedCourses, semesterCount, coursesPerSem){
         this.courseArray = structuredClone(inputCourses);
         this.semesterCount = semesterCount; //semester count could be inferred from the number of courses remaining and the number of courses they wish to complete per semester
         this.coursesPerSem = coursesPerSem;
+        this.completedCourses = completedCourses;
+        //maybe an argument to be had about whether or not the below should be completed every single time a new handler is created
         this.preprocessData();
         this.runAlgorithm(directedCourses);
     }
@@ -45,10 +56,10 @@ class AlgorithmHandler {
             //all course codes can be identified by the fact that the indexes of the course in the input array is how the graph is mapped
             //e.g if the first course in the input array is comp2230, everything in graph[0] is a required course for comp2230
             //further, by checking if a course has an empty array in its given index, in-degree can be quickly determined
-        //once completed courses are introduced, I believe most of the below map function will need to be remade since if a course is already completed it shouldn't have an edge in the graph
         this.reverseGraph = Array(this.courseArray.length).fill(0).map(() => Array());
         //reverseGraph will be the reverse of the normal graph
             //where normal graph has [course][courses that need to be completed to do course], reverseGraph will have [course][courses that can be completed after doing the course]
+        //once completed courses are introduced, I believe most of the below map function will need to be remade since if a course is already completed it shouldn't have an edge in the graph
         this.graph = this.courseArray.map((course, i, courseList) => {
             let outputArray = []; //output array will be an array of numbers such that if a number is in the array, the course has a connection (assumed or requisite) on it
             course.assumed_knowledge.forEach(assCourse => {
@@ -90,7 +101,7 @@ class AlgorithmHandler {
         //topological sort
         //scheduling
     runAlgorithm = (directedCourses) => {
-        let algorithm = new Algorithm(this.prioQueue, this.graph, this.reverseGraph, this.courseCodeList, this.courseArray);
+        let algorithm = new Algorithm(this.prioQueue, this.graph, this.reverseGraph, this.courseCodeList, this.courseArray, this.completedCourses);
         algorithm.topologicalSort();
         this.sortedCourses = structuredClone(algorithm.sortedCourses); //take a deep copy of the sorted courses so we don't have to rerun the topoligcal sort when checking a course list after a user makes their own
         algorithm.createSchedule(this.semesterCount, this.coursesPerSem, directedCourses)
