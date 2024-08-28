@@ -72,7 +72,16 @@ class Algorithm {
             this.sortDirected(directedCourses);
         } else this.placeDirecteds(directedCourses, schedule) //if we're doing a full time plan, can just place the directeds where they belong normally
         this.findEarliestSemester(schedule);
+        this.addElective(schedule);
         this.planSchedule = schedule;
+    }
+
+    addElective = (schedule) => {
+        schedule.forEach(element => {
+            element.forEach((course, i) => {
+                if (course == null) element[i] = {code: "elective"};
+            });
+        });
     }
 
     //finds the earliest semester that a course can be taken given reqs and other info
@@ -162,7 +171,7 @@ class Algorithm {
             placements.forEach((placement) => {
                 //since directeds store the year and semester of the directed, year-1 * 2 + semester will find the correct semester (e.g year 3 sem 1 = 3-1 * 2 + 1 = 5th semester which is correct)
                 //note the -1 on the end because arrays start at 0 not 1
-                schedule[(placement.year-1)*2 + placement.semester - 1][0] = {code: "placeholder"};
+                schedule[(placement.year-1)*2 + placement.semester - 1][0] = {code: "directed"};
             })
         })
     }
