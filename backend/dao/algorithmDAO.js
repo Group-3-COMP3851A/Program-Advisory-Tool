@@ -5,6 +5,7 @@ let major;
 let degreeCourses;
 let courses;
 let majorCourses;
+let directedPlaceholders;
 
 export default class algorithmDAO{
     static async injectDB(conn) {
@@ -18,6 +19,7 @@ export default class algorithmDAO{
             degreeCourses = await conn.db("ProgramAdvisoryTool").collection("degreeCourses");
             courses = await conn.db("ProgramAdvisoryTool").collection("courses");
             majorCourses = await conn.db("ProgramAdvisoryTool").collection("majorCourses");
+            directedPlaceholders = await conn.db("ProgramAdvisoryTool").collection("directedPlaceholders");
         } catch (e) {
             console.error(`Unable to establish collection name in algorithmDAO, you probably named the collection wrong: ${e}`);
         }

@@ -8,6 +8,7 @@ import Help from './pages/Help';
 import AddElectives from './pages/AddElectives';
 import Completed from './pages/Completed';
 import GeneratePlan from './pages/GeneratePlan';
+import { AppProvider } from './AppContext';
 function App() {  
 //This is just a test message to show that the backend is running, and is able to send data to the frontend
 //const [message, setmessage] = useState();
@@ -210,6 +211,7 @@ function getFullCourseCode(internalId)
 export default App;
 */
 return (
+  <AppProvider>
   <Router>
     <Routes>
     <Route path="/" element={<Select />} />
@@ -223,6 +225,7 @@ return (
         <Route path="/select" element={<Select/>}/>
     </Routes>
   </Router>
+  </AppProvider>
 );
 }
 export default App;
