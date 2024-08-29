@@ -1,17 +1,10 @@
 import React from "react";
-import Logo from "../assets/a.logo.png";
+import '../styles/Menu.css';
 
-//code exported from Figma
+//Written by Jarod 22/08
 
 function Menu() {
-  return (
-    <div className="menu">
-      <img style={{ width: 326, height: 234, left: 8, top: 20, position: 'absolute', borderRadius: 7 }} src={Logo} alt="uon" />
-
-    </div>
-
-
-  )
-
+  return <div class="menu"/>
 }
+
 export default Menu;
