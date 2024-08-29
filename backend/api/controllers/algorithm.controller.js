@@ -9,11 +9,12 @@ export default class algorithmCtrl {
         try {
             // Perform database query in order to get the course list
             const courseList = await algorithmDAO.getCourseList(degree, major);
-            const directedList = []; // await algorithmDAO.getDirectedList(degree, major);
+            const directedList = []; // await algorithmDAO.getDirectedPlaceholders(degree, major);
             // Pass course list into algorithm handler, and return sorted course list
             // TODO: Maybe wrap the handler in its own algorithm object?
             
-            const handler = new AlgorithmHandler(courseList, directedList);
+            // TODO: Fix :/
+            //const handler = new AlgorithmHandler(courseList, directedList);
             
             // I'll update the response structure once I get everything working correctly
             let response = {

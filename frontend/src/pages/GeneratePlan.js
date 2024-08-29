@@ -4,12 +4,36 @@ import DropArea from '../components/DropArea'; // Importing the DropArea compone
 import Text from '../components/Text'; // Importing the Text component
 import Menu from '../components/Menu'; // Importing the Menu component
 import Button from '../components/Button'; // Importing the Button component
-import { useNavigate } from 'react-router-dom'; // Importing the useNavigate hook from react-router-dom
+import { useNavigate, useLocation } from 'react-router-dom'; // Importing the useNavigate hook from react-router-dom
 import Link from '../components/Link'; // Importing the Link component
 
 const GeneratePlan = () => {
+    const location = useLocation();
+    const { degree, major } = location.state || {};
+    const [courseList, setCourseList] = useState([]);
     const [cards, setCards] = useState([]); // State to hold the list of course cards
     const navigate = useNavigate(); // Initializing the useNavigate hook for navigation
+
+    const getCourseList = (degree, major) => {
+        fetch('http://localhost:3001/api/algorithm/getCourseList', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            degree,
+            major,
+          }),
+          })
+          .then(response => response.json())
+          .then(data => {
+            //console.log(data.courseList);
+            setCourseList(data.courseList || []);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      }
 
     useEffect(() => {
         // Simulate an API call with test data for courses
@@ -18,6 +42,7 @@ const GeneratePlan = () => {
             { _id: '2', course_name: 'Course 2' }, // Mock course data for year 1, semester 2
             { _id: '3', course_name: 'Course 3' }  // Mock course data for year 2, semester 1
         ];
+        getCourseList(degree, major);
         setCards(testData); // Set the cards state with the test data
     }, []); // Empty dependency array means this effect runs once when the component mounts
 

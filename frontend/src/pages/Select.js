@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // Importing React, useState, and useEffect hooks for component state and lifecycle management
+import React, { useState, useEffect, useContext } from 'react'; // Importing React, useState, and useEffect hooks for component state and lifecycle management
 import Menu from '../components/Menu'; // Importing the Menu component
 import Dropdown from '../components/Dropdown'; // Importing the Dropdown component
 import Text from '../components/Text'; // Importing the Text component
@@ -6,11 +6,11 @@ import Button from '../components/Button'; // Importing the Button component
 import Link from '../components/Link'; // Importing the Link component
 import PopUp from '../components/PopUp'; // Importing the PopUp component
 import { useNavigate } from 'react-router-dom'; // Importing useNavigate hook for navigation
+import { AppContext } from '../AppContext';
 
 const Select = () => {
     // Initializing state variables using the useState hook
-    const [degree, setDegree] = useState(''); // State for storing the selected degree
-    const [major, setMajor] = useState(''); // State for storing the selected major
+    const { degree, setDegree, major, setMajor } = useContext(AppContext);
     const [degreeList, setDegreeList] = useState([]); // State for storing the list of available degrees
     const [majorList, setMajorList] = useState([]); // State for storing the list of available majors based on the selected degree
     const [showPopUp, setShowPopUp] = useState(false); // State for controlling the visibility of the first PopUp
@@ -102,7 +102,7 @@ const Select = () => {
             setErrorMessage('Please select both degree and major before continuing.'); // Set an error message if degree or major is not selected
             return; // Exit the function early
         }
-        navigate('/generate-plan'); // Navigate to the '/generate-plan' route if both degree and major are selected
+        navigate('/generate-plan', { state: { degree, major } }); // Navigate to the '/generate-plan' route if both degree and major are selected
     };
 
     return (
