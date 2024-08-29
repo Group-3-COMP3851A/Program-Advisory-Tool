@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Select from './pages/Select';
 import Profile from './pages/Profile';
-import CreateNewPlanner from './pages/CreateNewPlanner';
 import ViewPlanner from './pages/ViewPlanner';
 import Logout from './pages/Logout';
 import Help from './pages/Help';
@@ -215,13 +214,13 @@ return (
     <Routes>
     <Route path="/" element={<Select />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/create-new-planner" element={<CreateNewPlanner />} />
         <Route path="/view-planner" element={<ViewPlanner />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/help" element={<Help />} />
         <Route path="/completed" element={<Completed />} />
         <Route path="/add-electives" element={<AddElectives />} />
         <Route path="/generate-plan" element={<GeneratePlan/>}/>
+        <Route path="/select" element={<Select/>}/>
     </Routes>
   </Router>
 );

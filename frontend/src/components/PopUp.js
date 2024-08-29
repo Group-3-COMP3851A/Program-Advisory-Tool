@@ -1,56 +1,56 @@
-import React from 'react';
-import Text from './Text'; // Import Text component
-import Button from './Button'; // Import Button component
-import Dropdown from './Dropdown'; // Import Dropdown component
+import React from 'react'; // Import React to use JSX and React features
+import Text from './Text'; // Import the Text component for rendering text elements
+import Button from './Button'; // Import the Button component for rendering buttons
+import Dropdown from './Dropdown'; // Import the Dropdown component for rendering a dropdown menu
 
-const PopUp = ({ message, options, onClose, onConfirmYes, onConfirmNo, onOptionSelect }) => {
+const PopUp = ({ message, options, onClose, onConfirmYes, onConfirmNo, onOptionSelect }) => { // Define the PopUp functional component with props
   return (
     <div style={{
-      position: 'fixed',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      padding: '20px',
-      backgroundColor: '#fff',
-      border: '1px solid #ccc',
-      borderRadius: '8px',
-      boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-      zIndex: 1000,
+      position: 'fixed', // Fix the position of the popup relative to the viewport
+      top: '50%', // Center the popup vertically
+      left: '50%', // Center the popup horizontally
+      transform: 'translate(-50%, -50%)', // Adjust the position to truly center the popup
+      padding: '20px', // Add padding inside the popup
+      backgroundColor: '#fff', // Set the background color of the popup to white
+      border: '1px solid #ccc', // Add a light gray border around the popup
+      borderRadius: '8px', // Round the corners of the popup
+      boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', // Add a subtle shadow to the popup
+      zIndex: 1000, // Ensure the popup appears above other elements
     }}>
       <Text type="h3" style={{ marginBottom: '20px' }}>
-        {message}
+        {message} 
       </Text>
       
-      {options && (
+      {options && ( // Conditionally render the Dropdown if options are provided
         <Dropdown
-          id="courses-dropdown"
-          label="Select number of courses:"
-          options={options}
-          onChange={onOptionSelect}
+          id="courses-dropdown" // Assign a unique ID to the dropdown
+          label="Select number of courses:" // Set the label for the dropdown
+          options={options} // Pass the options to the Dropdown component
+          onChange={onOptionSelect} // Handle option selection with the provided function
         />
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
-        {onConfirmYes && (
+        {onConfirmYes && ( // Conditionally render the "Yes" button if onConfirmYes is provided
           <Button
-            onClick={onConfirmYes}
-            text="Yes"
-            color="#28a745" // Green color for confirmation
-            style={{ marginRight: '10px' }} // Add margin between buttons
+            onClick={onConfirmYes} // Set the onClick handler to the provided function
+            text="Yes" // Set the button text to "Yes"
+            color="#28a745" // Set the button color to green
+            style={{ marginRight: '10px' }} // Add margin to the right of the button
           />
         )}
-        {onConfirmNo && (
+        {onConfirmNo && ( // Conditionally render the "No" button if onConfirmNo is provided
           <Button
-            onClick={onConfirmNo}
-            text="No"
-            color="#dc3545" // Red color for cancel
+            onClick={onConfirmNo} // Set the onClick handler to the provided function
+            text="No" // Set the button text to "No"
+            color="#dc3545" // Set the button color to red
           />
         )}
-        {!onConfirmYes && !onConfirmNo && (
+        {!onConfirmYes && !onConfirmNo && ( // Render the "Close" button if neither onConfirmYes nor onConfirmNo are provided
           <Button
-            onClick={onClose}
-            text="Close"
-            color="#007bff" // Blue color for close
+            onClick={onClose} // Set the onClick handler to the provided function
+            text="Close" // Set the button text to "Close"
+            color="#007bff" // Set the button color to blue
           />
         )}
       </div>
@@ -58,5 +58,5 @@ const PopUp = ({ message, options, onClose, onConfirmYes, onConfirmNo, onOptionS
   );
 };
 
-export default PopUp;
+export default PopUp; // Export the PopUp component as the default export
 
