@@ -1,12 +1,12 @@
 //this will take the data from the algorithmHandler and it will run the topological sort and scheduling 
 class Algorithm {
-    constructor(queue, graph, reverseGraph, courseCodeList, courseArray, completedCourseCount = 0) {
+    constructor(queue, graph, reverseGraph, courseCodeList, courseArray, completedCourses) {
         this.queue = queue;
         this.normalGraph = graph;
         this.reverseGraph = reverseGraph;
         this.courseCodeList = courseCodeList;
         this.courseArray = courseArray;
-        this.completedCourseCount = completedCourseCount;
+        this.completedCourses = completedCourses;
     }
 
     topologicalSort = () => {
@@ -72,7 +72,23 @@ class Algorithm {
             this.sortDirected(directedCourses);
         } else this.placeDirecteds(directedCourses, schedule) //if we're doing a full time plan, can just place the directeds where they belong normally
         this.findEarliestSemester(schedule);
+        this.addElective(schedule, directedCourses);
         this.planSchedule = schedule;
+    }
+
+    addElective = (schedule, directeds) => {
+        let remainingElectives = 24 - (this.courseCodeList.length + this.completedCourses.length + directeds.semester_placements.length);
+            //courseCodeList is only an array of courses to be completed, completedCourses is an array of completed courses, the number of directed placements is the number of directeds
+        for (let i = 0; i < schedule.length && remainingElectives > 0; i++) {
+            const element = schedule[i];
+            for (let j = 0; j < element.length && remainingElectives > 0; j++) {
+                const course = element[j];
+                if (course == null) {
+                    schedule[i][j] = {code: "elective"};
+                    remainingElectives--;
+                }
+            }
+        }
     }
 
     //finds the earliest semester that a course can be taken given reqs and other info
@@ -87,7 +103,7 @@ class Algorithm {
                 let startingSemester = 0;
                 if ((course.us)) {
                     //remaining units is the number of units that need to be completed before a course can be taken - i.e the earliest possible semester placement
-                    let remainingUnits = course.us/10 - this.completedCourseCount;
+                    let remainingUnits = course.us/10 - this.completedCourses.length;
                     if (remainingUnits >= 0){
                         startingSemester = Math.ceil(remainingUnits/this.coursesPerSem);
                     }
@@ -157,20 +173,19 @@ class Algorithm {
 
     //takes directed course array as input, will read from the directed courses whereabouts they should go in the schedule and will add them to the schedule
     placeDirecteds = (directedCourses, schedule) => {
-        directedCourses.forEach((directed) => {
-            let placements = directed.semester_placements;
-            placements.forEach((placement) => {
-                //since directeds store the year and semester of the directed, year-1 * 2 + semester will find the correct semester (e.g year 3 sem 1 = 3-1 * 2 + 1 = 5th semester which is correct)
-                //note the -1 on the end because arrays start at 0 not 1
-                schedule[(placement.year-1)*2 + placement.semester - 1][0] = {code: "placeholder"};
-            })
+        let placements = directedCourses.semester_placements;
+        placements.forEach((placement) => {
+            //since directeds store the year and semester of the directed, year-1 * 2 + semester will find the correct semester (e.g year 3 sem 1 = 3-1 * 2 + 1 = 5th semester which is correct)
+            //note the -1 on the end because arrays start at 0 not 1
+            schedule[(placement.year-1)*2 + placement.semester - 1][0] = {code: "directed"};
         })
+        
     }
 
     //since every directed course for a given major will always have the same requirements, we only need to find at which point it is able to be sorted once and then we can just as many placeholders as necessary there
     sortDirected = (directedCourses) => {
         //doesn't matter which directed course we get the assumed knowledge of, they're all the same
-        let assumedKnowledge = structuredClone(directedCourses[0].assumed_knowledge); //directedCourses[0].assumed_knowledge;
+        let assumedKnowledge = structuredClone(directedCourses.assumed_knowledge);
         //go through each assumed knowledge and "cross them off" as they go past in the sortedCourses array, once all assumed knowledge is accounted for, add the course to the sortedCourses array
         let index;
         for (index = 0; assumedKnowledge.length > 0 && index < this.sortedCourses.length; index++) {
@@ -185,8 +200,9 @@ class Algorithm {
                 }
             })
         }
+        //TODO: if the assumedknowledge length is not 0, check if any of the remaining courses are in the completed courses
         if (assumedKnowledge.length === 0)
-            for (let i = 0; i < directedCourses.length; i++) 
+            for (let i = 0; i < directedCourses.semester_placements.length; i++) 
                 this.sortedCourses = this.sortedCourses.splice(index, 0, {code: "placeholder"}); //place as many placeholders as there are directeds in the course
         else console.log("assumed knowledge not accounted for");
     }
