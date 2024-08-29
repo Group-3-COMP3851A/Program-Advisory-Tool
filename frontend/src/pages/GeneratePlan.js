@@ -21,6 +21,7 @@ const GeneratePlan = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            studentId: 12345, // static until we add login functionality to the frontend
             degree,
             major,
           }),

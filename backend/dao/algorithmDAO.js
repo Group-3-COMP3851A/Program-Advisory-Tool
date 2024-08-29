@@ -13,6 +13,8 @@ export default class algorithmDAO{
         if (major) return
         if (degreeCourses) return
         if (courses) return
+        if (majorCourses) return
+        if (directedPlaceholders) return
         try {
             degree = await conn.db("ProgramAdvisoryTool").collection("degree");
             major = await conn.db("ProgramAdvisoryTool").collection("major");
@@ -76,6 +78,30 @@ export default class algorithmDAO{
             return coursesData;
 
         } catch (e) {
+            console.error(`Unable to get course list: ${e}`);
+            return [];
+        }
+    }
+
+    static async getDirectedPlaceholders(majorName){
+        try {
+            // Gets the major based off of the input major name
+            let majorData = await major.findOne({ 
+                major_name: majorName, 
+            });
+            if (!majorData) throw new Error("Major not found for this degree");
+
+            // Gets the directed object based off of the major id
+            let directedObject = await directedPlaceholders.findOne({ 
+                _id: majorData._id + "p"
+            });
+
+            //console.log(directedObject);
+
+            // Returns the directed course object
+            return directedObject;
+
+        }catch (e) {
             console.error(`Unable to get course list: ${e}`);
             return [];
         }
