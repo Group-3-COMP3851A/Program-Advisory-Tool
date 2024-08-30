@@ -131,7 +131,7 @@ const Select = () => {
                     />
                 )}
                 {errorMessage && <Text type="p" style={{ color: 'red' }}>{errorMessage}</Text>} {/* Display error message if present */}
-                <Button onClick={handleNext} text="Continue" /> {/* Continue button */}
+                <Button onClick={handleNext} text="Continue" />
                 <div>
                     {/* Navigation links */}
                     <Link to="/profile" text="Profile" />
