@@ -47,7 +47,7 @@ const GeneratePlan = () => {
         ];
         getCourseList(degree, major, semCount, coursesPerSem);
         setCards(testData); // Set the cards state with the test data
-        console.log(courseList);
+        //console.log(courseList);
     }, []); // Empty dependency array means this effect runs once when the component mounts
 
     // Grouping the cards by year and semester
@@ -66,44 +66,6 @@ const GeneratePlan = () => {
         navigate('/view-planner'); // Navigate to the "View Planner" page
     };
 
-    function getFullCourseCode(internalId)
-    {
-      let courseId = internalId.slice(-2);
-      let courseName = internalId.slice(0, -2);
-      let fullName = "";
-    
-      switch(courseId)
-      {
-        // We can add extra cases if extra courses are added to the database
-        case "co":
-          fullName = "COMP";
-          break;
-        case "se":
-          fullName = "SENG";
-          break;
-        case "ma":
-          fullName = "MATH";
-          break;
-        case "in":
-          fullName = "INFT";
-          break;
-        case "el":
-          fullName = "ELEC";
-          break;
-        default:
-          fullName = courseId.toUpper();
-      }
-    
-      return fullName + courseName;
-    }
-
-    function getCourseURL(courseId)
-    {
-        let courseCode = getFullCourseCode(courseId)
-
-        return "https://www.newcastle.edu.au/course/" + courseCode;
-    }
-
     return (
         <div style={{ display: 'flex', flexDirection: 'column'}}>
             <Menu /> {/* Menu component */}
@@ -120,11 +82,13 @@ const GeneratePlan = () => {
                             <div key={semesterIndex} style={{ marginBottom: '20px' }}>
                                 <Text type="h3" style={{ marginBottom: '10px' }}>Semester {semesterIndex + 1}</Text> {/* Display the semester */}
                                 <DropArea>
-                                    {/* DropArea component to hold the course cards */}
-                                    {courseList[yearIndex][semesterIndex].map((course) => (
-                                        // Iterate over each course in the semester and display a Card component
-                                        <OutlinedCard key={course._id} text={course.course_name} /> 
-                                    ))}
+                                    <div style={{ display: 'flex', flexDirection: 'column'}}>
+                                        {/* DropArea component to hold the course cards */}
+                                        {courseList[yearIndex][semesterIndex].map((course) => (
+                                            // Iterate over each course in the semester and display a Card component
+                                            <OutlinedCard key={course._id} text={course} /> 
+                                        ))}
+                                    </div>
                                 </DropArea>
                             </div>
                         ))}

@@ -8,20 +8,84 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 export default function OutlinedCard(props) {
-  return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-		  {props.text}
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-			  {props.courseName}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-  );
+
+  // This might not be the best way to do this, but it works, for the time being
+  switch (props.text.code)
+  {
+    case "elective":
+    case "directed":
+
+      let courseType = props.text.code === "elective" ? "Elective Course" : "Directed Course"; 
+
+      return (
+        <Card sx={{ maxWidth: 345 }}>
+          <CardActionArea>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+	    	        {courseType}
+              </Typography>
+              <Typography variant="h6" sx={{ color: 'text.secondary' }}>
+                Units: {10}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      );
+    default:
+      return (
+        <Card sx={{ maxWidth: 345 }}>
+          <CardActionArea>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+	    	        {getFullCourseCode(props.text._id)} - {props.text.course_name}
+              </Typography>
+              <Typography variant="h6" sx={{ color: 'text.secondary' }}>
+	    		      Units: {props.text.credits}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      );
+  }
+}
+
+function getFullCourseCode(internalId)
+{
+  let courseString = String(internalId);
+  let courseId = courseString.slice(-2);
+  let courseName = courseString.slice(0, -2);
+  let fullName = "";
+
+  switch(courseId)
+  {
+    // We can add extra cases if extra courses are added to the database
+    case "co":
+      fullName = "COMP";
+      break;
+    case "se":
+      fullName = "SENG";
+      break;
+    case "ma":
+      fullName = "MATH";
+      break;
+    case "in":
+      fullName = "INFT";
+      break;
+    case "el":
+      fullName = "ELEC";
+      break;
+    default:
+      fullName = courseId;
+  }
+
+  return fullName + courseName;
+}
+
+function getCourseURL(courseId)
+{
+  let courseCode = getFullCourseCode(courseId);
+
+  return "https://www.newcastle.edu.au/course/" + courseCode;
 }
 
 /* Old card styling
