@@ -3,6 +3,7 @@ import Text from '../components/Text'; // Importing the Text component
 import Menu from '../components/Menu'; // Importing the Menu component
 import Button from '../components/Button'; // Importing the Button component
 import Form from '../components/Form'; // Importing the Form component
+import TextInput from '../components/Input';
 import Link from '../components/Link'; // Importing the Link component
 
 const Logout = () => {
@@ -28,23 +29,23 @@ const Logout = () => {
         
         {/* Combined Login Form */}
         <Form onSubmit={handleLoginSubmit}> {/* Form component with an onSubmit handler */}
-          <Text type="h3">Username</Text> {/* Label for the username input */}
-          <input
-            type="text"
-            value={username} // Value bound to the username state
-            onChange={(e) => setUsername(e.target.value)} // Update username state on input change
-            placeholder="Enter your username" // Placeholder text for the username input
-            style={{ padding: '10px', fontSize: '16px', borderRadius: '4px', border: '1px solid #ccc', marginBottom: '20px' }} // Styling for the input
-          />
-          <Text type="h3">Password</Text> {/* Label for the password input */}
-          <input
-            type="password"
-            value={password} // Value bound to the password state
-            onChange={(e) => setPassword(e.target.value)} // Update password state on input change
-            placeholder="Enter your password" // Placeholder text for the password input
-            style={{ padding: '10px', fontSize: '16px', borderRadius: '4px', border: '1px solid #ccc', marginBottom: '20px' }} // Styling for the input
-          />
-          <Button text="Log In" /> {/* Log In button */}
+          <TextInput placeholder="Username">
+			<input
+				type="text"
+				value={username} // Value bound to the username state
+				onChange={(e) => setUsername(e.target.value)} // Update username state on input change
+				style={{ padding: '10px', fontSize: '16px', borderRadius: '4px', border: '1px solid #ccc', marginBottom: '20px' }} // Styling for the input
+			/>
+		  </TextInput>
+		  <TextInput placeholder="Password">
+			<input
+				type="password"
+				value={password} // Value bound to the password state
+				onChange={(e) => setPassword(e.target.value)} // Update password state on input change
+				style={{ padding: '10px', fontSize: '16px', borderRadius: '4px', border: '1px solid #ccc', marginBottom: '20px' }} // Styling for the input
+			/>
+		  </TextInput>
+          <Button type="submit" text="Log In"/> //TODO: Add form submit functionality
         </Form>
       </div>
       <div>

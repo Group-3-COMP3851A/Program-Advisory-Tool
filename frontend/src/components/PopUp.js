@@ -2,6 +2,7 @@ import React from 'react'; // Import React to use JSX and React features
 import Text from './Text'; // Import the Text component for rendering text elements
 import Button from './Button'; // Import the Button component for rendering buttons
 import Dropdown from './Dropdown'; // Import the Dropdown component for rendering a dropdown menu
+//import '..styles/Popup.css';
 
 const PopUp = ({ message, options, onClose, onConfirmYes, onConfirmNo, onOptionSelect }) => { // Define the PopUp functional component with props
   return (
