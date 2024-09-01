@@ -117,7 +117,7 @@ const Select = () => {
 
     const handleCoursesSelect = (e) => {
         // Handler function when a course selection is made in the second PopUp
-        setCoursesPerSem(e.target.value);
+        setCoursesPerSem(e.value);
         const count = getSemesterCount(coursesPerSem);
         setSemCount(count);
         setShowSecondPopUp(false); // Close the second PopUp

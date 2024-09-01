@@ -65,6 +65,44 @@ const GeneratePlan = () => {
         navigate('/view-planner'); // Navigate to the "View Planner" page
     };
 
+    function getFullCourseCode(internalId)
+    {
+      let courseId = internalId.slice(-2);
+      let courseName = internalId.slice(0, -2);
+      let fullName = "";
+    
+      switch(courseId)
+      {
+        // We can add extra cases if extra courses are added to the database
+        case "co":
+          fullName = "COMP";
+          break;
+        case "se":
+          fullName = "SENG";
+          break;
+        case "ma":
+          fullName = "MATH";
+          break;
+        case "in":
+          fullName = "INFT";
+          break;
+        case "el":
+          fullName = "ELEC";
+          break;
+        default:
+          fullName = courseId.toUpper();
+      }
+    
+      return fullName + courseName;
+    }
+
+    function getCourseURL(courseId)
+    {
+        let courseCode = getFullCourseCode(courseId)
+
+        return "https://www.newcastle.edu.au/course/" + courseCode;
+    }
+
     return (
         <div style={{ display: 'flex' }}>
             <Menu /> {/* Menu component */}
