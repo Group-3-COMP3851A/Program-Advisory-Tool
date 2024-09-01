@@ -10,13 +10,12 @@ import { AppContext } from '../AppContext';
 //test
 const Select = () => {
     // Initializing state variables using the useState hook
-    const { degree, setDegree, major, setMajor } = useContext(AppContext);
+    const { degree, setDegree, major, setMajor, semCount, setSemCount, coursesPerSem, setCoursesPerSem } = useContext(AppContext);
     const [degreeList, setDegreeList] = useState([]); // State for storing the list of available degrees
     const [majorList, setMajorList] = useState([]); // State for storing the list of available majors based on the selected degree
     const [showPopUp, setShowPopUp] = useState(false); // State for controlling the visibility of the first PopUp
     const [showSecondPopUp, setShowSecondPopUp] = useState(false); // State for controlling the visibility of the second PopUp
     const [dropdownOptions, setDropdownOptions] = useState([]); // State for storing the options for the second PopUp dropdown
-    const [selectedCourses, setSelectedCourses] = useState(''); // State for storing the selected number of courses per semester
     const [errorMessage, setErrorMessage] = useState(''); // State for storing any error message related to form submission
     const navigate = useNavigate(); // Initializing the useNavigate hook for programmatically navigating between routes
 
@@ -60,6 +59,32 @@ const Select = () => {
         }
     };
 
+    function getSemesterCount(coursesPerSemester)
+    {
+        let count = 0;
+
+        // Ideally we would have a unit count for each degree
+        // formula should be the unit count divided by the courses per semester
+        // for now we will just return static values
+        switch (coursesPerSemester)
+        {
+            case 2:
+                count = 12;
+                break;
+            case 3:
+                count = 8;
+                break;
+            case 4:
+                count = 6;
+                break;
+            default:
+                count = 6;
+                break;
+        }
+
+        return count;
+    }
+
     const handleMajorChange = (e) => {
         // Handler function for when a major is selected
         setMajor(e.target.value); // Update the major state with the selected major
@@ -90,9 +115,11 @@ const Select = () => {
         setShowSecondPopUp(false); // Set the showSecondPopUp state to false
     };
 
-    const handleCoursesSelect = (selectedOption) => {
+    const handleCoursesSelect = (e) => {
         // Handler function when a course selection is made in the second PopUp
-        setSelectedCourses(selectedOption.value); // Update the selectedCourses state with the chosen option
+        setCoursesPerSem(e.value);
+        const count = getSemesterCount(coursesPerSem);
+        setSemCount(count);
         setShowSecondPopUp(false); // Close the second PopUp
     };
 
@@ -102,7 +129,7 @@ const Select = () => {
             setErrorMessage('Please select both degree and major before continuing.'); // Set an error message if degree or major is not selected
             return; // Exit the function early
         }
-        navigate('/generate-plan', { state: { degree, major } }); // Navigate to the '/generate-plan' route if both degree and major are selected
+        navigate('/generate-plan', { state: { degree, major, semCount, coursesPerSem } }); // Navigate to the '/generate-plan' route if both degree and major are selected
     };
 
     return (
@@ -158,6 +185,7 @@ const Select = () => {
                 <PopUp 
                     message="How many courses do you plan to take per semester?"
                     options={dropdownOptions}
+                    value={coursesPerSem}
                     onClose={handleSecondPopUpClose}
                     onOptionSelect={handleCoursesSelect}
                 />

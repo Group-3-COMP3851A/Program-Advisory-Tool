@@ -7,9 +7,16 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
     const [degree, setDegree] = useState('');
     const [major, setMajor] = useState('');
+    const [semCount, setSemCount] = useState('');
+    const [coursesPerSem, setCoursesPerSem] = useState('');
 
     return (
-        <AppContext.Provider value={{ degree, setDegree, major, setMajor }}>
+        <AppContext.Provider value={{ 
+            degree, setDegree, 
+            major, setMajor, 
+            semCount, setSemCount, 
+            coursesPerSem, setCoursesPerSem 
+            }}>
             {children}
         </AppContext.Provider>
     );
