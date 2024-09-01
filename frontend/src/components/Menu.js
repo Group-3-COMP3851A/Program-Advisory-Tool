@@ -4,7 +4,7 @@ import React from "react";
 //Written by Jarod 22/08
 
 function Menu() {
-  return <div class="menu"/>
+  return <div className="menu"/>
 }
 
 export default Menu;

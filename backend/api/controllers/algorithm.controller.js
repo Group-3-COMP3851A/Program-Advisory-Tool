@@ -20,12 +20,21 @@ export default class algorithmCtrl {
 
             const schedule = coursePlan.map(semester => semester.map(course => courseMap.get(course.code) || course));
 
-            //console.log(schedule);
+            const scheduleMap = [];
+
+            for (let i = 0; i < schedule.length; i += 2)
+            {
+                const year = [schedule[i], schedule[i + 1] || []];
+                
+                scheduleMap.push(year);
+            }
+
+            //console.log(scheduleMap);
             
             // I'll update the response structure once I get everything working correctly
             let response = {
                 status: "success",
-                courseList: schedule,
+                courseList: scheduleMap,
             };
             res.json(response);
         } catch (e) {

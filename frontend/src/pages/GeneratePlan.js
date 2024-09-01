@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'; // Importing React, useState, and useEffect hooks
-import Card from '../components/Card'; // Importing the Card component
+import OutlinedCard from '../components/Card'; // Importing the Card component
 import DropArea from '../components/DropArea'; // Importing the DropArea component
 import Text from '../components/Text'; // Importing the Text component
 import Menu from '../components/Menu'; // Importing the Menu component
@@ -105,25 +105,25 @@ const GeneratePlan = () => {
     }
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', flexDirection: 'column'}}>
             <Menu /> {/* Menu component */}
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
                 {/* Main content container */}
                 <Text type="h1" style={{ marginBottom: '20px' }}>Course Plan</Text> {/* Page heading */}
                 <Button onClick={handleEditClick} text="Edit" color="#007bff" /> {/* Edit button, triggers handleEditClick function */}
-                {Object.keys(groupedCards).map(year => (
+                {Object.keys(courseList).map((year, yearIndex) => (
                     // Iterate over each year in groupedCards
-                    <div key={year} style={{ marginBottom: '20px', width: '100%' }}>
-                        <Text type="h2" style={{ marginBottom: '10px' }}>{year}</Text> {/* Display the year */}
-                        {Object.keys(groupedCards[year]).map(semester => (
+                    <div key={yearIndex} style={{ marginBottom: '20px', width: '95%' }}>
+                        <Text type="h2" style={{ marginBottom: '10px' }}>Year {yearIndex + 1}</Text> {/* Display the year */}
+                        {Object.keys(courseList[yearIndex]).map((semester, semesterIndex) => (
                             // Iterate over each semester in the year
-                            <div key={semester} style={{ marginBottom: '20px' }}>
-                                <Text type="h3" style={{ marginBottom: '10px' }}>{semester}</Text> {/* Display the semester */}
+                            <div key={semesterIndex} style={{ marginBottom: '20px' }}>
+                                <Text type="h3" style={{ marginBottom: '10px' }}>Semester {semesterIndex + 1}</Text> {/* Display the semester */}
                                 <DropArea>
                                     {/* DropArea component to hold the course cards */}
-                                    {groupedCards[year][semester].map((course) => (
+                                    {courseList[yearIndex][semesterIndex].map((course) => (
                                         // Iterate over each course in the semester and display a Card component
-                                        <Card key={course._id} text={course.course_name} /> 
+                                        <OutlinedCard key={course._id} text={course.course_name} /> 
                                     ))}
                                 </DropArea>
                             </div>
