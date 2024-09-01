@@ -11,7 +11,6 @@ const GeneratePlan = () => {
     const location = useLocation();
     const { degree, major, semCount, coursesPerSem } = location.state || {};
     const [courseList, setCourseList] = useState([]);
-    const [cards, setCards] = useState([]); // State to hold the list of course cards
     const navigate = useNavigate(); // Initializing the useNavigate hook for navigation
 
     const getCourseList = (degree, major, semCount, coursesPerSem) => {
@@ -39,27 +38,9 @@ const GeneratePlan = () => {
       }
 
     useEffect(() => {
-        // Simulate an API call with test data for courses
-        const testData = [
-            { _id: '1', course_name: 'Course 1' }, // Mock course data for year 1, semester 1
-            { _id: '2', course_name: 'Course 2' }, // Mock course data for year 1, semester 2
-            { _id: '3', course_name: 'Course 3' }  // Mock course data for year 2, semester 1
-        ];
         getCourseList(degree, major, semCount, coursesPerSem);
-        setCards(testData); // Set the cards state with the test data
         //console.log(courseList);
     }, []); // Empty dependency array means this effect runs once when the component mounts
-
-    // Grouping the cards by year and semester
-    const groupedCards = {
-        'Year 1': {
-            'Semester 1': cards.filter(course => course._id.startsWith('1')), // Courses for year 1, semester 1
-            'Semester 2': cards.filter(course => course._id.startsWith('2')), // Courses for year 1, semester 2
-        },
-        'Year 2': {
-            'Semester 1': cards.filter(course => course._id.startsWith('3')), // Courses for year 2, semester 1
-        }
-    };
 
     const handleEditClick = () => {
         // Function to handle the "Edit" button click
