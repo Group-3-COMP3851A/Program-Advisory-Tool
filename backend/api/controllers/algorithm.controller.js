@@ -14,10 +14,9 @@ export default class algorithmCtrl {
 
             // Pass course list into algorithm handler, and return sorted course list
             // TODO: Maybe wrap the handler in its own algorithm object?
-            
-            // TODO: Fix :/
+
             // TODO: Retrieve the semesterCount and the coursesPerSem from the select page, instead of hardcoding
-            //const handler = new AlgorithmHandler(courseList, directedObject, completedCourses, 6, 4);
+            const handler = new AlgorithmHandler(courseList, directedObject, completedCourses, 6, 4);
             
             // I'll update the response structure once I get everything working correctly
             let response = {
