@@ -25,7 +25,7 @@ export default class algorithmCtrl {
             // I'll update the response structure once I get everything working correctly
             let response = {
                 status: "success",
-                courseList: courseList,
+                courseList: schedule,
             };
             res.json(response);
         } catch (e) {

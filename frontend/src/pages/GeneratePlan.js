@@ -47,6 +47,7 @@ const GeneratePlan = () => {
         ];
         getCourseList(degree, major, semCount, coursesPerSem);
         setCards(testData); // Set the cards state with the test data
+        console.log(courseList);
     }, []); // Empty dependency array means this effect runs once when the component mounts
 
     // Grouping the cards by year and semester
