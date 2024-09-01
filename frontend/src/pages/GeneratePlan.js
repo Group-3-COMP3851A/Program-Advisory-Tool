@@ -9,12 +9,12 @@ import Link from '../components/Link'; // Importing the Link component
 
 const GeneratePlan = () => {
     const location = useLocation();
-    const { degree, major } = location.state || {};
+    const { degree, major, semCount, coursesPerSem } = location.state || {};
     const [courseList, setCourseList] = useState([]);
     const [cards, setCards] = useState([]); // State to hold the list of course cards
     const navigate = useNavigate(); // Initializing the useNavigate hook for navigation
 
-    const getCourseList = (degree, major) => {
+    const getCourseList = (degree, major, semCount, coursesPerSem) => {
         fetch('http://localhost:3001/api/algorithm/getCourseList', {
           method: 'POST',
           headers: {
@@ -24,6 +24,8 @@ const GeneratePlan = () => {
             studentId: 12345, // static until we add login functionality to the frontend
             degree,
             major,
+            semCount,
+            coursesPerSem
           }),
           })
           .then(response => response.json())
@@ -43,7 +45,7 @@ const GeneratePlan = () => {
             { _id: '2', course_name: 'Course 2' }, // Mock course data for year 1, semester 2
             { _id: '3', course_name: 'Course 3' }  // Mock course data for year 2, semester 1
         ];
-        getCourseList(degree, major);
+        getCourseList(degree, major, semCount, coursesPerSem);
         setCards(testData); // Set the cards state with the test data
     }, []); // Empty dependency array means this effect runs once when the component mounts
 

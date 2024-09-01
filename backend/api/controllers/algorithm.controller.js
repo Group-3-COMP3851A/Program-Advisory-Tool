@@ -4,7 +4,7 @@ import AlgorithmHandler from "../algorithm/handlers/AlgorithmHandler.js";
 export default class algorithmCtrl {
     static async apiGetCourseList(req, res, next){
         
-        const { studentId, degree, major } = req.body;
+        const { studentId, degree, major, semCount, coursesPerSem } = req.body;
 
         try {
             // Perform database query in order to get the course list
@@ -16,7 +16,7 @@ export default class algorithmCtrl {
             // TODO: Maybe wrap the handler in its own algorithm object?
 
             // TODO: Retrieve the semesterCount and the coursesPerSem from the select page, instead of hardcoding
-            const handler = new AlgorithmHandler(courseList, directedObject, completedCourses, 6, 4);
+            const handler = new AlgorithmHandler(courseList, directedObject, completedCourses, semCount, coursesPerSem);
             
             // I'll update the response structure once I get everything working correctly
             let response = {
