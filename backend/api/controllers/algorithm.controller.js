@@ -12,11 +12,15 @@ export default class algorithmCtrl {
             const directedObject = await algorithmDAO.getDirectedPlaceholders(major);
             const completedCourses = []; // await algorithmDAO.getCompletedCourses(studentId);
 
-            // Pass course list into algorithm handler, and return sorted course list
-            // TODO: Maybe wrap the handler in its own algorithm object?
-
-            // TODO: Retrieve the semesterCount and the coursesPerSem from the select page, instead of hardcoding
             const handler = new AlgorithmHandler(courseList, directedObject, completedCourses, semCount, coursesPerSem);
+
+            const coursePlan = handler.planSchedule;
+
+            const courseMap = new Map(courseList.map(course => [course._id, course]));
+
+            const schedule = coursePlan.map(semester => semester.map(course => courseMap.get(course.code) || course));
+
+            //console.log(schedule);
             
             // I'll update the response structure once I get everything working correctly
             let response = {
