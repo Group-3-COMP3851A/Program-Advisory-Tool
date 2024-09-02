@@ -42,6 +42,9 @@ export default function OutlinedCard(props) {
               <Typography variant="h6" sx={{ color: 'text.secondary' }}>
 	    		      Units: {props.text.credits}
               </Typography>
+              <Button variant="contained" color="primary" component="a" href={getCourseURL(props.text._id)} target="_blank" rel="noopener noreferrer">
+                Course Handbook
+              </Button>
             </CardContent>
           </CardActionArea>
         </Card>
