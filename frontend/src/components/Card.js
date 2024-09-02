@@ -18,13 +18,13 @@ export default function OutlinedCard(props) {
       let courseType = props.text.code === "elective" ? "Elective Course" : "Directed Course"; 
 
       return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{margin: '1%'}}>
           <CardActionArea>
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
 	    	        {courseType}
               </Typography>
-              <Typography variant="h6" sx={{ color: 'text.secondary' }}>
+              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary' }}>
                 Units: {10}
               </Typography>
             </CardContent>
@@ -33,13 +33,13 @@ export default function OutlinedCard(props) {
       );
     default:
       return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{margin: '1%'}}>
           <CardActionArea>
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
 	    	        {getFullCourseCode(props.text._id)} - {props.text.course_name}
               </Typography>
-              <Typography variant="h6" sx={{ color: 'text.secondary' }}>
+              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary' }}>
 	    		      Units: {props.text.credits}
               </Typography>
               <Button variant="contained" color="primary" component="a" href={getCourseURL(props.text._id)} target="_blank" rel="noopener noreferrer">

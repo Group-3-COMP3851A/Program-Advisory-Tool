@@ -141,7 +141,7 @@ const Select = () => {
             <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
                 {/* Centered content container */}
                 <Text type="h1">Welcome to Program Planner</Text> {/* Heading */}
-                <Text type="h2">Hey Choose your degree and major</Text> {/* Subheading */}
+                <Text type="h2">Hey Choose your Degree and Major</Text> {/* Subheading */}
                 <Dropdown
                     id="degree"
                     label="Degree:"
@@ -161,7 +161,10 @@ const Select = () => {
                 )}
                 {errorMessage && <Text type="p" style={{ color: 'red' }}>{errorMessage}</Text>} {/* Display error message if present */}
                 <Button onClick={handleNext} text="Continue" />
-                <div>
+
+                {/* This should realistically be in a footer component which is then locked to the bottom of the page */}
+                {/* Or perhaps in a sidebar :/ */}
+                <div style={{marginTop: '10%'}}>
                     {/* Navigation links */}
                     <Link to="/profile" text="Profile" />
                     <Link to="/view-planner" text="View Planner" />

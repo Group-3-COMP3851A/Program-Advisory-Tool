@@ -11,7 +11,8 @@ const Text = ({ type, children, style }) => { // Define the Text functional comp
 
   const Tag = type || 'p'; // Determine the HTML tag to use, default to <p> if type is not provided
   return (
-    <Tag style={{ ...textStyles[Tag], ...style }}> 
+    // TODO: Figure what to do regarding fonts :/
+    <Tag style={{ ...textStyles[Tag], ...style, fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif'}}> 
       {children}
     </Tag>
   );
