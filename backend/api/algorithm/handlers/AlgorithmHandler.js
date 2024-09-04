@@ -31,19 +31,19 @@ class AlgorithmHandler {
      * Constructs a new AlgorithmHandler object
      * @constructor
      * @param {Array} inputCourses - Array of any courses to be completed (This should not include any already completed courses)
-     * @param {Object} directedCourses - Object of directed course placeholders
+     * @param {Object} directedPlaceholder - Object of directed course placeholders
      * @param {Array} completedCourses - Array of completed course codes
      * @param {Number} semesterCount - Number of semesters required to complete the degree
      * @param {Number} coursesPerSem - The number of courses the student wishes to complete per semester
      */
-    constructor(inputCourses, directedCourses, completedCourses, semesterCount, coursesPerSem){
+    constructor(inputCourses, directedPlaceholder, completedCourses, semesterCount, coursesPerSem){
         this.courseArray = structuredClone(inputCourses);
         this.semesterCount = semesterCount; //semester count could be inferred from the number of courses remaining and the number of courses they wish to complete per semester
         this.coursesPerSem = coursesPerSem;
         this.completedCourses = completedCourses;
         //maybe an argument to be had about whether or not the below should be completed every single time a new handler is created
         this.preprocessData();
-        this.runAlgorithm(directedCourses);
+        this.runAlgorithm(directedPlaceholder);
     }
 
     preprocessData = () => {
