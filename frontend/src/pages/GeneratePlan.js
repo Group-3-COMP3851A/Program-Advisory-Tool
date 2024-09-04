@@ -39,9 +39,10 @@ const GeneratePlan = () => {
 
     useEffect(() => {
         getCourseList(degree, major, semCount, coursesPerSem);
-        //console.log(courseList);
-    });
+        
+    }, [coursesPerSem, degree, major, semCount]);
 
+    // console.log(courseList);
     const handleEditClick = () => {
         // Function to handle the "Edit" button click
         navigate('/view-planner'); // Navigate to the "View Planner" page
@@ -66,9 +67,9 @@ const GeneratePlan = () => {
                                     <DropArea>
                                         <div style={{ display: 'flex', flexDirection: 'column'}}>
                                             {/* DropArea component to hold the course cards */}
-                                            {courseList[yearIndex][semesterIndex].map((course) => (
+                                            {courseList[yearIndex][semesterIndex].map((course, i) => (
                                                 // Iterate over each course in the semester and display a Card component
-                                                <OutlinedCard key={course._id} text={course}/> 
+                                                <OutlinedCard key={course._id + i.toString()} text={course}/> 
                                             ))}
                                         </div>
                                     </DropArea>
