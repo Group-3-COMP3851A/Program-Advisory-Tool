@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.route("/getCourse").post(courseCtrl.apiGetCourse); // API request to get the specified course
 router.route("/getCourseListFromSemester").post(courseCtrl.apiGetCourseListFromSemester); // API request to return a list of courses based on the provided semester
+router.route("/getFullCourseList").post(courseCtrl.apiGetFullCourseList); // API request to return a list of courses based on the provided degree and major
 
 router.route("")
 

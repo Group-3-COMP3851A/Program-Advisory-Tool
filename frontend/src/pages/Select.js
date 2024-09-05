@@ -17,6 +17,7 @@ const Select = () => {
     const [showSecondPopUp, setShowSecondPopUp] = useState(false); // State for controlling the visibility of the second PopUp
     const [dropdownOptions, setDropdownOptions] = useState([]); // State for storing the options for the second PopUp dropdown
     const [errorMessage, setErrorMessage] = useState(''); // State for storing any error message related to form submission
+    const [courseList, setCourseList] = useState('');
     const navigate = useNavigate(); // Initializing the useNavigate hook for programmatically navigating between routes
 
     useEffect(() => {
@@ -57,6 +58,27 @@ const Select = () => {
         } else {
             setMajorList([]); // If no degree is selected, reset the major list
         }
+    };
+
+    const getFullCourseList = (degree, major) =>{
+        fetch('http://localhost:3001/api/course/getFullCourseList', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            degree,
+            major,
+          }),
+          })
+          .then(response => response.json())
+          .then(data => {
+            //console.log(data.courseList);
+            setCourseList(data.courseList || []);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
     };
 
     function getSemesterCount(coursesPerSemester)
@@ -101,6 +123,8 @@ const Select = () => {
     const handlePopUpConfirmYes = () => {
         // Handler function when the user confirms "Yes" in the first PopUp
         setShowPopUp(false); // Close the first PopUp
+        getFullCourseList(degree, major);
+        console.log(courseList);
         navigate('/completed'); // Navigate to the '/completed' route
     };
 
