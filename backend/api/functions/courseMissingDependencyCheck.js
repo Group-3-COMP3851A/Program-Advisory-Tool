@@ -79,8 +79,8 @@ const courseMissingDependencyCheck = (schedule, changedCourses, dependencyGraph,
         for (let i = 0; i < courseArray.length; i++) {
             const course = courseArray[i];
             //course.follows needs to be whatever it is called from the database
-            if (course._id === courseCode && course.follows) conflicts[index].push("fol "+courseCode); //check if the course has a follower course
-            if (course.follows === courseCode) conflicts[index].push("fol "+courseCode); //check if the course is a follower course
+            if (course._id === courseCode && course.course_follow !== "") conflicts[index].push("fol "+courseCode); //check if the course has a follower course
+            if (course.course_follow === courseCode) conflicts[index].push("fol "+courseCode); //check if the course is a follower course
         }
     });
 

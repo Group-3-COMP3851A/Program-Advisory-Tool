@@ -168,6 +168,23 @@ class Algorithm {
                 }
             }
             if (placed) schedule[placement[0]][placement[1]] = course;
+            if (this.courseArray[course.index].course_follow !== "") { //if the course has a following course
+                let followerCourse;
+                for (let i = 0; i < this.sortedCourses.length; i++) {
+                    const currentCourse = this.sortedCourses[i];
+                    if (currentCourse.code === this.courseArray[course.index].course_follow) {
+                        followerCourse = currentCourse;
+                        break;
+                    }
+                }
+                for (let i = 0; i < schedule[placement[0]+1].length; i++) {
+                    const currentPlacement = schedule[placement[0]+1][i];
+                    if (currentPlacement === null) {
+                        schedule[placement[0]+1][i] = followerCourse;
+                        break;
+                    }
+                }
+            }
         }
     }
 
