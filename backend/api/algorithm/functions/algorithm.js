@@ -170,19 +170,29 @@ class Algorithm {
             if (placed) schedule[placement[0]][placement[1]] = course;
             if (this.courseArray[course.index].course_follow !== "") { //if the course has a following course
                 let followerCourse;
+                //finding the follower course in the list of courses needing to be scheduled
                 for (let i = 0; i < this.sortedCourses.length; i++) {
                     const currentCourse = this.sortedCourses[i];
                     if (currentCourse.code === this.courseArray[course.index].course_follow) {
                         followerCourse = currentCourse;
+                        this.sortedCourses.splice(i, 1);
                         break;
                     }
                 }
+                //finding a placement for the follower course
+                placed = false;
                 for (let i = 0; i < schedule[placement[0]+1].length; i++) {
                     const currentPlacement = schedule[placement[0]+1][i];
                     if (currentPlacement === null) {
                         schedule[placement[0]+1][i] = followerCourse;
+                        placed = true;
                         break;
                     }
+                }
+                //if there was no space for the follower course, take on of the courses from the next semester and plan it somewhere else.
+                if (!placed) {
+                    this.sortedCourses.unshift(schedule[placement[0]+1][0]);
+                    schedule[placement[0]+1][0] = followerCourse;
                 }
             }
         }
