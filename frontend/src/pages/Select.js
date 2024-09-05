@@ -164,8 +164,8 @@ const Select = () => {
             <Menu /> {/* Menu component */}
             <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
                 {/* Centered content container */}
-                <Text type="h1">Welcome to Program Planner</Text> {/* Heading */}
-                <Text type="h2">Hey Choose your Degree and Major</Text> {/* Subheading */}
+                <Text type="h1">Welcome to Program Planner.</Text> {/* Heading */}
+                <Text type="h2">Please select your degree and major below.</Text> {/* Subheading */}
                 <Dropdown
                     id="degree"
                     label="Degree:"
