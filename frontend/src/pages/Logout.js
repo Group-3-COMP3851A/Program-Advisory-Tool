@@ -44,8 +44,8 @@ const Logout = () => {
 				onChange={(e) => setPassword(e.target.value)} // Update password state on input change
 				style={{ padding: '10px', fontSize: '16px', borderRadius: '4px', border: '1px solid #ccc', marginBottom: '20px' }} // Styling for the input
 			/>
-		  </TextInput>
-          <Button type="submit" text="Log In"/> //TODO: Add form submit functionality
+		  </TextInput> 
+          <Button type="submit" text="Log In"/> 
         </Form>
       </div>
       <div>

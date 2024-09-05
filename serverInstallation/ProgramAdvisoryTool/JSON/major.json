@@ -1,1 +1,28 @@
-{"_id":"40103M5","major_name":"Cyber Security","degree_id":40103,"elective_count":1,"directed_count":2}
+[{
+  "_id": "40276M1",
+  "major_name": "Data Science (dummy major)",
+  "degree_id": 40276,
+  "elective_count": 5,
+  "directed_count": 2
+},
+{
+  "_id": "40088M1",
+  "major_name": "Computer System and Robotics",
+  "degree_id": 40103,
+  "elective_count": 1,
+  "directed_count": 1
+},
+{
+  "_id": "40103M2",
+  "major_name": "Software Development",
+  "degree_id": 40103,
+  "elective_count": 1,
+  "directed_count": 3
+},
+{
+  "_id": "40103M5",
+  "major_name": "Cyber Security",
+  "degree_id": 40103,
+  "elective_count": 1,
+  "directed_count": 2
+}]
