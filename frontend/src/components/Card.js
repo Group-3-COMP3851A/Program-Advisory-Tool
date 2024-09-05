@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useDrag } from 'react-dnd'; //For later use
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -6,8 +6,26 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { AppContext } from '../AppContext';
 
 export default function OutlinedCard(props) {
+
+  const { coursesPerSem } = useContext(AppContext);
+
+  let cardStyle = {margin: '1%'};
+
+  switch (coursesPerSem)
+  {
+    case 2:
+      cardStyle = {width: '50%', margin: '1%'};
+      break;
+    case 3:
+      cardStyle = {width: '33%', margin: '1%'};
+      break;
+    default:
+      cardStyle = {width: '25%', margin: '1%'};
+      break;
+  }
 
   // This might not be the best way to do this, but it works, for the time being
   switch (props.text.code)
@@ -18,7 +36,7 @@ export default function OutlinedCard(props) {
       let courseType = props.text.code === "elective" ? "Elective Course" : "Directed Course"; 
 
       return (
-        <Card sx={{margin: '1%'}}>
+        <Card sx={cardStyle}>
           <CardActionArea>
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
@@ -32,8 +50,9 @@ export default function OutlinedCard(props) {
         </Card>
       );
     default:
+      
       return (
-        <Card sx={{margin: '1%'}}>
+        <Card sx={cardStyle}>
           <CardActionArea>
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
