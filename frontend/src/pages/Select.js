@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'; // Importing React, useState, and useEffect hooks for component state and lifecycle management
+import '../styles/style.css';
 import Menu from '../components/Menu'; // Importing the Menu component
 import Dropdown from '../components/Dropdown'; // Importing the Dropdown component
 import Text from '../components/Text'; // Importing the Text component
@@ -7,7 +8,7 @@ import Link from '../components/Link'; // Importing the Link component
 import PopUp from '../components/PopUp'; // Importing the PopUp component
 import { useNavigate } from 'react-router-dom'; // Importing useNavigate hook for navigation
 import { AppContext } from '../AppContext';
-import styles from '../styles/style.css'
+
 //test
 const Select = () => {
     // Initializing state variables using the useState hook

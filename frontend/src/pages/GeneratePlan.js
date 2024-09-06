@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'; // Importing React, useState, and useEffect hooks
+import '../styles/style.css';
 import OutlinedCard from '../components/Card'; // Importing the Card component
 import DropArea from '../components/DropArea'; // Importing the DropArea component
 import Text from '../components/Text'; // Importing the Text component
@@ -49,9 +50,9 @@ const GeneratePlan = () => {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Menu /> {/* Menu component */}
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '1%' }}>
+		<div className='global'>
+            <Menu curentPage="select"/>
+			<div className='main-section'>
                 {/* Main content container */}
                 <Text type="h1" style={{ marginBottom: '1%'}}>Course Plan</Text> {/* Page heading */}
                 <Button onClick={handleEditClick} text="Edit" color="#007bff" /> {/* Edit button, triggers handleEditClick function */}
@@ -84,17 +85,6 @@ const GeneratePlan = () => {
                         </div>
                     </div>
                 ))}
-            </div>
-            <div>
-                {/* Navigation links */}
-                <Link to="/profile" text="Profile" /> {/* Link to Profile page */}
-                <Link to="/view-planner" text="View Planner" /> {/* Link to View Planner page */}
-                <Link to="/logout" text="Logout" /> {/* Link to Logout page */}
-                <Link to="/help" text="Help" /> {/* Link to Help page */}
-                <Link to="https://askuon.newcastle.edu.au/" text="Ask Uon" external /> {/* External link to Ask Uon */}
-                <Link to="/completed" text="Completed" /> {/* Link to Completed page */}
-                <Link to="/generate-plan" text="Generate Plan" /> {/* Link to Generate Plan page */}
-                <Link to="/select" text="Create new planner"/>{/* Link to Select page */}
             </div>
         </div>
     );
