@@ -7,6 +7,7 @@ import Link from '../components/Link'; // Importing the Link component
 import PopUp from '../components/PopUp'; // Importing the PopUp component
 import { useNavigate } from 'react-router-dom'; // Importing useNavigate hook for navigation
 import { AppContext } from '../AppContext';
+import styles from '../styles/style.css'
 //test
 const Select = () => {
     // Initializing state variables using the useState hook
@@ -159,13 +160,12 @@ const Select = () => {
     };
 
     return (
-        <div style={{ display: 'flex' }}>
-            {/* Main container with flexbox layout */}
-            <Menu /> {/* Menu component */}
-            <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
+		<div className='global'>
+            <Menu curentPage="select"/>
+			<div className='main-section'>
                 {/* Centered content container */}
-                <Text type="h1">Welcome to Program Planner.</Text> {/* Heading */}
-                <Text type="h2">Please select your degree and major below.</Text> {/* Subheading */}
+                <Text type="h1">Welcome to Program Planner.</Text>
+                <Text type="h2">Please select your degree and major below.</Text>
                 <Dropdown
                     id="degree"
                     label="Degree:"
@@ -185,22 +185,8 @@ const Select = () => {
                 )}
                 {errorMessage && <Text type="p" style={{ color: 'red' }}>{errorMessage}</Text>} {/* Display error message if present */}
                 <Button onClick={handleNext} text="Continue" />
-
-                {/* This should realistically be in a footer component which is then locked to the bottom of the page */}
-                {/* Or perhaps in a sidebar :/ */}
-                <div style={{marginTop: '10%'}}>
-                    {/* Navigation links */}
-                    <Link to="/profile" text="Profile" />
-                    <Link to="/view-planner" text="View Planner" />
-                    <Link to="/logout" text="Logout" />
-                    <Link to="/help" text="Help" />
-                    <Link to="https://askuon.newcastle.edu.au/" text="Ask Uon" external /> {/* External link */}
-                    <Link to="/completed" text="Completed"/>
-                    <Link to="/generate-plan" text="Generate Plan"/>
-                    <Link to="/select" text="Create new planner"/>{/* Link to Select page */}
-                </div>
             </div>
-            {showPopUp && (
+			{showPopUp && (
                 // Conditionally render the first PopUp if showPopUp is true
                 <PopUp 
                     message="Have you completed any courses before?"

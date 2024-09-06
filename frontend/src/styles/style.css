@@ -1,0 +1,75 @@
+/*Global styling file*/
+
+/*The whole layout is inside this global div*/
+.global {
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	background-color: black;
+}
+
+/*Sidebar menu*/
+.menu {
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 25px;
+	background-color: green;
+}
+
+.menu img {
+	width: 100%;
+	background-color: red;
+}
+
+.menu a {
+	color: white;
+	text-decoration: none;
+}
+
+.menu a:hover {
+	text-decoration: underline;
+}
+
+.menu ul {
+	background-color: gray;
+	word-wrap:break-word;
+}
+
+.menu li {
+	margin-bottom: 10px;
+	list-style-type: none;
+}
+
+/*The 'not the sidebar menu' section*/
+.main-section {
+	width: 80%;
+	display: flex;
+	flex-direction:column;
+	background-color: purple;
+	justify-content: center;
+	align-items: center;
+}
+
+.main-section h1 {
+	font-size: 2.5rem;
+}
+
+.main-section h2 {
+	font-size: 2rem;
+}
+
+.main-section h3 {
+	font-size: 1.75rem;
+}
+
+.main-section p {
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+.main-section span {
+	font-size: 1rem;
+}
