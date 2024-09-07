@@ -10,22 +10,12 @@ import { AppContext } from '../AppContext';
 
 export default function OutlinedCard(props) {
 
-  const { coursesPerSem } = useContext(AppContext);
+  let { coursesPerSem } = useContext(AppContext);
+  if (!coursesPerSem) {
+    coursesPerSem = localStorage.getItem('coursesPerSem');
+  } else localStorage.setItem('coursesPerSem', coursesPerSem);
 
-  let cardStyle = {margin: '1%'};
-
-  switch (coursesPerSem)
-  {
-    case 2:
-      cardStyle = {width: '50%', margin: '1%'};
-      break;
-    case 3:
-      cardStyle = {width: '33%', margin: '1%'};
-      break;
-    default:
-      cardStyle = {width: '25%', margin: '1%'};
-      break;
-  }
+  let cardStyle = {width: `${100/coursesPerSem}%`, margin: '1%'};
 
   // This might not be the best way to do this, but it works, for the time being
   switch (props.text.code)
@@ -33,16 +23,16 @@ export default function OutlinedCard(props) {
     case "elective":
     case "directed":
 
-      let courseType = props.text.code === "elective" ? "Elective Course" : "Directed Course"; 
+      let courseType = props.text.code === "elective" ? "Elective" : "Directed Course"; 
 
       return (
         <Card sx={cardStyle}>
           <CardActionArea>
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
 	    	        {courseType}
               </Typography>
-              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary' }}>
+              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
                 Units: {10}
               </Typography>
             </CardContent>
@@ -54,16 +44,19 @@ export default function OutlinedCard(props) {
       return (
         <Card sx={cardStyle}>
           <CardActionArea>
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-	    	        {getFullCourseCode(props.text._id)} - {props.text.course_name}
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', textDecoration: 'underline', fontWeight: 'bold'}} onClick={() => window.open(getCourseURL(props.text._id), "_blank", 'noopener,noreferrer')}>
+	    	        {getFullCourseCode(props.text._id)}
               </Typography>
-              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary' }}>
+              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '1rem'}}>
+                {props.text.course_name}
+              </Typography>
+              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
 	    		      Units: {props.text.credits}
               </Typography>
-              <Button variant="contained" color="primary" component="a" href={getCourseURL(props.text._id)} target="_blank" rel="noopener noreferrer">
+              {/* <Button variant="contained" color="primary" component="a" href={getCourseURL(props.text._id)} target="_blank" rel="noopener noreferrer">
                 Course Handbook
-              </Button>
+              </Button> */}
             </CardContent>
           </CardActionArea>
         </Card>

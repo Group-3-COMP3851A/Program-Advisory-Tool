@@ -54,7 +54,7 @@ const GeneratePlan = () => {
             <Menu curentPage="select"/>
 			<div className='main-section'>
                 {/* Main content container */}
-                <Text type="h1" style={{ marginBottom: '1%'}}>Course Plan</Text> {/* Page heading */}
+                <Text type="h1" style={{ marginBottom: '1%'}}>Course Plan for {major} Major</Text> {/* Page heading */}
                 <Button onClick={handleEditClick} text="Edit" color="#007bff" /> {/* Edit button, triggers handleEditClick function */}
                 {Object.keys(courseList).map((year, yearIndex) => (
                     // Iterate over each year in groupedCards
