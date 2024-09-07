@@ -1,10 +1,14 @@
 /*Global styling file*/
 
 /*The whole layout is inside this global div*/
+body {
+	padding: 0px;
+	margin: 0px;
+}
 .global {
 	display: flex;
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	background-color: black;
 }
 
