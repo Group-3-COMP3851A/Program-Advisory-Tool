@@ -71,18 +71,25 @@
     {
       "year": 3,
       "semester": 1
+    },
+    {
+      "year": 3,
+      "semester": 2
+    },
+    {
+      "year": 2,
+      "semester": 2
+    },
+    {
+      "year": 2,
+      "semester": 2
+    },
+    {
+      "year": 2,
+      "semester": 1
     }
   ],
   "assumed_knowledge": [
-    [
-      "1070st",
-      "2110st"
-    ],
-    "1300st",
-    "2000st ",
-    [
-      "2130se",
-      "2150in"
-    ]
+    ""
   ]
 }]
