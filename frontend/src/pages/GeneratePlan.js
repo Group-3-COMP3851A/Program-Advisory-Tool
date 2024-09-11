@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'; // Importing React, useState, and useEffect hooks
+import '../styles/style.css';
 import OutlinedCard from '../components/Card'; // Importing the Card component
 import DropArea from '../components/DropArea'; // Importing the DropArea component
 import Text from '../components/Text'; // Importing the Text component
@@ -39,55 +40,51 @@ const GeneratePlan = () => {
 
     useEffect(() => {
         getCourseList(degree, major, semCount, coursesPerSem);
-        //console.log(courseList);
-    });
+        
+    }, [coursesPerSem, degree, major, semCount]);
 
+    // console.log(courseList);
     const handleEditClick = () => {
         // Function to handle the "Edit" button click
         navigate('/view-planner'); // Navigate to the "View Planner" page
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column'}}>
-            <Menu /> {/* Menu component */}
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '1%' }}>
+		<div className='global'>
+            <Menu curentPage="select"/>
+			<div className='main-section'>
                 {/* Main content container */}
-                <Text type="h1" style={{ marginBottom: '1%'}}>Course Plan</Text> {/* Page heading */}
+                <Text type="h1" style={{ marginBottom: '1%'}}>Course Plan for {major} Major</Text> {/* Page heading */}
                 <Button onClick={handleEditClick} text="Edit" color="#007bff" /> {/* Edit button, triggers handleEditClick function */}
                 {Object.keys(courseList).map((year, yearIndex) => (
                     // Iterate over each year in groupedCards
-                    <div key={yearIndex} style={{ marginBottom: '1%', width: '95%' }}>
-                        <Text type="h2" style={{ marginBottom: '1%' }}>Year {yearIndex + 1}</Text> {/* Display the year */}
-                        <DropArea>
-                            {Object.keys(courseList[yearIndex]).map((semester, semesterIndex) => (
-                                // Iterate over each semester in the year
-                                <div key={semesterIndex} style={{ margin: '2%' }}>
-                                    <Text type="h3" style={{ marginBottom: '1%' }}>Semester {semesterIndex + 1}</Text> {/* Display the semester */}
-                                    <DropArea>
-                                        <div style={{ display: 'flex', flexDirection: 'column'}}>
-                                            {/* DropArea component to hold the course cards */}
-                                            {courseList[yearIndex][semesterIndex].map((course) => (
-                                                // Iterate over each course in the semester and display a Card component
-                                                <OutlinedCard key={course._id} text={course}/> 
-                                            ))}
+                    <div key={yearIndex} style={{  flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0.5%', width: '95%' }}>
+                        <div style={{  flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'left', margin: '0%', width: '100%' }}>
+                            <Text type="h2" style={{ margin: '0.5%' }}>Year {yearIndex + 1}</Text> {/* Display the year */}
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', margin: '0%', width: '100%' }}>
+                            <DropArea>
+                                {Object.keys(courseList[yearIndex]).map((semester, semesterIndex) => (
+                                    // Iterate over each semester in the year
+                                    <div key={semesterIndex} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2%' }}>
+                                        <div style={{  flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'left', margin: '0%', width: '100%' }}>
+                                            <Text type="h3" style={{ margin: '0.5%' }}>Semester {semesterIndex + 1}</Text> {/* Display the semester */}
                                         </div>
-                                    </DropArea>
-                                </div>
-                            ))}
-                        </DropArea>
+                                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', margin: '0%', width: '100%' }}>
+                                            <DropArea>
+                                                {/* DropArea component to hold the course cards */}
+                                                {courseList[yearIndex][semesterIndex].map((course, i) => (
+                                                    // Iterate over each course in the semester and display a Card component
+                                                    <OutlinedCard key={course._id + i.toString()} text={course}/> 
+                                                ))}
+                                            </DropArea>
+                                        </div>
+                                    </div>
+                                ))}
+                            </DropArea>
+                        </div>
                     </div>
                 ))}
-            </div>
-            <div>
-                {/* Navigation links */}
-                <Link to="/profile" text="Profile" /> {/* Link to Profile page */}
-                <Link to="/view-planner" text="View Planner" /> {/* Link to View Planner page */}
-                <Link to="/logout" text="Logout" /> {/* Link to Logout page */}
-                <Link to="/help" text="Help" /> {/* Link to Help page */}
-                <Link to="https://askuon.newcastle.edu.au/" text="Ask Uon" external /> {/* External link to Ask Uon */}
-                <Link to="/completed" text="Completed" /> {/* Link to Completed page */}
-                <Link to="/generate-plan" text="Generate Plan" /> {/* Link to Generate Plan page */}
-                <Link to="/select" text="Create new planner"/>{/* Link to Select page */}
             </div>
         </div>
     );

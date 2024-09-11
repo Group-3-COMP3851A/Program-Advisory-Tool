@@ -14,6 +14,10 @@ const dropAreaStyle = { // Defining a constant object dropAreaStyle to hold the 
   border: '1px solid #ccc', // Adding a solid border with a light gray color around the drop area
   borderRadius: '4px', // Rounding the corners of the drop area
   padding: '16px', // Adding padding inside the drop area to create space between the border and the content
+  flex: 1, 
+  display: 'flex', 
+  flexDirection: 'row', 
+  alignItems: 'center'
 };
 
 export default DropArea; // Exporting the DropArea component as the default export

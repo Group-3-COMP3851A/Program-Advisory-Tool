@@ -21,4 +21,75 @@
     "1050se",
     "2130se"
   ]
+},
+{
+  "_id": "40088M1p",
+  "semester_placements": [
+    {
+      "year": 3,
+      "semester": 1
+    }
+  ],
+  "assumed_knowledge": [
+    "2130se",
+    "1140co",
+    [
+      "1004in ",
+      "1110se"
+    ]
+  ]
+},
+{
+  "_id": "40103M2p",
+  "semester_placements": [
+    {
+      "year": 3,
+      "semester": 1
+    },
+    {
+      "year": 3,
+      "semester": 2
+    },
+    {
+      "year": 2,
+      "semester": 2
+    }
+  ],
+  "assumed_knowledge": [
+    "1120se",
+    "1510ma",
+    "1140co",
+    [
+      "1004in ",
+      "1110se"
+    ]
+  ]
+},
+{
+  "_id": "40276M1p",
+  "semester_placements": [
+    {
+      "year": 3,
+      "semester": 1
+    },
+    {
+      "year": 3,
+      "semester": 2
+    },
+    {
+      "year": 2,
+      "semester": 2
+    },
+    {
+      "year": 2,
+      "semester": 2
+    },
+    {
+      "year": 2,
+      "semester": 1
+    }
+  ],
+  "assumed_knowledge": [
+    ""
+  ]
 }]

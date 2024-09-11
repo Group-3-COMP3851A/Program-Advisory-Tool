@@ -1,1 +1,700 @@
-{"_id":40103,"degree_name":"Computer Science","department_name":"School of Information and Physical Sciences"}
+[{
+  "_id": 11435,
+  "degree_name": "Bachelor of Aboriginal Studies (Honours)"
+},
+{
+  "_id": 40096,
+  "degree_name": "Bachelor of Arts"
+},
+{
+  "_id": 40209,
+  "degree_name": "Bachelor of Arts (Honours)"
+},
+{
+  "_id": 40150,
+  "degree_name": "Bachelor of Arts / Bachelor of Laws (Honours)"
+},
+{
+  "_id": 40168,
+  "degree_name": "Bachelor of Arts / Bachelor of Science"
+},
+{
+  "_id": 40317,
+  "degree_name": "Diploma in Arts and Social Science"
+},
+{
+  "_id": 40124,
+  "degree_name": "Bachelor of Arts / Bachelor of Innovation and Entrepreneurship"
+},
+{
+  "_id": 40097,
+  "degree_name": "Bachelor of Biomedical Science"
+},
+{
+  "_id": 10988,
+  "degree_name": "Bachelor of Biomedical Science (Honours)"
+},
+{
+  "_id": 40280,
+  "degree_name": "Bachelor of Biomedicine / Bachelor of Laws (Honours)"
+},
+{
+  "_id": 10981,
+  "degree_name": "Bachelor of Biotechnology"
+},
+{
+  "_id": 10982,
+  "degree_name": "Bachelor of Biotechnology (Honours)"
+},
+{
+  "_id": 50034,
+  "degree_name": "Bachelor of Business (from 2025)"
+},
+{
+  "_id": 11060,
+  "degree_name": "Bachelor of Business (Honours)"
+},
+{
+  "_id": 40027,
+  "degree_name": "Bachelor of Business (pre 2025)"
+},
+{
+  "_id": 40264,
+  "degree_name": "Bachelor of Business / Bachelor of Business Analytics"
+},
+{
+  "_id": 50066,
+  "degree_name": "Bachelor of Business / Bachelor of Commerce (from 2025)"
+},
+{
+  "_id": 40035,
+  "degree_name": "Bachelor of Business / Bachelor of Commerce (pre 2025)"
+},
+{
+  "_id": 50036,
+  "degree_name": "Bachelor of Business / Bachelor of Laws (Honours) (from 2025)"
+},
+{
+  "_id": 40036,
+  "degree_name": "Bachelor of Business / Bachelor of Laws (Honours) (pre 2025)"
+},
+{
+  "_id": 50048,
+  "degree_name": "Bachelor of Business / Bachelor of Media and Communication"
+},
+{
+  "_id": 40263,
+  "degree_name": "Bachelor of Business Analytics"
+},
+{
+  "_id": 40320,
+  "degree_name": "Diploma in Built Environment"
+},
+{
+  "_id": 40127,
+  "degree_name": "Diploma in Business"
+},
+{
+  "_id": 40016,
+  "degree_name": "Bachelor of Business / Bachelor of Innovation and Entrepreneurship"
+},
+{
+  "_id": 40245,
+  "degree_name": "Bachelor of Climate Science and Adaptation"
+},
+{
+  "_id": 40210,
+  "degree_name": "Bachelor of Coastal and Marine Science"
+},
+{
+  "_id": 50037,
+  "degree_name": "Bachelor of Commerce (from 2025)"
+},
+{
+  "_id": 10801,
+  "degree_name": "Bachelor of Commerce (Honours)"
+},
+{
+  "_id": 40029,
+  "degree_name": "Bachelor of Commerce (pre 2025)"
+},
+{
+  "_id": 50039,
+  "degree_name": "Bachelor of Commerce / Bachelor of Business Analytics (from 2025)"
+},
+{
+  "_id": 40265,
+  "degree_name": "Bachelor of Commerce / Bachelor of Business Analytics (pre 2025)"
+},
+{
+  "_id": 50038,
+  "degree_name": "Bachelor of Commerce / Bachelor of Laws (Honours) (from 2025)"
+},
+{
+  "_id": 40037,
+  "degree_name": "Bachelor of Commerce / Bachelor of Laws (Honours) (pre 2025)"
+},
+{
+  "_id": 11496,
+  "degree_name": "Bachelor of Communication"
+},
+{
+  "_id": 40103,
+  "degree_name": "Bachelor of Computer Science"
+},
+{
+  "_id": 40283,
+  "degree_name": "Bachelor of Computing (Honours)"
+},
+{
+  "_id": 40374,
+  "degree_name": "Bachelor of Construction Management (Building) (Honours)"
+},
+{
+  "_id": 40270,
+  "degree_name": "Bachelor of Criminology"
+},
+{
+  "_id": 40327,
+  "degree_name": "Bachelor of Criminology (Honours)"
+},
+{
+  "_id": 40272,
+  "degree_name": "Bachelor of Criminology / Bachelor of Laws (Honours)"
+},
+{
+  "_id": 40271,
+  "degree_name": "Bachelor of Criminology / Bachelor of Psychological Science"
+},
+{
+  "_id": 40017,
+  "degree_name": "Bachelor of Commerce / Bachelor of Innovation and Entrepreneurship"
+},
+{
+  "_id": 40276,
+  "degree_name": "Bachelor of Data Science"
+},
+{
+  "_id": 40278,
+  "degree_name": "Bachelor of Data Science / Bachelor of Computer Science"
+},
+{
+  "_id": 40277,
+  "degree_name": "Bachelor of Data Science / Bachelor of Mathematics"
+},
+{
+  "_id": 10028,
+  "degree_name": "Bachelor of Design (Architecture)"
+},
+{
+  "_id": 11368,
+  "degree_name": "Bachelor of Development Studies"
+},
+{
+  "_id": 11547,
+  "degree_name": "Bachelor of Development Studies (Honours)"
+},
+{
+  "_id": 40101,
+  "degree_name": "Bachelor of Development Studies / Bachelor of Business"
+},
+{
+  "_id": 40179,
+  "degree_name": "Bachelor of Development Studies / Bachelor of Global Indigenous Studies"
+},
+{
+  "_id": 40130,
+  "degree_name": "Bachelor of Development Studies / Bachelor of Laws (Honours)"
+},
+{
+  "_id": 50006,
+  "degree_name": "Bachelor of Development Studies / Bachelor of Media and Communication"
+},
+{
+  "_id": 40095,
+  "degree_name": "Bachelor of Development Studies / Bachelor of Social Science"
+},
+{
+  "_id": 40330,
+  "degree_name": "Diploma in Data Analytics"
+},
+{
+  "_id": 50059,
+  "degree_name": "Master of Data Science and Artificial Intelligence"
+},
+{
+  "_id": 40349,
+  "degree_name": "Bachelor of Aerospace Systems Engineering (Honours)"
+},
+{
+  "_id": 40348,
+  "degree_name": "Bachelor of Aerospace Systems Engineering (Honours) / Bachelor of Mechanical Engineering (Honours)"
+},
+{
+  "_id": 40347,
+  "degree_name": "Bachelor of Aerospace Systems Engineering (Honours) / Bachelor of Mechatronics Engineering (Honours)"
+},
+{
+  "_id": 40339,
+  "degree_name": "Bachelor of Chemical Engineering (Honours)"
+},
+{
+  "_id": 40350,
+  "degree_name": "Bachelor of Chemical Engineering (Honours) / Bachelor of Business"
+},
+{
+  "_id": 40351,
+  "degree_name": "Bachelor of Chemical Engineering (Honours) / Bachelor of Mathematics"
+},
+{
+  "_id": 40352,
+  "degree_name": "Bachelor of Chemical Engineering (Honours) / Bachelor of Science"
+},
+{
+  "_id": 40354,
+  "degree_name": "Bachelor of Civil Engineering (Honours)"
+},
+{
+  "_id": 40356,
+  "degree_name": "Bachelor of Civil Engineering (Honours) / Bachelor of Business"
+},
+{
+  "_id": 40353,
+  "degree_name": "Bachelor of Civil Engineering (Honours) / Bachelor of Environmental Engineering (Honours)"
+},
+{
+  "_id": 40357,
+  "degree_name": "Bachelor of Civil Engineering (Honours) / Bachelor of Mathematics"
+},
+{
+  "_id": 40358,
+  "degree_name": "Bachelor of Civil Engineering (Honours) / Bachelor of Surveying (Honours)"
+},
+{
+  "_id": 40359,
+  "degree_name": "Bachelor of Computer Systems Engineering (Honours)"
+},
+{
+  "_id": 40341,
+  "degree_name": "Bachelor of Computer Systems Engineering (Honours) / Bachelor of Computer Science"
+},
+{
+  "_id": 40340,
+  "degree_name": "Bachelor of Computer Systems Engineering (Honours) / Bachelor of Mathematics"
+},
+{
+  "_id": 40360,
+  "degree_name": "Bachelor of Computer Systems Engineering (Honours) / Bachelor of Science"
+},
+{
+  "_id": 40224,
+  "degree_name": "Bachelor of Education (Early Childhood and Primary Studies)"
+},
+{
+  "_id": 40105,
+  "degree_name": "Bachelor of Education (Early Childhood and Primary)"
+},
+{
+  "_id": 40109,
+  "degree_name": "Bachelor of Education (Early Childhood and Primary) (Honours)"
+},
+{
+  "_id": 40225,
+  "degree_name": "Bachelor of Education (Primary Studies)"
+},
+{
+  "_id": 40106,
+  "degree_name": "Bachelor of Education (Primary)"
+},
+{
+  "_id": 40110,
+  "degree_name": "Bachelor of Education (Primary) (Honours)"
+},
+{
+  "_id": 40226,
+  "degree_name": "Bachelor of Education (Secondary Studies)"
+},
+{
+  "_id": 40107,
+  "degree_name": "Bachelor of Education (Secondary)"
+},
+{
+  "_id": 40108,
+  "degree_name": "Bachelor of Education (Secondary) (Honours)"
+},
+{
+  "_id": 40377,
+  "degree_name": "Bachelor of Electrical and Electronic Engineering (Honours)"
+},
+{
+  "_id": 40344,
+  "degree_name": "Bachelor of Electrical and Electronic Engineering (Honours) / Bachelor of Business"
+},
+{
+  "_id": 40342,
+  "degree_name": "Bachelor of Electrical and Electronic Engineering (Honours) / Bachelor of Computer Systems Engineering (Honours)"
+},
+{
+  "_id": 40343,
+  "degree_name": "Bachelor of Electrical and Electronic Engineering (Honours) / Bachelor of Mathematics"
+},
+{
+  "_id": 40345,
+  "degree_name": "Bachelor of Electrical and Electronic Engineering (Honours) / Bachelor of Science"
+},
+{
+  "_id": 40104,
+  "degree_name": "Bachelor of Engineering (Mining Transfer Program)"
+},
+{
+  "_id": 11487,
+  "degree_name": "Bachelor of Environmental and Occupational Health and Safety (Singapore)"
+},
+{
+  "_id": 40361,
+  "degree_name": "Bachelor of Environmental Engineering (Honours)"
+},
+{
+  "_id": 40362,
+  "degree_name": "Bachelor of Environmental Engineering (Honours) / Bachelor of Science"
+},
+{
+  "_id": 11587,
+  "degree_name": "Bachelor of Environmental Science and Management"
+},
+{
+  "_id": 11706,
+  "degree_name": "Bachelor of Environmental Science and Management (Honours)"
+},
+{
+  "_id": 40172,
+  "degree_name": "Bachelor of Environmental Science and Management / Bachelor of Business"
+},
+{
+  "_id": 40257,
+  "degree_name": "Bachelor of Exercise and Sport Science"
+},
+{
+  "_id": 12230,
+  "degree_name": "Bachelor of Exercise and Sport Science (Honours)"
+},
+{
+  "_id": 40376,
+  "degree_name": "Bachelor of Mechanical Engineering (Honours)"
+},
+{
+  "_id": 40364,
+  "degree_name": "Bachelor of Mechanical Engineering (Honours) / Bachelor of Business"
+},
+{
+  "_id": 40365,
+  "degree_name": "Bachelor of Mechanical Engineering (Honours) / Bachelor of Mathematics"
+},
+{
+  "_id": 40363,
+  "degree_name": "Bachelor of Mechanical Engineering (Honours) / Bachelor of Mechatronics Engineering (Honours)"
+},
+{
+  "_id": 40366,
+  "degree_name": "Bachelor of Mechanical Engineering (Honours) / Bachelor of Science"
+},
+{
+  "_id": 40367,
+  "degree_name": "Bachelor of Mechatronics Engineering (Honours)"
+},
+{
+  "_id": 40346,
+  "degree_name": "Bachelor of Mechatronics Engineering (Honours) / Bachelor of Electrical and Electronic Engineering (Honours)"
+},
+{
+  "_id": 40368,
+  "degree_name": "Bachelor of Mechatronics Engineering (Honours) / Bachelor of Mathematics"
+},
+{
+  "_id": 40369,
+  "degree_name": "Bachelor of Medical Engineering (Honours)"
+},
+{
+  "_id": 40370,
+  "degree_name": "Bachelor of Renewable Energy Engineering (Honours)"
+},
+{
+  "_id": 40371,
+  "degree_name": "Bachelor of Software Engineering (Honours)"
+},
+{
+  "_id": 40316,
+  "degree_name": "Diploma in Education Studies"
+},
+{
+  "_id": 40128,
+  "degree_name": "Diploma in Engineering"
+},
+{
+  "_id": 40319,
+  "degree_name": "Diploma in Environmental Science"
+},
+{
+  "_id": 50069,
+  "degree_name": "Diploma in Exercise and Sport Science"
+},
+{
+  "_id": 11680,
+  "degree_name": "Bachelor of Food Science and Human Nutrition"
+},
+{
+  "_id": 12243,
+  "degree_name": "Bachelor of Food Science and Human Nutrition (Honours)"
+},
+{
+  "_id": 40102,
+  "degree_name": "Bachelor of Food Science and Human Nutrition / Bachelor of Business"
+},
+{
+  "_id": 40122,
+  "degree_name": "Bachelor of Global Indigenous Studies"
+},
+{
+  "_id": 40188,
+  "degree_name": "Bachelor of Global Indigenous Studies / Bachelor of Laws (Honours)"
+},
+{
+  "_id": 11691,
+  "degree_name": "Bachelor of Health Science (Honours)"
+},
+{
+  "_id": 11497,
+  "degree_name": "Bachelor of Information Technology"
+},
+{
+  "_id": 12238,
+  "degree_name": "Bachelor of Information Technology / Bachelor of Business"
+},
+{
+  "_id": 40321,
+  "degree_name": "Diploma in Information Technology"
+},
+{
+  "_id": 40129,
+  "degree_name": "Bachelor of Innovation and Entrepreneurship / Bachelor of Laws (Honours)"
+},
+{
+  "_id": 12347,
+  "degree_name": "Bachelor of Laws (Honours) / Diploma of Legal Practice"
+},
+{
+  "_id": 12348,
+  "degree_name": "Bachelor of Laws (Honours) Combined"
+},
+{
+  "_id": 11718,
+  "degree_name": "Diploma in Languages"
+},
+{
+  "_id": 10237,
+  "degree_name": "Bachelor of Mathematics"
+},
+{
+  "_id": 40212,
+  "degree_name": "Bachelor of Mathematics (Advanced)"
+},
+{
+  "_id": 10159,
+  "degree_name": "Bachelor of Mathematics (Honours)"
+},
+{
+  "_id": 40170,
+  "degree_name": "Bachelor of Mathematics / Bachelor of Science"
+},
+{
+  "_id": 50003,
+  "degree_name": "Bachelor of Media and Communication"
+},
+{
+  "_id": 50004,
+  "degree_name": "Bachelor of Media and Communication (Honours)"
+},
+{
+  "_id": 50005,
+  "degree_name": "Bachelor of Media and Communication / Bachelor of Laws (Honours)"
+},
+{
+  "_id": 40002,
+  "degree_name": "Bachelor of Medical Radiation Science (Honours) (Diagnostic Radiography)"
+},
+{
+  "_id": 40011,
+  "degree_name": "Bachelor of Medical Radiation Science (Honours) (Nuclear Medicine)"
+},
+{
+  "_id": 40010,
+  "degree_name": "Bachelor of Medical Radiation Science (Honours) (Radiation Therapy)"
+},
+{
+  "_id": 12389,
+  "degree_name": "Bachelor of Medical Science (Honours)"
+},
+{
+  "_id": 40046,
+  "degree_name": "Bachelor of Medical Science / Doctor of Medicine (Joint Medical Program)"
+},
+{
+  "_id": 40297,
+  "degree_name": "Bachelor of Midwifery"
+},
+{
+  "_id": 12330,
+  "degree_name": "Bachelor of Midwifery (Honours)"
+},
+{
+  "_id": 40309,
+  "degree_name": "Bachelor of Music and Performing Arts"
+},
+{
+  "_id": 40310,
+  "degree_name": "Bachelor of Music and Performing Arts (Honours)"
+},
+{
+  "_id": 40311,
+  "degree_name": "Bachelor of Music and Performing Arts / Bachelor of Arts"
+},
+{
+  "_id": 50070,
+  "degree_name": "Diploma in Media and Visual Communication"
+},
+{
+  "_id": 40298,
+  "degree_name": "Bachelor of Nursing"
+},
+{
+  "_id": 10954,
+  "degree_name": "Bachelor of Nursing (Honours)"
+},
+{
+  "_id": 12339,
+  "degree_name": "Bachelor of Nutrition and Dietetics (Honours)"
+},
+{
+  "_id": 12338,
+  "degree_name": "Bachelor of Occupational Therapy (Honours)"
+},
+{
+  "_id": 12390,
+  "degree_name": "Bachelor of Oral Health Therapy"
+},
+{
+  "_id": 12328,
+  "degree_name": "Bachelor of Pharmacy (Honours)"
+},
+{
+  "_id": 12337,
+  "degree_name": "Bachelor of Physiotherapy (Honours)"
+},
+{
+  "_id": 50021,
+  "degree_name": "Bachelor of Podiatric Medicine"
+},
+{
+  "_id": 50022,
+  "degree_name": "Bachelor of Podiatric Medicine (Honours)"
+},
+{
+  "_id": 40099,
+  "degree_name": "Bachelor of Psychological Science"
+},
+{
+  "_id": 40211,
+  "degree_name": "Bachelor of Psychological Science (Advanced)"
+},
+{
+  "_id": 40100,
+  "degree_name": "Bachelor of Psychological Science (Honours)"
+},
+{
+  "_id": 40288,
+  "degree_name": "Bachelor of Psychological Science / Bachelor of Business"
+},
+{
+  "_id": 40290,
+  "degree_name": "Bachelor of Psychological Science / Bachelor of Laws (Honours)"
+},
+{
+  "_id": 50007,
+  "degree_name": "Bachelor of Psychological Science / Bachelor of Media and Communication"
+},
+{
+  "_id": 40291,
+  "degree_name": "Bachelor of Psychological Science / Bachelor of Social Science"
+},
+{
+  "_id": 50050,
+  "degree_name": "Associate Degree in Surveying"
+},
+{
+  "_id": 40165,
+  "degree_name": "Bachelor of Science"
+},
+{
+  "_id": 40166,
+  "degree_name": "Bachelor of Science (Advanced)"
+},
+{
+  "_id": 10496,
+  "degree_name": "Bachelor of Science (Honours)"
+},
+{
+  "_id": 40189,
+  "degree_name": "Bachelor of Science / Bachelor of Laws (Honours)"
+},
+{
+  "_id": 10716,
+  "degree_name": "Bachelor of Social Science"
+},
+{
+  "_id": 10726,
+  "degree_name": "Bachelor of Social Science (Honours)"
+},
+{
+  "_id": 12341,
+  "degree_name": "Bachelor of Social Science / Bachelor of Laws (Honours)"
+},
+{
+  "_id": 12317,
+  "degree_name": "Bachelor of Social Work (Honours)"
+},
+{
+  "_id": 12318,
+  "degree_name": "Bachelor of Speech Pathology (Honours)"
+},
+{
+  "_id": 40372,
+  "degree_name": "Bachelor of Surveying (Honours)"
+},
+{
+  "_id": 40373,
+  "degree_name": "Bachelor of Surveying (Honours) / Bachelor of Business"
+},
+{
+  "_id": 40318,
+  "degree_name": "Diploma in Science"
+},
+{
+  "_id": 50049,
+  "degree_name": "Diploma in Surveying"
+},
+{
+  "_id": 40171,
+  "degree_name": "Bachelor of Science / Bachelor of Innovation and Entrepreneurship"
+},
+{
+  "_id": 40329,
+  "degree_name": "Bachelor of Tourism, Hospitality and Events"
+},
+{
+  "_id": 40208,
+  "degree_name": "Bachelor of Visual Communication Design"
+},
+{
+  "_id": 11254,
+  "degree_name": "Bachelor of Visual Communication Design (Honours)"
+}]

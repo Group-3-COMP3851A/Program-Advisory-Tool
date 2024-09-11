@@ -1,17 +1,280 @@
-{"_id":{"$oid":"66a88ef45d980e3f0b49ceb5"},"degree_id":40103,"course_id":"1010co"}
-{"_id":{"$oid":"66a88f845d980e3f0b49ceb6"},"degree_id":40103,"course_id":"1140co"}
-{"_id":{"$oid":"66a88f925d980e3f0b49ceb7"},"degree_id":40103,"course_id":"2230co"}
-{"_id":{"$oid":"66a88f9a5d980e3f0b49ceb8"},"degree_id":40103,"course_id":"2240co"}
-{"_id":{"$oid":"66a88fa45d980e3f0b49ceb9"},"degree_id":40103,"course_id":"2270co"}
-{"_id":{"$oid":"66a88fac5d980e3f0b49ceba"},"degree_id":40103,"course_id":"3851aco"}
-{"_id":{"$oid":"66a88fb55d980e3f0b49cebb"},"degree_id":40103,"course_id":"3851bco"}
-{"_id":{"$oid":"66a88fbe5d980e3f0b49cebc"},"degree_id":40103,"course_id":"3800in"}
-{"_id":{"$oid":"66a88fd05d980e3f0b49cebd"},"degree_id":40103,"course_id":"1110ma"}
-{"_id":{"$oid":"66a88fdd5d980e3f0b49cebe"},"degree_id":40103,"course_id":"1510ma"}
-{"_id":{"$oid":"66a88fea5d980e3f0b49cebf"},"degree_id":40103,"course_id":"1050se"}
-{"_id":{"$oid":"66a88ff95d980e3f0b49cec0"},"degree_id":40103,"course_id":"1110se"}
-{"_id":{"$oid":"66a890015d980e3f0b49cec1"},"degree_id":40103,"course_id":"1120se"}
-{"_id":{"$oid":"66a8900f5d980e3f0b49cec2"},"degree_id":40103,"course_id":"2130se"}
-{"_id":{"$oid":"66a890175d980e3f0b49cec3"},"degree_id":40103,"course_id":"2250se"}
-{"_id":{"$oid":"66a8901e5d980e3f0b49cec4"},"degree_id":40103,"course_id":"2260se"}
-{"_id":{"$oid":"66a890235d980e3f0b49cec5"},"degree_id":40103,"course_id":"4500se"}
+[{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891d1"
+  },
+  "course_id": "1140co",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891d2"
+  },
+  "course_id": "1110ma",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891d3"
+  },
+  "course_id": "1120ma",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891d4"
+  },
+  "course_id": "1510ma",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891d5"
+  },
+  "course_id": "1110se",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891d6"
+  },
+  "course_id": "1120se",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891d7"
+  },
+  "course_id": "1100st",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891d8"
+  },
+  "course_id": "1300st",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891d9"
+  },
+  "course_id": "2230co",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891da"
+  },
+  "course_id": "2150in",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891db"
+  },
+  "course_id": "2020st",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891dc"
+  },
+  "course_id": "2300st",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891dd"
+  },
+  "course_id": "3260co",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891de"
+  },
+  "course_id": "3330co",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891df"
+  },
+  "course_id": "3340co",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891e0"
+  },
+  "course_id": "3851Aco",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891e1"
+  },
+  "course_id": "3851Bco",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891e2"
+  },
+  "course_id": "2340ma",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891e3"
+  },
+  "course_id": "2001sc",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891e4"
+  },
+  "course_id": "2000st",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891e5"
+  },
+  "course_id": "3800in",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891e6"
+  },
+  "course_id": "3030st",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891e7"
+  },
+  "course_id": "3040st",
+  "degree_id": 40276
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891e8"
+  },
+  "course_id": "1010co",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891e9"
+  },
+  "course_id": "1140co",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891ea"
+  },
+  "course_id": "2230co",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891eb"
+  },
+  "course_id": "2240co",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891ec"
+  },
+  "course_id": "2270co",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891ed"
+  },
+  "course_id": "3851Aco",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891ee"
+  },
+  "course_id": "3851Bco",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891ef"
+  },
+  "course_id": "3800in",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891f0"
+  },
+  "course_id": "1110ma",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891f1"
+  },
+  "course_id": "1510ma",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891f2"
+  },
+  "course_id": "1050se",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891f3"
+  },
+  "course_id": "1110se",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891f4"
+  },
+  "course_id": "1120se",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891f5"
+  },
+  "course_id": "2130se",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891f6"
+  },
+  "course_id": "2250se",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891f7"
+  },
+  "course_id": "2260se",
+  "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "66d8f14414a984a0c58891f8"
+  },
+  "course_id": "4500se",
+  "degree_id": 40103
+}]

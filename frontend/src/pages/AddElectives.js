@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'; // Importing React, useState, and useEffect hooks
+import '../styles/style.css';
 import Menu from '../components/Menu'; // Importing the Menu component
 import Dropdown from '../components/Dropdown'; // Importing the Dropdown component
 import Text from '../components/Text'; // Importing the Text component
@@ -44,10 +45,9 @@ const AddElectives = () => {
     };
 
     return (
-        <div style={{ display: 'flex' }}>
-            {/* Main container with flexbox layout */}
-            <Menu /> {/* Menu component */}
-            <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
+		<div className='global'>
+            <Menu curentPage="select"/>
+			<div className='main-section'>
                 {/* Centered content container */}
                 <Text type="h1">Add Electives</Text> {/* Heading for the Add Electives page */}
                 <Text type="h2">Choose your directed and other electives</Text> {/* Subheading for the elective selection */}
@@ -59,17 +59,6 @@ const AddElectives = () => {
                     onChange={handleElectiveChange} // Handle changes in the dropdown selection
                     multiple // Allow multiple selections
                 />
-                <div>
-                    {/* Navigation buttons */}
-                    <Button onClick={handleNext} text="Continue" /> {/* Button to continue to the next step, triggers handleNext function */}
-                    <Link to="/profile" text="Profile" /> {/* Link to Profile page */}
-                    <Link to="/completed" text="Completed" /> {/* Link to Completed page */}
-                    <Link to="/view-planner" text="View Planner" /> {/* Link to View Planner page */}
-                    <Link to="/logout" text="Logout" /> {/* Link to Logout page */}
-                    <Link to="/help" text="Help" /> {/* Link to Help page */}
-                    <Link to="/select" text="Create new planner"/>{/* Link to Select page */}
-                    <Link to="https://askuon.newcastle.edu.au/" text="Ask Uon" external /> {/* External link to Ask Uon */}
-                </div>
             </div>
         </div>
     );

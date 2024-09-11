@@ -11,6 +11,7 @@ export default function Dropdown(props)
 		<InputLabel>{props.label}</InputLabel>
 		<Select
 			id={props.id}
+			value={props.value}
 			label={props.label}
 			onChange={props.onChange}
 		>

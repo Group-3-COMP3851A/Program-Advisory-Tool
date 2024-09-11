@@ -26,6 +26,7 @@ const PopUp = ({ message, options, onClose, onConfirmYes, onConfirmNo, onOptionS
         <Dropdown
           id="courses-dropdown" // Assign a unique ID to the dropdown
           label="Select number of courses:" // Set the label for the dropdown
+          value = ''
           options={options} // Pass the options to the Dropdown component
           onChange={onOptionSelect} // Handle option selection with the provided function
         />
