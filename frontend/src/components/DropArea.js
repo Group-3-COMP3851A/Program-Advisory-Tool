@@ -1,10 +1,16 @@
 import React from 'react'; // Importing React to use JSX and other React features
+import { useDraggable } from '@dnd-kit/core'
+import { rectSwappingStrategy, SortableContext } from '@dnd-kit/sortable';
 
-const DropArea = ({ children }) => { // Defining a functional component named DropArea that accepts children as a prop
+const DropArea = (props) => { // Defining a functional component named DropArea that accepts children as a prop
+  // console.log(props.items);
   return (
-    <div style={dropAreaStyle}> {/* Applying the dropAreaStyle to the outer div */}
-        {children} {/* Rendering the children elements passed to the DropArea component */}
-    </div>
+    <SortableContext 
+      items={props.items.map((item, i) => item._id ? item._id : item.code + props.semesterIndex)}
+      strategy={rectSwappingStrategy}
+    > {/*passing items to SortableContext */}
+        {props.children}
+    </SortableContext>
   );
 };
 

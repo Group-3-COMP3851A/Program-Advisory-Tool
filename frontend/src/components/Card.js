@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { useDrag } from 'react-dnd'; //For later use
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
@@ -7,6 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { AppContext } from '../AppContext';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 export default function OutlinedCard(props) {
 
@@ -17,6 +18,19 @@ export default function OutlinedCard(props) {
 
   let cardStyle = {width: `${100/coursesPerSem}%`, margin: '1%'};
 
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+  } = useSortable({id: props.id});
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  }
+
   // This might not be the best way to do this, but it works, for the time being
   switch (props.text.code)
   {
@@ -26,7 +40,7 @@ export default function OutlinedCard(props) {
       let courseType = props.text.code === "elective" ? "Elective" : "Directed Course"; 
 
       return (
-        <Card sx={cardStyle}>
+        <Card sx={{...cardStyle, ...style}} ref={setNodeRef} {...attributes} {...listeners}>
           <CardActionArea>
             <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
               <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
@@ -42,10 +56,12 @@ export default function OutlinedCard(props) {
     default:
       
       return (
-        <Card sx={cardStyle}>
+        <Card sx={{...cardStyle, ...style}} ref={setNodeRef} {...attributes} {...listeners}>
           <CardActionArea>
             <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', textDecoration: 'underline', fontWeight: 'bold'}} onClick={() => window.open(getCourseURL(props.text._id), "_blank", 'noopener,noreferrer')}>
+              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', textDecoration: 'underline', fontWeight: 'bold'}} 
+                onClick={() => window.open(getCourseURL(props.text._id), "_blank", 'noopener,noreferrer')}
+              >
 	    	        {getFullCourseCode(props.text._id)}
               </Typography>
               <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '1rem'}}>
