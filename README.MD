@@ -16,10 +16,8 @@ https://nodejs.org/en/download/prebuilt-installer
 Assuming you have NPM installed, the associated dependencies can be installed by running the following commands:
 
 ### Backend:
-`npm init -y`  
-`npm install express`  
-`npm install mongodb`
-`npm install cors` (This will be removed once network configuration and port issues have been resolved) 
+Navigate to the /backend directory and run `npm i` to install required dependencies.
+
 optional: `npm i -g nodemon` this will install nodemon which removes the need to constantly restart the backend after you make a change, doing it automatically.
 
 You will also need to create a file "config.env" in the /backend directory. This file should be 2 lines:
@@ -31,9 +29,7 @@ PORT=3001
 For more information about finding your mongoDB database connection string, see the below server installation instructions.
 
 ### Frontend:
-(This isn't neccessary for the code to run, but what it does is create a new dedicated react application)  
-(FOR DOCUMENTATION PURPOSES ONLY)  
-`npx create-react-app .`  
+Navigate to /frontend and run `npm i` to install required dependencies
 
 ### Server:
 To see instructions for installing and setting up the server, go to [the server installation instructions](/serverInstallation/README.MD).
@@ -60,7 +56,7 @@ Assuming that you followed the tutorial including starting and running the serve
 `docker start mongodb`
 
 ## Backend:
-`node --env-file=config.env start`
+`node --env-file=config.env`
 
 `nodemon --env-file=config.env` - if using nodemon
 
