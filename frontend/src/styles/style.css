@@ -1,79 +1,461 @@
-/*Global styling file*/
-
-/*The whole layout is inside this global div*/
-body {
-	padding: 0px;
-	margin: 0px;
-}
-.global {
-	display: flex;
-	width: 100%;
-	min-height: 100vh;
-	background-color: black;
+.App {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 
-/*Sidebar menu*/
+.app .overlap-wrapper {
+  height: 1117px;
+  overflow-x: hidden;
+  width: 1728px;
+}
+
+.app .overlap {
+  height: 4387px;
+  left: -31px;
+  position: relative;
+  width: 1759px;
+}
+
+.app .bodybg {
+  background-color: #1090d54c;
+  height: 4384px;
+  left: 317px;
+  position: absolute;
+  top: 0;
+  width: 1442px;
+}
+
+.app .side-bar {
+  background-color: #000000;
+  height: 20%;
+  left: 10%;
+  position: absolute;
+  top: 0;
+  width: 285px;
+}
+
+.app .header {
+  background-color: #e6e6e6;
+  height: 1442px;
+  left: 971px;
+  position: absolute;
+  top: -654px;
+  transform: rotate(90deg);
+  width: 134px;
+}
+
+.app .footer {
+  background-color: #e6e6e6;
+  height: 1442px;
+  left: 971px;
+  position: absolute;
+  top: 3599px;
+  transform: rotate(90deg);
+  width: 134px;
+}
+
+.app .step {
+  height: 367px;
+  left: 703px;
+  position: absolute;
+  top: 339px;
+  width: 672px;
+}
+
+.app .select-degree {
+  height: 26px;
+  left: 184px;
+  position: absolute;
+  top: 222px;
+  width: 302px;
+}
+
+.app .div-wrapper {
+  background-color: #ffffff;
+  border-radius: 2px;
+  height: 26px;
+  position: relative;
+  width: 300px;
+}
+
+.app .text-wrapper-3 {
+  color: #6d6d6d;
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 12px;
+  font-weight: 500;
+  height: 26px;
+  left: 0;
+  letter-spacing: -0.23px;
+  line-height: 18px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 300px;
+}
+
+.app .select-major {
+  height: 26px;
+  left: 184px;
+  position: absolute;
+  top: 264px;
+  width: 302px;
+}
+
+.app .hi-student-choose {
+  color: #1e1e1e;
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  left: 0;
+  letter-spacing: -0.38px;
+  line-height: 40px;
+  position: absolute;
+  text-align: center;
+  top: 94px;
+  width: 668px;
+}
+
+.app .text-wrapper-4 {
+  color: #000000;
+  font-family: "Inter-Bold", Helvetica;
+  font-size: 30px;
+  font-weight: 700;
+  left: 101px;
+  letter-spacing: -0.57px;
+  line-height: 34.5px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 466px;
+}
+
+.app .next-button {
+  left: 270px !important;
+  position: absolute !important;
+  top: 341px !important;
+}
+
+.app .step-2 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+  left: 703px;
+  position: absolute;
+  top: 1189px;
+  width: 668px;
+}
+
+.app .text-wrapper-5 {
+  align-self: stretch;
+  color: #000000;
+  font-family: "Inter-Bold", Helvetica;
+  font-size: 30px;
+  font-weight: 700;
+  height: 45px;
+  letter-spacing: -0.57px;
+  line-height: 34.5px;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+}
+
+.app .p {
+  color: #1e1e1e;
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.38px;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  width: 668px;
+}
+
+.app .overlap-group-wrapper {
+  height: 26px;
+  position: relative;
+  width: 302px;
+}
+
+.app .CONTINUE-GREY-instance {
+  position: relative !important;
+}
+
+.app.step-3 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 51px;
+  left: 703px;
+  position: absolute;
+  top: 2039px;
+  width: 668px;
+}
+
+.app .text-wrapper-6 {
+  align-self: stretch;
+  color: #1e1e1e;
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.38px;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+}
+
+.app .step-4 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+  left: 704px;
+  position: absolute;
+  top: 2889px;
+  width: 668px;
+}
+
+.app .step-5 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+  left: 704px;
+  position: absolute;
+  top: 3739px;
+  width: 668px;
+}
+
+.app .side-menu-instance {
+  left: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+/*router wrapper*/
+.main-content {
+  margin-left: 250px;
+  padding: 0rem;
+  width: calc(100% - 250px);
+}
+
+/*menu starts here*/
 .menu {
-	width: 20%;
-	display: flex;
-	flex-direction: column;
-	align-items: left;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 25px;
-	background-color: green;
+  top: 0;
+  left: 0;
+  width: 10%;
+  height: 100vh; /* Full viewport height */
+  background-color: black; /* White background for contrast */
+  padding: 1rem;
+  position: fixed; /* Stick to the left */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.menu img {
-	width: 100%;
-	background-color: red;
+/* Logo styling */
+.menu-logo {
+  width: 100%;
+  max-width: 200px;
+  margin-bottom: 1.5rem;
 }
 
-.menu a {
-	color: white;
-	text-decoration: none;
+/* Menu List */
+.menu-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%; /* Ensure it takes full width of menu */
 }
 
-.menu a:hover {
-	text-decoration: underline;
+/* Menu Items */
+.menu-list li {
+  margin-bottom: 1rem;
+  background-color: white; /* Black background for items */
+  border-radius: 5px;
+  text-align: center;
 }
 
-.menu ul {
-	background-color: gray;
-	word-wrap:break-word;
+.menu-list a {
+  color: rgb(1, 1, 1); /* White text for good contrast */
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem;
+  transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
-.menu li {
-	margin-bottom: 10px;
-	list-style-type: none;
+.menu-list a:hover {
+  background-color: #000000; 
+  color: white;
+  border-radius: 4px;
 }
 
-/*The 'not the sidebar menu' section*/
+/* Main Content Area */
 .main-section {
-	width: 80%;
-	display: flex;
-	flex-direction:column;
-	background-color: purple;
-	justify-content: center;
-	align-items: center;
+  width: 100%;
+  margin-left: 5%; /* Account for the fixed menu width */
+  background-color: rgb(255, 255, 255); /* White background */
+  height: 100vh; /* Full height */
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-section h1, .main-section h2, .main-section h3, .main-section p, .main-section span {
+  margin: 0.5rem 0;
 }
 
 .main-section h1 {
-	font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 
 .main-section h2 {
-	font-size: 2rem;
+  font-size: 2rem;
 }
 
 .main-section h3 {
-	font-size: 1.75rem;
+  font-size: 1.75rem;
 }
 
-.main-section p {
-	font-size: 1rem;
-	line-height: 1.5;
+.main-section p, .main-section span {
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-.main-section span {
-	font-size: 1rem;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .main-section {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/*generated planner page css starts here*/
+
+/* Global Layout */
+/* Global Layout */
+.global {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  box-sizing: border-box;
+;
+}
+
+/* Sidebar adjustments */
+.sidebar {
+  width: 200px; 
+  background-color: #000000; 
+  position: fixed; 
+  height: 100vh;
+}
+
+/* Main Content Section */
+.gen-section {
+  margin-left: 20px; /* Make space for the sidebar */
+  padding: 10px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 200px); /* Adjust width to avoid overflowing */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Year and Semester Sections */
+.year-section {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.semester-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap; /* Ensures that if there is too much content, it wraps onto a new row */
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.semester-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1%;
+  box-sizing: border-box;
+  max-width: 48%; /* Limit width so two columns fit on the page */
+}
+
+/* Course Card Container */
+.courses-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Ensures cards stay within the container and wrap to a new row if needed */
+  justify-content: center;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ensure container takes full width */
+  overflow-x: auto; /* Allow horizontal scrolling if necessary */
+
+}
+
+/* Individual Course Card */
+.OutlinedCard { /* Target the content area of the card */
+  overflow: hidden; /* Hide any overflowing text */
+  text-overflow: ellipsis; /* Add ellipsis (...) if text overflows */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gen-section {
+    margin-left: 0; /* Remove space for sidebar */
+    width: 100%; /* Full width on smaller screens */
+    padding: 10px;
+  }
+
+  .semester-column {
+    max-width: 100%; /* Make columns full width */
+  }
+
+  .semester-section {
+    flex-direction: column;
+  }
+
+  .OutlinedCard {
+    width: 100%; /* Make cards take full width on small screens */
+  }
+}
+/*logout style*/
+.logout li{
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  background-color: red;
+  margin-top: 110px;
+  margin-right: 40px;
+}
+.logout a {
+  color: rgb(255, 255, 255); /* White text for good contrast */
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem;
+  transition: background-color 0.3s ease; /* Smooth hover effect */
 }

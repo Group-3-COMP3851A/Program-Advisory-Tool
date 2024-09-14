@@ -7,7 +7,7 @@ import Link from '../components/Link'; // Importing the Link component
 const Profile = () => {
   return (
 	<div className='global'>
-		<Menu curentPage="select"/>
+		
 		<div className='main-section'>
         {/* Centered content container */}
         <Text type="h1">Profile Page</Text> {/* Heading for the Profile page */}

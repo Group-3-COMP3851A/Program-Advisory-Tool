@@ -15,7 +15,7 @@ const Completed = () => {
 
     return (
 		<div className='global'>
-            <Menu curentPage="select"/>
+            
 			<div className='main-section'>
                 {/* Centered content container */}
                 <Text type="h1">Completed Courses</Text> {/* Heading for the Completed Courses page */}

@@ -7,7 +7,7 @@ import Link from '../components/Link';
 const ViewPlanner = () => {
   return (
 	<div className='global'>
-        <Menu curentPage="select"/>
+        
 		<div className='main-section'>
 			<Text type="h1">Profile Page</Text>
 			<Text type="h2">Welcome to your profile!</Text>

@@ -162,7 +162,7 @@ const Select = () => {
 
     return (
 		<div className='global'>
-            <Menu curentPage="select"/>
+            
 			<div className='main-section'>
                 {/* Centered content container */}
                 <Text type="h1">Welcome to Program Planner.</Text>

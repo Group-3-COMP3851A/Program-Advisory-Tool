@@ -7,7 +7,7 @@ import Link from '../components/Link';
 const Help = () => {
   return (
 		<div className='global'>
-            <Menu curentPage="select"/>
+            
 			<div className='main-section'>
 				<Text type="h1">Help Page</Text>
 			</div>

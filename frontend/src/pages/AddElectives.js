@@ -46,7 +46,7 @@ const AddElectives = () => {
 
     return (
 		<div className='global'>
-            <Menu curentPage="select"/>
+            
 			<div className='main-section'>
                 {/* Centered content container */}
                 <Text type="h1">Add Electives</Text> {/* Heading for the Add Electives page */}
