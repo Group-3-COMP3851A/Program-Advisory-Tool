@@ -10,10 +10,8 @@ export default class algorithmCtrl {
             // Perform database query in order to get the course list
             const courseList = await algorithmDAO.getCourseList(degree, major);
             const directedObject = await algorithmDAO.getDirectedPlaceholders(major);
-            
-            const completedCourseList = completedCourses ? completedCourses : [];
 
-            const handler = new AlgorithmHandler(courseList, directedObject, completedCourseList, semCount, coursesPerSem);
+            const handler = new AlgorithmHandler(courseList, directedObject, completedCourses, semCount, coursesPerSem);
 
             const coursePlan = handler.planSchedule;
 

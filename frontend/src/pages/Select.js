@@ -12,7 +12,7 @@ import { AppContext } from '../AppContext';
 //test
 const Select = () => {
     // Initializing state variables using the useState hook
-    const { degree, setDegree, major, setMajor, semCount, setSemCount, coursesPerSem, setCoursesPerSem } = useContext(AppContext);
+    const { degree, setDegree, major, setMajor, semCount, setSemCount, coursesPerSem, setCoursesPerSem, completedCourses, setCompletedCourses } = useContext(AppContext);
     const [degreeList, setDegreeList] = useState([]); // State for storing the list of available degrees
     const [majorList, setMajorList] = useState([]); // State for storing the list of available majors based on the selected degree
     const [showPopUp, setShowPopUp] = useState(false); // State for controlling the visibility of the first PopUp
@@ -104,7 +104,7 @@ const Select = () => {
     const handlePopUpConfirmYes = () => {
         // Handler function when the user confirms "Yes" in the first PopUp
         setShowPopUp(false); // Close the first PopUp
-        navigate('/completed', { state: { degree, major, semCount, coursesPerSem } }); // Navigate to the '/completed' route
+        navigate('/completed', { state: { degree, major, semCount, coursesPerSem, completedCourses } }); // Navigate to the '/completed' route
     };
 
     const handlePopUpConfirmNo = () => {
@@ -133,7 +133,7 @@ const Select = () => {
             setErrorMessage('Please select both degree and major before continuing.'); // Set an error message if degree or major is not selected
             return; // Exit the function early
         }
-        navigate('/generate-plan', { state: { degree, major, semCount, coursesPerSem } }); // Navigate to the '/generate-plan' route if both degree and major are selected
+        navigate('/generate-plan', { state: { degree, major, semCount, coursesPerSem, completedCourses } }); // Navigate to the '/generate-plan' route if both degree and major are selected
     };
 
     return (
