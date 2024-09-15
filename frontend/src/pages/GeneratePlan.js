@@ -12,12 +12,12 @@ import { Box } from '@mui/material';
 
 const GeneratePlan = () => {
     const location = useLocation();
-    const { degree, major, semCount, coursesPerSem } = location.state || {};
+    const { degree, major, semCount, coursesPerSem, completedCourses } = location.state || {};
     const [courseList, setCourseList] = useState([]);
     const navigate = useNavigate(); // Initializing the useNavigate hook for navigation
     const [activeId, setActiveId] = useState(null); //active drag item
 
-    const getCourseList = (degree, major, semCount, coursesPerSem) => {
+    const getCourseList = (degree, major, semCount, coursesPerSem, completedCourses) => {
         fetch('http://localhost:3001/api/algorithm/getCourseList', {
           method: 'POST',
           headers: {
@@ -28,12 +28,13 @@ const GeneratePlan = () => {
             degree,
             major,
             semCount,
-            coursesPerSem
+            coursesPerSem,
+            completedCourses: [] // Plan fails to generate currently
           }),
           })
           .then(response => response.json())
           .then(data => {
-            console.log(data.courseList);
+            //console.log(data.courseList);
             setCourseList(data.courseList || []);
           })
           .catch((error) => {
@@ -42,9 +43,9 @@ const GeneratePlan = () => {
       }
 
     useEffect(() => {
-        getCourseList(degree, major, semCount, coursesPerSem);
+        getCourseList(degree, major, semCount, coursesPerSem, completedCourses);
         
-    }, [coursesPerSem, degree, major, semCount]);
+    }, [degree, major, semCount, coursesPerSem, completedCourses]);
 
     const handleDragStart = (event) => {
         const {active} = event;
