@@ -29,7 +29,7 @@ const GeneratePlan = () => {
             major,
             semCount,
             coursesPerSem,
-            completedCourses: [] // Plan fails to generate currently
+            completedCourses
           }),
           })
           .then(response => response.json())
