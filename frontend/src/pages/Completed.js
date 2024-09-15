@@ -9,8 +9,8 @@ import { AppContext } from '../AppContext';
 
 const Completed = () => {
     const location = useLocation();
-    const { degree, major, semCount, coursesPerSem, completedCourses } = location.state || {};
-    const { setCompletedCourses } = useContext(AppContext);
+    const { degree, major, semCount, coursesPerSem } = location.state || {};
+    const { completedCourses, setCompletedCourses } = useContext(AppContext);
     const [courseList, setCourseList] = useState([]);
     const navigate = useNavigate(); // Initializing the useNavigate hook for navigation
     
