@@ -4,7 +4,7 @@ import Button from './Button'; // Import the Button component for rendering butt
 import Dropdown from './Dropdown'; // Import the Dropdown component for rendering a dropdown menu
 //import '..styles/Popup.css';
 
-const PopUp = ({ message, options, onClose, onConfirmYes, onConfirmNo, onOptionSelect }) => { // Define the PopUp functional component with props
+const PopUp = ({ message, options, value, onClose, onConfirmYes, onConfirmNo, onOptionSelect }) => { // Define the PopUp functional component with props
   return (
     <div style={{
       position: 'fixed', // Fix the position of the popup relative to the viewport
@@ -26,7 +26,7 @@ const PopUp = ({ message, options, onClose, onConfirmYes, onConfirmNo, onOptionS
         <Dropdown
           id="courses-dropdown" // Assign a unique ID to the dropdown
           label="Select number of courses:" // Set the label for the dropdown
-          value = ''
+          value={value}
           options={options} // Pass the options to the Dropdown component
           onChange={onOptionSelect} // Handle option selection with the provided function
         />
