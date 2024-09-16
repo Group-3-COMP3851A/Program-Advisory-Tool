@@ -74,8 +74,8 @@ const GeneratePlan = () => {
 
     return (
         <div className='global'>
-            <Menu curentPage="select"/>
-            <div className='main-section'>
+      
+            <div className='gen-section'>
                 {/* Main content container */}
                 <Text type="h1" style={{ marginBottom: '1%'}}>Course Plan for {major} Major</Text> {/* Page heading */}
                 <Button onClick={handleEditClick} text="Edit" color="#007bff" /> {/* Edit button, triggers handleEditClick function */}
@@ -95,7 +95,7 @@ const GeneratePlan = () => {
                                     //each semester should be it's own sortableContext with items value equal to the courses that are in the semester.
                                     //use rectswappingstrategy since it seems to be able to shuffle courses along - this may not work as intended due to the fact we are swapping containers
                                     //potentially just show some kind of highligh on the card that is going to be swapped
-                                    <div key={semesterIndex} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2%' }}>
+                                    <div key={semesterIndex} className='semester-section' >
                                         <DropArea items={courseList[yearIndex][semesterIndex]} semesterIndex={semesterIndex}>
                                             <Box sx = {{
                                                 minHeight: '200px', // Setting a minimum height for the drop area to ensure it occupies sufficient space

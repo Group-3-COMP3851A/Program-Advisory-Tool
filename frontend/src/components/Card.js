@@ -16,7 +16,7 @@ export default function OutlinedCard(props) {
     coursesPerSem = localStorage.getItem('coursesPerSem');
   } else localStorage.setItem('coursesPerSem', coursesPerSem);
 
-  let cardStyle = {width: `${100/coursesPerSem}%`, margin: '1%'};
+  let cardStyle = {width: `${800/coursesPerSem}px`, margin: '1%'};
 
   const {
     attributes,
@@ -42,11 +42,11 @@ export default function OutlinedCard(props) {
       return (
         <Card sx={{...cardStyle, ...style}} ref={setNodeRef} {...attributes} {...listeners}>
           <CardActionArea>
-            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '0.6rem'}}>
+              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold', fontSize: '0.6rem' }}>
 	    	        {courseType}
               </Typography>
-              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
+              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.1rem'}}>
                 Units: {10}
               </Typography>
             </CardContent>
@@ -59,12 +59,12 @@ export default function OutlinedCard(props) {
         <Card sx={{...cardStyle, ...style}} ref={setNodeRef} {...attributes} {...listeners}>
           <CardActionArea>
             <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', textDecoration: 'underline', fontWeight: 'bold'}} 
+              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', textDecoration: 'underline', fontWeight: 'bold', fontSize: '0.6rem'}} 
                 onClick={() => window.open(getCourseURL(props.text._id), "_blank", 'noopener,noreferrer')}
               >
 	    	        {getFullCourseCode(props.text._id)}
               </Typography>
-              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '1rem'}}>
+              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.7rem'}}>
                 {props.text.course_name}
               </Typography>
               <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
