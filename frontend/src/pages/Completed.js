@@ -7,6 +7,12 @@ import Link from '../components/Link'; // Importing the Link component
 import { useNavigate, useLocation } from 'react-router-dom'; // Importing the useNavigate hook from react-router-dom
 import { AppContext } from '../AppContext';
 
+// Will probably have to create another card component
+import CardActionArea from '@mui/material/CardActionArea';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
 const Completed = () => {
     const location = useLocation();
     const { degree, major, semCount, coursesPerSem } = location.state || {};
@@ -86,35 +92,84 @@ const Completed = () => {
 
     return (
 		<div className='global'>
-            <Menu curentPage="select"/>
+      <Menu curentPage="select"/>
 			<div className='main-section'>
-                {/* Centered content container */}
-                <Text type="h1">Completed Courses</Text> {/* Heading for the Completed Courses page */}
-                <Text type="h2">Great! It looks like you have completed some courses before.</Text> {/* Subheading indicating course completion */}
-                <Text type="p">Based on your input, we will proceed with setting up your program. If you have any specific details or requirements, please let us know.</Text> {/* Additional instructions or information */}
-
-                <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                    <div>
-                        <Text type="h3">All Courses:</Text>
-                        {courseList.map(course => (
-                            <div key={course._id} onClick={() => handleCourseSelect(course)} style={{cursor: 'pointer'}}>
-                                {getFullCourseCode(course._id)} - {course.course_name}
-                            </div>
-                        ))}
-                    </div>
-                    <div>
-                        <Text type="h3">Completed Courses:</Text>
-                        {completedCourses.map(course => (
-                            <div key={course._id}>
-                                {getFullCourseCode(course._id)} - {course.course_name}
-                            </div>
-                        ))}
-                    </div>
+        {/* Centered content container */}
+        <Text type="h1">Completed Courses</Text> {/* Heading for the Completed Courses page */}
+        <Text type="h2">Great! It looks like you have completed some courses before.</Text> {/* Subheading indicating course completion */}
+        <Text type="p">Based on your input, we will proceed with setting up your program. If you have any specific details or requirements, please let us know.</Text> {/* Additional instructions or information */}
+          <div style={{  flex: 1, display: 'flex', flexDirection: 'row', alignItems: 'center', margin: '0.5%', width: '95%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '%', width: '100%' }}>
+                <div style={{  flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'left', margin: '0%', width: '100%' }}>
+                  <Text type="h3">All Courses:</Text>
                 </div>
-
-                <Button onClick={handleNext} text="Continue" /> {/* Button to continue to the next step, triggers handleNext function */}
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2%', width: '95%' }}>
+                  <Box sx = {{
+                      minHeight: '200px', // Setting a minimum height for the drop area to ensure it occupies sufficient space
+                      width: '100%', // Making the drop area take up the full width of its parent container
+                      border: '1px solid #ccc', // Adding a solid border with a light gray color around the drop area
+                      borderRadius: '4px', // Rounding the corners of the drop area
+                      padding: '16px', // Adding padding inside the drop area to create space between the border and the content
+                      flex: 1, 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      alignItems: 'center'
+                  }}>
+                    {courseList.map(course => (
+                        <div key={course._id} onClick={() => handleCourseSelect(course)} style={{cursor: 'pointer', margin: '1%', width: '100%'}}>
+                          <CardActionArea>
+                            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
+                                {getFullCourseCode(course._id)}
+                              </Typography>
+                              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '1rem'}}>
+                                {course.course_name}
+                              </Typography>
+                            </CardContent>
+                          </CardActionArea>
+                        </div>
+                    ))}
+                  </Box>
+                </div>
             </div>
-        </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '1%', width: '100%' }}>
+                <div style={{  flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'left', margin: '0%', width: '100%'}}>
+                  <Text type="h3">Completed Courses:</Text>
+                </div>
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2%', width: '95%'}}>
+                  <Box sx = {{
+                      minHeight: '200px', // Setting a minimum height for the drop area to ensure it occupies sufficient space
+                      width: '100%', // Making the drop area take up the full width of its parent container
+                      height: '100%', // Making the drop area take up the full width of its parent container
+                      border: '1px solid #ccc', // Adding a solid border with a light gray color around the drop area
+                      borderRadius: '4px', // Rounding the corners of the drop area
+                      padding: '16px', // Adding padding inside the drop area to create space between the border and the content
+                      flex: 1, 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      alignItems: 'center'
+                  }}>
+                    {completedCourses.map(course => (
+                        <div key={course._id} style={{margin: '1%', width: '100%'}}>
+                          <CardActionArea>
+                            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
+                                {getFullCourseCode(course._id)}
+                              </Typography>
+                              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '1rem'}}>
+                                {course.course_name}
+                              </Typography>
+                            </CardContent>
+                          </CardActionArea>
+                        </div>
+                    ))}
+                  </Box>
+                </div>
+            </div>
+          </div>
+        <Button onClick={handleNext} text="Continue" /> {/* Button to continue to the next step, triggers handleNext function */}
+      </div>
+    </div>
     );
 };
 
