@@ -1,15 +1,12 @@
-import React, { useContext } from 'react';
-import Box from '@mui/material/Box';
+import React, { forwardRef, useContext } from 'react';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { AppContext } from '../AppContext';
-import { useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
 
-export default function OutlinedCard(props) {
+export const OutlinedCard = ({text, ...props}) => {
+
 
   let { coursesPerSem } = useContext(AppContext);
   if (!coursesPerSem) {
@@ -18,29 +15,16 @@ export default function OutlinedCard(props) {
 
   let cardStyle = {width: `${800/coursesPerSem}px`, margin: '1%'};
 
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-  } = useSortable({id: props.id});
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  }
-
   // This might not be the best way to do this, but it works, for the time being
-  switch (props.text.code)
+  switch (text.code)
   {
     case "elective":
     case "directed":
 
-      let courseType = props.text.code === "elective" ? "Elective" : "Directed Course"; 
+      let courseType = text.code === "elective" ? "Elective" : "Directed Course"; 
 
       return (
-        <Card sx={{...cardStyle, ...style}} ref={setNodeRef} {...attributes} {...listeners}>
+        <Card sx={{...cardStyle}}>
           <CardActionArea>
             <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '0.6rem'}}>
               <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold', fontSize: '0.6rem' }}>
@@ -56,21 +40,21 @@ export default function OutlinedCard(props) {
     default:
       
       return (
-        <Card sx={{...cardStyle, ...style}} ref={setNodeRef} {...attributes} {...listeners}>
+        <Card sx={{...cardStyle}}>
           <CardActionArea>
             <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
               <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', textDecoration: 'underline', fontWeight: 'bold', fontSize: '0.6rem'}} 
-                onClick={() => window.open(getCourseURL(props.text._id), "_blank", 'noopener,noreferrer')}
+                onClick={() => window.open(getCourseURL(text._id), "_blank", 'noopener,noreferrer')}
               >
-	    	        {getFullCourseCode(props.text._id)}
+	    	        {getFullCourseCode(text._id)}
               </Typography>
               <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.7rem'}}>
-                {props.text.course_name}
+                {text.course_name}
               </Typography>
               <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
-	    		      Units: {props.text.credits}
+	    		      Units: {text.credits}
               </Typography>
-              {/* <Button variant="contained" color="primary" component="a" href={getCourseURL(props.text._id)} target="_blank" rel="noopener noreferrer">
+              {/* <Button variant="contained" color="primary" component="a" href={getCourseURL(text._id)} target="_blank" rel="noopener noreferrer">
                 Course Handbook
               </Button> */}
             </CardContent>

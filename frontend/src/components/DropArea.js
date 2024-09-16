@@ -1,5 +1,4 @@
 import React from 'react'; // Importing React to use JSX and other React features
-import { useDraggable } from '@dnd-kit/core'
 import { rectSwappingStrategy, SortableContext } from '@dnd-kit/sortable';
 
 const DropArea = (props) => { // Defining a functional component named DropArea that accepts children as a prop

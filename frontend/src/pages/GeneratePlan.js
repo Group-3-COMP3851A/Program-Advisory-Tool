@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'; // Importing React, useState, and useEffect hooks
 import '../styles/style.css';
-import OutlinedCard from '../components/Card'; // Importing the Card component
+import {OutlinedCard} from '../components/Card'; // Importing the Card component
 import DropArea from '../components/DropArea'; // Importing the DropArea component
 import Text from '../components/Text'; // Importing the Text component
-import Menu from '../components/Menu'; // Importing the Menu component
 import Button from '../components/Button'; // Importing the Button component
 import { useNavigate, useLocation } from 'react-router-dom'; // Importing the useNavigate hook from react-router-dom
 import Link from '../components/Link'; // Importing the Link component
-import { DndContext, DragOverlay } from '@dnd-kit/core';
+import { defaultDropAnimation, defaultDropAnimationSideEffects, DndContext, DragOverlay } from '@dnd-kit/core';
 import { Box } from '@mui/material';
+import { CardWrapper } from '../components/CardWrapper';
 
 const GeneratePlan = () => {
     const location = useLocation();
@@ -47,23 +47,35 @@ const GeneratePlan = () => {
         
     }, [degree, major, semCount, coursesPerSem, completedCourses]);
 
+    //TODO: Implement an efficient way to find the course that is being dragged given the ID of it
+        //just need to loop through the courseList array and find the course with the ID
     const handleDragStart = (event) => {
         const {active} = event;
-        console.log(active.id);
-        const index = courseList.findIndex((year) => {
-            year.forEach((semester) => {
-                semester.forEach((course) => {
-                    if(course._id === active.id) return 1;
-                })
-                
-            });
-            return -1}
-        );
+        let index, found = false;
+        for (let i = 0; i < courseList.length && !found; i++) {
+            const year = courseList[i];
+            for (let j = 0; j < year.length && !found; j++) {
+                const semester = year[j];
+                for (let k = 0; k < semester.length && !found; k++) {
+                    const course = semester[k];
+                    if (course.code && course.code === active.id.substring(0, active.id.length-1)) {
+                        index = [i, j, k];
+                        found = true;
+                    }
+                    if (course._id === active.id) {
+                        index = [i, j, k];
+                        found = true;
+                    }
+                }
+            }
+        };
         console.log(index);
         setActiveId(index);
     }
     
     const handleDragEnd = (event) => {
+        const {active, over} = event;
+        console.log(over)
         setActiveId(null);
     }
 
@@ -80,6 +92,10 @@ const GeneratePlan = () => {
                 {/* Main content container */}
                 <Text type="h1" style={{ marginBottom: '1%'}}>Course Plan for {major} Major</Text> {/* Page heading */}
                 <Button onClick={handleEditClick} text="Edit" color="#007bff" /> {/* Edit button, triggers handleEditClick function */}
+                <DndContext
+                                onDragStart={handleDragStart}
+                                onDragEnd={handleDragEnd}
+                            >
                 {Object.keys(courseList).map((year, yearIndex) => (
                     // Iterate over each year in groupedCards
                     <div key={yearIndex} style={{  flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0.5%', width: '95%' }}>
@@ -87,10 +103,6 @@ const GeneratePlan = () => {
                             <Text type="h2" style={{ margin: '0.5%'}}>Year {yearIndex + 1}</Text> {/* Display the year */}
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', margin: '0%', width: '100%' }}>
-                            <DndContext
-                                onDragStart={handleDragStart}
-                                onDragEnd={handleDragEnd}
-                            >
                                 {Object.keys(courseList[yearIndex]).map((semester, semesterIndex) => (
                                     // Iterate over each semester in the year
                                     //each semester should be it's own sortableContext with items value equal to the courses that are in the semester.
@@ -112,19 +124,34 @@ const GeneratePlan = () => {
                                                 {/* DropArea component to hold the course cards */}
                                                 {courseList[yearIndex][semesterIndex].map((course, i) => (
                                                     // Iterate over each course in the semester and display a Card component
-                                                    <OutlinedCard key={course._id ? course._id : course.code + semesterIndex.toString()} text={course} id={course._id ? course._id : course.code + semesterIndex.toString()}/> 
+                                                    //TODO: make the directed and elective IDs more unique (semester + course index)
+                                                    <CardWrapper key={course._id ? course._id : course.code + semesterIndex.toString()} id={course._id ? course._id : course.code + semesterIndex.toString()} >
+                                                        <OutlinedCard text={course}/> 
+                                                    </CardWrapper>
                                                 ))}
                                             </Box>
                                         </DropArea>
-                                        {/* <DragOverlay>
-                                            {activeId ? courseList[yearIndex][semesterIndex][activeId] : null}
-                                        </DragOverlay> */}
+                                        <DragOverlay
+                                            dropAnimation={{
+                                                ...defaultDropAnimation,
+                                                sideEffects: defaultDropAnimationSideEffects({
+                                                    styles: {
+                                                        active: {
+                                                            opacity: '1',
+                                                        },
+                                                    },
+                                                }),
+                                            }}
+                                        >
+                                            {activeId ? <OutlinedCard text={courseList[activeId[0]][activeId[1]][activeId[2]]}/> : null}
+                                        </DragOverlay>
                                     </div>
                                 ))}
-                            </DndContext>
                         </div>
                     </div>
+                    
                 ))}
+                </DndContext>
             </div>
         </div>
     );
