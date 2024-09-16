@@ -11,13 +11,23 @@ export default class algorithmCtrl {
             const courseList = await algorithmDAO.getCourseList(degree, major);
             const directedObject = await algorithmDAO.getDirectedPlaceholders(major);
 
-            const handler = new AlgorithmHandler(courseList, directedObject, completedCourses, semCount, coursesPerSem);
+            const completedCourseIds = completedCourses.map(course => course._id);
+
+            const filteredCourseList = courseList.filter(course => !completedCourseIds.includes(course._id));
+
+            const handler = new AlgorithmHandler(filteredCourseList, directedObject, completedCourses, semCount, coursesPerSem);
 
             const coursePlan = handler.planSchedule;
 
             const courseMap = new Map(courseList.map(course => [course._id, course]));
 
-            const schedule = coursePlan.map(semester => semester.map(course => courseMap.get(course.code) || course));
+            const schedule = coursePlan.map(semester => 
+                semester.map(course => 
+                    course ? (courseMap.get(course.code) || course) : {"code": "completed"}
+                )
+            );
+
+            console.log(schedule);
 
             const scheduleMap = [];
 

@@ -53,6 +53,21 @@ export default function OutlinedCard(props) {
           </CardActionArea>
         </Card>
       );
+    
+    case "completed":
+
+      return (
+        <Card sx={{...cardStyle, ...style}} ref={setNodeRef} {...attributes} {...listeners}>
+          <CardActionArea>
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
+	    	        Completed Course
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      );
+
     default:
       
       return (
