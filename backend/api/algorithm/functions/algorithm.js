@@ -204,7 +204,7 @@ class Algorithm {
         placements.forEach((placement) => {
             //since directeds store the year and semester of the directed, year-1 * 2 + semester will find the correct semester (e.g year 3 sem 1 = 3-1 * 2 + 1 = 5th semester which is correct)
             //note the -1 on the end because arrays start at 0 not 1
-            schedule[(placement.year-1)*2 + placement.semester - 1][0] = {code: "directed"};
+            schedule[(placement.year-1)*2 + placement.semester - 1][0] = {code: "directed", semester_offered: placement.semester};
         })
         
     }
