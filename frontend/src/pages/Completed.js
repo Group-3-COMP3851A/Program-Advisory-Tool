@@ -105,7 +105,6 @@ const Completed = () => {
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2%', width: '95%' }}>
                   <Box sx = {{
-                      minHeight: '200px', // Setting a minimum height for the drop area to ensure it occupies sufficient space
                       width: '100%', // Making the drop area take up the full width of its parent container
                       border: '1px solid #ccc', // Adding a solid border with a light gray color around the drop area
                       borderRadius: '4px', // Rounding the corners of the drop area
@@ -138,9 +137,7 @@ const Completed = () => {
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2%', width: '95%'}}>
                   <Box sx = {{
-                      minHeight: '200px', // Setting a minimum height for the drop area to ensure it occupies sufficient space
                       width: '100%', // Making the drop area take up the full width of its parent container
-                      height: '100%', // Making the drop area take up the full width of its parent container
                       border: '1px solid #ccc', // Adding a solid border with a light gray color around the drop area
                       borderRadius: '4px', // Rounding the corners of the drop area
                       padding: '16px', // Adding padding inside the drop area to create space between the border and the content
