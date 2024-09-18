@@ -23,7 +23,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Select />} />
               <Route path="/profile" element={<Profile />} />
-              
               <Route path="/help" element={<Help />} />
               <Route path="/completed" element={<Completed />} />
               <Route path="/add-electives" element={<AddElectives />} />
