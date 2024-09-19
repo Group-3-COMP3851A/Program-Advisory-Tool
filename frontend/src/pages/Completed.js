@@ -3,7 +3,6 @@ import '../styles/style.css';
 import Menu from '../components/Menu'; // Importing the Menu component
 import Text from '../components/Text'; // Importing the Text component
 import Button from '../components/Button'; // Importing the Button component
-import Link from '../components/Link'; // Importing the Link component
 import { useNavigate, useLocation } from 'react-router-dom'; // Importing the useNavigate hook from react-router-dom
 import { AppContext } from '../AppContext';
 
@@ -87,7 +86,7 @@ const Completed = () => {
     }
 
     const handleNext = () => {
-        navigate('/generate-plan', { state: { degree, major, semCount, coursesPerSem, completedCourses } }); // Function to navigate to the "Generate Plan" page when the button is clicked
+        navigate('/plan', { state: { degree, major, semCount, coursesPerSem, completedCourses } }); // Function to navigate to the "Generate Plan" page when the button is clicked
     };
 
     return (
