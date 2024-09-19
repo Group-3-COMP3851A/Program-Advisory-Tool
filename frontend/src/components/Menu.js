@@ -12,6 +12,7 @@ function Menu() {
       <ul className="menu-list">
         <li><Link to="/profile" text="Profile" /></li>
         <li><Link to="https://askuon.newcastle.edu.au/" text="Ask Uon" external /></li>
+        <div className = "menu-divide"></div>
         <li><Link to="/completed" text="Completed" /></li>
         <li><Link to="/plan" text="Plan" /></li>
         <li><Link to="/select" text="Create new planner" /></li>

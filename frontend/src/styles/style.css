@@ -269,19 +269,20 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
+
   width: 100%; /* Ensure it takes full width of menu */
 }
 
 /* Menu Items */
 .menu-list li {
   margin-bottom: 1rem;
-  background-color: white; /* Black background for items */
+  background-color: rgb(0, 0, 0); /* Black background for items */
   border-radius: 5px;
   text-align: center;
 }
 
 .menu-list a {
-  color: rgb(1, 1, 1); /* White text for good contrast */
+  color: rgb(255, 255, 255); /* White text for good contrast */
   text-decoration: none;
   display: block;
   padding: 0.75rem;
@@ -290,15 +291,25 @@
 
 .menu-list a:hover {
   background-color: #000000; 
-  color: white;
+  color: rgb(255, 255, 255);
   border-radius: 4px;
+}
+
+/* Divider styling */
+.menu-divide {
+  border-top: 2px solid blue; /* Blue line */
+  margin: 1rem 0; /* Space above and below the line */
+  width: 100%; /* Full width of the menu */
 }
 
 /* Main Content Area */
 .main-section {
   width: 100%;
   margin-left: 5%; /* Account for the fixed menu width */
-  background-color: rgb(255, 255, 255); /* White background */
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: #add8e6; /* White background */
   height: 100vh; /* Full height */
   color: black;
   display: flex;
@@ -336,7 +347,8 @@
     position: relative;
   }
   .main-section {
-    width: 100%;
+    width: 50%;
+    height: 50%;
     margin-left: 0;
   }
 }
@@ -349,9 +361,16 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: #ffffff; /* White background */
   box-sizing: border-box;
-;
+}
+
+.blue {
+  display: flex;
+  width: 70%;
+  min-height: 70vh;
+  background-color: #add8e6; /* Light blue background */
+  box-sizing: border-box;
 }
 
 /* Sidebar adjustments */
@@ -448,7 +467,7 @@
   margin-bottom: 1rem;
   border-radius: 5px;
   text-align: center;
-  background-color: red;
+  background-color: rgb(139, 6, 6);
   margin-top: 110px;
   margin-right: 40px;
 }
