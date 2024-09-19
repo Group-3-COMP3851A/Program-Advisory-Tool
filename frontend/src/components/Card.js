@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
@@ -7,28 +7,76 @@ import { AppContext } from '../AppContext';
 
 export const OutlinedCard = ({text, ...props}) => {
 
+  const [directedCourseList, setDirectedCourseList] = useState([]);
 
-  let { coursesPerSem } = useContext(AppContext);
+  let { major, coursesPerSem, completedCourses } = useContext(AppContext);
+  if (!major) {
+    major = localStorage.getItem('major');
+  } else localStorage.setItem('major', major);
+
   if (!coursesPerSem) {
     coursesPerSem = localStorage.getItem('coursesPerSem');
   } else localStorage.setItem('coursesPerSem', coursesPerSem);
 
+  if (!completedCourses) {
+    completedCourses = localStorage.getItem('completedCourses');
+  } else localStorage.setItem('completedCourses', completedCourses);
+
   let cardStyle = {width: `${800/coursesPerSem}px`, margin: '1%'};
+
+  const getDirectedCourseFromSemester = (major, semester, completedCourses) =>{
+    fetch('http://localhost:3001/api/course/getDirectedListFromSemester', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        major,  
+        semester,
+        completedCourses
+      }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        //console.log(data.courseList);
+        setDirectedCourseList(data.courseList || []);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
 
   // This might not be the best way to do this, but it works, for the time being
   switch (text.code)
   {
     case "elective":
+
+      return (
+        <Card sx={{...cardStyle}}>
+          <CardActionArea>
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
+                Elective
+              </Typography>
+              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
+                Units: {10}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      );
+
     case "directed":
 
-      let courseType = text.code === "elective" ? "Elective" : "Directed Course"; 
+      // This keeps looping indefinitely, really need to sort that out
+      //getDirectedCourseFromSemester(major, text.semester_offered, completedCourses);
 
       return (
         <Card sx={{...cardStyle}}>
           <CardActionArea>
             <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '0.6rem'}}>
               <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold', fontSize: '0.6rem' }}>
-	    	        {courseType}
+                Directed Course
               </Typography>
               <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.1rem'}}>
                 Units: {10}
@@ -37,6 +85,21 @@ export const OutlinedCard = ({text, ...props}) => {
           </CardActionArea>
         </Card>
       );
+
+    case "completed":
+
+      return (
+        <Card sx={{...cardStyle}}>
+          <CardActionArea>
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
+	    	        Completed Course
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      );
+
     default:
       
       return (
