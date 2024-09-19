@@ -4,7 +4,6 @@ import Menu from '../components/Menu'; // Importing the Menu component
 import Dropdown from '../components/Dropdown'; // Importing the Dropdown component
 import Text from '../components/Text'; // Importing the Text component
 import Button from '../components/Button'; // Importing the Button component
-import Link from '../components/Link'; // Importing the Link component
 import PopUp from '../components/PopUp'; // Importing the PopUp component
 import { useNavigate } from 'react-router-dom'; // Importing useNavigate hook for navigation
 import { AppContext } from '../AppContext';
@@ -12,14 +11,13 @@ import { AppContext } from '../AppContext';
 //test
 const Select = () => {
     // Initializing state variables using the useState hook
-    const { degree, setDegree, major, setMajor, semCount, setSemCount, coursesPerSem, setCoursesPerSem } = useContext(AppContext);
+    const { degree, setDegree, major, setMajor, semCount, setSemCount, coursesPerSem, setCoursesPerSem, completedCourses, setCompletedCourses } = useContext(AppContext);
     const [degreeList, setDegreeList] = useState([]); // State for storing the list of available degrees
     const [majorList, setMajorList] = useState([]); // State for storing the list of available majors based on the selected degree
     const [showPopUp, setShowPopUp] = useState(false); // State for controlling the visibility of the first PopUp
     const [showSecondPopUp, setShowSecondPopUp] = useState(false); // State for controlling the visibility of the second PopUp
     const [dropdownOptions, setDropdownOptions] = useState([]); // State for storing the options for the second PopUp dropdown
     const [errorMessage, setErrorMessage] = useState(''); // State for storing any error message related to form submission
-    const [courseList, setCourseList] = useState('');
     const navigate = useNavigate(); // Initializing the useNavigate hook for programmatically navigating between routes
 
     useEffect(() => {
@@ -62,27 +60,6 @@ const Select = () => {
         }
     };
 
-    const getFullCourseList = (degree, major) =>{
-        fetch('http://localhost:3001/api/course/getFullCourseList', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            degree,
-            major,
-          }),
-          })
-          .then(response => response.json())
-          .then(data => {
-            //console.log(data.courseList);
-            setCourseList(data.courseList || []);
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-    };
-
     function getSemesterCount(coursesPerSemester)
     {
         let count = 0;
@@ -120,20 +97,18 @@ const Select = () => {
     const handlePopUpClose = () => {
         // Handler function to close the first PopUp
         setShowPopUp(false); // Set the showPopUp state to false
+        setShowSecondPopUp(true); // Show the second PopUp
     };
 
     const handlePopUpConfirmYes = () => {
         // Handler function when the user confirms "Yes" in the first PopUp
         setShowPopUp(false); // Close the first PopUp
-        getFullCourseList(degree, major);
-        console.log(courseList);
-        navigate('/completed'); // Navigate to the '/completed' route
+        navigate('/completed', { state: { degree, major, semCount, coursesPerSem, completedCourses } }); // Navigate to the '/completed' route
     };
 
     const handlePopUpConfirmNo = () => {
         // Handler function when the user confirms "No" in the first PopUp
-        setShowPopUp(false); // Close the first PopUp
-        setShowSecondPopUp(true); // Show the second PopUp
+        setShowSecondPopUp(false); // Close the second PopUp
     };
 
     const handleSecondPopUpClose = () => {
@@ -157,7 +132,7 @@ const Select = () => {
             setErrorMessage('Please select both degree and major before continuing.'); // Set an error message if degree or major is not selected
             return; // Exit the function early
         }
-        navigate('/generate-plan', { state: { degree, major, semCount, coursesPerSem } }); // Navigate to the '/generate-plan' route if both degree and major are selected
+        navigate('/plan', { state: { degree, major, semCount, coursesPerSem, completedCourses } }); // Navigate to the '/generate-plan' route if both degree and major are selected
     };
 
     return (
@@ -190,23 +165,23 @@ const Select = () => {
 			{showPopUp && (
                 // Conditionally render the first PopUp if showPopUp is true
                 <PopUp 
-                    message="Have you completed any courses before?"
+                    message="How many courses do you plan to take per semester?"
+                    options={dropdownOptions}
+                    value={coursesPerSem}
                     onClose={handlePopUpClose}
-                    onConfirmYes={handlePopUpConfirmYes}
-                    onConfirmNo={handlePopUpConfirmNo}
+                    onOptionSelect={handleCoursesSelect}
                 />
             )}
             {showSecondPopUp && (
                 // Conditionally render the second PopUp if showSecondPopUp is true
                 <PopUp 
-                    message="How many courses do you plan to take per semester?"
-                    options={dropdownOptions}
-                    value={coursesPerSem}
+                    message="Have you completed any courses before?"
                     onClose={handleSecondPopUpClose}
-                    onOptionSelect={handleCoursesSelect}
+                    onConfirmYes={handlePopUpConfirmYes}
+                    onConfirmNo={handlePopUpConfirmNo}
                 />
             )}
-        </div>
+            </div>
     );
 };
 
