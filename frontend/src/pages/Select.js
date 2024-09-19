@@ -4,7 +4,6 @@ import Menu from '../components/Menu'; // Importing the Menu component
 import Dropdown from '../components/Dropdown'; // Importing the Dropdown component
 import Text from '../components/Text'; // Importing the Text component
 import Button from '../components/Button'; // Importing the Button component
-import Link from '../components/Link'; // Importing the Link component
 import PopUp from '../components/PopUp'; // Importing the PopUp component
 import { useNavigate } from 'react-router-dom'; // Importing useNavigate hook for navigation
 import { AppContext } from '../AppContext';
@@ -133,7 +132,7 @@ const Select = () => {
             setErrorMessage('Please select both degree and major before continuing.'); // Set an error message if degree or major is not selected
             return; // Exit the function early
         }
-        navigate('/generate-plan', { state: { degree, major, semCount, coursesPerSem, completedCourses } }); // Navigate to the '/generate-plan' route if both degree and major are selected
+        navigate('/plan', { state: { degree, major, semCount, coursesPerSem, completedCourses } }); // Navigate to the '/generate-plan' route if both degree and major are selected
     };
 
     return (

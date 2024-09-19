@@ -11,11 +11,9 @@ function Menu() {
       <img src={logo} alt="UoN Logo" className="menu-logo" />
       <ul className="menu-list">
         <li><Link to="/profile" text="Profile" /></li>
-        <li><Link to="/view-planner" text="View Planner" /></li>
-        <li><Link to="/help" text="Help" /></li>
         <li><Link to="https://askuon.newcastle.edu.au/" text="Ask Uon" external /></li>
         <li><Link to="/completed" text="Completed" /></li>
-        <li><Link to="/generate-plan" text="Generate Plan" /></li>
+        <li><Link to="/plan" text="Plan" /></li>
         <li><Link to="/select" text="Create new planner" /></li>
         <li ></li>
       </ul>

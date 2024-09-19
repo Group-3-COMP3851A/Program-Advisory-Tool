@@ -3,17 +3,15 @@ import '../styles/style.css';
 import { OutlinedCard } from '../components/Card';
 import DropArea from '../components/DropArea';
 import Text from '../components/Text';
-import Button from '../components/Button';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { defaultDropAnimation, defaultDropAnimationSideEffects, DndContext, DragOverlay } from '@dnd-kit/core';
 import { Box } from '@mui/material';
 import { CardWrapper } from '../components/CardWrapper';
 
-const GeneratePlan = () => {
+const Plan = () => {
     const location = useLocation();
     const { degree, major, semCount, coursesPerSem, completedCourses } = location.state || {};
     const [courseList, setCourseList] = useState([]);
-    const navigate = useNavigate();
     const [activeId, setActiveId] = useState(null);
 
     const getCourseList = (degree, major, semCount, coursesPerSem, completedCourses) => {
@@ -133,4 +131,4 @@ const GeneratePlan = () => {
     );
 };
 
-export default GeneratePlan;
+export default Plan;
