@@ -45,7 +45,7 @@ const GeneratePlan = () => {
     };
 
     return (
-		<div className='global'>
+		
 			<div className='gen-section'>
                 <Text type="h1" className="heading">Course Plan for {major} Major</Text>
                 <Button onClick={handleEditClick} text="Edit" color="#007bff" className="edit-button" />
@@ -75,7 +75,7 @@ const GeneratePlan = () => {
                     </div>
                 ))}
             </div>
-        </div>
+        
     );
 };
 
