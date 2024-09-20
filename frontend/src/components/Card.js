@@ -117,6 +117,9 @@ export const OutlinedCard = ({text, ...props}) => {
               <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
 	    		      Units: {text.credits}
               </Typography>
+              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
+	    		      Things you should Know: {text.assumed_warning} {text.requisites_warning}
+              </Typography>
               {/* <Button variant="contained" color="primary" component="a" href={getCourseURL(text._id)} target="_blank" rel="noopener noreferrer">
                 Course Handbook
               </Button> */}
