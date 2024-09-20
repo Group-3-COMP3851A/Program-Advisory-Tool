@@ -9,13 +9,15 @@ export const AppProvider = ({ children }) => {
     const [major, setMajor] = useState('');
     const [semCount, setSemCount] = useState('');
     const [coursesPerSem, setCoursesPerSem] = useState('');
+    const [completedCourses, setCompletedCourses] = useState([]);
 
     return (
         <AppContext.Provider value={{ 
             degree, setDegree, 
             major, setMajor, 
             semCount, setSemCount, 
-            coursesPerSem, setCoursesPerSem 
+            coursesPerSem, setCoursesPerSem,
+            completedCourses, setCompletedCourses 
             }}>
             {children}
         </AppContext.Provider>

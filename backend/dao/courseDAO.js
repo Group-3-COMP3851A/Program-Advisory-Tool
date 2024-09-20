@@ -104,4 +104,38 @@ export default class courseDAO{
             return [];
         }
     }
+
+    static async getDirectedListFromSemester(majorName, semester, completedCourses)
+    {
+        try{
+
+            let majorData = await major.findOne({ 
+                major_name: majorName, 
+            });
+            if (!majorData) throw new Error("Major not found for this degree");
+
+            let majorCoursesData = await majorCourses.find({ 
+                major_id:  majorData._id,
+                directed_status: true
+                }).toArray();
+            
+            let majorCourseIds = majorCoursesData.map(mc => mc.course_id);
+            
+            let coursesData = await courses
+                .find({ _id: { $in: majorCourseIds }, semester_offered: semester })
+                .toArray();
+
+            let completedCourseIds = completedCourses.map(course => course._id);
+
+            let filteredCourseList = coursesData.filter(course => !completedCourseIds.includes(course._id));
+
+            console.log(filteredCourseList);
+            
+            return filteredCourseList;
+
+        } catch (e) {
+            console.error(`Unable to get course list: ${e}`);
+            return [];
+        }
+    }
 }

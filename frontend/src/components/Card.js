@@ -1,36 +1,62 @@
-import React, { useContext } from 'react';
-import { useDrag } from 'react-dnd'; //For later use
-import Box from '@mui/material/Box';
+import React, { useContext, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { AppContext } from '../AppContext';
 
-export default function OutlinedCard(props) {
+export const OutlinedCard = ({text, ...props}) => {
 
-  let { coursesPerSem } = useContext(AppContext);
+  const [directedCourseList, setDirectedCourseList] = useState([]);
+
+  let { major, coursesPerSem, completedCourses } = useContext(AppContext);
+  if (!major) {
+    major = localStorage.getItem('major');
+  } else localStorage.setItem('major', major);
+
   if (!coursesPerSem) {
     coursesPerSem = localStorage.getItem('coursesPerSem');
   } else localStorage.setItem('coursesPerSem', coursesPerSem);
 
-  let cardStyle = {width: `${700/coursesPerSem}px`, margin: '1%'};
+  if (!completedCourses) {
+    completedCourses = localStorage.getItem('completedCourses');
+  } else localStorage.setItem('completedCourses', completedCourses);
+
+  let cardStyle = {width: `${800/coursesPerSem}px`, margin: '1%'};
+
+  const getDirectedCourseFromSemester = (major, semester, completedCourses) =>{
+    fetch('http://localhost:3001/api/course/getDirectedListFromSemester', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        major,  
+        semester,
+        completedCourses
+      }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        //console.log(data.courseList);
+        setDirectedCourseList(data.courseList || []);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
 
   // This might not be the best way to do this, but it works, for the time being
-  switch (props.text.code)
+  switch (text.code)
   {
     case "elective":
-    case "directed":
-
-      let courseType = props.text.code === "elective" ? "Elective" : "Directed Course"; 
 
       return (
-        <Card sx={cardStyle}>
+        <Card sx={{...cardStyle}}>
           <CardActionArea>
-            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '0.6rem'}}>
-              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold', fontSize: '0.6rem' }}>
-	    	        {courseType}
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
+                Elective
               </Typography>
               <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.1rem'}}>
                 Units: {10}
@@ -39,22 +65,59 @@ export default function OutlinedCard(props) {
           </CardActionArea>
         </Card>
       );
+
+    case "directed":
+
+      // This keeps looping indefinitely, really need to sort that out
+      //getDirectedCourseFromSemester(major, text.semester_offered, completedCourses);
+
+      return (
+        <Card sx={{...cardStyle}}>
+          <CardActionArea>
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '0.6rem'}}>
+              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold', fontSize: '0.6rem' }}>
+                Directed Course
+              </Typography>
+              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.1rem'}}>
+                Units: {10}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      );
+
+    case "completed":
+
+      return (
+        <Card sx={{...cardStyle}}>
+          <CardActionArea>
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
+	    	        Completed Course
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      );
+
     default:
       
       return (
-        <Card sx={cardStyle}>
+        <Card sx={{...cardStyle}}>
           <CardActionArea>
             <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', textDecoration: 'underline', fontWeight: 'bold', fontSize: '0.6rem'}} onClick={() => window.open(getCourseURL(props.text._id), "_blank", 'noopener,noreferrer')}>
-	    	        {getFullCourseCode(props.text._id)}
+              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', textDecoration: 'underline', fontWeight: 'bold', fontSize: '0.6rem'}} 
+                onClick={() => window.open(getCourseURL(text._id), "_blank", 'noopener,noreferrer')}
+              >
+	    	        {getFullCourseCode(text._id)}
               </Typography>
               <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.7rem'}}>
-                {props.text.course_name}
+                {text.course_name}
               </Typography>
               <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
-	    		      Units: {props.text.credits}
+	    		      Units: {text.credits}
               </Typography>
-              {/* <Button variant="contained" color="primary" component="a" href={getCourseURL(props.text._id)} target="_blank" rel="noopener noreferrer">
+              {/* <Button variant="contained" color="primary" component="a" href={getCourseURL(text._id)} target="_blank" rel="noopener noreferrer">
                 Course Handbook
               </Button> */}
             </CardContent>

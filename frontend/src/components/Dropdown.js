@@ -8,7 +8,6 @@ export default function Dropdown(props)
 {
 	return(
 	<FormControl sx={{m: 1, minWidth: 120}}>
-		<InputLabel>{props.label}</InputLabel>
 		<Select
 			id={props.id}
 			value={props.value}
@@ -18,6 +17,7 @@ export default function Dropdown(props)
 		{props.options.map((option, index) => (
 			<MenuItem key={index} value={option.value}>{option.label}</MenuItem>))}
 		</Select>
+		
 	</FormControl>
 	);
 }
