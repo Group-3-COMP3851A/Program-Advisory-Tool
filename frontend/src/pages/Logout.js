@@ -20,7 +20,7 @@ const Logout = () => {
 
   return (
 	<div className='global'>
-        <Menu curentPage="select"/>
+        
 		<div className='main-section'>
         {/* Centered content container */}
         <Text type="h1">Log In"still in development/apart of possibly future out of scope functionality"</Text> {/* Heading for the Login page */}

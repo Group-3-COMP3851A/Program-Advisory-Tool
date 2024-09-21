@@ -22,7 +22,7 @@ export const OutlinedCard = ({text, ...props}) => {
     completedCourses = localStorage.getItem('completedCourses');
   } else localStorage.setItem('completedCourses', completedCourses);
 
-  let cardStyle = {width: `${800/coursesPerSem}px`, margin: '1%'};
+  let cardStyle = {width: `${700/coursesPerSem}px`, margin: '1%'};
 
   const getDirectedCourseFromSemester = (major, semester, completedCourses) =>{
     fetch('http://localhost:3001/api/course/getDirectedListFromSemester', {
@@ -54,11 +54,11 @@ export const OutlinedCard = ({text, ...props}) => {
       return (
         <Card sx={{...cardStyle}}>
           <CardActionArea>
-            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'100px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
               <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
                 Elective
               </Typography>
-              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
+              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.1rem'}}>
                 Units: {10}
               </Typography>
             </CardContent>
@@ -74,7 +74,7 @@ export const OutlinedCard = ({text, ...props}) => {
       return (
         <Card sx={{...cardStyle}}>
           <CardActionArea>
-            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '0.6rem'}}>
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '0.6rem'}}>
               <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold', fontSize: '0.6rem' }}>
                 Directed Course
               </Typography>
@@ -91,7 +91,7 @@ export const OutlinedCard = ({text, ...props}) => {
       return (
         <Card sx={{...cardStyle}}>
           <CardActionArea>
-            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'100px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
               <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
 	    	        Completed Course
               </Typography>
@@ -105,7 +105,7 @@ export const OutlinedCard = ({text, ...props}) => {
       return (
         <Card sx={{...cardStyle}}>
           <CardActionArea>
-            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'150px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'100px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
               <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', textDecoration: 'underline', fontWeight: 'bold', fontSize: '0.6rem'}} 
                 onClick={() => window.open(getCourseURL(text._id), "_blank", 'noopener,noreferrer')}
               >
@@ -116,6 +116,9 @@ export const OutlinedCard = ({text, ...props}) => {
               </Typography>
               <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
 	    		      Units: {text.credits}
+              </Typography>
+              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
+	    		      Things you should Know: {text.assumed_warning} {text.requisites_warning}
               </Typography>
               {/* <Button variant="contained" color="primary" component="a" href={getCourseURL(text._id)} target="_blank" rel="noopener noreferrer">
                 Course Handbook

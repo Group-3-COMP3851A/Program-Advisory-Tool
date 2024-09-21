@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/style.css';
+import '../styles/style.css'; // Importing the CSS
 import { OutlinedCard } from '../components/Card';
 import DropArea from '../components/DropArea';
 import Text from '../components/Text';
@@ -66,7 +66,6 @@ const Plan = () => {
                 const { yearIndex: sourceYear, semesterIndex: sourceSemester, course } = sourceCourse;
                 const { yearIndex: destYear, semesterIndex: destSemester } = destinationCourse;
 
-                // Move course from source to destination
                 const updatedCourseList = [...courseList];
                 updatedCourseList[sourceYear][sourceSemester] = updatedCourseList[sourceYear][sourceSemester].filter(c => c._id !== active.id);
                 updatedCourseList[destYear][destSemester].push(course);
@@ -77,30 +76,19 @@ const Plan = () => {
         setActiveId(null);
     };
 
-
     return (
         <div className='global'>
             <div className='gen-section'>
-                <Text type="h1" style={{ marginBottom: '1%' }}>Course Plan for {major} Major</Text>
+                <Text type="h1" className='page-title'>Course Plan for {major} Major</Text>
                 <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
                     {courseList.map((year, yearIndex) => (
-                        <div key={yearIndex} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0.5%', width: '95%' }}>
-                            <Text type="h2" style={{ margin: '0.5%' }}>Year {yearIndex + 1}</Text>
-                            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', margin: '0%', width: '100%' }}>
+                        <div key={yearIndex} className='year-container'>
+                            <Text type="h2" className='year-title'>Year {yearIndex + 1}</Text>
+                            <div className='semester-container'>
                                 {year.map((semester, semesterIndex) => (
                                     <div key={semesterIndex} className='semester-section'>
                                         <DropArea items={semester} semesterIndex={semesterIndex}>
-                                            <Box sx={{
-                                                minHeight: '200px',
-                                                width: '100%',
-                                                border: '1px solid #ccc',
-                                                borderRadius: '4px',
-                                                padding: '16px',
-                                                flex: 1,
-                                                display: 'flex',
-                                                flexDirection: 'row',
-                                                alignItems: 'center'
-                                            }}>
+                                            <Box className='drop-area'>
                                                 {semester.map((course) => (
                                                     <CardWrapper key={course._id ? course._id : course.code + semesterIndex} id={course._id ? course._id : course.code + semesterIndex}>
                                                         <OutlinedCard text={course} />

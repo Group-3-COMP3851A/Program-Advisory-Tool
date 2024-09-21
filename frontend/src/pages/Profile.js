@@ -6,7 +6,7 @@ import Text from '../components/Text'; // Importing the Text component
 const Profile = () => {
   return (
 	<div className='global'>
-		<Menu curentPage="select"/>
+		
 		<div className='main-section'>
         {/* Centered content container */}
         <Text type="h1">Profile Page"still in development/apart of possibly future out of scope functionality"</Text> {/* Heading for the Profile page */}
