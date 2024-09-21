@@ -546,4 +546,8 @@
 	position: absolute;
 	bottom: 0;
 	right: 0;
+  
+}
+svg{
+  transform: scale(1.4) !important;
 }
