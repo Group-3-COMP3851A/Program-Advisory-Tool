@@ -7,6 +7,7 @@ import Button from '../components/Button'; // Importing the Button component
 import PopUp from '../components/PopUp'; // Importing the PopUp component
 import { useNavigate } from 'react-router-dom'; // Importing useNavigate hook for navigation
 import { AppContext } from '../AppContext';
+import Tooltip from '../components/Tooltip';
 
 //test
 const Select = () => {
@@ -137,7 +138,7 @@ const Select = () => {
 
     return (
 		<div className='global'>
-            
+            <Menu/>
 			<div className='main-section'>
                 {/* Centered content container */}
                 <Text type="h1">Welcome to Program Planner.</Text>
@@ -161,6 +162,8 @@ const Select = () => {
                 )}
                 {errorMessage && <Text type="p" style={{ color: 'red' }}>{errorMessage}</Text>} {/* Display error message if present */}
                 <Button onClick={handleNext} text="Continue" />
+				<Tooltip text1="Select your degree and Major, then select how many courses you would like to do per semester"
+					text2="4 Courses is considered full-time study."/>
             </div>
 			{showPopUp && (
                 // Conditionally render the first PopUp if showPopUp is true

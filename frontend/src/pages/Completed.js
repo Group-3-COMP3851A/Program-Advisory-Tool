@@ -5,6 +5,7 @@ import Text from '../components/Text'; // Importing the Text component
 import Button from '../components/Button'; // Importing the Button component
 import { useNavigate, useLocation } from 'react-router-dom'; // Importing the useNavigate hook from react-router-dom
 import { AppContext } from '../AppContext';
+import Tooltip from '../components/Tooltip';
 
 // Will probably have to create another card component
 import CardActionArea from '@mui/material/CardActionArea';
@@ -164,6 +165,7 @@ const Completed = () => {
             </div>
           </div>
         <Button onClick={handleNext} text="Continue" /> {/* Button to continue to the next step, triggers handleNext function */}
+		<Tooltip text1="Select every course you have already completed, if you accidentally select a course, click on it again"/>
       </div>
     </div>
     );
