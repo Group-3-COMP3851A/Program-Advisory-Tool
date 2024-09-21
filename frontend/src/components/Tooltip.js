@@ -31,7 +31,7 @@ export default function HelpIcon(props) {
           </React.Fragment>
         }
       >
-        <IconButton><HelpOutlineIcon/></IconButton>
+		<IconButton><HelpOutlineIcon style={{fontSize:50}}/></IconButton>
       </HtmlTooltip>
     </div>
   );
