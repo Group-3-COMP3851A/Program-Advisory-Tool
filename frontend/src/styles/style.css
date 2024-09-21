@@ -312,15 +312,15 @@
   width: 100%; /* Full width of the menu */
 }
 
-/* Main Content Area */
+/*  select Content Area */
 .main-section {
-  width: 100%;
+  width: 70%;
   margin-left: 5%; /* Account for the fixed menu width */
   margin-right: 5%;
   margin-top: 5%;
   margin-bottom: 5%;
   background-color: #add8e6; /* Light blue background */
-  height: 100vh; /* Full height */
+  height: 70vh; /* Full height */
   color: black;
   display: flex;
   flex-direction: column;
@@ -373,7 +373,7 @@
     justify-content: center;
     align-items: flex-start;
     width: 100%;
-    min-height: 100vh;
+    height: 50vh;
     background-color: #ffffff; /* Light background */
     padding: 20px;
     box-sizing: border-box;
