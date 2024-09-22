@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/style.css'; // Importing the CSS
+import '../styles/style.css'; 
 import { OutlinedCard } from '../components/Card';
 import DropArea from '../components/DropArea';
 import Text from '../components/Text';
@@ -38,6 +38,10 @@ const Plan = () => {
     }, [degree, major, semCount, coursesPerSem, completedCourses]);
 
     const findCourse = (courseId) => {
+        if (!courseId) {
+            console.error("courseId is undefined or null");
+            return null;
+        }
         if (courseId.substring(0, courseId.length-2) === "PLACEHOLDER_KEY") {
             return {yearIndex: courseId.substring(courseId.length-2, courseId.length-1), semesterIndex: courseId.substring(courseId.length-1)};
         }
@@ -62,19 +66,20 @@ const Plan = () => {
     };
 
     const handleDragEnd = (event) => {
-        console.log(event)
         const { active, over } = event;
+    
         if (active.id !== over?.id) {
-            //Don't need the findCourse function call here
+            // Find the source and destination courses once
             const sourceCourse = findCourse(active.id);
             const destinationCourse = findCourse(over?.id);
-
+    
             if (sourceCourse && destinationCourse) {
                 const { yearIndex: sourceYear, semesterIndex: sourceSemester, course } = sourceCourse;
                 const { yearIndex: destYear, semesterIndex: destSemester } = destinationCourse;
-
+    
+                // Update the course list
                 const updatedCourseList = [...courseList];
-                updatedCourseList[sourceYear][sourceSemester] = updatedCourseList[sourceYear][sourceSemester].filter(c => c._id !== active.id && c._id !== course._id);
+                updatedCourseList[sourceYear][sourceSemester] = updatedCourseList[sourceYear][sourceSemester].filter(c => c._id !== course._id);
                 updatedCourseList[destYear][destSemester].push(course);
 
 
