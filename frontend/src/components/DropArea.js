@@ -7,7 +7,7 @@ const DropArea = (props) => {
 
   return (
     <SortableContext 
-      items={props.items.map((item, i) => item._id ? item._id : item.code + props.semesterIndex)}
+      items={props.items.map((item, i) => item._id ? item._id : item.code + item.number)}
       strategy={rectSwappingStrategy}
     >
       {/* Render children components within the SortableContext */}
