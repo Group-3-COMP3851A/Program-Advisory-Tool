@@ -15,12 +15,16 @@ export function CardWrapper(props) {
         setNodeRef,
         transform,
         transition,
-      } = useSortable({id: props.id});
+      } = useSortable({id: props.id, disabled: props.disabled});
     
       const style = {
         transform: CSS.Transform.toString(transform),
         transition,
         width: `${800/coursesPerSem}px`, margin: '1%'
+      }
+      if (props.disabled) {
+        style.height = "150px";
+        
       }
 
     return (

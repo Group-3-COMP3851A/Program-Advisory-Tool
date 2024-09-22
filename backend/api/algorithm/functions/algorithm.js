@@ -84,7 +84,7 @@ class Algorithm {
             for (let j = 0; j < element.length && remainingElectives > 0; j++) {
                 const course = element[j];
                 if (course == null) {
-                    schedule[i][j] = {code: "elective"};
+                    schedule[i][j] = {code: "elective", number: remainingElectives};
                     remainingElectives--;
                 }
             }
@@ -201,10 +201,10 @@ class Algorithm {
     //takes directed course array as input, will read from the directed courses whereabouts they should go in the schedule and will add them to the schedule
     placeDirecteds = (directedCourses, schedule) => {
         let placements = directedCourses.semester_placements;
-        placements.forEach((placement) => {
+        placements.forEach((placement, i) => {
             //since directeds store the year and semester of the directed, year-1 * 2 + semester will find the correct semester (e.g year 3 sem 1 = 3-1 * 2 + 1 = 5th semester which is correct)
             //note the -1 on the end because arrays start at 0 not 1
-            schedule[(placement.year-1)*2 + placement.semester - 1][0] = {code: "directed", semester_offered: placement.semester};
+            schedule[(placement.year-1)*2 + placement.semester - 1][0] = {code: "directed", semester_offered: placement.semester, number: i};
         })
         
     }

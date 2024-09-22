@@ -38,10 +38,14 @@ const Plan = () => {
     }, [degree, major, semCount, coursesPerSem, completedCourses]);
 
     const findCourse = (courseId) => {
+        if (courseId.substring(0, courseId.length-2) === "PLACEHOLDER_KEY") {
+            return {yearIndex: courseId.substring(courseId.length-2, courseId.length-1), semesterIndex: courseId.substring(courseId.length-1)};
+        }
         for (let yearIndex = 0; yearIndex < courseList.length; yearIndex++) {
             for (let semesterIndex = 0; semesterIndex < courseList[yearIndex].length; semesterIndex++) {
-                const course = courseList[yearIndex][semesterIndex].find(c => c._id === courseId);
+                const course = courseList[yearIndex][semesterIndex].find((c) => c._id === courseId || c.code+c.number === courseId);
                 if (course) {
+                    console.log({ yearIndex, semesterIndex, course })
                     return { yearIndex, semesterIndex, course };
                 }
             }
@@ -58,8 +62,10 @@ const Plan = () => {
     };
 
     const handleDragEnd = (event) => {
+        console.log(event)
         const { active, over } = event;
         if (active.id !== over?.id) {
+            //Don't need the findCourse function call here
             const sourceCourse = findCourse(active.id);
             const destinationCourse = findCourse(over?.id);
 
@@ -68,9 +74,11 @@ const Plan = () => {
                 const { yearIndex: destYear, semesterIndex: destSemester } = destinationCourse;
 
                 const updatedCourseList = [...courseList];
-                updatedCourseList[sourceYear][sourceSemester] = updatedCourseList[sourceYear][sourceSemester].filter(c => c._id !== active.id);
+                updatedCourseList[sourceYear][sourceSemester] = updatedCourseList[sourceYear][sourceSemester].filter(c => c._id !== active.id && c._id !== course._id);
                 updatedCourseList[destYear][destSemester].push(course);
 
+
+                //need to add a call to the API for a feasibility check on the change, this needs to happen before the courseList is updated in state
                 setCourseList(updatedCourseList);
             }
         }
@@ -91,15 +99,15 @@ const Plan = () => {
                             <div className='semester-container'>
                                 {year.map((semester, semesterIndex) => (
                                     <div key={semesterIndex} className='semester-section'>
-                                        <DropArea items={semester} semesterIndex={semesterIndex}>
+                                            <DropArea items={semester} semesterIndex={semesterIndex}>
                                             <Box className='drop-area'>
-                                                {semester.map((course) => (
-                                                    <CardWrapper key={course._id ? course._id : course.code + semesterIndex} id={course._id ? course._id : course.code + semesterIndex}>
+                                                {semester.length > 0 ? semester.map((course) => (
+                                                    <CardWrapper key={course._id ? course._id : course.code + course.number} id={course._id ? course._id : course.code + course.number} disabled={false}>
                                                         <OutlinedCard text={course} />
                                                     </CardWrapper>
-                                                ))}
+                                                )) : <CardWrapper key={"PLACEHOLDER_KEY" + yearIndex + semesterIndex} id={"PLACEHOLDER_KEY" + yearIndex + semesterIndex} disabled={true}/>}
                                             </Box>
-                                        </DropArea>
+                                            </DropArea>
                                         <DragOverlay
                                             dropAnimation={{
                                                 ...defaultDropAnimation,
