@@ -15,11 +15,8 @@ function Menu() {
         <div className = "menu-divide"></div>
         <li><Link to="/plan" text="Plan" /></li>
         <li><Link to="/select" text="Create new planner" /></li>
-        <li ></li>
+        <li><Link to="/logout" text="Logout"/></li>
       </ul>
-        <ul className='logout' >
-            <li><Link to="/logout"text="Logout" /> </li>
-        </ul>
     </div>
   );
 }

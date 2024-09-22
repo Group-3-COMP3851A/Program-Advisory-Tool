@@ -141,8 +141,8 @@ const Select = () => {
             <Menu/>
 			<div className='main-section'>
                 {/* Centered content container */}
-                <Text type="h1">Welcome to Program Planner.</Text>
-                <Text type="h2">Please select your degree and major below.</Text>
+                <Text type="h1">Welcome to Program Planner</Text>
+                <Text type="h2">Please select your degree and major below</Text>
                 <Dropdown
                     id="degree"
                     label="Degree:"

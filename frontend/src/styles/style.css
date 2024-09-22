@@ -83,7 +83,7 @@
 
 .app .text-wrapper-3 {
   color: #6d6d6d;
-  font-family: "Inter-Medium", Helvetica;
+  font-family: Arial, "Helvetica", sans-serif;
   font-size: 12px;
   font-weight: 500;
   height: 26px;
@@ -106,7 +106,7 @@
 
 .app .hi-student-choose {
   color: #1e1e1e;
-  font-family: "Inter-Medium", Helvetica;
+  font-family: Arial, "Helvetica", sans-serif;
   font-size: 20px;
   font-weight: 500;
   left: 0;
@@ -120,7 +120,7 @@
 
 .app .text-wrapper-4 {
   color: #000000;
-  font-family: "Inter-Bold", Helvetica;
+  font-family: Arial, "Helvetica", sans-serif;
   font-size: 30px;
   font-weight: 700;
   left: 101px;
@@ -152,7 +152,7 @@
 .app .text-wrapper-5 {
   align-self: stretch;
   color: #000000;
-  font-family: "Inter-Bold", Helvetica;
+  font-family: Arial, "Helvetica", sans-serif;
   font-size: 30px;
   font-weight: 700;
   height: 45px;
@@ -165,7 +165,7 @@
 
 .app .p {
   color: #1e1e1e;
-  font-family: "Inter-Medium", Helvetica;
+  font-family: Arial, "Helvetica", sans-serif;
   font-size: 20px;
   font-weight: 500;
   letter-spacing: -0.38px;
@@ -199,7 +199,7 @@
 .app .text-wrapper-6 {
   align-self: stretch;
   color: #1e1e1e;
-  font-family: "Inter-Medium", Helvetica;
+  font-family: Arial, "Helvetica", sans-serif;
   font-size: 20px;
   font-weight: 500;
   letter-spacing: -0.38px;
@@ -255,14 +255,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: Arial, "Helvetica", sans-serif;
 }
 
 /* Logo styling */
 .menu-logo {
-  width: 100%;
-  max-width: 200px;
-  margin-bottom: 1.5rem;
+  width: 105%; 
+  margin-bottom: 0.5rem;
+  margin-left: 0rem;
+  margin-right: 0rem;
 }
+
 
 /* Menu List */
 .menu-list {
@@ -270,23 +273,30 @@
   padding: 0;
   margin: 0;
   width: 100%; /* Ensure it takes full width of menu */
+  font-family: Arial, "Helvetica", sans-serif;
+  position: center;
 }
 
 /* Menu Items */
 .menu-list li {
-  margin-bottom: 1rem;
-  background-color: #004961; /* Dark background for items */
+  width: 90%;
+  margin-bottom: 2rem;
+  background-color: #000000; /* Dark background for items */
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 15px 30px rgba(175, 176, 176, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1); 
+  font-size: 1.2rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0), 0 10px 20px rgba(0, 0, 0, 0); 
   transform: perspective(1000px) translateZ(0); /* Initial position */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+  font-family: Arial, "Helvetica", sans-serif;
+  position: center;
 }
 
 .menu-list li:hover {
   transform: perspective(1000px) translateZ(10px); 
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 15px 30px rgba(0, 0, 0, 0.2); 
   border-radius: 10px;
+  font-family: Arial, "Helvetica", sans-serif;
 }
 
 .menu-list a {
@@ -296,31 +306,32 @@
   padding: 0.75rem;
   transition: background-color 0.3s ease, transform 0.3s ease; 
   border-radius: 10px;
+  font-family: Arial, "Helvetica", sans-serif;
 }
 
 .menu-list a:hover {
   background-color: #003445; 
   transform: scale(1.05); 
   border-radius: 10px;
+  font-family: Arial, "Helvetica", sans-serif;
 }
 
 
 /* Divider styling */
 .menu-divide {
-  border-top: 2px solid blue; /* Blue line */
-  margin: 1rem 0; /* Space above and below the line */
-  width: 100%; /* Full width of the menu */
+  border-top: 2px solid rgb(0, 195, 255); 
+  margin: 1rem 0; 
 }
 
 /*  select Content Area */
 .main-section {
   width: 60%;
-  margin-left: 5%; /* Account for the fixed menu width */
-  margin-right: 5%;
+  margin-left: 5%; 
+  margin-right: 10%;
   margin-top: 5%;
   margin-bottom: 5%;
-  background-color: #add8e6; /* Light blue background */
-  height: 70vh; /* Full height */
+  background-color: #add8e6; 
+  height: 70vh; 
   color: black;
   display: flex;
   flex-direction: column;
@@ -329,15 +340,17 @@
   border-radius: 30px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1); 
   transform: perspective(1000px) translateZ(20px); 
+  font-family: Arial, "Helvetica", sans-serif;
 }
 
 
 .main-section h1, .main-section h2, .main-section h3, .main-section p, .main-section span {
-  margin: 0.5rem 0;
+  font-family: Arial, "Helvetica", sans-serif;
 }
 
 .main-section h1 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  position: center;
 }
 
 .main-section h2 {
@@ -377,6 +390,7 @@
     background-color: #ffffff; /* Light background */
     padding: 20px;
     box-sizing: border-box;
+    font-family: Arial, "Helvetica", sans-serif;
     
 }
 
@@ -400,6 +414,7 @@
     color: #002B5B; /* Dark blue color for header */
     text-align: center;
     text-transform: uppercase;
+    font-family: Arial, "Helvetica", sans-serif;
 }
 
 /* Year container */
@@ -410,6 +425,7 @@
     align-items: center;
     margin: 0.5%;
     width: 100%;
+    font-family: Arial, "Helvetica", sans-serif;
 }
 
 /* Year title */
@@ -421,6 +437,7 @@
     text-align: center;
     border-bottom: 1px solid; /* Dark blue underline to separate year */
     width: 100%;
+    font-family: Arial, "Helvetica", sans-serif;
 }
 
 /* Semester container */
@@ -491,6 +508,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: Arial, "Helvetica", sans-serif;
 }
 
 
@@ -513,33 +531,6 @@
   .OutlinedCard {
     width: 100%; /* Make cards take full width on small screens */
   }
-}
-/*logout style*/
-.logout li{
-  margin-bottom: 1rem;
-  border-radius: 5px;
-  text-align: center;
-  background-color: rgb(139, 6, 6);
-  margin-top: 110px;
-  margin-right: 40px;
-}
-.logout li:hover {
-  transform: perspective(1000px) translateZ(10px); 
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 15px 30px rgba(0, 0, 0, 0.2); 
-  border-radius: 10px;
-}
-.logout a {
-  color: rgb(255, 255, 255); /* White text for good contrast */
-  text-decoration: none;
-  display: block;
-  padding: 0.75rem;
-  transition: background-color 0.3s ease; /* Smooth hover effect */
-}
-
-.logout a:hover {
-  background-color: #450000; 
-  transform: scale(1.05); 
-  border-radius: 10px;
 }
 
 .helpIcon {
