@@ -12,7 +12,7 @@ import Tooltip from '../components/Tooltip';
 //test
 const Select = () => {
     // Initializing state variables using the useState hook
-    const { degree, setDegree, major, setMajor, semCount, setSemCount, coursesPerSem, setCoursesPerSem, completedCourses, setCompletedCourses } = useContext(AppContext);
+    const { degree, setDegree, major, setMajor, semCount, setSemCount, coursesPerSem, setCoursesPerSem, completedCourses } = useContext(AppContext);
     const [degreeList, setDegreeList] = useState([]); // State for storing the list of available degrees
     const [majorList, setMajorList] = useState([]); // State for storing the list of available majors based on the selected degree
     const [showPopUp, setShowPopUp] = useState(false); // State for controlling the visibility of the first PopUp

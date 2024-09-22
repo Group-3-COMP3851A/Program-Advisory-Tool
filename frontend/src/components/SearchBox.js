@@ -6,20 +6,18 @@ export default function SearchBox(props) {
   const { options, value, onChange } = props;
 
   return (
-    <div>
-      <div>{`Selected Courses: ${value.length > 0 ? value.map(course => course.course_name).join(', ') : 'None'}`}</div>
-      <br />
+    <div className="search-container">
       <Autocomplete
-        multiple // Enable multiple selection
-        value={value} // Set the current value
-        options={options} // List of options
-        getOptionLabel={(option) => option.course_name} // Display course names
+        multiple
+        value={value}
+        options={options}
+        getOptionLabel={(option) => option.course_name}
         onChange={(event, newValue) => {
-          onChange(newValue); // Update the selected courses
+          onChange(newValue);
         }}
         id="controllable-states-demo"
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Select Courses" />}
+        sx={{ width: '100%' }}  
+        renderInput={(params) => <TextField {...params} label="Type or select the courses names you have previously completed " />}
       />
     </div>
   );
