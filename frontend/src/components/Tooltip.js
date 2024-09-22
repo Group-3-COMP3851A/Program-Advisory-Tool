@@ -17,7 +17,7 @@ const HtmlTooltip = styled(({ className, ...props }) => (
   },
 }));
 
-export default function HelpIcon(props) {
+export default function ToolTip(props) {
   return (
     <div className='helpIcon'>
       <HtmlTooltip
