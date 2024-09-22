@@ -22824,7 +22824,7 @@
   "assumed_knowledge": [
     "140us"
   ],
-  "assumed_warning": "",
+  "assumed_warning": "140 credits of previous courses and enroll into one of seven required degrees ",
   "course_name": "Computing and Information Science Work Integrated learning Part A",
   "course_replacement": [
     "3850co"
@@ -22849,7 +22849,7 @@
   "assumed_knowledge": [
     "3851Aco"
   ],
-  "assumed_warning": "",
+  "assumed_warning": "must have completed Computing and Information Science Work Integrated Learning Part A",
   "course_name": "Computing and Information Science Work Integrated Learning Part B",
   "course_replacement": [],
   "credits": 10,
@@ -22932,7 +22932,7 @@
     ],
     "1510ma"
   ],
-  "assumed_warning": "1.A basic understanding of the structure and function of operating systems 2. A basic understanding of computer networks and network protocols 3. Discrete maths (number theory) 4. Programming skills (Java or Python or C++)",
+  "assumed_warning": "basic understanding of operating systems,computer networks and network protocols,number theory and programming",
   "course_name": "System and Network Security",
   "course_replacement": [],
   "credits": 10,
@@ -23006,7 +23006,7 @@
   "assumed_knowledge": [
     "1110se"
   ],
-  "assumed_warning": "Knowledge of and experience in programming",
+  "assumed_warning": "Knowledge of programming",
   "course_name": "Database and Information Management",
   "course_replacement": [
     "2040in"
@@ -23027,7 +23027,7 @@
       "1004in"
     ]
   ],
-  "assumed_warning": "The assumed knowledge is equivalent to that of a completed 2nd year Bachelor of Computer Science or a similar degree and should include: basic statistics and mathematics, including mean, standard deviation, vectors, dot product, hyperplanes, basic multivariable calculus, sets and basic first order logic. It also includes some basic programming skills in a language such as Python, Matlab, Java, C# or C/C++. The course will provide a brief mathematics workshop and a quick introduction to Python to refresh some of the assumed knowledge.\n\n",
+  "assumed_warning": "knowledge equivalent to a 2nd year Computer Science or a similar degree\n\n",
   "course_name": "Machine Intelligence",
   "course_replacement": [],
   "credits": 10,
@@ -23184,7 +23184,7 @@
   "semester_offered": 0,
   "credits": 10,
   "requisites": [],
-  "requisites_warning": "Students must have completed the specified previous studies to enrol in this course.To enrol in this course,you must meet one of the following requirement 1 Passed Math1002 or FNMT10022. Within two years before the commencement of the course,have achieved one of the following -A Band 5 or better in the NSW HSC course Mathematics Advanced- Completion of Extension 1 or Extension 2 Mathematics in NSW HSC- a pass in both FMTH001 and FMTH002 (NIC courses)3.Within 12 months before the commencement of the course,have enrolled in either MATH1110 or MATH1210 but obtained an FF grade5.Immediately before the commencement of the course,have obtained approval from head of the School of Mathematical and Physical Sciences, on the grounds that you have equivalent qualification please email the details of your qualification to CESE-SIPS-Admin@newcastle.edu.au ",
+  "requisites_warning": "complete NSW HSC Math Extension 1 or 2 or equivalent ",
   "course_follow": ""
 },
 {
