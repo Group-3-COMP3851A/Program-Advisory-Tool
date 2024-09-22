@@ -22,7 +22,6 @@ export const OutlinedCard = ({text, ...props}) => {
     completedCourses = localStorage.getItem('completedCourses');
   } else localStorage.setItem('completedCourses', completedCourses);
 
-  let cardStyle = {width: `${700/coursesPerSem}px`, margin: '1%'};
 
   const getDirectedCourseFromSemester = (major, semester, completedCourses) =>{
     fetch('http://localhost:3001/api/course/getDirectedListFromSemester', {
@@ -111,7 +110,7 @@ export const OutlinedCard = ({text, ...props}) => {
               <Typography className="card-subtitle" variant="h6">
                 Units: {text.credits}
               </Typography>
-              <Typography className="card-subtitle" variant="h6">
+              <Typography className="essentials" variant="h6">
                 Essentials: {text.assumed_warning} {text.requisites_warning}
               </Typography>
             </CardContent>

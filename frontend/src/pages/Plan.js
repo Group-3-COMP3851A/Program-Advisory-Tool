@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { defaultDropAnimation, defaultDropAnimationSideEffects, DndContext, DragOverlay } from '@dnd-kit/core';
 import { Box } from '@mui/material';
 import { CardWrapper } from '../components/CardWrapper';
+import Tooltip from '../components/Tooltip';
 
 const Plan = () => {
     const location = useLocation();
@@ -80,10 +81,13 @@ const Plan = () => {
         <div className='global'>
             <div className='gen-section'>
                 <Text type="h1" className='page-title'>This program plan is for an student in the {degree} with a major in {major} modify with any selected completed courses which are place at the bottem.</Text>
+                <Tooltip text1="to swap courses click and drap it to another semester and drop it on the first course in that semester"
+					text2="4 Courses is considered full-time study."/>
                 <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
                     {courseList.map((year, yearIndex) => (
                         <div key={yearIndex} className='year-container'>
                             <Text type="h2" className='year-title'>Year {yearIndex + 1}</Text>
+                            <div><Text type="h2" className='S1'>Each blue box represents a semester. When you hover your mouse over it, it highlights to display the courses for that semester. If you hover over a specific course, it will highlight the essential information you need to know.</Text></div>
                             <div className='semester-container'>
                                 {year.map((semester, semesterIndex) => (
                                     <div key={semesterIndex} className='semester-section'>

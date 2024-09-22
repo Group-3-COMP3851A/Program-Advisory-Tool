@@ -459,26 +459,36 @@
 
 /* Year container */
 .year-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0.5%;
-    width: 100%;
-    font-family: Arial, "Helvetica", sans-serif;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5%;
+  width: 100%;
+  font-family: Arial, "Helvetica", sans-serif;
+  color: #0F82E4;
 }
 
 /* Year title */
 .year-title {
-    margin: 20px 0;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #002B5B;
-    text-align: center;
-    border-bottom: 1px solid; /* Dark blue underline to separate year */
-    width: 100%;
-    font-family: Arial, "Helvetica", sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  background-color: #0F82E4;
+  text-align: center;
+  border-bottom: 1px solid; 
+  width: 100%;
+  font-family: Arial, "Helvetica", sans-serif;
+  margin-right: auto; 
 }
+.S1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  background-color: #0F82E4;
+  text-align: left;
+  border-bottom: 1px solid; 
+  width: 100%;
+  font-family: Arial, "Helvetica", sans-serif;
+}
+
 
 /* Semester container */
 .semester-container {
@@ -500,8 +510,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #fff; /* White text for contrast */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+    
 }
 
 .semester-section:hover {
@@ -514,21 +524,21 @@
     min-height: 200px;
     width: 100%;
     border: 1px solid #004961; /* Blue dashed border for drop areas */
+    background-color: #0F82E4;
     border-radius: 8px;
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: #ffffff;
     box-sizing: border-box;
 }
 
 /* Card wrapper */
 .card-wrapper {
-    flex: 1 1 calc(48% - 10px); /* 2 cards per row with spacing */
+  flex: 1 1 calc(23% - 10px); /* 4 cards per row with spacing */
     margin: 10px;
     padding: 15px;
-    background-color: #e0e0e0;
+    background-color: #e0e0e086;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -543,13 +553,17 @@
 
 /* Styling for the card content */
 .card-container {
+  flex: 1 1 calc(23% - 10px); 
   width: calc(700px / var(--courses-per-sem));
   margin: 1%;
+  position: relative;
 }
+
 .card-content {
   text-align: center;
-  background-color: lightgray;
-  height: 100px;
+  background-color: rgba(211, 211, 211, 0.596);
+  height: 100%; /* this adjust the course cards height % seems fine to me but the fixed value would look better
+  because of the arrgrnement for esstienal needs to be work needs to be work on*/
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -558,24 +572,54 @@
 .card-title {
   color: #0F82E4;
   font-weight: bold;
+  font-family: Arial, "Helvetica", sans-serif;
 }
 
 .card-subtitle {
   color: var(--text-secondary-color, gray);
   font-size: 1rem;
+  font-family: Arial, "Helvetica", sans-serif;
+  transition: all 0.3s ease;
 }
-
+.card-subtitle:hover {
+  transform: perspective(1000px) translateZ(10px); 
+  box-shadow: 0 25px 45px rgba(0, 102, 255, 0.3), 0 15px 30px rgba(0, 238, 255, 0.2); 
+  background-color: rgba(211, 211, 211, 0.596);
+  border-radius: 10px;
+  font-weight: bold;
+  color: #0F82E4;
+}
+.essentials {
+  opacity: 0; 
+  background-color: rgba(211, 211, 211, 0.596);
+  color: #0F82E4;
+  transition: opacity 0.3s ease; 
+  font-size: 1rem;
+  font-family: Arial, "Helvetica", sans-serif;
+}
+.card-container:hover .essentials {
+  opacity: 1; 
+  transform: perspective(1000px) translateZ(10px); 
+  box-shadow: 0 25px 45px rgba(0, 102, 255, 0.3), 0 15px 30px rgba(0, 238, 255, 0.2); 
+  background-color: rgba(211, 211, 211, 0.596);
+  border-radius: 10px;
+  font-weight: bold;
+  color: #0F82E4;
+}
 .directed-course {
   font-size: 0.6rem;
+  font-family: Arial, "Helvetica", sans-serif;
 }
 
 .small-title {
   font-size: 0.6rem;
+  font-family: Arial, "Helvetica", sans-serif;
 }
 
 .underline-title {
   text-decoration: underline;
   font-weight: bold;
+  font-family: Arial, "Helvetica", sans-serif;
 }
 
 .card-link {
@@ -583,6 +627,8 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+
 
 
 /* Responsive Design */
@@ -627,3 +673,30 @@ svg{
   margin: 20px 0;
   position: absolute;
 }
+.popup {
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  padding: 20px; 
+  background-color: #fff; 
+  border: 1px solid #ccc; 
+  border-radius: 8px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  z-index: 1000; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.popup-message {
+  margin-bottom: 20px; 
+  text-align: center; 
+}
+
+.popup-buttons {
+  display: flex; 
+  justify-content: center; 
+  gap: 10px; 
+}
+
