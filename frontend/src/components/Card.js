@@ -4,7 +4,6 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { AppContext } from '../AppContext';
-import Popover from '@mui/material/Popover';
 
 export const OutlinedCard = ({text, ...props}) => {
 
@@ -48,39 +47,33 @@ export const OutlinedCard = ({text, ...props}) => {
   }
 
   // This might not be the best way to do this, but it works, for the time being
-  switch (text.code)
-  {
+  switch (text.code) {
     case "elective":
-
       return (
-        <Card sx={{...cardStyle}}>
+        <Card className="card-container">
           <CardActionArea>
-            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'100px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
+            <CardContent className="card-content">
+              <Typography className="card-title" variant="h5">
                 Elective
               </Typography>
-              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.1rem'}}>
-                Units: {10}
+              <Typography className="card-subtitle" variant="h6">
+                Units: 10
               </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
       );
-
+    
     case "directed":
-
-      // This keeps looping indefinitely, really need to sort that out
-      //getDirectedCourseFromSemester(major, text.semester_offered, completedCourses);
-
       return (
-        <Card sx={{...cardStyle}}>
+        <Card className="card-container">
           <CardActionArea>
-            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '0.6rem'}}>
-              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold', fontSize: '0.6rem' }}>
+            <CardContent className="card-content directed-course">
+              <Typography className="card-title small-title" variant="h5">
                 Directed Course
               </Typography>
-              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.1rem'}}>
-                Units: {10}
+              <Typography className="card-subtitle small-title" variant="h6">
+                Units: 10
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -88,13 +81,12 @@ export const OutlinedCard = ({text, ...props}) => {
       );
 
     case "completed":
-
       return (
-        <Card sx={{...cardStyle}}>
+        <Card className="card-container">
           <CardActionArea>
-            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'100px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', fontWeight: 'bold' }}>
-	    	        Completed Course
+            <CardContent className="card-content">
+              <Typography className="card-title" variant="h5">
+                Completed Course
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -102,34 +94,32 @@ export const OutlinedCard = ({text, ...props}) => {
       );
 
     default:
-      
       return (
-        <Card sx={{...cardStyle}}>
+        <Card className="card-container">
           <CardActionArea>
-            <CardContent sx={{textAlign: 'center', backgroundColor: 'lightgray', height:'100px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-              <Typography gutterBottom variant="h5" component="div" sx={{color: '#0F82E4', textDecoration: 'underline', fontWeight: 'bold', fontSize: '0.6rem'}} 
+            <CardContent className="card-content">
+              <Typography
+                className="card-link underline-title"
+                variant="h5"
                 onClick={() => window.open(getCourseURL(text._id), "_blank", 'noopener,noreferrer')}
               >
-	    	        {getFullCourseCode(text._id)}
+                {getFullCourseCode(text._id)}
               </Typography>
-              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.7rem'}}>
+              <Typography className="card-subtitle" variant="h6">
                 {text.course_name}
               </Typography>
-              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
-	    		      Units: {text.credits}
+              <Typography className="card-subtitle" variant="h6">
+                Units: {text.credits}
               </Typography>
-              <Typography gutterBottom variant="h6" sx={{ color: 'text.secondary', fontSize: '0.75rem'}}>
-	    		      Things you should Know: {text.assumed_warning} {text.requisites_warning}
+              <Typography className="card-subtitle" variant="h6">
+                Essentials: {text.assumed_warning} {text.requisites_warning}
               </Typography>
-              {/* <Button variant="contained" color="primary" component="a" href={getCourseURL(text._id)} target="_blank" rel="noopener noreferrer">
-                Course Handbook
-              </Button> */}
             </CardContent>
           </CardActionArea>
         </Card>
       );
   }
-}
+};
 
 function getFullCourseCode(internalId)
 {

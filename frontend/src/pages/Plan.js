@@ -79,7 +79,7 @@ const Plan = () => {
     return (
         <div className='global'>
             <div className='gen-section'>
-                <Text type="h1" className='page-title'>Course Plan for {major} Major</Text>
+                <Text type="h1" className='page-title'>This program plan is for an student in the {degree} with a major in {major} modify with any selected completed courses which are place at the bottem.</Text>
                 <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
                     {courseList.map((year, yearIndex) => (
                         <div key={yearIndex} className='year-container'>

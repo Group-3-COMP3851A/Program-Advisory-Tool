@@ -542,13 +542,46 @@
 }
 
 /* Styling for the card content */
-.card-wrapper .card-content {
-    font-size: 1.1rem;
-    color: #333;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-family: Arial, "Helvetica", sans-serif;
+.card-container {
+  width: calc(700px / var(--courses-per-sem));
+  margin: 1%;
+}
+.card-content {
+  text-align: center;
+  background-color: lightgray;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-title {
+  color: #0F82E4;
+  font-weight: bold;
+}
+
+.card-subtitle {
+  color: var(--text-secondary-color, gray);
+  font-size: 1rem;
+}
+
+.directed-course {
+  font-size: 0.6rem;
+}
+
+.small-title {
+  font-size: 0.6rem;
+}
+
+.underline-title {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.card-link {
+  color: #0F82E4;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 
