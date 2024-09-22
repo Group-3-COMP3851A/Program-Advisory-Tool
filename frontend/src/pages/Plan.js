@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { defaultDropAnimation, defaultDropAnimationSideEffects, DndContext, DragOverlay } from '@dnd-kit/core';
 import { Box } from '@mui/material';
 import { CardWrapper } from '../components/CardWrapper';
-import Tooltip from '../components/Tooltip';
+import HelpIcon from '../components/Tooltip';
 
 const Plan = () => {
     const location = useLocation();
@@ -89,7 +89,7 @@ const Plan = () => {
         <div className='global'>
             <div className='gen-section'>
                 <Text type="h1" className='page-title'>This program plan is for an student in the {degree} with a major in {major} modify with any selected completed courses which are place at the bottem.</Text>
-                <Tooltip text1="to swap courses click and drap it to another semester and drop it on the first course in that semester"
+                <HelpIcon text1="to swap courses click and drap it to another semester and drop it on the first course in that semester"
 					text2="4 Courses is considered full-time study."/>
                 <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
                     {courseList.map((year, yearIndex) => (
