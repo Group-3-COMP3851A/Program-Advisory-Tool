@@ -8,12 +8,14 @@ import { defaultDropAnimation, defaultDropAnimationSideEffects, DndContext, Drag
 import { Box } from '@mui/material';
 import { CardWrapper } from '../components/CardWrapper';
 import HelpIcon from '../components/Tooltip';
+import Button from '../components/Button';
 
 const Plan = () => {
     const location = useLocation();
     const { degree, major, coursesPerSem, completedCourses } = location.state || {};
     const [courseList, setCourseList] = useState([]);
     const [activeId, setActiveId] = useState(null);
+    const [dndDisabled, setDndDisabled] = useState(true);
 
     const getCourseList = (degree, major, coursesPerSem, completedCourses) => {
         fetch('http://localhost:3001/api/algorithm/getCourseList', {
@@ -94,6 +96,9 @@ const Plan = () => {
             <div className='gen-section'>
                 <Text type="h1" className='page-title'>This program plan is for an student in the {degree} with a major in {major} modify with any selected completed courses which are place at the bottom.</Text>
                 <div><Text type="h2" className='S1'>Each blue box represents a semester. When you hover your mouse over it, it highlights to display the courses for that semester. If you hover over a specific course, it will highlight the essential information you need to know.</Text></div>
+                <div className="popup-buttons">
+                    <Button onClick={() => setDndDisabled(!dndDisabled)} text="Edit Plan" color="#28a745" />
+                </div>
                 <HelpIcon text1="to swap courses click and drap it to another semester and drop it on the first course in that semester"
 					text2="4 Courses is considered full-time study."/>
                 <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
@@ -106,7 +111,7 @@ const Plan = () => {
                                             <DropArea items={semester} semesterIndex={semesterIndex}>
                                             <Box className='drop-area'>
                                                 {semester.length > 0 ? semester.map((course) => (
-                                                    <CardWrapper key={course._id ? course._id : course.code + course.number} id={course._id ? course._id : course.code + course.number} disabled={false}>
+                                                    <CardWrapper key={course._id ? course._id : course.code + course.number} id={course._id ? course._id : course.code + course.number} disabled={dndDisabled}>
                                                         <OutlinedCard text={course} />
                                                     </CardWrapper>
                                                 )) : <CardWrapper key={"PLACEHOLDER_KEY" + yearIndex + semesterIndex} id={"PLACEHOLDER_KEY" + yearIndex + semesterIndex} disabled={true}/>}
