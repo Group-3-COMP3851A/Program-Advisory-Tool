@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'; // Importing Rea
 import '../styles/style.css';
 import Menu from '../components/Menu'; // Importing the Menu component
 import Dropdown from '../components/Dropdown'; // Importing the Dropdown component
+import { SearchBox } from '../components/SearchBox';
 import Text from '../components/Text'; // Importing the Text component
 import Button from '../components/Button'; // Importing the Button component
 import PopUp from '../components/PopUp'; // Importing the PopUp component
@@ -29,7 +30,7 @@ const Select = () => {
         })
             .then(response => response.json()) // Parsing the JSON response from the server
             .then(data => setDegreeList(data.degreeList || [])) // Updating the degreeList state with the fetched data or an empty array if no data is received
-            .catch(error => console.error('Error:', error)); // Logging any errors that occur during the fetch operation
+            .catch(error => console.error('Error:', error)); // Logging any errors that occur during the fetch operation			
     }, []); // Empty dependency array ensures this effect runs only once when the component mounts
 
     useEffect(() => {
@@ -41,22 +42,21 @@ const Select = () => {
         ]);
     }, []); // Empty dependency array ensures this effect runs only once when the component mounts
 
-    const showMajor = (e) => {
+    const showMajor = (selectedDegree) => {
         // Handler function for when a degree is selected
-        const selectedDegree = e.target.value; // Get the value of the selected degree
-        setDegree(selectedDegree); // Update the degree state with the selected degree
+		setDegree(selectedDegree); // Update the degree state with the selected degree
         setMajor(''); // Reset the major state
         if (selectedDegree) {
             // If a degree is selected, fetch the corresponding list of majors from the backend API
             fetch('http://localhost:3001/api/major/getMajorList', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' }, // Setting the content type to JSON
-                body: JSON.stringify({ degree: selectedDegree }), // Sending the selected degree as the request body
+                body: JSON.stringify({ degree: selectedDegree.degree_name }), // Sending the degree name as the request body
             })
                 .then(response => response.json()) // Parsing the JSON response from the server
                 .then(data => setMajorList(data.majorList || [])) // Updating the majorList state with the fetched data or an empty array if no data is received
                 .catch(error => console.error('Error:', error)); // Logging any errors that occur during the fetch operation
-        } else {
+		} else {
             setMajorList([]); // If no degree is selected, reset the major list
         }
     };
@@ -135,18 +135,17 @@ const Select = () => {
         }
         navigate('/plan', { state: { degree, major, semCount, coursesPerSem, completedCourses } }); // Navigate to the '/generate-plan' route if both degree and major are selected
     };
-
+	
     return (
 		<div className='global'>
             <Menu/>
 			<div className='main-section'>
-                {/* Centered content container */}
                 <Text type="h1">Welcome to Program Planner</Text>
                 <Text type="h2">Please select your degree and major below</Text>
-                <Dropdown
+                <SearchBox
                     id="degree"
                     label="Degree:"
-                    options={degreeList.map(deg => ({ value: deg.degree_name, label: deg.degree_name }))} // Map degree list to dropdown options
+                    options={degreeList}
                     value={degree}
                     onChange={showMajor} // Handle degree selection
                 />

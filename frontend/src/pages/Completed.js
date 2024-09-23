@@ -5,7 +5,8 @@ import Button from '../components/Button';
 import { useNavigate, useLocation } from 'react-router-dom'; 
 import { AppContext } from '../AppContext';
 import Tooltip from '../components/Tooltip';
-import SearchBox from '../components/SearchBox'; 
+import MultiSearchBox from '../components/SearchBox';
+
 const Completed = () => {
     const location = useLocation();
     const { degree, major, semCount, coursesPerSem } = location.state || {};
@@ -47,13 +48,13 @@ const Completed = () => {
         <div className='global'>
             <Menu curentPage="select"/>
             <div className='completed-section'>
-                            <SearchBox 
+                            <MultiSearchBox 
                                     options={courseList} 
                                     value={completedCourses} 
                                     onChange={handleCourseSelect} 
                              />
                 <div className='CIcon'><Button onClick={handleNext} text="Continue" /></div>
-                <Tooltip text1="Select every course you have already completed, if you accidentally select a course, click on it again"/>
+                <Tooltip text1="Select every course you have already completed, these courses will be ignored when creating your degree plan"/>
             </div>
         </div>
     );
