@@ -23,6 +23,7 @@ export default function MultiSearchBox(props) {
   );
 }
 
+//The main degree select bar
 export function SearchBox(props) {
 	  const { options, value, onChange } = props;
 
@@ -32,6 +33,7 @@ export function SearchBox(props) {
         options={options}
 		getOptionLabel={(option) => option.degree_name}
 		onChange={(event, newValue) => {
+			newValue = newValue.degree_name;
 			onChange(newValue);
 		}}
         sx={{ width: '100%' }}  
