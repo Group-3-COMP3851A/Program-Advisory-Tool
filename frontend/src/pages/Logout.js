@@ -14,8 +14,8 @@ const Logout = () => {
   const handleLoginSubmit = (e) => {
     // Handler function for form submission
     e.preventDefault(); // Prevent the default form submission behavior
-    console.log('Username:', username); // Log the username to the console
-    console.log('Password:', password); // Log the password to the console
+    //console.log('Username:', username); // Log the username to the console
+    //console.log('Password:', password); // Log the password to the console
   };
 
   return (

@@ -49,7 +49,7 @@ const Plan = () => {
             for (let semesterIndex = 0; semesterIndex < courseList[yearIndex].length; semesterIndex++) {
                 const course = courseList[yearIndex][semesterIndex].find((c) => c._id === courseId || c.code+c.number === courseId);
                 if (course) {
-                    console.log({ yearIndex, semesterIndex, course })
+                    //console.log({ yearIndex, semesterIndex, course })
                     return { yearIndex, semesterIndex, course };
                 }
             }

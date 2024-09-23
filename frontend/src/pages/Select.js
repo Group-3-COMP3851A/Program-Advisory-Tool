@@ -46,7 +46,7 @@ const Select = () => {
         // Handler function for when a degree is selected
 		setDegree(selectedDegree); // Update the degree state with the selected degree
         setMajor(''); // Reset the major state
-		console.log(selectedDegree);
+		//console.log(selectedDegree);
         if (selectedDegree) {
             // If a degree is selected, fetch the corresponding list of majors from the backend API
             fetch('http://localhost:3001/api/major/getMajorList', {
@@ -133,7 +133,7 @@ const Select = () => {
         if (!degree || !major) {
             setErrorMessage('Please select both degree and major before continuing.'); // Set an error message if degree or major is not selected
             return; // Exit the function early
-        } console.log(degree);
+        } //console.log(degree);
         navigate('/plan', { state: { degree, major, semCount, coursesPerSem, completedCourses } }); // Navigate to the '/generate-plan' route if both degree and major are selected
     };
 	
