@@ -9,7 +9,7 @@ import MultiSearchBox from '../components/SearchBox';
 
 const Completed = () => {
     const location = useLocation();
-    const { degree, major, semCount, coursesPerSem } = location.state || {};
+    const { degree, major, coursesPerSem } = location.state || {};
     const { completedCourses, setCompletedCourses } = useContext(AppContext);
     const [courseList, setCourseList] = useState([]);
     const navigate = useNavigate();
@@ -39,20 +39,15 @@ const Completed = () => {
         setCompletedCourses(selectedCourses); 
     };
 
-
     const handleNext = () => {
-        navigate('/plan', { state: { degree, major, semCount, coursesPerSem, completedCourses } });
+        navigate('/plan', { state: { degree, major, coursesPerSem, completedCourses } });
     };
 
     return (
         <div className='global'>
             <Menu curentPage="select"/>
             <div className='completed-section'>
-                            <MultiSearchBox 
-                                    options={courseList} 
-                                    value={completedCourses} 
-                                    onChange={handleCourseSelect} 
-                             />
+                <MultiSearchBox options={courseList} value={completedCourses} onChange={handleCourseSelect}/>
                 <div className='CIcon'><Button onClick={handleNext} text="Continue" /></div>
                 <Tooltip text1="Select every course you have already completed, these courses will be ignored when creating your degree plan"/>
             </div>

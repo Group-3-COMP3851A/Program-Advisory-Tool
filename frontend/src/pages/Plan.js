@@ -11,11 +11,11 @@ import HelpIcon from '../components/Tooltip';
 
 const Plan = () => {
     const location = useLocation();
-    const { degree, major, semCount, coursesPerSem, completedCourses } = location.state || {};
+    const { degree, major, coursesPerSem, completedCourses } = location.state || {};
     const [courseList, setCourseList] = useState([]);
     const [activeId, setActiveId] = useState(null);
 
-    const getCourseList = (degree, major, semCount, coursesPerSem, completedCourses) => {
+    const getCourseList = (degree, major, coursesPerSem, completedCourses) => {
         fetch('http://localhost:3001/api/algorithm/getCourseList', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -23,7 +23,6 @@ const Plan = () => {
                 studentId: 12345,
                 degree,
                 major,
-                semCount,
                 coursesPerSem,
                 completedCourses
             }),
@@ -34,8 +33,8 @@ const Plan = () => {
     }
 
     useEffect(() => {
-        getCourseList(degree, major, semCount, coursesPerSem, completedCourses);
-    }, [degree, major, semCount, coursesPerSem, completedCourses]);
+        getCourseList(degree, major, coursesPerSem, completedCourses);
+    }, [degree, major, coursesPerSem, completedCourses]);
 
     const findCourse = (courseId) => {
         if (!courseId) {
