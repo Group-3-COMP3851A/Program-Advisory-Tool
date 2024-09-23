@@ -93,7 +93,7 @@ const Plan = () => {
     return (
         <div className='global'>
             <div className='gen-section'>
-                <Text type="h1" className='page-title'>This program plan is for an student in the {degree} with a major in {major} modify with any selected completed courses which are place at the bottem.</Text>
+                <Text type="h1" className='page-title'>This program plan is for an student in the {degree} with a major in {major} modify with any selected completed courses which are place at the bottom.</Text>
                 <HelpIcon text1="to swap courses click and drap it to another semester and drop it on the first course in that semester"
 					text2="4 Courses is considered full-time study."/>
                 <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
