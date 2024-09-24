@@ -7,6 +7,7 @@ class Algorithm {
         this.courseCodeList = courseCodeList;
         this.courseArray = courseArray;
         this.completedCourses = completedCourses;
+        this.completedCourseCount = completedCourses.length;
     }
 
     topologicalSort = () => {
@@ -67,11 +68,11 @@ class Algorithm {
         //the way to handle a schedule that has already begun would be to subtract the number of courses completed divided by the coursesPerSem from the semester count OR handle it beforehand somehow
         //this would also have to be passed through to the placeDirecteds somehow
         this.coursesPerSem = coursesPerSem;
-        if (semesterCount < 4) {
+        if (coursesPerSem < 4) {
             //if the student is doing a less than full time plan, need to find where the directeds would fit given the reqs
             this.sortDirected(directedCourses);
         } else this.placeDirecteds(directedCourses, schedule) //if we're doing a full time plan, can just place the directeds where they belong normally
-        this.findEarliestSemester(schedule);
+        this.findEarliestSemester(schedule, directedCourses);
         this.addElective(schedule, directedCourses);
         this.planSchedule = schedule;
     }
@@ -92,11 +93,52 @@ class Algorithm {
     }
 
     //finds the earliest semester that a course can be taken given reqs and other info
-    findEarliestSemester = (schedule) => {
+    findEarliestSemester = (schedule, directedCourses) => {
         let placed;
         let semester_offered, placement = [0, 0];
         while(!(this.sortedCourses.length === 0)){
             let course = this.sortedCourses.shift(); //take the first course
+            // console.log(schedule)
+            if (course.code === "directed"){
+                console.log("trying to place a directed with semester offering of " + course.semester_offered)
+                placed = false;
+                let dependencyInSemester = false;
+                let dependencies = structuredClone(directedCourses.assumed_knowledge)
+                // console.log(dependencies)
+                for (let i = 0; i < schedule.length && !placed; i++) {
+                    for (let j = 0; j < schedule[i].length && !placed; j++) {
+                        console.log(schedule[i][j])
+                        if (schedule[i][j] === null && dependencies.length === 0) {
+                            placement = [i, j];
+                            placed = true;
+                        } else if (schedule[i][j] !== null) {
+                            for (let k = 0; k < dependencies.length; k++) {
+                                const dependency = dependencies[k];
+                                if (Array.isArray(dependency) && dependency.includes(schedule[i][j].code)) {
+                                    dependencyInSemester = true;
+                                    dependencies.splice(k, 1);
+                                    k--;
+                                }
+                                else if (schedule[i][j].code === dependency) {
+                                    dependencyInSemester = true;
+                                    dependencies.splice(k, 1);
+                                    k--;
+                                }
+                                console.log("finished checking " + dependency)
+                            }
+                        }
+                        if ((course.semester_offered + i) % 2 === 0) {
+                            placed = false;
+                        }
+                        if (dependencyInSemester) {
+                            placed = false;
+                            dependencyInSemester = false;
+                        }
+                    }
+                }
+                if (placed) schedule[placement[0]][placement[1]] = course;
+                continue;
+            }
             semester_offered = this.courseArray[course.index].semester_offered; //get the semester offering/s for the course
             if (this.normalGraph[course.index].length === 0) { //the course has no dependencies so we can just place it as soon as possible
                 //looping through the schedule and finding the earliest placement that has no course scheduled
@@ -125,8 +167,6 @@ class Algorithm {
                         }
                     }
                 }
-                //TODO: After adding any course, need to check if there is a following course
-                    //need to also check that it actually found a place.
             }
                 //checks needing to be done before being able to place a course with dependencies:
                     //check if the earliest possible place has courses that are dependencies
@@ -200,6 +240,7 @@ class Algorithm {
 
     //takes directed course array as input, will read from the directed courses whereabouts they should go in the schedule and will add them to the schedule
     placeDirecteds = (directedCourses, schedule) => {
+        console.log("Placing directeds")
         let placements = directedCourses.semester_placements;
         placements.forEach((placement, i) => {
             //since directeds store the year and semester of the directed, year-1 * 2 + semester will find the correct semester (e.g year 3 sem 1 = 3-1 * 2 + 1 = 5th semester which is correct)
@@ -212,6 +253,15 @@ class Algorithm {
     //since every directed course for a given major will always have the same requirements, we only need to find at which point it is able to be sorted once and then we can just as many placeholders as necessary there
     sortDirected = (directedCourses) => {
         //doesn't matter which directed course we get the assumed knowledge of, they're all the same
+        //checking if any assumed knowledge is in completed courses
+        const completedCourseCodes = this.completedCourses.map(course => course.code);
+        directedCourses.assumed_knowledge.forEach((assumedCourse) => {
+            if (Array.isArray(assumedCourse) && assumedCourse.some(item => completedCourseCodes.includes(item))) { //if the assumed knowledge is an array and it contains the courseCode, remove it from the assumed knowledge
+                directedCourses.assumed_knowledge.splice(i, 1);
+            } else if (completedCourseCodes.includes(assumedCourse)) { //if the assumed knowledge is just the courseCode, remove it from the assumed knowledge
+                directedCourses.assumed_knowledge.splice(i, 1);
+            }
+        });
         let assumedKnowledge = structuredClone(directedCourses.assumed_knowledge);
         //go through each assumed knowledge and "cross them off" as they go past in the sortedCourses array, once all assumed knowledge is accounted for, add the course to the sortedCourses array
         let index;
@@ -227,11 +277,10 @@ class Algorithm {
                 }
             })
         }
-        //TODO: if the assumedknowledge length is not 0, check if any of the remaining courses are in the completed courses
-        if (assumedKnowledge.length === 0)
-            for (let i = 0; i < directedCourses.semester_placements.length; i++) 
-                this.sortedCourses = this.sortedCourses.splice(index, 0, {code: "placeholder"}); //place as many placeholders as there are directeds in the course
-        else console.log("assumed knowledge not accounted for");
+        for (let i = 0; i < directedCourses.semester_placements.length; i++) {
+            this.sortedCourses.splice(index, 0, {code: "directed", semester_offered: directedCourses.semester_placements[i].semester, number: i});
+            
+        } //place as many placeholders as there are directeds in the course
     }
 
     //returns the sorted courses
