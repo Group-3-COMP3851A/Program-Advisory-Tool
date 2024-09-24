@@ -130,10 +130,10 @@ class Algorithm {
                         if ((course.semester_offered + i) % 2 === 0) {
                             placed = false;
                         }
-                        if (dependencyInSemester) {
-                            placed = false;
-                            dependencyInSemester = false;
-                        }
+                    }
+                    if (dependencyInSemester) {
+                        placed = false;
+                        dependencyInSemester = false;
                     }
                 }
                 if (placed) schedule[placement[0]][placement[1]] = course;
