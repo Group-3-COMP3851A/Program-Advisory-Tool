@@ -45,7 +45,7 @@ const Completed = () => {
 
     return (
         <div className='global'>
-            <Menu curentPage="select"/>
+           
             <div className='completed-section'>
                 <MultiSearchBox options={courseList} value={completedCourses} onChange={handleCourseSelect}/>
                 <div className='CIcon'><Button onClick={handleNext} text="Continue" /></div>

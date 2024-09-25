@@ -116,7 +116,7 @@ const Select = () => {
 	
     return (
 		<div className='global'>
-            <Menu/>
+           
 			<div className='main-section'>
                 <Text type="h1">Welcome to Program Planner</Text>
                 <Text type="h2">Please select your degree and major below</Text>
