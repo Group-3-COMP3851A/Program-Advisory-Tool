@@ -238,9 +238,9 @@
 
 /*router wrapper*/
 .main-content {
-  margin-left: 250px;
+  margin-left: 10%;
   padding: 0rem;
-  width: calc(100% - 250px);
+  width: 100%;
 }
 
 /*menu starts here*/
@@ -440,7 +440,7 @@
 
 /* Main content section */
 .gen-section {
-    width: 100%;
+    width: 90%;
     background-color: #fff;
     padding: 1rem;
     border-radius: 2rem;
@@ -565,7 +565,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0.5rem;
 }
 
 .card-title {
