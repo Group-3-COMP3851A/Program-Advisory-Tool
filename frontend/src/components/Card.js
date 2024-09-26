@@ -110,9 +110,6 @@ export const OutlinedCard = ({text, ...props}) => {
               <Typography className="card-subtitle" variant="h6">
                 Units: {text.credits}
               </Typography>
-              <Typography className="essentials" variant="h6">
-                Essentials: {text.assumed_warning} {text.requisites_warning}
-              </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
