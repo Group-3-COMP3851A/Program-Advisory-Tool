@@ -4,11 +4,20 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { AppContext } from '../AppContext';
+import Popover from './Popover';
+
 
 export const OutlinedCard = ({text, ...props}) => {
-
+	
   const [directedCourseList, setDirectedCourseList] = useState([]);
-
+  const [popoverState, setPopoverState] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  
+  const handleClick = (event) => {
+	  setPopoverState(!popoverState);
+    setAnchorEl(event.currentTarget);
+  };
+  
   let { major, coursesPerSem, completedCourses } = useContext(AppContext);
   if (!major) {
     major = localStorage.getItem('major');
@@ -79,19 +88,6 @@ export const OutlinedCard = ({text, ...props}) => {
         </Card>
       );
 
-    case "completed":
-      return (
-        <Card className="card-container">
-          <CardActionArea>
-            <CardContent className="card-content">
-              <Typography className="card-title" variant="h5">
-                Completed Course
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      );
-
     default:
       return (
         <Card className="card-container">
@@ -100,18 +96,17 @@ export const OutlinedCard = ({text, ...props}) => {
               <Typography
                 className="card-link underline-title"
                 variant="h5"
-                onClick={() => window.open(getCourseURL(text._id), "_blank", 'noopener,noreferrer')}
+                /*onClick={() => window.open(getCourseURL(text._id), "_blank", 'noopener,noreferrer')}*/
+				onClick={handleClick}
               >
-                {getFullCourseCode(text._id)}
+			  <Popover course={text} disabled={popoverState} anchor={anchorEl}/>
+              {getFullCourseCode(text._id)}
               </Typography>
               <Typography className="card-subtitle" variant="h6">
                 {text.course_name}
               </Typography>
               <Typography className="card-subtitle" variant="h6">
                 Units: {text.credits}
-              </Typography>
-              <Typography className="essentials" variant="h6">
-                Essentials: {text.assumed_warning} {text.requisites_warning}
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -158,12 +153,5 @@ function getCourseURL(courseId)
 
   return "https://www.newcastle.edu.au/course/" + courseCode;
 }
-
-
-
-
-
-
-
 
 

@@ -238,9 +238,9 @@
 
 /*router wrapper*/
 .main-content {
-  margin-left: 250px;
+  margin-left: 10%;
   padding: 0rem;
-  width: calc(100% - 250px);
+  width: 100%;
 }
 
 /*menu starts here*/
@@ -432,8 +432,7 @@
     align-items: flex-start;
     width: 100%;
     height: 40vh;
-    background-color: #ffffff; /* Light background */
-    padding: 20px;
+    background-color: #ffffff93; /* Light background */
     box-sizing: border-box;
     font-family: Arial, "Helvetica", sans-serif;
     
@@ -441,14 +440,12 @@
 
 /* Main content section */
 .gen-section {
-    width: 100%;
-    max-width: 1200px;
+    width: 90%;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for main container */
+    padding: 1rem;
+    border-radius: 2rem;
+    
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 /* Page title */
@@ -499,20 +496,18 @@
 .semester-container {
     display: flex;
     justify-content: space-between; /* Separate the boxes within each year */
-    width: 100%;
-    margin-bottom: 40px;
+    width: 100rem;
+    height: 25rem;
 }
 
 /* Semester section styling to give each box a distinct look */
 .semester-section {
-    
-    padding: 20px;
-    border-radius: 20px;
-    
+    padding: 3rem;
+    border-radius: 3rem;
     width: 48%; /* Two boxes should fit side by side */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Shadow to lift the box */
     display: flex;
-    flex-direction: column;
+    flex-direction: left;
     justify-content: center;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
@@ -529,11 +524,9 @@
     min-height: 200px;
     width: 100%;
     border: 1px solid #004961; /* Blue dashed border for drop areas */
-    background-color: #cecfd0;
     border-radius: 8px;
     padding: 20px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     box-sizing: border-box;
 }
@@ -541,8 +534,7 @@
 /* Card wrapper */
 .card-wrapper {
   flex: 1 1 calc(23% - 10px); /* 4 cards per row with spacing */
-    margin: 10px;
-    padding: 15px;
+    margin: 1rem;
     background-color: #e0e0e086;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -560,7 +552,6 @@
 .card-container {
   flex: 1 1 calc(23% - 10px); 
   width: calc(100% / var(--courses-per-sem));
- 
   position: relative;
   
 }
@@ -569,12 +560,12 @@
 .card-content {
   text-align: center;
   background-color: rgba(211, 211, 211, 0.596);
-  height: 100% !important; /* this adjust the course cards height % seems fine to me but the fixed value would look better
+  height: 100px !important; /* this adjust the course cards height % seems fine to me but the fixed value would look better
   because of the arrgrnement for esstienal needs to be work needs to be work on*/
   display: flex;
   flex-direction: column;
   justify-content: center;
- 
+
 
 }
 

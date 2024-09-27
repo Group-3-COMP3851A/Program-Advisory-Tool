@@ -100,14 +100,14 @@ class Algorithm {
             let course = this.sortedCourses.shift(); //take the first course
             // console.log(schedule)
             if (course.code === "directed"){
-                console.log("trying to place a directed with semester offering of " + course.semester_offered)
+                // console.log("trying to place a directed with semester offering of " + course.semester_offered)
                 placed = false;
                 let dependencyInSemester = false;
                 let dependencies = structuredClone(directedCourses.assumed_knowledge)
                 // console.log(dependencies)
                 for (let i = 0; i < schedule.length && !placed; i++) {
                     for (let j = 0; j < schedule[i].length && !placed; j++) {
-                        console.log(schedule[i][j])
+                        // console.log(schedule[i][j])
                         if (schedule[i][j] === null && dependencies.length === 0) {
                             placement = [i, j];
                             placed = true;
@@ -124,7 +124,7 @@ class Algorithm {
                                     dependencies.splice(k, 1);
                                     k--;
                                 }
-                                console.log("finished checking " + dependency)
+                                // console.log("finished checking " + dependency)
                             }
                         }
                         if ((course.semester_offered + i) % 2 === 0) {
@@ -240,7 +240,7 @@ class Algorithm {
 
     //takes directed course array as input, will read from the directed courses whereabouts they should go in the schedule and will add them to the schedule
     placeDirecteds = (directedCourses, schedule) => {
-        console.log("Placing directeds")
+        // console.log("Placing directeds")
         let placements = directedCourses.semester_placements;
         placements.forEach((placement, i) => {
             //since directeds store the year and semester of the directed, year-1 * 2 + semester will find the correct semester (e.g year 3 sem 1 = 3-1 * 2 + 1 = 5th semester which is correct)
