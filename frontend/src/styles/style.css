@@ -468,7 +468,7 @@
   display: flex;
   flex-direction: column;
   margin: 0.5%;
-  width: 100%;
+  width: auto;
   font-family: Arial, "Helvetica", sans-serif;
   color: #000000;
 }
@@ -529,7 +529,7 @@
     min-height: 200px;
     width: 100%;
     border: 1px solid #004961; /* Blue dashed border for drop areas */
-    background-color: #0F82E4;
+    background-color: #cecfd0;
     border-radius: 8px;
     padding: 20px;
     display: flex;
@@ -559,30 +559,36 @@
 /* Styling for the card content */
 .card-container {
   flex: 1 1 calc(23% - 10px); 
-  width: calc(700px / var(--courses-per-sem));
-  margin: 1%;
+  width: calc(100% / var(--courses-per-sem));
+ 
   position: relative;
+  
 }
+
 
 .card-content {
   text-align: center;
   background-color: rgba(211, 211, 211, 0.596);
-  height: 100%; /* this adjust the course cards height % seems fine to me but the fixed value would look better
+  height: 100% !important; /* this adjust the course cards height % seems fine to me but the fixed value would look better
   because of the arrgrnement for esstienal needs to be work needs to be work on*/
   display: flex;
   flex-direction: column;
   justify-content: center;
+ 
+
 }
+
 
 .card-title {
   color: #0F82E4;
   font-weight: bold;
   font-family: Arial, "Helvetica", sans-serif;
+  
 }
 
 .card-subtitle {
   color: var(--text-secondary-color, gray);
-  font-size: 1rem;
+  font-size: 0.5rem !important;
   font-family: Arial, "Helvetica", sans-serif;
   transition: all 0.3s ease;
 }
@@ -597,10 +603,11 @@
 .essentials {
   opacity: 0; 
   background-color: rgba(211, 211, 211, 0.596);
-  color: #0F82E4;
+  color: #7e8081;
   transition: opacity 0.3s ease; 
-  font-size: 1rem;
+  font-size: 0.5rem !important;
   font-family: Arial, "Helvetica", sans-serif;
+  
 }
 .card-container:hover .essentials {
   opacity: 1; 
@@ -612,12 +619,12 @@
   color: #0F82E4;
 }
 .directed-course {
-  font-size: 0.6rem;
+  font-size: 0.6rem !important;
   font-family: Arial, "Helvetica", sans-serif;
 }
 
 .small-title {
-  font-size: 0.6rem;
+  font-size: 0.6rem !important;
   font-family: Arial, "Helvetica", sans-serif;
 }
 
@@ -625,6 +632,7 @@
   text-decoration: underline;
   font-weight: bold;
   font-family: Arial, "Helvetica", sans-serif;
+  font-size: 0.7rem !important;
 }
 
 .card-link {

@@ -96,7 +96,7 @@ export const OutlinedCard = ({text, ...props}) => {
       return (
         <Card className="card-container">
           <CardActionArea>
-            <CardContent className="card-content">
+            <CardContent className="card-content" >
               <Typography
                 className="card-link underline-title"
                 variant="h5"

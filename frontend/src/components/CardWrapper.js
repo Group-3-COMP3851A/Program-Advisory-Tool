@@ -20,10 +20,10 @@ export function CardWrapper(props) {
       const style = {
         transform: CSS.Transform.toString(transform),
         transition,
-        width: `${800/coursesPerSem}px`, margin: '1%'
+        width: `${100/coursesPerSem}%`, margin: '1%'
       }
       if (props.disabled) {
-        style.height = "150px";
+        style.height = "100px";
         
       }
 
