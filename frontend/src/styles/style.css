@@ -579,7 +579,7 @@
 
 .card-subtitle {
   color: var(--text-secondary-color, gray);
-  font-size: 0.5rem !important;
+  font-size: 0.9rem !important;
   font-family: Arial, "Helvetica", sans-serif;
   transition: all 0.3s ease;
 }
@@ -596,7 +596,7 @@
   background-color: rgba(211, 211, 211, 0.596);
   color: #7e8081;
   transition: opacity 0.3s ease; 
-  font-size: 0.5rem !important;
+  font-size: 0.6rem !important;
   font-family: Arial, "Helvetica", sans-serif;
   
 }
@@ -610,12 +610,12 @@
   color: #0F82E4;
 }
 .directed-course {
-  font-size: 0.6rem !important;
+  font-size: 0.9rem !important;
   font-family: Arial, "Helvetica", sans-serif;
 }
 
 .small-title {
-  font-size: 0.6rem !important;
+  font-size: 1.3rem !important;
   font-family: Arial, "Helvetica", sans-serif;
 }
 
@@ -623,7 +623,7 @@
   text-decoration: underline;
   font-weight: bold;
   font-family: Arial, "Helvetica", sans-serif;
-  font-size: 0.7rem !important;
+  font-size: 1.3rem !important;
 }
 
 .card-link {

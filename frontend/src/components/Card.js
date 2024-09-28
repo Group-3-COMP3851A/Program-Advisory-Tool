@@ -80,7 +80,7 @@ export const OutlinedCard = ({text, ...props}) => {
               <Typography className="card-title small-title" variant="h5">
                 Directed Course
               </Typography>
-              <Typography className="card-subtitle small-title" variant="h6">
+              <Typography className="card-subtitle" variant="h6">
                 Units: 10
               </Typography>
             </CardContent>
