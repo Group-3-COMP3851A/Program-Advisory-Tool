@@ -37,22 +37,35 @@ function getCourseID(id)
 function checkCourseFollow(course)
 {
 	if(course.course_follow.length > 0)
-		return(<h3>You must do this course after {course.course_follow[0]}</h3>);
+		return(<p>This course must be immediately followed by {getCourseID(course.course_follow)}</p>);
 }
 
-function listAssumed(assumed)
+function listAssumed(courses)
 {
-	let listItems = "";
-	if(assumed.length == 0)	{
+	if(courses.length == 0) {
 		return (<h3>This course has no assumed knowledge requirements</h3>);
-	}
-	else if(assumed.length == 1) {
-		listItems = getCourseID(assumed[0]);
-	}
-	else if(assumed.length > 1) {
-		listItems = assumed.map((entry) => <li key={entry}>{getCourseID(entry)}</li>);
+	}	
+
+	let listItems = [];	
+	//Loop through each item in the assumed knowledge array, some items
+	//will be an array of courses, some will be a single course, add to an array
+	for(let i=0; i < courses.length; i++) {
+		if(Array.isArray(courses[i])) { //Make a string for the OR requisites
+			let listOrs = [];
+			for(let j=0;j<courses[i].length;j++) {
+				listOrs.push(getCourseID(courses[i][j]));
+			}
+			listItems.push(listOrs.join(' or '));
+		}
+		else if(courses[i].slice(-2) == "us") {
+			listItems.push("This course requires you to have completed " + courses[i].slice(0, -2) + " units");
+		}
+		else {
+			listItems.push(getCourseID(courses[i]));
+		}
 	}
 	
+	listItems = listItems.map((entry) => <li key={entry}>{entry}</li>);
 	return (
 	<div>
 	<h3>Course Assumed Knowledge:</h3>
@@ -77,8 +90,11 @@ export default function BasicPopover(props) {
           horizontal: 'left',
         }}
 		>
+			<h2>{getCourseID(props.course._id)}</h2>
+			<p>{props.course.course_name}</p>
 			{checkCourseFollow(props.course)}
 			{listAssumed(props.course.assumed_knowledge)}
+			<br/>
 			<Link href={courseURL} target="_blank" underline="always">Course Webpage</Link>
 
       </Popover>
