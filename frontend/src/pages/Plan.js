@@ -9,6 +9,7 @@ import { Box } from '@mui/material';
 import { CardWrapper } from '../components/CardWrapper';
 import HelpIcon from '../components/Tooltip';
 import Button from '../components/Button';
+import { arrayMove } from '@dnd-kit/sortable';
 
 const Plan = () => {
     const location = useLocation();
@@ -73,8 +74,19 @@ const Plan = () => {
             // Find the source and destination courses once
             const sourceCourse = findCourse(active.id);
             const destinationCourse = findCourse(over?.id);
-    
+            const transition = { sourceCourse, destinationCourse };
+            console.log(courseList[sourceCourse.yearIndex][sourceCourse.semesterIndex].indexOf(sourceCourse.course))
+            console.log(courseList[destinationCourse.yearIndex][destinationCourse.semesterIndex].indexOf(destinationCourse.course))
+            
+            
             if (sourceCourse && destinationCourse) {
+                if (sourceCourse.yearIndex === destinationCourse.yearIndex && sourceCourse.semesterIndex === destinationCourse.semesterIndex) {
+                    const updatedCourseList = [...courseList];
+                    const { yearIndex, semesterIndex } = sourceCourse;
+                    updatedCourseList[yearIndex][semesterIndex] = arrayMove(updatedCourseList[yearIndex][semesterIndex], updatedCourseList[yearIndex][semesterIndex].indexOf(sourceCourse.course), updatedCourseList[yearIndex][semesterIndex].indexOf(destinationCourse.course));
+                    setCourseList(updatedCourseList);
+                    return
+                }
                 const { yearIndex: sourceYear, semesterIndex: sourceSemester, course } = sourceCourse;
                 const { yearIndex: destYear, semesterIndex: destSemester } = destinationCourse;
     
@@ -83,9 +95,21 @@ const Plan = () => {
                 updatedCourseList[sourceYear][sourceSemester] = updatedCourseList[sourceYear][sourceSemester].filter(c => c._id !== course._id);
                 updatedCourseList[destYear][destSemester].push(course);
 
-
-                //need to add a call to the API for a feasibility check on the change, this needs to happen before the courseList is updated in state
-                setCourseList(updatedCourseList);
+                fetch('http://localhost:3001/api/feasibility/checkFeasibility', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        studentId: 12345,
+                        degree,
+                        major,
+                        completedCourses,
+                        transition,
+                        schedule: updatedCourseList
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => setCourseList(data.courseList || []))
+                .catch((error) => console.error('Error:', error));
             }
         }
         setActiveId(null);

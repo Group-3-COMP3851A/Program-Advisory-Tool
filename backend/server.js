@@ -3,6 +3,7 @@ import algorithm from "./api/routes/algorithm.route.js";
 import degree from "./api/routes/degree.route.js";
 import major from "./api/routes/major.route.js";
 import course from "./api/routes/course.route.js";
+import feasibility from "./api/routes/feasibility.route.js";
 import express from "express";
 import cors from "cors";
 
@@ -19,5 +20,6 @@ app.use('/api/algorithm', algorithm); //when accessing the "/api/algorithm" url,
 app.use('/api/degree', degree); //when accessing the "/api/degree" url, they are routed using the degree route file
 app.use('/api/major', major); //when accessing the "/api/major" url, they are routed using the major route file
 app.use('/api/course', course); //when accessing the "/api/course" url, they are routed using the course route file
+app.use('/api/feasibility', feasibility); //when accessing the "/api/feasiblity" url, they are routed using the feasibility route file
 
 export default app;
