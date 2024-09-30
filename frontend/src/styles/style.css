@@ -515,7 +515,6 @@
 }
 
 .semester-section:hover {
-    transform: translateY(-5px); /* Lift on hover */
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
