@@ -17,12 +17,14 @@ export default class FeasibilityController {
 
             const filteredCourseList = courseList.filter(course => !completedCourseIds.includes(course._id));
 
-            let conflicts = insertNormalCourseDependencyCheck(schedule, transition.sourceCourse.course, transition.sourceCourse, transition.destinationCourse, filteredCourseList, completedCourses);
+            let newSchedule = insertNormalCourseDependencyCheck(schedule, transition.sourceCourse.course, transition.sourceCourse, transition.destinationCourse, filteredCourseList, completedCourses);
+            console.log(newSchedule);
 
             let response = {
                 status: "success",
-                courseList: schedule,
+                courseList: newSchedule,
             };
+            console.log(newSchedule[0][0][4])
             res.json(response);
 
         } catch (e) {

@@ -66,7 +66,7 @@
  */
 export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, sourceLocation, destinationLocation, courseArray, completedCourses) => {
     //update the schedule with the new information from the db in case anything has changed
-    updateCourses(newSchedule, courseArray, changedCourse);
+    changedCourse = updateCourses(newSchedule, courseArray, changedCourse);
 
     const completedCourseIds = completedCourses.map(course => course._id);
     //locations are in the form: {semesterIndex: num, yearIndex: num}
@@ -90,6 +90,7 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
         else if (Array.isArray(assumed) && assumed.substring(assumed.length-2, assumed.length) !== "us" && !completedCourseIds.includes(assumed)) {
             dependencies[0].push(assumed);
         }
+        else if (!Array.isArray(assumed) && !completedCourseIds.includes(assumed)) dependencies[0].push(assumed);
     });
     changedCourse.requisites.forEach(requisite => {
         if (!completedCourseIds.includes(requisite)) dependencies[1].push(requisite);
@@ -152,7 +153,7 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
     if (us) {
         if (unitsStudiedBeforeSem < us) {
             conflicts.push(["uos"]);
-            changedCourse.conflicts.push(["uos"])
+            changedCourse.conflicts.push(["uos", us])
         }
     }
 
@@ -161,7 +162,7 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
     for (let i = 0; i < dependencies.length; i++) {
         const dependencyCategory = dependencies[i];
         dependencyCategory.forEach(dependency => {
-            conflicts[i].push([depCats[i], dependency]); //if there is anything left in this category, it needs to be warned about
+            conflicts.push([depCats[i], dependency]); //if there is anything left in this category, it needs to be warned about
             changedCourse.conflicts.push([depCats[i], dependency])
         });
     };
@@ -172,7 +173,10 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
         if (destinationLocation.semesterIndex === 1) nextLocation = {yearIndex: destinationLocation.yearIndex + 1, semesterIndex: 0};
         else nextLocation = {yearIndex: destinationLocation.yearIndex, semesterIndex: 1};
         //if the next semester does not exist then can just return the conflict straight away
-        if (nextLocation.yearIndex > newSchedule.length) conflicts.push(["followRequirement", changedCourse.course_follow]);
+        if (nextLocation.yearIndex > newSchedule.length) {
+            conflicts.push(["followRequirement", changedCourse.course_follow]);
+            changedCourse.conflicts.push(["followRequirement", changedCourse.course_follow]);
+        }
         else {
             const nextSemester = newSchedule[nextLocation.yearIndex][nextLocation.semesterIndex]
             //map the semester's courses to just be a list of the course id's
@@ -181,7 +185,10 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
                 else return undefined //directed and elective cannot be followers
             })
             //if the course we need to see as a follower is not present, add it as a conflict
-            if (!(coursesInNextSemester.includes(changedCourse.course_follow))) conflicts.push(["followRequirement", changedCourse.course_follow]);
+            if (!(coursesInNextSemester.includes(changedCourse.course_follow))) {
+                conflicts.push(["followRequirement", changedCourse.course_follow]);
+                changedCourse.conflicts.push(["followRequirement", changedCourse.course_follow]);
+            }
         }
     }
 
@@ -190,7 +197,7 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
     //this should also check for any other conflicts that may have been resolved
     checkEveryCourse(newSchedule, changedCourse, conflicts, completedCourseIds)
 
-    return conflicts;
+    return newSchedule;
 
 }
 
@@ -210,12 +217,12 @@ const updateCourses = (schedule, courseArray, changedCourse) => {
                     let somecourse = {...newCourse, conflicts: []};
                     if (newCourse) schedule [i][j][k] = somecourse; //only replace the course if it exists in the array (in the case of a course being deleted or something, the plan should still function)
                     else schedule [i][j][k] = {...currentCourse, conflicts: []};
+                    if (currentCourse._id === changedCourse._id) changedCourse = somecourse;
                 }
             }
         }
     }
-    let newCourse = courseArray.find(course => course._id === changedCourse._id);
-    if (newCourse) changedCourse = newCourse;
+    return changedCourse
 }
 
 const checkForDependencies = (coursesToPoint, course, conflicts, completedCourseCodes) => {
@@ -255,7 +262,7 @@ const checkFollowerCourse = (course, nextSemester, conflicts) => {
 
     if (!coursesInNextSemester.includes(course.course_follow)) {
         conflicts.push(["followRequirement", course._id]);
-        course.conflicts.push(["followRequirement", course._id]);
+        course.conflicts.push(["followRequirement", course.course_follow]);
     }
 }
 
@@ -265,7 +272,7 @@ const checkForUOS = (course, unitsStudied, conflicts) => {
         if (!Array.isArray(assumed) && assumed.substring(assumed.length-2) === "us" && parseInt(assumed.substring(0, assumed.length-2)) > unitsStudied)
         {
             conflicts.push(["uos", course._id]);
-            course.conflicts.push(["uos"]);
+            course.conflicts.push(["uos", parseInt(assumed.substring(0, assumed.length-2))]);
         }
         
     });
