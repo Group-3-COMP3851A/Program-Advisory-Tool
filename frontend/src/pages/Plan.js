@@ -75,8 +75,7 @@ const Plan = () => {
             const sourceCourse = findCourse(active.id);
             const destinationCourse = findCourse(over?.id);
             const transition = { sourceCourse, destinationCourse };
-            console.log(courseList[sourceCourse.yearIndex][sourceCourse.semesterIndex].indexOf(sourceCourse.course))
-            console.log(courseList[destinationCourse.yearIndex][destinationCourse.semesterIndex].indexOf(destinationCourse.course))
+            console.log(transition);
             
             
             if (sourceCourse && destinationCourse) {
@@ -136,7 +135,7 @@ const Plan = () => {
                                             <Box className='drop-area'>
                                                 {semester.length > 0 ? semester.map((course) => (
                                                     <CardWrapper key={course._id ? course._id : course.code + course.number} id={course._id ? course._id : course.code + course.number} disabled={dndDisabled}>
-                                                        <OutlinedCard text={course} />
+                                                        <OutlinedCard text={course} editable={dndDisabled} />
                                                     </CardWrapper>
                                                 )) : <CardWrapper key={"PLACEHOLDER_KEY" + yearIndex + semesterIndex} id={"PLACEHOLDER_KEY" + yearIndex + semesterIndex} disabled={true}/>}
                                             </Box>
