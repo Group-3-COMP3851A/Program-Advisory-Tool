@@ -239,7 +239,7 @@ const checkForDependencies = (coursesToPoint, course, conflicts, completedCourse
                 conflicts.push(["ass", course._id]);
                 course.conflicts.push(["ass", assumed]);
             }
-        else if (!Array.isArray && !coursesToPoint.includes(assumed) && !completedCourseCodes.indcludes(assumed))
+        else if (!Array.isArray(assumed) && !coursesToPoint.includes(assumed) && !completedCourseCodes.includes(assumed))
         {
             conflicts.push(["ass", course._id]);
             course.conflicts.push(["ass", assumed]);

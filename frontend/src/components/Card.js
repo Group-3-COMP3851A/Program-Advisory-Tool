@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { AppContext } from '../AppContext';
 import BasicPopover from './Popover';
-import { Box, Popover, Tooltip } from '@mui/material';
+import { Box, Popover } from '@mui/material';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 
@@ -31,7 +31,6 @@ export const OutlinedCard = ({text, ...props}) => {
 
   let colourOfInfo = {color: 'white'}
   if (text.conflicts && text.conflicts.length > 0) colourOfInfo = {color: 'red'}
-  console.log(colourOfInfo)
   
   let { major, coursesPerSem, completedCourses } = useContext(AppContext);
   if (!major) {
