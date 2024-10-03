@@ -116,7 +116,8 @@ const Select = () => {
 	
     return (
 		<div className='global'>
-           
+           <Tooltip text1="Select your degree and Major, then select how many courses you would like to do per semester"
+					text2="4 Courses is considered full-time study."/>
 			<div className='main-section'>
                 <Text type="h1">Welcome to Program Planner</Text>
                 <Text type="h2">Please select your degree and major below</Text>
@@ -138,8 +139,6 @@ const Select = () => {
                 )}
                 {errorMessage && <Text type="p" style={{ color: 'red' }}>{errorMessage}</Text>}
                 <Button onClick={handleNext} text="Continue" />
-				<Tooltip text1="Select your degree and Major, then select how many courses you would like to do per semester"
-					text2="4 Courses is considered full-time study."/>
             </div>
 			{showPopUp && (
                 <PopUp 

@@ -45,11 +45,10 @@ const Completed = () => {
 
     return (
         <div className='global'>
-           
+			<Tooltip text1="Select every course you have already completed, these courses will be ignored when creating your degree plan"/>		
             <div className='completed-section'>
                 <MultiSearchBox options={courseList} value={completedCourses} onChange={handleCourseSelect}/>
                 <div className='CIcon'><Button onClick={handleNext} text="Continue" /></div>
-                <Tooltip text1="Select every course you have already completed, these courses will be ignored when creating your degree plan"/>
             </div>
         </div>
     );

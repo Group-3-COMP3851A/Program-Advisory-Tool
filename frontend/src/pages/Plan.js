@@ -116,14 +116,14 @@ const Plan = () => {
 
     return (
         <div className='global'>
+			<HelpIcon text1="to swap courses click and drap it to another semester and drop it on the first course in that semester"
+				text2="4 Courses is considered full-time study."/>
             <div className='gen-section'>
                 <Text type="h1" className='page-title'>This program plan is for an student in the {degree} with a major in {major} modify with any selected completed courses which are placed at the bottom.</Text>
                 <div><Text type="h2" className='S1'>Each blue box represents a semester. When you hover your mouse over it, it highlights the courses for that semester. If you hover over a specific course, it will highlight the essential information you need to know.</Text></div>
                 <div className="popup-buttons">
                     <Button onClick={() => setDndDisabled(!dndDisabled)} text={dndDisabled ? "Edit Plan" : "Stop Editing"} color="#28a745"/>
                 </div>
-                <HelpIcon text1="to swap courses click and drap it to another semester and drop it on the first course in that semester"
-					text2="4 Courses is considered full-time study."/>
                 <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
                     {courseList.map((year, yearIndex) => (
                         <div key={yearIndex} className='year-container'>
