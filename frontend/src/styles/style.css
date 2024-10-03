@@ -19,6 +19,7 @@
   width: 1759px;
 }
 
+
 .app .bodybg {
   background-color: #1090d54c;
   height: 4384px;
@@ -245,6 +246,7 @@
 
 /*menu starts here*/
 .menu {
+  z-index: 2;
   top: 0;
   left: 0;
   width: 10%;
@@ -464,7 +466,6 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin: 0.5%;
   width: auto;
   font-family: Arial, "Helvetica", sans-serif;
   color: #000000;
@@ -495,44 +496,47 @@
 /* Semester container */
 .semester-container {
     display: flex;
-    justify-content: space-between; /* Separate the boxes within each year */
-    width: 100rem;
-    height: 25rem;
+    height: 15rem;
 }
 
 /* Semester section styling to give each box a distinct look */
 .semester-section {
-    padding: 3rem;
     border-radius: 3rem;
-    width: 48%; /* Two boxes should fit side by side */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Shadow to lift the box */
+	margin-right: 1%;
     display: flex;
     flex-direction: left;
     justify-content: center;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
-    
 }
 
 .semester-section:hover {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
+.semester-text {
+	writing-mode: vertical-lr;
+	text-orientation: upright;
+	margin: 0;
+	color: gray;
+}
+
 /* Drop area */
 .drop-area {
     min-height: 200px;
-    width: 100%;
     border: 1px solid #004961; /* Blue dashed border for drop areas */
     border-radius: 8px;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
+	width: 95%;
 }
 
 /* Card wrapper */
 .card-wrapper {
-  flex: 1 1 calc(23% - 10px); /* 4 cards per row with spacing */
+	flex: 1 1 calc(23% - 10px); /* 4 cards per row with spacing */
     margin: 1rem;
     background-color: #e0e0e086;
     border-radius: 8px;
@@ -552,14 +556,13 @@
   flex: 1 1 calc(23% - 10px); 
   width: calc(100% / var(--courses-per-sem));
   position: relative;
-  
 }
 
 
 .card-content {
   text-align: center;
   background-color: rgba(211, 211, 211, 0.596);
-  height: 100px !important; /* this adjust the course cards height % seems fine to me but the fixed value would look better
+  height: 135px !important; /* this adjust the course cards height % seems fine to me but the fixed value would look better
   because of the arrgrnement for esstienal needs to be work needs to be work on*/
   display: flex;
   flex-direction: column;
@@ -656,10 +659,10 @@
 }
 
 .helpIcon {
+	z-index: 2;
 	position: fixed;
 	bottom: 2%;
 	right: 2%;
-  
 }
 .CIcon {
 	position: absolute;

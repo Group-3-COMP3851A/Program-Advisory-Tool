@@ -131,6 +131,7 @@ const Plan = () => {
                             <div className='semester-container'>
                                 {year.map((semester, semesterIndex) => (
                                     <div key={semesterIndex} className='semester-section'>
+										<p className='semester-text'>SEMESTER {semesterIndex + 1}</p>
                                             <DropArea items={semester} semesterIndex={semesterIndex}>
                                             <Box className='drop-area'>
                                                 {semester.length > 0 ? semester.map((course) => (
