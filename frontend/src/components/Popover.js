@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
 function getCourseID(id)
@@ -42,7 +41,7 @@ function checkCourseFollow(course)
 
 function listAssumed(courses)
 {
-	if(courses.length == 0) {
+	if(courses.length === 0) {
 		return (<h3>This course has no assumed knowledge requirements</h3>);
 	}	
 
@@ -57,7 +56,7 @@ function listAssumed(courses)
 			}
 			listItems.push(listOrs.join(' or '));
 		}
-		else if(courses[i].slice(-2) == "us") {
+		else if(courses[i].slice(-2) === "us") {
 			listItems.push("This course requires you to have completed " + courses[i].slice(0, -2) + " units");
 		}
 		else {
