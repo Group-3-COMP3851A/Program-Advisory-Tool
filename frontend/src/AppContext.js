@@ -7,7 +7,6 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
     const [degree, setDegree] = useState('');
     const [major, setMajor] = useState('');
-    const [semCount, setSemCount] = useState('');
     const [coursesPerSem, setCoursesPerSem] = useState('');
     const [completedCourses, setCompletedCourses] = useState([]);
 
@@ -15,7 +14,6 @@ export const AppProvider = ({ children }) => {
         <AppContext.Provider value={{ 
             degree, setDegree, 
             major, setMajor, 
-            semCount, setSemCount, 
             coursesPerSem, setCoursesPerSem,
             completedCourses, setCompletedCourses 
             }}>

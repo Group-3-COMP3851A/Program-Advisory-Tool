@@ -1,5 +1,5 @@
 :root {
-  --body-font-family: "Work Sans", Helvetica;
+  --body-font-family: Arial, "Helvetica", sans-serif;
   --body-font-size: 13px;
   --body-font-style: normal;
   --body-font-weight: 400;
@@ -8,13 +8,13 @@
   --fuschia-100: rgba(239, 93, 168, 1);
   --fuschia-60: rgba(252, 221, 236, 1);
   --fuschia-80: rgba(241, 120, 182, 1);
-  --header-1-font-family: "Work Sans", Helvetica;
+  --header-1-font-family: Arial, "Helvetica", sans-serif;
   --header-1-font-size: 34px;
   --header-1-font-style: normal;
   --header-1-font-weight: 700;
   --header-1-letter-spacing: -0.68px;
   --header-1-line-height: normal;
-  --header-2-font-family: "Work Sans", Helvetica;
+  --header-2-font-family: Arial, "Helvetica", sans-serif;
   --header-2-font-size: 20px;
   --header-2-font-style: normal;
   --header-2-font-weight: 700;

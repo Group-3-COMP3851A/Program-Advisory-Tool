@@ -5,7 +5,6 @@ import Menu from '../components/Menu'; // Importing the Menu component
 import Button from '../components/Button'; // Importing the Button component
 import Form from '../components/Form'; // Importing the Form component
 import TextInput from '../components/Input';
-import Link from '../components/Link'; // Importing the Link component
 
 const Logout = () => {
   // Initializing state variables for username and password using the useState hook
@@ -15,16 +14,16 @@ const Logout = () => {
   const handleLoginSubmit = (e) => {
     // Handler function for form submission
     e.preventDefault(); // Prevent the default form submission behavior
-    console.log('Username:', username); // Log the username to the console
-    console.log('Password:', password); // Log the password to the console
+    //console.log('Username:', username); // Log the username to the console
+    //console.log('Password:', password); // Log the password to the console
   };
 
   return (
 	<div className='global'>
-        <Menu curentPage="select"/>
+        
 		<div className='main-section'>
         {/* Centered content container */}
-        <Text type="h1">Log In</Text> {/* Heading for the Login page */}
+        <Text type="h1">Log In"still in development/apart of possibly future out of scope functionality"</Text> {/* Heading for the Login page */}
         <Text type="h2">Please enter your details to log in</Text> {/* Subheading for the Login page */}
         
         {/* Combined Login Form */}

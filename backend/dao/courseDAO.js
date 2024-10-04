@@ -129,7 +129,7 @@ export default class courseDAO{
 
             let filteredCourseList = coursesData.filter(course => !completedCourseIds.includes(course._id));
 
-            console.log(filteredCourseList);
+            //console.log(filteredCourseList);
             
             return filteredCourseList;
 

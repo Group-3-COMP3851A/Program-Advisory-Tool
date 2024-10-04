@@ -1,3 +1,4 @@
+
 import app from "./server.js";
 import mongodb, { ServerApiVersion } from "mongodb";
 import studentDAO from "./dao/studentDAO.js";
@@ -5,6 +6,7 @@ import algorithmDAO from "./dao/algorithmDAO.js";
 import degreeDAO from "./dao/degreeDAO.js";
 import majorDAO from "./dao/majorDAO.js";
 import courseDAO from "./dao/courseDAO.js";
+
 
 // Can be modified at a later date
 const port = process.env.PORT || 3001;

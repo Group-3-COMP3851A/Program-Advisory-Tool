@@ -6,6 +6,5 @@ export default function ButtonUsage(props) {
 	<Button variant="contained"
 	onClick={props.onClick}>
 	{props.text}</Button>
-	
 	);
 }

@@ -4,7 +4,7 @@ import AlgorithmHandler from "../algorithm/handlers/AlgorithmHandler.js";
 export default class algorithmCtrl {
     static async apiGetCourseList(req, res, next){
         
-        const { studentId, degree, major, semCount, coursesPerSem, completedCourses } = req.body;
+        const { studentId, degree, major, coursesPerSem, completedCourses } = req.body;
 
         try {
             // Perform database query in order to get the course list
@@ -14,6 +14,24 @@ export default class algorithmCtrl {
             const completedCourseIds = completedCourses.map(course => course._id);
 
             const filteredCourseList = courseList.filter(course => !completedCourseIds.includes(course._id));
+
+            let semCount = 6;
+
+            switch (coursesPerSem)
+            {
+                case 2:
+                    semCount = 12;
+                    break;
+                case 3:
+                    semCount = 8;
+                    break;
+                case 4:
+                    semCount = 6;
+                    break;
+                default:
+                    semCount = 6;
+                    break;
+            }
 
             const handler = new AlgorithmHandler(filteredCourseList, directedObject, completedCourses, semCount, coursesPerSem);
 
@@ -27,7 +45,7 @@ export default class algorithmCtrl {
                 )
             );
 
-            console.log(schedule);
+            //console.log(schedule);
 
             const scheduleMap = [];
 
