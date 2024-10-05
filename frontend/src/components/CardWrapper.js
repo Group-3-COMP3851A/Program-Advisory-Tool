@@ -22,9 +22,9 @@ export function CardWrapper(props) {
         transition,
         width: `${100/coursesPerSem}%`, margin: '1%'
       }
-      if (props.disabled) {
-        style.height = "100px";
-        style.width = "100px"
+      if (!props.children) {
+        style.width = "150px";
+        style.height = "150px";
       }
 
     return (
