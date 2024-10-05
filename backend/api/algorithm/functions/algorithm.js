@@ -254,11 +254,11 @@ class Algorithm {
     sortDirected = (directedCourses) => {
         //doesn't matter which directed course we get the assumed knowledge of, they're all the same
         //checking if any assumed knowledge is in completed courses
-        const completedCourseCodes = this.completedCourses.map(course => course.code);
-        directedCourses.assumed_knowledge.forEach((assumedCourse) => {
+        const completedCourseCodes = this.completedCourses.map(course => course._id);
+        directedCourses.assumed_knowledge.forEach((assumedCourse, i) => {
             if (Array.isArray(assumedCourse) && assumedCourse.some(item => completedCourseCodes.includes(item))) { //if the assumed knowledge is an array and it contains the courseCode, remove it from the assumed knowledge
                 directedCourses.assumed_knowledge.splice(i, 1);
-            } else if (completedCourseCodes.includes(assumedCourse)) { //if the assumed knowledge is just the courseCode, remove it from the assumed knowledge
+            } else if (!Array.isArray(assumedCourse) && completedCourseCodes.includes(assumedCourse)) { //if the assumed knowledge is just the courseCode, remove it from the assumed knowledge
                 directedCourses.assumed_knowledge.splice(i, 1);
             }
         });
@@ -272,7 +272,7 @@ class Algorithm {
                 if (Array.isArray(assumedCourse) && assumedCourse.includes(course.code)) { //if the assumed knowledge is an array and it contains the courseCode, remove it from the assumed knowledge
                     assumedKnowledge.splice(i, 1);
                 }
-                else if (assumedCourse === course.code) { //if the assumed knowledge is just the courseCode, remove it from the assumed knowledge
+                else if (!Array.isArray(assumedCourse) && assumedCourse === course.code) { //if the assumed knowledge is just the courseCode, remove it from the assumed knowledge
                     assumedKnowledge.splice(i, 1);
                 }
             })

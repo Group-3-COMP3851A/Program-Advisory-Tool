@@ -45,7 +45,7 @@ export default class algorithmCtrl {
                 )
             );
 
-            //console.log(schedule);
+            // console.log(schedule);
 
             const scheduleMap = [];
 

@@ -41,6 +41,7 @@ class AlgorithmHandler {
         this.semesterCount = semesterCount; //semester count could be inferred from the number of courses remaining and the number of courses they wish to complete per semester
         this.coursesPerSem = coursesPerSem;
         this.completedCourses = completedCourses;
+        this.completedCoursesList = this.completedCourses.map(course => course._id);
         //maybe an argument to be had about whether or not the below should be completed every single time a new handler is created
         this.preprocessData();
         this.runAlgorithm(directedPlaceholder);
@@ -65,7 +66,7 @@ class AlgorithmHandler {
             course.assumed_knowledge.forEach(assumedCourse => {
                 if (Array.isArray(assumedCourse)){ 
                     //check which of the options are in the list of courses
-                    assumedCourse = assumedCourse.filter(course => this.courseCodeList.includes(course) || this.completedCourses.includes(course)); //this is a wildly inefficient method of doing this and if the arrays were going to actually be long, I would consider changing it, however, given that the codeList is at most extreme 48 objects long and the requirement intersection at most 4 long, I believe this is suitable
+                    assumedCourse = assumedCourse.filter(course => this.courseCodeList.includes(course) || this.completedCoursesList.includes(course)); //this is a wildly inefficient method of doing this and if the arrays were going to actually be long, I would consider changing it, however, given that the codeList is at most extreme 48 objects long and the requirement intersection at most 4 long, I believe this is suitable
                     let index = this.courseCodeList.indexOf(assumedCourse[0]); //finding the index of the course in the courseCodeList
                     if (!(index === -1)){ //if the index exists in the courseCodeList then it is not a completed course already, so we can push it to the graph
                         outputArray.push(index);
