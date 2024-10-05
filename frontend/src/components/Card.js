@@ -82,7 +82,7 @@ export const OutlinedCard = ({text, ...props}) => {
             conflictText.push(<li key={i}>The course is not offered in this semester</li>);
             break;
           case "uos":
-            conflictText.push(<li key={i}>Units of study requirements are not met. You must study {conflict[1]} units in previous semesters</li>)
+            conflictText.push(<li key={i}>Units of study requirements are not met. You must study {conflict[1]} units before taking this course</li>)
             break;
           case "ass":
             if (Array.isArray(conflict[1])) {

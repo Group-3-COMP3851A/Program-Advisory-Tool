@@ -98,8 +98,8 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
 
     const conflicts = [];
     //2 different units of study variables, one to keep track of every course found, another to keep track of how many units would have been studied up until the given semester
-    let unitsStudied = completedCourseIds.length;
-    let unitsStudiedBeforeSem = completedCourseIds.length;
+    let unitsStudied = completedCourseIds.length*10;
+    let unitsStudiedBeforeSem = completedCourseIds.length*10;
 
     //checking if the semester is valid
     //if the semester can be either 1 or 2 or if the semester matches the sourcelocation semester, there's no issue
@@ -269,7 +269,7 @@ const checkFollowerCourse = (course, nextSemester, conflicts) => {
 //code to check for UOS requirements
 const checkForUOS = (course, unitsStudied, conflicts) => {
     course.assumed_knowledge.forEach(assumed => {
-        if (!Array.isArray(assumed) && assumed.substring(assumed.length-2) === "us" && parseInt(assumed.substring(0, assumed.length-2)) > unitsStudied)
+        if (!Array.isArray(assumed) && assumed.substring(assumed.length-2) === "us" && (parseInt(assumed.substring(0, assumed.length-2)) > unitsStudied))
         {
             conflicts.push(["uos", course._id]);
             course.conflicts.push(["uos", parseInt(assumed.substring(0, assumed.length-2))]);
@@ -292,8 +292,8 @@ const checkEveryCourse = (newSchedule, changedCourse, conflicts, completedCourse
     const coursesBeforeCurrentSemester = [];
     let coursesInCurrentSemester = [];
 
-    let unitsStudied = completedCourseIds.length;
-    let unitsStudiedBeforeSem = completedCourseIds.length;
+    let unitsStudied = completedCourseIds.length*10;
+    let unitsStudiedBeforeSem = completedCourseIds.length*10;
 
     //checking for any courses that have a dependency on the moved course
     for (let i = 0; i < newSchedule.length; i++) {
