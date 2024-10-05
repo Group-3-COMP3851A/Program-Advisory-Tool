@@ -24,7 +24,7 @@ export function CardWrapper(props) {
       }
       if (props.disabled) {
         style.height = "100px";
-        
+        style.width = "100px"
       }
 
     return (

@@ -87,10 +87,10 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
     //create array with all dependencies - this is maybe not as efficient as
     changedCourse.assumed_knowledge.forEach(assumed => {
         if (Array.isArray(assumed) && !assumed.find((item) => completedCourseIds.includes(item))) dependencies[0].push(assumed);
-        else if (Array.isArray(assumed) && assumed.substring(assumed.length-2, assumed.length) !== "us" && !completedCourseIds.includes(assumed)) {
+        else if (Array.isArray(assumed) && assumed.substring(assumed.length-2) !== "us" && !completedCourseIds.includes(assumed)) {
             dependencies[0].push(assumed);
         }
-        else if (!Array.isArray(assumed) && !completedCourseIds.includes(assumed)) dependencies[0].push(assumed);
+        else if (!Array.isArray(assumed) && !completedCourseIds.includes(assumed) && assumed.substring(assumed.length-2) !== "us") dependencies[0].push(assumed);
     });
     changedCourse.requisites.forEach(requisite => {
         if (!completedCourseIds.includes(requisite)) dependencies[1].push(requisite);
@@ -239,7 +239,7 @@ const checkForDependencies = (coursesToPoint, course, conflicts, completedCourse
                 conflicts.push(["ass", course._id]);
                 course.conflicts.push(["ass", assumed]);
             }
-        else if (!Array.isArray(assumed) && !coursesToPoint.includes(assumed) && !completedCourseCodes.includes(assumed))
+        else if (!Array.isArray(assumed) && !coursesToPoint.includes(assumed) && !completedCourseCodes.includes(assumed) && !assumed.substring(assumed.length-2) === "us")
         {
             conflicts.push(["ass", course._id]);
             course.conflicts.push(["ass", assumed]);
@@ -247,7 +247,7 @@ const checkForDependencies = (coursesToPoint, course, conflicts, completedCourse
     });
     //checking requisites
     course.requisites.forEach(requisite => {
-        if (!coursesToPoint.includes(assumed) && !completedCourseCodes.indcludes(assumed)) {
+        if (!coursesToPoint.includes(assumed) && !completedCourseCodes.includes(assumed)) {
             conflicts.push(["req", course._id]);
             course.conflicts.push(["req", requisite]);}
     });

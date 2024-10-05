@@ -79,19 +79,23 @@ export const OutlinedCard = ({text, ...props}) => {
       courseConflicts.forEach((conflict, i) => {
         switch (conflict[0]){
           case "semester":
-            conflictText.push(<li key={i}>The course is in the wrong semester</li>);
+            conflictText.push(<li key={i}>The course is not offered in this semester</li>);
             break;
           case "uos":
-            conflictText.push(<li key={i}>Units of study requirements are not met. You must study {conflict[1]} units in previous semesters\n</li>)
+            conflictText.push(<li key={i}>Units of study requirements are not met. You must study {conflict[1]} units in previous semesters</li>)
             break;
           case "ass":
-            conflictText.push(<li key={i}>Assumed knowledge: {getFullCourseCode(conflict[1])}</li>)
+            if (Array.isArray(conflict[1])) {
+              conflictText.push(<li key={i}>Assumed knowledge: {conflict[1].map(code => getFullCourseCode(code)).join(" or ")}</li>);
+            } else {
+              conflictText.push(<li key={i}>Assumed knowledge: {getFullCourseCode(conflict[1])}</li>);
+            }
             break;
           case "req":
             conflictText.push(<li key={i}>Requisite knowledge: {getFullCourseCode(conflict[1])}</li>);
             break;
           case "followRequirement":
-            conflictText.push(<li key={i}>Follower course ({getFullCourseCode(conflict[1])}) that is not present in the following semester</li>);
+            conflictText.push(<li key={i}>Follower course ({getFullCourseCode(conflict[1])}) is not present in the following semester</li>);
             break;
           default:
             break;
