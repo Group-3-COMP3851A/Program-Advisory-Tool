@@ -40,8 +40,8 @@ export default class algorithmCtrl {
             const courseMap = new Map(courseList.map(course => [course._id, course]));
 
             const schedule = coursePlan.map(semester => 
-                semester.map(course => 
-                    course ? (courseMap.get(course.code) || course) : {"code": "completed"}
+                semester.filter(course => !!course).map(course => 
+                    courseMap.get(course.code) || course
                 )
             );
 
