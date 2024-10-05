@@ -277,4 +277,151 @@
   },
   "course_id": "4500se",
   "degree_id": 40103
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad765718c"
+  },
+  "course_id": "1140co",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad765718d"
+  },
+  "course_id": "1001ac",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad765718e"
+  },
+  "course_id": "1003ac",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad765718f"
+  },
+  "course_id": "1010co",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad7657190"
+  },
+  "course_id": "3851a_co",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad7657191"
+  },
+  "course_id": "3851b_co",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad7657192"
+  },
+  "course_id": "1001ec",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad7657193"
+  },
+  "course_id": "1060in",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad7657194"
+  },
+  "course_id": "2031in",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad7657195"
+  },
+  "course_id": "2060in",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad7657196"
+  },
+  "course_id": "2150in",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad7657197"
+  },
+  "course_id": "3100in",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad7657198"
+  },
+  "course_id": "3800in",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad7657199"
+  },
+  "course_id": "1001le",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad765719a"
+  },
+  "course_id": "1001mk",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad765719b"
+  },
+  "course_id": "1001mn",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad765719c"
+  },
+  "course_id": "1050se",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad765719d"
+  },
+  "course_id": "1110se",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad765719e"
+  },
+  "course_id": "2130se",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad765719f"
+  },
+  "course_id": "2260se",
+  "degree_id": 12238
+},
+{
+  "_id": {
+    "$oid": "67008958b4120a1ad76571a0"
+  },
+  "course_id": "1060st",
+  "degree_id": 12238
 }]
