@@ -313,6 +313,7 @@
   background-color: rgb(139, 6, 6);
   margin-top: 110px;
   margin-right: 40px;
+  list-style-type: none;
 }
 .logout li:hover {
   transform: perspective(1000px) translateZ(10px); 
