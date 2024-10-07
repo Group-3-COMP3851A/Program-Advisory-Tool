@@ -119,8 +119,9 @@ const Plan = () => {
 			<HelpIcon text1="to swap courses click and drap it to another semester and drop it on the first course in that semester"
 				text2="4 Courses is considered full-time study."/>
             <div className='gen-section'>
-                <Text type="h1" className='page-title'>This program plan is for an student in the {degree} with a major in {major} modify with any selected completed courses which are placed at the bottom.</Text>
-                <div><Text type="h2" className='S1'>Each blue box represents a semester. When you hover your mouse over it, it highlights the courses for that semester. If you hover over a specific course, it will highlight the essential information you need to know.</Text></div>
+                <Text type="h1" className='page-title'>This program plan is for an student in the {degree} with a major in {major}. Completed courses are not shown in the plan.</Text>
+                <div><Text type="h2" className='S1'>Each box represents a semester. You can click on the course name to show details about the course. By hovering over the information icon, any conflicts that may not allow you to complete the course can be shown</Text></div>
+                <div><Text type="h2" className='S1'>The plan can be edited by clicking on the "Edit Plan" button and stopped by clicking on the "Stop Editing" button. You can select your directed by clicking on the "Directed" course and choosing from the list.</Text></div>
                 <div className="popup-buttons">
                     <Button onClick={() => setDndDisabled(!dndDisabled)} text={dndDisabled ? "Edit Plan" : "Stop Editing"} color="#28a745"/>
                 </div>
