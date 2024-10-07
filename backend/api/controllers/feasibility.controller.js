@@ -1,7 +1,7 @@
 //feasibility checks controller
 
 import algorithmDAO from "../../dao/algorithmDAO.js";
-import { insertNormalCourseDependencyCheck } from "../functions/insertCourseDependencyChecks.js";
+import { insertElectiveDependencyChecks, insertNormalCourseDependencyCheck } from "../functions/insertCourseDependencyChecks.js";
 
 export default class FeasibilityController {
     static async apiCheckFeasibility(req, res, next){
@@ -16,15 +16,17 @@ export default class FeasibilityController {
             const completedCourseIds = completedCourses.map(course => course._id);
 
             const filteredCourseList = courseList.filter(course => !completedCourseIds.includes(course._id));
-
-            let newSchedule = insertNormalCourseDependencyCheck(schedule, transition.sourceCourse.course, transition.sourceCourse, transition.destinationCourse, filteredCourseList, completedCourses);
-            console.log(newSchedule);
+            let newSchedule;
+            if (transition.sourceCourse.course._id) { //if it has an ID that means it has a course selected (need to check for ID first especially since selected directeds will still keep the code)
+                newSchedule = insertNormalCourseDependencyCheck(schedule, transition.sourceCourse.course, transition.sourceCourse, transition.destinationCourse, filteredCourseList, completedCourses);
+            } else {
+                newSchedule = insertElectiveDependencyChecks(schedule, transition.sourceCourse.course, filteredCourseList, completedCourses);
+            }
 
             let response = {
                 status: "success",
                 courseList: newSchedule,
             };
-            console.log(newSchedule[0][0][4])
             res.json(response);
 
         } catch (e) {

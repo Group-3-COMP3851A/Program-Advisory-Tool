@@ -141,6 +141,24 @@ export const OutlinedCard = ({text, ...props}) => {
               <Typography className="card-title small-title" variant="h5">
                 Directed Course
               </Typography>
+              <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={{color:"#E9D502"}}/>
+              <Popover
+                  open={Boolean(conflictAnchorEl)}
+                  anchorEl={conflictAnchorEl}
+                  sx={{pointerEvents: 'none'}}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  disableRestoreFocus
+                  onClose={handleConflictHoverExit}
+                >
+                 <Typography sx={{margin: '20px'}}>Directed Courses may have assumed knowledge that is unmet. Full checking can be guaranteed upon selection of a directed course.</Typography>
+                </Popover>
               <Typography className="card-subtitle" variant="h6">
                 Units: 10
               </Typography>

@@ -137,7 +137,7 @@ const Plan = () => {
                                             <Box className='drop-area'>
                                                 {semester.length > 0 ? semester.map((course) => (
                                                     <CardWrapper key={course._id ? course._id : course.code + course.number} id={course._id ? course._id : course.code + course.number} disabled={dndDisabled}>
-                                                        <OutlinedCard text={course} editable={dndDisabled} />
+                                                        <OutlinedCard text={course}/>
                                                     </CardWrapper>
                                                 )) : <CardWrapper key={"PLACEHOLDER_KEY" + yearIndex + semesterIndex} id={"PLACEHOLDER_KEY" + yearIndex + semesterIndex} disabled={true}/>}
                                             </Box>
