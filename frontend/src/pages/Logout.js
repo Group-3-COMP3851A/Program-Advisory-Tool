@@ -11,6 +11,7 @@ const Logout = () => {
   // Initializing state variables for username and password using the useState hook
   const [studentId, setStudentId] = useState(''); // State for storing the username input value
   const [password, setPassword] = useState(''); // State for storing the password input value
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleLoginSubmit = (e) => {
@@ -18,6 +19,11 @@ const Logout = () => {
     e.preventDefault(); // Prevent the default form submission behavior
     //console.log('Username:', studentId); // Log the username to the console
     //console.log('Password:', password); // Log the password to the console
+    if (!studentId && !password){
+      setErrorMessage('Please please input your Student ID and your Password');
+      return;
+    }
+
     navigate('/profile');
   };
 
@@ -27,7 +33,7 @@ const Logout = () => {
         <Text type="h1">Log In</Text>
         <Text type="h2">Please enter your details to log in</Text>
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', justifyContent: 'center'}}>
           <TextInput placeholder="Student ID">
             <input
               type="text"
@@ -44,6 +50,7 @@ const Logout = () => {
               style={{ padding: '10px', fontSize: '16px', borderRadius: '4px', border: '1px solid #ccc', marginBottom: '20px' }}
             />
           </TextInput> 
+          {errorMessage && <Text type="p" style={{ color: 'red' }}>{errorMessage}</Text>}
           <Button onClick={handleLoginSubmit} text="Log In"/> 
         </div>
       </div>
