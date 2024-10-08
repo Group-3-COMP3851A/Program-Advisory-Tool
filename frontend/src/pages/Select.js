@@ -94,6 +94,7 @@ const Select = () => {
 
     const handlePopUpConfirmNo = () => {
         setShowSecondPopUp(false);
+		navigate('/plan', { state: { degree, major, coursesPerSem, completedCourses } });
     };
 
     const handleSecondPopUpClose = () => {

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
 import Link from '@mui/material/Link';
+import '../styles/style.css';
 
 function getCourseID(id)
 {
@@ -74,9 +75,7 @@ function listAssumed(courses)
 }
 
 export default function BasicPopover(props) {
-	
 	if(!props.disabled) return (<></>); //If the 'edit' mode is ACTIVE, return
-  
 	let courseID = getCourseID(props.course._id);
 	let courseURL = "https://www.newcastle.edu.au/course/" + courseID;
   
@@ -84,18 +83,15 @@ export default function BasicPopover(props) {
       <Popover
         open={props.disabled}
 		anchorEl={props.anchor}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
 		>
+		<div className='cardPopover'>
 			<h2>{getCourseID(props.course._id)}</h2>
 			<p>{props.course.course_name}</p>
 			{checkCourseFollow(props.course)}
 			{listAssumed(props.course.assumed_knowledge)}
 			<br/>
 			<Link href={courseURL} target="_blank" underline="always">Course Webpage</Link>
-
+		</div>
       </Popover>
   );
 }
