@@ -5,13 +5,14 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { AppContext } from '../AppContext';
 import BasicPopover from './Popover';
-import { Box, Popover } from '@mui/material';
+import { Box, Dialog, DialogTitle, List, ListItem, ListItemButton, ListItemText, Popover } from '@mui/material';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 
-export const OutlinedCard = ({text, ...props}) => {
+export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
 	
-  const [directedCourseList, setDirectedCourseList] = useState([]);
+  const [directedSelectionOpen, setDirectedSelectionOpen] = useState(false);
+  const [directedCourses, setDirectedCourses] = useState([]);
   const [courseInfoPopoverState, setCourseInfoPopoverState] = useState(false);
   const [courseInfoAnchorEl, setCourseInfoAnchorEl] = React.useState(null);
   const [conflictAnchorEl, setConflictAnchorEl] = React.useState(null);
@@ -27,6 +28,16 @@ export const OutlinedCard = ({text, ...props}) => {
 
   const handleConflictHoverExit = () => {
     setConflictAnchorEl(null);
+  }
+
+  const handleDirectedSelectionOpen = () => {
+    setDirectedSelectionOpen(true);
+  };
+
+  const handleDirectedSelectionClose = (value) => {
+    setDirectedSelectionOpen(false);
+    value["code"] = "directed";
+    setDirected(text, value);
   }
 
   let colourOfInfo = {color: 'white'}
@@ -46,8 +57,8 @@ export const OutlinedCard = ({text, ...props}) => {
   } else localStorage.setItem('completedCourses', completedCourses);
 
 
-  const getDirectedCourseFromSemester = (major, semester, completedCourses) =>{
-    fetch('http://localhost:3001/api/course/getDirectedListFromSemester', {
+  const getDirectedCourseFromSemester = async (major, semester, completedCourses) =>{
+    return fetch('http://localhost:3001/api/course/getDirectedListFromSemester', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -59,16 +70,18 @@ export const OutlinedCard = ({text, ...props}) => {
       }),
       })
       .then(response => response.json())
-      .then(data => {
-        //console.log(data.courseList);
-        setDirectedCourseList(data.courseList || []);
-      })
       .catch((error) => {
         console.error('Error:', error);
       });
   }
 
-  const conflictText = (courseConflicts, name) => {
+  const handleDirectedSelection = () => {
+    getDirectedCourseFromSemester(major, semesterIndex+1, completedCourses).then((response) => {
+      setDirectedCourses(response.courseList, handleDirectedSelectionOpen());
+    })
+  }
+
+  const conflictText = (courseConflicts) => {
     let conflictText = [];
     // semester: the course is in the wrong semester
     // uos: the course does not meet uos requirements
@@ -134,13 +147,57 @@ export const OutlinedCard = ({text, ...props}) => {
       );
     
     case "directed":
+      if (text._id) return (
+        <Card className="card-container">
+          <CardActionArea>
+            <CardContent className="card-content" >
+              <Box>
+                <Typography
+                  className="card-link underline-title"
+                  variant="h5"
+                  /*onClick={() => window.open(getCourseURL(text._id), "_blank", 'noopener,noreferrer')}*/
+                  onClick={handleCourseInfoClick}
+                >
+                <BasicPopover course={text} disabled={courseInfoPopoverState} anchor={courseInfoAnchorEl}/>
+                {getFullCourseCode(text._id)}
+                </Typography>
+                <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={colourOfInfo}/>
+                <Popover
+                  open={Boolean(conflictAnchorEl)}
+                  anchorEl={conflictAnchorEl}
+                  sx={{pointerEvents: 'none'}}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  disableRestoreFocus
+                  onClose={handleConflictHoverExit}
+                >
+                 {conflictText(text.conflicts)}
+                </Popover>
+              </Box>
+              <Typography className="card-subtitle" variant="h6">
+                {text.course_name}
+              </Typography>
+              <Typography className="card-subtitle" variant="h6">
+                Units: {text.credits}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      )
       return (
         <Card className="card-container">
           <CardActionArea>
             <CardContent className="card-content directed-course">
-              <Typography className="card-title small-title" variant="h5">
+              <Typography className="card-title small-title" variant="h5" onClick={handleDirectedSelection}>
                 Directed Course
               </Typography>
+              <DirectedCourseSelectionDialog open={directedSelectionOpen} onClose={handleDirectedSelectionClose} courses={directedCourses}/> 
               <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={{color:"#E9D502"}}/>
               <Popover
                   open={Boolean(conflictAnchorEl)}
@@ -198,7 +255,7 @@ export const OutlinedCard = ({text, ...props}) => {
                   disableRestoreFocus
                   onClose={handleConflictHoverExit}
                 >
-                 {conflictText(text.conflicts, text._id)}
+                 {conflictText(text.conflicts)}
                 </Popover>
               </Box>
               <Typography className="card-subtitle" variant="h6">
@@ -247,11 +304,29 @@ function getFullCourseCode(internalId)
   return fullName + courseName;
 }
 
-function getCourseURL(courseId)
-{
-  let courseCode = getFullCourseCode(courseId);
+const DirectedCourseSelectionDialog = (props) => {
+  const {onClose, open, courses} = props;
 
-  return "https://www.newcastle.edu.au/course/" + courseCode;
+  const handleClose = () => {
+    onClose([]);
+  }
+
+  const handleCourseClicked = (value) => {
+    onClose(value);
+  }
+
+  return (
+    <Dialog onClose = {handleClose} open = {open}>
+      <DialogTitle>Directed Course Selection</DialogTitle>
+      <List>
+        {courses.map((course) => (
+          <ListItem key={course._id}>
+            <ListItemButton onClick={() => handleCourseClicked(course)}>
+              <ListItemText primary={course.course_name}/>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Dialog>
+  )
 }
-
-

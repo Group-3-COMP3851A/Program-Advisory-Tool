@@ -1,6 +1,7 @@
 //feasibility checks controller
 
 import algorithmDAO from "../../dao/algorithmDAO.js";
+import courseDAO from "../../dao/courseDAO.js";
 import { insertElectiveDependencyChecks, insertNormalCourseDependencyCheck } from "../functions/insertCourseDependencyChecks.js";
 
 export default class FeasibilityController {
@@ -10,7 +11,8 @@ export default class FeasibilityController {
 
         try {
             // Perform database query in order to get the course list
-            const courseList = await algorithmDAO.getCourseList(degree, major);
+            const courseList = await courseDAO.getFullCourseList(degree, major); 
+            //need to add all the directeds to the courseList as well
             const directedObject = await algorithmDAO.getDirectedPlaceholders(major);
 
             const completedCourseIds = completedCourses.map(course => course._id);

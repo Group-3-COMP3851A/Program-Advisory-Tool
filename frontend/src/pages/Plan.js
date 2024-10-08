@@ -114,6 +114,13 @@ const Plan = () => {
         setActiveId(null);
     };
 
+    const setDirectedCourse = (directedCourse, course) => {
+        const { yearIndex, semesterIndex } = findCourse(directedCourse.code+directedCourse.number);
+        const updatedCourseList = [...courseList];
+        updatedCourseList[yearIndex][semesterIndex][courseList[yearIndex][semesterIndex].findIndex((c) => c.code+c.number === directedCourse.code+directedCourse.number)] = course; //find the location of the directed and put it into the list
+        setCourseList(updatedCourseList);
+    }
+
     return (
         <div className='global'>
 			<HelpIcon text1="to swap courses click and drap it to another semester and drop it on the first course in that semester"
@@ -137,7 +144,7 @@ const Plan = () => {
                                             <Box className='drop-area'>
                                                 {semester.length > 0 ? semester.map((course) => (
                                                     <CardWrapper key={course._id ? course._id : course.code + course.number} id={course._id ? course._id : course.code + course.number} disabled={dndDisabled}>
-                                                        <OutlinedCard text={course}/>
+                                                        <OutlinedCard text={course} semesterIndex={semesterIndex} setDirected = {setDirectedCourse}/>
                                                     </CardWrapper>
                                                 )) : <CardWrapper key={"PLACEHOLDER_KEY" + yearIndex + semesterIndex} id={"PLACEHOLDER_KEY" + yearIndex + semesterIndex} disabled={true}/>}
                                             </Box>

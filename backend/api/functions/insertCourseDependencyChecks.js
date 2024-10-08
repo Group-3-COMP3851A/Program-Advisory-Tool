@@ -105,6 +105,8 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
         changedCourse.conflicts.push(["semester"]);
     }
 
+    console.log(newSchedule)
+
     //dependency and units of study checking for the changed course
     //for loops will search each year and semester up until the destination
         //destination is in the form: {semesterIndex: num, yearIndex: num}
@@ -225,7 +227,10 @@ const updateCourses = (schedule, courseArray, changedCourse) => {
                     let somecourse = {...newCourse, conflicts: []};
                     if (newCourse) schedule [i][j][k] = somecourse; //only replace the course if it exists in the array (in the case of a course being deleted or something, the plan should still function)
                     else schedule [i][j][k] = {...currentCourse, conflicts: []};
-                    if (changedCourse._id && currentCourse._id === changedCourse._id) changedCourse = somecourse;
+                    if (changedCourse._id && currentCourse._id === changedCourse._id) {
+                        if (changedCourse.code) somecourse.code = changedCourse.code //if the course was a directed, make sure we keep that knowledge
+                        changedCourse = somecourse;
+                    }
                 }
             }
         }
