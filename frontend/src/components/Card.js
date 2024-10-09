@@ -5,8 +5,9 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { AppContext } from '../AppContext';
 import BasicPopover from './Popover';
-import { Box, Dialog, DialogTitle, List, ListItem, ListItemButton, ListItemText, Popover } from '@mui/material';
+import { Box, Dialog, DialogTitle, Icon, IconButton, List, ListItem, ListItemButton, ListItemText, Popover } from '@mui/material';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
@@ -37,6 +38,7 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
   const handleDirectedSelectionClose = (value) => {
     setDirectedSelectionOpen(false);
     value["code"] = "directed";
+    value["number"] = text.number;
     setDirected(text, value);
   }
 
@@ -128,6 +130,15 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
     } else return <p style={{margin: '20px'}}>Course has no conflicts</p>;
   }
 
+  const handleRemoveDirected = () => {
+    //need to basically set the index of the course to be the old directed value
+    const placeholder = {
+      code: text.code,
+      number: text.number
+    }
+    setDirected(text, placeholder);
+  }
+
   // This might not be the best way to do this, but it works, for the time being
   switch (text.code) {
     case "elective":
@@ -152,6 +163,9 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
           <CardActionArea>
             <CardContent className="card-content" >
               <Box>
+                <IconButton onClick={handleRemoveDirected}>
+                  <CloseIcon sx={{color: 'red'}}/>
+                </IconButton>
                 <Typography
                   className="card-link underline-title"
                   variant="h5"
