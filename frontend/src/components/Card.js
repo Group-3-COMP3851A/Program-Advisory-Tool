@@ -40,7 +40,7 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
     setDirected(text, value);
   }
 
-  let colourOfInfo = {color: 'white'}
+  let colourOfInfo = {color: 'black'}
   if (text.conflicts && text.conflicts.length > 0) colourOfInfo = {color: 'red'}
   
   let { major, coursesPerSem, completedCourses } = useContext(AppContext);
@@ -198,7 +198,7 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
                 Directed Course
               </Typography>
               <DirectedCourseSelectionDialog open={directedSelectionOpen} onClose={handleDirectedSelectionClose} courses={directedCourses}/> 
-              <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={{color:"#E9D502"}}/>
+              <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={{color:"black"}}/>
               <Popover
                   open={Boolean(conflictAnchorEl)}
                   anchorEl={conflictAnchorEl}
