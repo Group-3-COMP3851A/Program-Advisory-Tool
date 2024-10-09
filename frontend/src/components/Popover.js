@@ -69,7 +69,9 @@ function listAssumed(courses)
 	return (
 	<div>
 	<h3>Course Assumed Knowledge:</h3>
-	{listItems}
+	<ul>
+		{listItems}
+	</ul>
 	</div>
 	);
 }
