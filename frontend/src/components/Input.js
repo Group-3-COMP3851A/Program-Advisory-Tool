@@ -10,8 +10,7 @@ export default function TextInput(props) {
       noValidate
       autoComplete="off"
     >
-<TextField id="outlined-basic" label={props.placeholder} variant="outlined" />
-	  
+      <TextField id="outlined-basic" label={props.placeholder} variant="outlined" />
     </Box>
   );
 }
