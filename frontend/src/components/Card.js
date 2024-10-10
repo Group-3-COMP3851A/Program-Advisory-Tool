@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react';
 import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { AppContext } from '../AppContext';
 import BasicPopover from './Popover';
-import { Box, Dialog, DialogTitle, Icon, IconButton, List, ListItem, ListItemButton, ListItemText, Popover } from '@mui/material';
+import { Box, Dialog, DialogTitle, IconButton, List, ListItem, ListItemButton, ListItemText, Popover } from '@mui/material';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -144,142 +143,132 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
     case "elective":
       return (
         <Card className="card-container">
-          <CardActionArea>
-            <CardContent className="card-content">
-              <Typography className="card-title" variant="h5">
-                Elective
-              </Typography>
-              <Typography className="card-subtitle" variant="h6">
-                Units: 10
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+          <CardContent className="card-content">
+            <Typography className="card-title" variant="h5">
+              Elective
+            </Typography>
+            <Typography className="card-subtitle" variant="h6">
+              Units: 10
+            </Typography>
+          </CardContent>
         </Card>
       );
     
     case "directed":
       if (text._id) return (
         <Card className="card-container">
-          <CardActionArea>
-            <CardContent className="card-content" >
-              <Box>
-                <IconButton onClick={handleRemoveDirected}>
-                  <CloseIcon sx={{color: 'red'}}/>
-                </IconButton>
-                <Typography
-                  className="card-link underline-title"
-                  variant="h5"
-                  /*onClick={() => window.open(getCourseURL(text._id), "_blank", 'noopener,noreferrer')}*/
-                  onClick={handleCourseInfoClick}
-                >
-                <BasicPopover course={text} disabled={courseInfoPopoverState} anchor={courseInfoAnchorEl}/>
-                {getFullCourseCode(text._id)}
-                </Typography>
-                <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={colourOfInfo}/>
-                <Popover
-                  open={Boolean(conflictAnchorEl)}
-                  anchorEl={conflictAnchorEl}
-                  sx={{pointerEvents: 'none'}}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  disableRestoreFocus
-                  onClose={handleConflictHoverExit}
-                >
-                 {conflictText(text.conflicts)}
-                </Popover>
-              </Box>
-              <Typography className="card-subtitle" variant="h6">
-                {text.course_name}
+          <CardContent className="card-content" >
+            <Box>
+              <IconButton onClick={handleRemoveDirected}>
+                <CloseIcon sx={{color: 'red'}}/>
+              </IconButton>
+              <Typography
+                className="card-link underline-title"
+                variant="h5"
+                onClick={handleCourseInfoClick}
+              >
+              <BasicPopover course={text} disabled={courseInfoPopoverState} anchor={courseInfoAnchorEl}/>
+              {getFullCourseCode(text._id)}
               </Typography>
-              <Typography className="card-subtitle" variant="h6">
-                Units: {text.credits}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+              <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={colourOfInfo}/>
+              <Popover
+                open={Boolean(conflictAnchorEl)}
+                anchorEl={conflictAnchorEl}
+                sx={{pointerEvents: 'none'}}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                disableRestoreFocus
+                onClose={handleConflictHoverExit}
+              >
+                {conflictText(text.conflicts)}
+              </Popover>
+            </Box>
+            <Typography className="card-subtitle" variant="h6">
+              {text.course_name}
+            </Typography>
+            <Typography className="card-subtitle" variant="h6">
+              Units: {text.credits}
+            </Typography>
+          </CardContent>
         </Card>
       )
       return (
         <Card className="card-container">
-          <CardActionArea>
-            <CardContent className="card-content directed-course">
-              <Typography className="card-title small-title" variant="h5" onClick={handleDirectedSelection}>
-                Directed Course
-              </Typography>
-              <DirectedCourseSelectionDialog open={directedSelectionOpen} onClose={handleDirectedSelectionClose} courses={directedCourses}/> 
-              <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={{color:"black"}}/>
-              <Popover
-                  open={Boolean(conflictAnchorEl)}
-                  anchorEl={conflictAnchorEl}
-                  sx={{pointerEvents: 'none'}}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  disableRestoreFocus
-                  onClose={handleConflictHoverExit}
-                >
-                 <Typography sx={{margin: '20px'}}>Directed Courses may have assumed knowledge that is unmet. Full checking can be guaranteed upon selection of a directed course.</Typography>
-                </Popover>
-              <Typography className="card-subtitle" variant="h6">
-                Units: 10
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+          <CardContent className="card-content directed-course">
+            <Typography className="card-title small-title" variant="h5" onClick={handleDirectedSelection}>
+              Directed Course
+            </Typography>
+            <DirectedCourseSelectionDialog open={directedSelectionOpen} onClose={handleDirectedSelectionClose} courses={directedCourses}/> 
+            <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={{color:"black"}}/>
+            <Popover
+                open={Boolean(conflictAnchorEl)}
+                anchorEl={conflictAnchorEl}
+                sx={{pointerEvents: 'none'}}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                disableRestoreFocus
+                onClose={handleConflictHoverExit}
+              >
+                <Typography sx={{margin: '20px'}}>Directed Courses may have assumed knowledge that is unmet. Full checking can be guaranteed upon selection of a directed course.</Typography>
+              </Popover>
+            <Typography className="card-subtitle" variant="h6">
+              Units: 10
+            </Typography>
+          </CardContent>
         </Card>
       );
 
     default:
       return (
         <Card className="card-container">
-          <CardActionArea>
-            <CardContent className="card-content" >
-              <Box>
-                <Typography
-                  className="card-link underline-title"
-                  variant="h5"
-                  /*onClick={() => window.open(getCourseURL(text._id), "_blank", 'noopener,noreferrer')}*/
-                  onClick={handleCourseInfoClick}
-                >
-                <BasicPopover course={text} disabled={courseInfoPopoverState} anchor={courseInfoAnchorEl}/>
-                {getFullCourseCode(text._id)}
-                </Typography>
-                <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={colourOfInfo}/>
-                <Popover
-                  open={Boolean(conflictAnchorEl)}
-                  anchorEl={conflictAnchorEl}
-                  sx={{pointerEvents: 'none'}}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  disableRestoreFocus
-                  onClose={handleConflictHoverExit}
-                >
-                 {conflictText(text.conflicts)}
-                </Popover>
-              </Box>
-              <Typography className="card-subtitle" variant="h6">
-                {text.course_name}
+          <CardContent className="card-content" >
+            <Box>
+              <Typography
+                className="card-link underline-title"
+                variant="h5"
+                onClick={handleCourseInfoClick}
+              >
+              <BasicPopover course={text} disabled={courseInfoPopoverState} anchor={courseInfoAnchorEl}/>
+              {getFullCourseCode(text._id)}
               </Typography>
-              <Typography className="card-subtitle" variant="h6">
-                Units: {text.credits}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+              <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={colourOfInfo}/>
+              <Popover
+                open={Boolean(conflictAnchorEl)}
+                anchorEl={conflictAnchorEl}
+                sx={{pointerEvents: 'none'}}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                disableRestoreFocus
+                onClose={handleConflictHoverExit}
+              >
+                {conflictText(text.conflicts)}
+              </Popover>
+            </Box>
+            <Typography className="card-subtitle" variant="h6">
+              {text.course_name}
+            </Typography>
+            <Typography className="card-subtitle" variant="h6">
+              Units: {text.credits}
+            </Typography>
+          </CardContent>
         </Card>
       );
   }
