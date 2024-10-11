@@ -1,17 +1,18 @@
 import React, { useContext, useState } from 'react';
 import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { AppContext } from '../AppContext';
 import BasicPopover from './Popover';
-import { Box, Popover } from '@mui/material';
+import { Box, Dialog, DialogTitle, IconButton, List, ListItem, ListItemButton, ListItemText, Popover } from '@mui/material';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import CloseIcon from '@mui/icons-material/Close';
 
 
-export const OutlinedCard = ({text, ...props}) => {
+export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
 	
-  const [directedCourseList, setDirectedCourseList] = useState([]);
+  const [directedSelectionOpen, setDirectedSelectionOpen] = useState(false);
+  const [directedCourses, setDirectedCourses] = useState([]);
   const [courseInfoPopoverState, setCourseInfoPopoverState] = useState(false);
   const [courseInfoAnchorEl, setCourseInfoAnchorEl] = React.useState(null);
   const [conflictAnchorEl, setConflictAnchorEl] = React.useState(null);
@@ -29,7 +30,18 @@ export const OutlinedCard = ({text, ...props}) => {
     setConflictAnchorEl(null);
   }
 
-  let colourOfInfo = {color: 'white'}
+  const handleDirectedSelectionOpen = () => {
+    setDirectedSelectionOpen(true);
+  };
+
+  const handleDirectedSelectionClose = (value) => {
+    setDirectedSelectionOpen(false);
+    value["code"] = "directed";
+    value["number"] = text.number;
+    setDirected(text, value);
+  }
+
+  let colourOfInfo = {color: 'black'}
   if (text.conflicts && text.conflicts.length > 0) colourOfInfo = {color: 'red'}
   
   let { major, coursesPerSem, completedCourses } = useContext(AppContext);
@@ -46,8 +58,8 @@ export const OutlinedCard = ({text, ...props}) => {
   } else localStorage.setItem('completedCourses', completedCourses);
 
 
-  const getDirectedCourseFromSemester = (major, semester, completedCourses) =>{
-    fetch('http://localhost:3001/api/course/getDirectedListFromSemester', {
+  const getDirectedCourseFromSemester = async (major, semester, completedCourses) =>{
+    return fetch('http://localhost:3001/api/course/getDirectedListFromSemester', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -59,16 +71,18 @@ export const OutlinedCard = ({text, ...props}) => {
       }),
       })
       .then(response => response.json())
-      .then(data => {
-        //console.log(data.courseList);
-        setDirectedCourseList(data.courseList || []);
-      })
       .catch((error) => {
         console.error('Error:', error);
       });
   }
 
-  const conflictText = (courseConflicts, name) => {
+  const handleDirectedSelection = () => {
+    getDirectedCourseFromSemester(major, semesterIndex+1, completedCourses).then((response) => {
+      setDirectedCourses(response.courseList, handleDirectedSelectionOpen());
+    })
+  }
+
+  const conflictText = (courseConflicts) => {
     let conflictText = [];
     // semester: the course is in the wrong semester
     // uos: the course does not meet uos requirements
@@ -115,82 +129,146 @@ export const OutlinedCard = ({text, ...props}) => {
     } else return <p style={{margin: '20px'}}>Course has no conflicts</p>;
   }
 
+  const handleRemoveDirected = () => {
+    //need to basically set the index of the course to be the old directed value
+    const placeholder = {
+      code: text.code,
+      number: text.number
+    }
+    setDirected(text, placeholder);
+  }
+
   // This might not be the best way to do this, but it works, for the time being
   switch (text.code) {
     case "elective":
       return (
         <Card className="card-container">
-          <CardActionArea>
-            <CardContent className="card-content">
-              <Typography className="card-title" variant="h5">
-                Elective
-              </Typography>
-              <Typography className="card-subtitle" variant="h6">
-                Units: 10
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+          <CardContent className="card-content">
+            <Typography className="card-title" variant="h5">
+              Elective
+            </Typography>
+            <Typography className="card-subtitle" variant="h6">
+              Units: 10
+            </Typography>
+          </CardContent>
         </Card>
       );
     
     case "directed":
+      if (text._id) return (
+        <Card className="card-container">
+          <CardContent className="card-content" >
+            <Box>
+              <IconButton onClick={handleRemoveDirected}>
+                <CloseIcon sx={{color: 'red'}}/>
+              </IconButton>
+              <Typography
+                className="card-link underline-title"
+                variant="h5"
+                onClick={handleCourseInfoClick}
+              >
+              <BasicPopover course={text} disabled={courseInfoPopoverState} anchor={courseInfoAnchorEl}/>
+              {getFullCourseCode(text._id)}
+              </Typography>
+              <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={colourOfInfo}/>
+              <Popover
+                open={Boolean(conflictAnchorEl)}
+                anchorEl={conflictAnchorEl}
+                sx={{pointerEvents: 'none'}}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                disableRestoreFocus
+                onClose={handleConflictHoverExit}
+              >
+                {conflictText(text.conflicts)}
+              </Popover>
+            </Box>
+            <Typography className="card-subtitle" variant="h6">
+              {text.course_name}
+            </Typography>
+            <Typography className="card-subtitle" variant="h6">
+              Units: {text.credits}
+            </Typography>
+          </CardContent>
+        </Card>
+      )
       return (
         <Card className="card-container">
-          <CardActionArea>
-            <CardContent className="card-content directed-course">
-              <Typography className="card-title small-title" variant="h5">
-                Directed Course
-              </Typography>
-              <Typography className="card-subtitle" variant="h6">
-                Units: 10
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+          <CardContent className="card-content directed-course">
+            <Typography className="card-title small-title" variant="h5" onClick={handleDirectedSelection}>
+              Directed Course
+            </Typography>
+            <DirectedCourseSelectionDialog open={directedSelectionOpen} onClose={handleDirectedSelectionClose} courses={directedCourses}/> 
+            <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={{color:"black"}}/>
+            <Popover
+                open={Boolean(conflictAnchorEl)}
+                anchorEl={conflictAnchorEl}
+                sx={{pointerEvents: 'none'}}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                disableRestoreFocus
+                onClose={handleConflictHoverExit}
+              >
+                <Typography sx={{margin: '20px'}}>Directed Courses may have assumed knowledge that is unmet. Full checking can be guaranteed upon selection of a directed course.</Typography>
+              </Popover>
+            <Typography className="card-subtitle" variant="h6">
+              Units: 10
+            </Typography>
+          </CardContent>
         </Card>
       );
 
     default:
       return (
         <Card className="card-container">
-          <CardActionArea>
-            <CardContent className="card-content" >
-              <Box>
-                <Typography
-                  className="card-link underline-title"
-                  variant="h5"
-                  /*onClick={() => window.open(getCourseURL(text._id), "_blank", 'noopener,noreferrer')}*/
-                  onClick={handleCourseInfoClick}
-                >
-                <BasicPopover course={text} disabled={courseInfoPopoverState} anchor={courseInfoAnchorEl}/>
-                {getFullCourseCode(text._id)}
-                </Typography>
-                <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={colourOfInfo}/>
-                <Popover
-                  open={Boolean(conflictAnchorEl)}
-                  anchorEl={conflictAnchorEl}
-                  sx={{pointerEvents: 'none'}}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  disableRestoreFocus
-                  onClose={handleConflictHoverExit}
-                >
-                 {conflictText(text.conflicts, text._id)}
-                </Popover>
-              </Box>
-              <Typography className="card-subtitle" variant="h6">
-                {text.course_name}
+          <CardContent className="card-content" >
+            <Box>
+              <Typography
+                className="card-link underline-title"
+                variant="h5"
+                onClick={handleCourseInfoClick}
+              >
+              <BasicPopover course={text} disabled={courseInfoPopoverState} anchor={courseInfoAnchorEl}/>
+              {getFullCourseCode(text._id)}
               </Typography>
-              <Typography className="card-subtitle" variant="h6">
-                Units: {text.credits}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+              <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={colourOfInfo}/>
+              <Popover
+                open={Boolean(conflictAnchorEl)}
+                anchorEl={conflictAnchorEl}
+                sx={{pointerEvents: 'none'}}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                disableRestoreFocus
+                onClose={handleConflictHoverExit}
+              >
+                {conflictText(text.conflicts)}
+              </Popover>
+            </Box>
+            <Typography className="card-subtitle" variant="h6">
+              {text.course_name}
+            </Typography>
+            <Typography className="card-subtitle" variant="h6">
+              Units: {text.credits}
+            </Typography>
+          </CardContent>
         </Card>
       );
   }
@@ -229,11 +307,29 @@ function getFullCourseCode(internalId)
   return fullName + courseName;
 }
 
-function getCourseURL(courseId)
-{
-  let courseCode = getFullCourseCode(courseId);
+const DirectedCourseSelectionDialog = (props) => {
+  const {onClose, open, courses} = props;
 
-  return "https://www.newcastle.edu.au/course/" + courseCode;
+  const handleClose = () => {
+    onClose([]);
+  }
+
+  const handleCourseClicked = (value) => {
+    onClose(value);
+  }
+
+  return (
+    <Dialog onClose = {handleClose} open = {open}>
+      <DialogTitle>Directed Course Selection</DialogTitle>
+      <List>
+        {courses.map((course) => (
+          <ListItem key={course._id}>
+            <ListItemButton onClick={() => handleCourseClicked(course)}>
+              <ListItemText primary={course.course_name}/>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Dialog>
+  )
 }
-
-

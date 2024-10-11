@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useMemo } from 'react';
 import '../styles/style.css';
-import Menu from '../components/Menu';
 import Dropdown from '../components/Dropdown';
 import { SearchBox } from '../components/SearchBox';
 import Text from '../components/Text';
@@ -20,12 +19,19 @@ const Select = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
-    const coursesPerSemOptions = [{ value: '2', label: '2' }, { value: '3', label: '3' }, { value: '4', label: '4' }];
+    const coursesPerSemOptions = useMemo(
+        () => [
+            { value: "2", label: "2" },
+            { value: "3", label: "3" },
+            { value: "4", label: "4" },
+        ],
+        []
+    );
 
     useEffect(() => {
         getDegreeList();
         setDropdownOptions(coursesPerSemOptions);			
-    }, []);
+    }, [coursesPerSemOptions]);
 
     const showMajor = (selectedDegree) => {
 		setDegree(selectedDegree);
@@ -94,6 +100,7 @@ const Select = () => {
 
     const handlePopUpConfirmNo = () => {
         setShowSecondPopUp(false);
+		navigate('/plan', { state: { degree, major, coursesPerSem, completedCourses } });
     };
 
     const handleSecondPopUpClose = () => {
@@ -162,9 +169,3 @@ const Select = () => {
 };
 
 export default Select;
-
-
-
-
-
-

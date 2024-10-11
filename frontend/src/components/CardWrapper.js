@@ -23,7 +23,7 @@ export function CardWrapper(props) {
         width: `${100/coursesPerSem}%`, margin: '1%'
       }
       if (!props.children) {
-        style.width = "150px";
+        style.width = "100%";
         style.height = "150px";
       }
 
