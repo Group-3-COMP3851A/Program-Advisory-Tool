@@ -717,4 +717,52 @@
   "course_id": "3200po",
   "major_id": "12238M8",
   "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "670a853387fc1dc790d79644"
+  },
+  "course_id": "1120se",
+  "major_id": "11497M1",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "670a853387fc1dc790d79645"
+  },
+  "course_id": "3050eb",
+  "major_id": "11497M1",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "670a853387fc1dc790d79646"
+  },
+  "course_id": "2051in",
+  "major_id": "11497M1",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "670a853387fc1dc790d79647"
+  },
+  "course_id": "3050in",
+  "major_id": "11497M1",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "670a853387fc1dc790d79648"
+  },
+  "course_id": "3950in",
+  "major_id": "11497M1",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "670a853387fc1dc790d79649"
+  },
+  "course_id": "1510ma",
+  "major_id": "11497M1",
+  "directed_status": true
 }]

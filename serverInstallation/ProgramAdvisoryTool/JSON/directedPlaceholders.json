@@ -190,4 +190,32 @@
     }
   ],
   "assumed_knowledge": []
+},
+{
+  "_id": "11497M1p",
+  "assumed_knowledge": [
+    ""
+  ],
+  "semester_placements": [
+    {
+      "year": 1,
+      "semester": 2
+    },
+    {
+      "year": 2,
+      "semester": 1
+    },
+    {
+      "year": 2,
+      "semester": 2
+    },
+    {
+      "year": 3,
+      "semester": 1
+    },
+    {
+      "year": 3,
+      "semester": 2
+    }
+  ]
 }]
