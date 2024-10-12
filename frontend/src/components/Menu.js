@@ -14,7 +14,6 @@ function Menu() {
         <li><Link to="/profile" text="Profile" /></li>
         <li><Link to="https://askuon.newcastle.edu.au/" text="Ask Uon" external /></li>
         <li><Link to="/select" text="Create New Planner" /></li>
-        <li><Link to="/completed" text="Completed courses" /></li>
       </ul>
        <ul className='logout' >
             <li><Link to="/logout"text="Logout" /></li>

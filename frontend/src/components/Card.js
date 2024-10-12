@@ -1,3 +1,4 @@
+// edited by Muhammad 11/10/24: change the location of popup on hover to display at the top and put them in boxes and then design them
 import React, { useContext, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -157,6 +158,23 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
     case "directed":
       if (text._id) return (
         <Card className="card-container">
+            <Box className='d-pop'>
+              {/* Card pop up on hover function starts here */}
+              <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={colourOfInfo}/>
+              <Popover
+                open={Boolean(conflictAnchorEl)}
+                anchorEl={conflictAnchorEl}
+                
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                disableRestoreFocus
+                onClose={handleConflictHoverExit}
+              >
+                {conflictText(text.conflicts)}
+              </Popover>
+            </Box>
           <CardContent className="card-content" >
             <Box>
               <IconButton onClick={handleRemoveDirected}>
@@ -170,24 +188,7 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
               <BasicPopover course={text} disabled={courseInfoPopoverState} anchor={courseInfoAnchorEl}/>
               {getFullCourseCode(text._id)}
               </Typography>
-              <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={colourOfInfo}/>
-              <Popover
-                open={Boolean(conflictAnchorEl)}
-                anchorEl={conflictAnchorEl}
-                sx={{pointerEvents: 'none'}}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left',
-                }}
-                disableRestoreFocus
-                onClose={handleConflictHoverExit}
-              >
-                {conflictText(text.conflicts)}
-              </Popover>
+              
             </Box>
             <Typography className="card-subtitle" variant="h6">
               {text.course_name}
@@ -200,16 +201,11 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
       )
       return (
         <Card className="card-container">
-          <CardContent className="card-content directed-course">
-            <Typography className="card-title small-title" variant="h5" onClick={handleDirectedSelection}>
-              Directed Course
-            </Typography>
-            <DirectedCourseSelectionDialog open={directedSelectionOpen} onClose={handleDirectedSelectionClose} courses={directedCourses}/> 
-            <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={{color:"black"}}/>
-            <Popover
+          <Box className='d-pop'>
+          <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={{color:"black"}}/>
+             <Popover
                 open={Boolean(conflictAnchorEl)}
                 anchorEl={conflictAnchorEl}
-                sx={{pointerEvents: 'none'}}
                 anchorOrigin={{
                   vertical: 'bottom',
                   horizontal: 'left',
@@ -223,6 +219,14 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
               >
                 <Typography sx={{margin: '20px'}}>Directed Courses may have assumed knowledge that is unmet. Full checking can be guaranteed upon selection of a directed course.</Typography>
               </Popover>
+            </Box>
+          <CardContent className="card-content directed-course">
+             
+            <Typography className="card-title small-title" variant="h5" onClick={handleDirectedSelection}>
+              Directed Course
+            </Typography>
+            <DirectedCourseSelectionDialog open={directedSelectionOpen} onClose={handleDirectedSelectionClose} courses={directedCourses}/> 
+           
             <Typography className="card-subtitle" variant="h6">
               Units: 10
             </Typography>
@@ -233,17 +237,8 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
     default:
       return (
         <Card className="card-container">
-          <CardContent className="card-content" >
-            <Box>
-              <Typography
-                className="card-link underline-title"
-                variant="h5"
-                onClick={handleCourseInfoClick}
-              >
-              <BasicPopover course={text} disabled={courseInfoPopoverState} anchor={courseInfoAnchorEl}/>
-              {getFullCourseCode(text._id)}
-              </Typography>
-              <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={colourOfInfo}/>
+          <Box className='c-pop'>
+            <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={colourOfInfo}/>
               <Popover
                 open={Boolean(conflictAnchorEl)}
                 anchorEl={conflictAnchorEl}
@@ -261,6 +256,18 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
               >
                 {conflictText(text.conflicts)}
               </Popover>
+
+          </Box>
+          <CardContent className="card-content" >
+            <Box>
+              <Typography
+                className="card-link underline-title"
+                variant="h5"
+                onClick={handleCourseInfoClick}
+              >
+              <BasicPopover course={text} disabled={courseInfoPopoverState} anchor={courseInfoAnchorEl}/>
+              {getFullCourseCode(text._id)}
+              </Typography>
             </Box>
             <Typography className="card-subtitle" variant="h6">
               {text.course_name}
