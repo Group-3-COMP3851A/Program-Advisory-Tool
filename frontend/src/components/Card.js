@@ -164,7 +164,7 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
               <Popover
                 open={Boolean(conflictAnchorEl)}
                 anchorEl={conflictAnchorEl}
-                
+                sx={{pointerEvents: 'none'}}
                 transformOrigin={{
                   vertical: 'top',
                   horizontal: 'left',
@@ -214,6 +214,7 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
                   vertical: 'top',
                   horizontal: 'left',
                 }}
+                sx={{pointerEvents: 'none'}}
                 disableRestoreFocus
                 onClose={handleConflictHoverExit}
               >
