@@ -6,6 +6,7 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
     const [studentId, setStudentId] = useState('');
+    const [password, setPassword] = useState('');
     const [degree, setDegree] = useState('');
     const [major, setMajor] = useState('');
     const [coursesPerSem, setCoursesPerSem] = useState(4);
@@ -14,6 +15,7 @@ export const AppProvider = ({ children }) => {
     return (
         <AppContext.Provider value={{ 
             studentId, setStudentId,
+            password, setPassword,
             degree, setDegree, 
             major, setMajor, 
             coursesPerSem, setCoursesPerSem,

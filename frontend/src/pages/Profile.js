@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react'; // Importing React library
+import React, { useState, useEffect, useContext } from 'react'; // Importing React library
 import '../styles/style.css';
 import Menu from '../components/Menu'; // Importing the Menu component
 import Text from '../components/Text'; // Importing the Text component
-import { useLocation } from 'react-router-dom';
+import { AppContext } from '../AppContext';
 
 const Profile = () => {
-  const location = useLocation();
-  const { studentId } = location.state || {};
+  const { studentId } = useContext(AppContext);
   const [userPlans, setUserPlans] = useState([]);
 
   const getUserPlans = (studentId) => {

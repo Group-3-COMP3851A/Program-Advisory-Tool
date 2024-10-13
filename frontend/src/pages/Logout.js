@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'; // Importing React and useState hook for managing component state
+import React, { useState, useContext, useEffect } from 'react'; // Importing React and useState hook for managing component state
 import { useNavigate } from 'react-router-dom';
 import '../styles/style.css';
 import Text from '../components/Text'; // Importing the Text component
@@ -14,6 +14,11 @@ const Logout = () => {
   const [password, setPassword] = useState(''); // State for storing the password input value
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setStudentId(''); // Reset studentId
+    setPassword(''); // Reset password
+  }, [setStudentId]);
 
   const handleLoginSubmit = (e) => {
     // Handler function for form submission

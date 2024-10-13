@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../styles/style.css'; 
 import { OutlinedCard } from '../components/Card';
 import DropArea from '../components/DropArea';
@@ -10,10 +10,12 @@ import { CardWrapper } from '../components/CardWrapper';
 import HelpIcon from '../components/Tooltip';
 import Button from '../components/Button';
 import { arrayMove } from '@dnd-kit/sortable';
+import { AppContext } from '../AppContext';
 
 const Plan = () => {
     const location = useLocation();
-    const { studentId, degree, major, coursesPerSem, completedCourses } = location.state || {};
+    const { studentId } = useContext(AppContext);
+    const { degree, major, coursesPerSem, completedCourses } = location.state || {};
     const [courseList, setCourseList] = useState([]);
     const [activeId, setActiveId] = useState(null);
     const [dndDisabled, setDndDisabled] = useState(true);

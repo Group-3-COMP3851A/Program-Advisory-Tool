@@ -91,7 +91,7 @@ export default class studentsDAO{
 
             const result = await student.updateOne(
                 // TODO: Have it use the studentId provided by the user
-                { student_id: "C1234567" },
+                { student_id: studentId },
                 { $push: { 
                     plans: { 
                         name: planName,
