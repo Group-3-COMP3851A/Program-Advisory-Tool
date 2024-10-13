@@ -1,4 +1,5 @@
 // edited by Muhammad 12/10/24: add some funtions like adding selected courses in the group box and HTML&JSX for the structure and design like field tags for grouping and making it fit with the figma. also put the value as empty array so the courses won't stay within the search field after select
+// edited by Muhammad 13/10/24: add the function for course code.
 import React, { useEffect, useState, useContext } from 'react'; 
 import '../styles/style.css';
 import Menu from '../components/Menu'; 
@@ -37,6 +38,38 @@ const Completed = () => {
         });
     };
 
+function getFullCourseCode(internalId)
+{
+  let courseString = String(internalId);
+  let courseId = courseString.slice(-2);
+  let courseName = courseString.slice(0, -2);
+  let fullName = "";
+
+    switch(courseId)
+    {
+        // We can add extra cases if extra courses are added to the database
+        case "co":
+        fullName = "COMP";
+        break;
+        case "se":
+        fullName = "SENG";
+        break;
+        case "ma":
+        fullName = "MATH";
+        break;
+        case "in":
+        fullName = "INFT";
+        break;
+        case "el":
+        fullName = "ELEC";
+        break;
+        default:
+        fullName = courseId;
+    }
+
+    return fullName + courseName;
+    }
+
   const handleCourseSelect = (selectedCourses) => {
         // Ensure the selection is an array, whether it's a single course or multiple
         let newSelectedCourses = Array.isArray(selectedCourses) ? selectedCourses : [selectedCourses];
@@ -66,9 +99,10 @@ const Completed = () => {
             <Tooltip text1="Select every course you have already completed, these courses will be ignored when creating your degree plan"/>		
             <div className='completed-section'>
                 {/* Search Box at the Top */}
-                <h3>Add completed courses</h3>
-                <MultiSearchBox options={courseList} value={[]} onChange={handleCourseSelect}/>
-
+                <h3>ADD COMPLETED COURSES</h3>
+               
+                    <MultiSearchBox options={courseList} value={[]} onChange={handleCourseSelect}/>
+               
                 {/* Display Selected Courses as Cards */}
              <fieldset className='cm-g1'>
                     <legend>Completed Courses</legend>
@@ -77,6 +111,9 @@ const Completed = () => {
                             <div key={course._id} className='selected-course-item'>
                                 <ul className='cm-ul'>
                                     <li className='course-row'>
+                                        <div className='course-id'>
+                                            <span> {getFullCourseCode(course._id)}</span>
+                                        </div>
                                         <span className='course-name'>{course.course_name}</span>
                                         <div className='course-details'>
                                             <span className='course-units'>{course.credits} Units</span>

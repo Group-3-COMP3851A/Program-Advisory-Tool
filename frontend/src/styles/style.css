@@ -1,6 +1,7 @@
 /*edited by Muhammad  04/10/24*/
 /*edited by Muhammad  06/10/24: responsive design for smaller screens upto 1490px */
 /*edited by Muhammad  12/10/24: styled completed page and planned page as well as designed it for small screens */
+/*edited by Muhammad  13/10/24: edited the completed courses rows design and adjust the buttons as well as the completed courses container for both large screens and small screens*/
 .App {
   background-color: transparent;
   display: flex;
@@ -426,7 +427,6 @@
 
 /* Styling for the Selected Course Card */
 .selected-course-item{
-    
   color: #4a4a4a;
   border-radius: 16px;
   font-size: 14px;
@@ -435,6 +435,7 @@
   cursor: default;
   transition: background-color 0.3s;
   position: relative;
+
 }
 
 
@@ -485,13 +486,13 @@
 }
 
 .cm-g1{
-  width: 50% ;
+  width: 70% ;
   border: 1px solid black;
   border-radius: 10px;
 }
 
 .selected-courses{
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 /* Scrollable container with a max-height of 300px */
@@ -502,13 +503,18 @@
 }
 
 .selected-course-item{
-  background-color: #e0e7ff;
-  padding: 15px;
-  border-radius: 30px;
+  background-color: rgba(224, 231, 255, 0.4);
+  padding: 0px;
+  border-radius: 10px;
   margin-bottom: 10px;
   width: 100%;
 }
+.course-id{
+  margin-right: 5px;
+  font-weight: bold;
+  color: #333;
 
+}
 /* Align course */
 .course-row{
   display: flex;
@@ -765,7 +771,7 @@
 }
 .CIcon{
 	position: absolute;
-  margin: 20px !important;
+  margin: 50px ;
 	bottom: 0;
   
 }
@@ -834,13 +840,20 @@ svg{
   }
   .CIcon{
     position: absolute;
-    margin: 15px !important;
+    margin: 4% ;
     bottom: 0;
+   
     
   }
   .cm-g1{
-    width: 60% !important;
+    width: 90%;
     border: 1px solid black;
+  }
+  /* Scrollable container with a max-height of 300px */
+  .scrollable{
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 15px;
   }
     /*slect page starts here*/
   .main-section{
