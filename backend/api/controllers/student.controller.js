@@ -44,4 +44,37 @@ export default class studentCtrl {
         if (inputPassword === password) res.send(true);
         else res.send(false);
     }
+
+    static async apiGetUserPlans (req, res, next) {
+
+        const { studentId } = req.body;
+
+        try {
+
+            const userPlans = await studentDAO.getUserPlans(studentId);
+
+            //console.log(userPlans);
+
+            let response = {
+                status: "success",
+                plans: userPlans,
+            };
+            res.json(response);
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
+    }
+
+    static async apiAddPlanToUser (req, res, next) {
+        const { studentId, planName, degree, major, courseMap } = req.body;
+
+        try{
+
+            const result = await studentDAO.addPlanToUser(studentId, planName, degree, major, courseMap);
+
+            res.json({ success: true, result });
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
+    }
 }

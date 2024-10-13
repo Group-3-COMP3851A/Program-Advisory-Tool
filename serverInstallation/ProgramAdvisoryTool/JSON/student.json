@@ -1,0 +1,16 @@
+[{
+    "_id": {
+      "$oid": "66d8f14414a984b1c58891d1"
+    },
+    "student_id": "C1234567",
+    "password": "password1",
+    "plans": []
+},
+{
+    "_id": {
+      "$oid": "66d8f14414a984b1c58891d2"
+    },
+    "student_id": "C2345678",
+    "password": "password2",
+    "plans": []
+}]

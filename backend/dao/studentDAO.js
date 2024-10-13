@@ -1,14 +1,14 @@
 //File for accessing the database.
 
-let students;
+let student;
 
 export default class studentsDAO{
     static async injectDB(conn) {
-        if (students) return //if there is already a connection, skip this
+        if (student) return //if there is already a connection, skip this
         try {
-            students = await conn.db("ProgramAdvisoryTool").collection("students"); //querying students collection
+            student = await conn.db("ProgramAdvisoryTool").collection("student"); //querying students collection
         } catch (e) {
-            console.error(`Unable to establish collection name in moviesDAO, you probably named the collection wrong: ${e}`);
+            console.error(`Unable to establish collection name in student, you probably named the collection wrong: ${e}`);
         }
     }
 
@@ -66,4 +66,47 @@ export default class studentsDAO{
         };
     };
     
+    static async getUserPlans(studentId){
+        try {
+            // Gets the user based off of the input student id
+            let studentData = await student.findOne({ 
+                student_id: studentId
+            });
+            if (!studentData) throw new Error("Student not found");
+            
+            let userPlans = studentData.plans;
+
+            //console.log(userPlans);
+
+            return userPlans;
+
+        } catch (e) {
+            console.error(`Unable to get plan list: ${e}`);
+            return [];
+        }
+    };
+
+    static async addPlanToUser(studentId, planName, degree, major, courseMap){
+        try {
+
+            const result = await student.updateOne(
+                // TODO: Have it use the studentId provided by the user
+                { student_id: "C1234567" },
+                { $push: { 
+                    plans: { 
+                        name: planName,
+                        degree: degree,
+                        major: major,
+                        courseMap: courseMap 
+                    } 
+                }}
+            );
+
+            return result;
+
+        } catch (e) {
+            console.error(`Unable to add plan to user: ${e}`);
+            return { error: e };
+        }
+    }
 };

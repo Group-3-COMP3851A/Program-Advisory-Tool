@@ -9,6 +9,8 @@ const router = express.Router();
 
 router.route("/").get(studentCtrl.apiGetStudent); //get requests to get a student, test function
 router.route("/login").post(studentCtrl.apiLogin); //api login post request
+router.route("/getUserPlans").post(studentCtrl.apiGetUserPlans); //api request to get a list of user plans
+router.route("/addPlanToUser").post(studentCtrl.apiAddPlanToUser); //api request which adds a plan to the specified user
 
 router.route("")
 

@@ -13,7 +13,7 @@ import { arrayMove } from '@dnd-kit/sortable';
 
 const Plan = () => {
     const location = useLocation();
-    const { degree, major, coursesPerSem, completedCourses } = location.state || {};
+    const { studentId, degree, major, coursesPerSem, completedCourses } = location.state || {};
     const [courseList, setCourseList] = useState([]);
     const [activeId, setActiveId] = useState(null);
     const [dndDisabled, setDndDisabled] = useState(true);
@@ -121,6 +121,40 @@ const Plan = () => {
         setCourseList(updatedCourseList);
     }
 
+    // TODO: Clean up this function a little bit
+    const savePlan = async (studentId, degree, major, courseMap) => {
+
+        // Ideally we will have a pop up which allows the user to input the plan name
+        const planName = "Plan 1 Test";
+
+        try {
+          const response = await fetch('http://localhost:3001/api/student/addPlanToUser', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                studentId, 
+                planName,
+                degree,
+                major,
+                courseMap,
+            }),
+          });
+    
+          if (!response.ok) {
+            throw new Error('Failed to save plan');
+          }
+    
+          const result = await response.json();
+          return result;
+        } catch (error) {
+          throw error;
+        }
+    }
+
+    // TODO: Add function which allows a user to load a plan from thier profile
+
     return (
         <div className='global'>
 			<HelpIcon text1="to swap courses click and drap it to another semester and drop it on the first course in that semester"
@@ -131,6 +165,7 @@ const Plan = () => {
                 <div><Text type="h2" className='S1'>The plan can be edited by clicking on the "Edit Plan" button and stopped by clicking on the "Stop Editing" button. You can select your directed by clicking on the "Directed" course and choosing from the list.</Text></div>
                 <div className="popup-buttons">
                     <Button onClick={() => setDndDisabled(!dndDisabled)} text={dndDisabled ? "Edit Plan" : "Stop Editing"} color="#28a745"/>
+                    <Button onClick={() => savePlan(studentId, degree, major, courseList)} text={"Save Plan"} color="#28a745"/>
                 </div>
                 <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
                     {courseList.map((year, yearIndex) => (

@@ -5,6 +5,7 @@ import React, { createContext, useState } from 'react';
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+    const [studentId, setStudentId] = useState('');
     const [degree, setDegree] = useState('');
     const [major, setMajor] = useState('');
     const [coursesPerSem, setCoursesPerSem] = useState(4);
@@ -12,6 +13,7 @@ export const AppProvider = ({ children }) => {
 
     return (
         <AppContext.Provider value={{ 
+            studentId, setStudentId,
             degree, setDegree, 
             major, setMajor, 
             coursesPerSem, setCoursesPerSem,

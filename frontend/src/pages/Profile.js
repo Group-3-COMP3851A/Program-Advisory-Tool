@@ -1,12 +1,30 @@
-import React, { useState } from 'react'; // Importing React library
+import React, { useState, useEffect } from 'react'; // Importing React library
 import '../styles/style.css';
 import Menu from '../components/Menu'; // Importing the Menu component
 import Text from '../components/Text'; // Importing the Text component
+import { useLocation } from 'react-router-dom';
 
 const Profile = () => {
+  const location = useLocation();
+  const { studentId } = location.state || {};
   const [userPlans, setUserPlans] = useState([]);
 
-  // TODO: Add functional API request to get plans (Use the studentId to pull this information from the database)
+  const getUserPlans = (studentId) => {
+    fetch('http://localhost:3001/api/student/getUserPlans', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        studentId
+      }),
+  })
+  .then(response => response.json())
+  .then(data => setUserPlans(data.plans || []))
+  .catch((error) => console.error('Error:', error));
+  }
+
+  useEffect(() => {
+    getUserPlans(studentId);
+  }, [studentId]);
 
   return (
 	<div className='global'>
@@ -18,6 +36,7 @@ const Profile = () => {
           {userPlans.length > 0 ? (
             <Text type="h3">Your Generated Plans</Text>,
             userPlans.map((plan, index) => (
+              // Someone can do some proper styling here at some point
               // This is a placeholder until the plan data is sorted out
               <div key={index} className="plan-item">
                 <Text type="h4">{plan.name}</Text>
