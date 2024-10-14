@@ -31,6 +31,31 @@ const Profile = () => {
     navigate('/plan', { state: { degree, major, courseMap } });
   };
 
+  const handleRemovePlan = async (planName) => {
+    //TODO: Test (Need to update the UI first)
+    try {
+      const response = await fetch('http://localhost:3001/api/student/removePlanFromUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+            studentId, 
+            planName,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to remove plan');
+      }
+
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   return (
 	<div className='global'>
 		<div className='main-section'>
@@ -40,14 +65,24 @@ const Profile = () => {
         <div className="user-plans">
           {userPlans.length > 0 ? (
             <Text type="h3">Your Generated Plans</Text>,
-            userPlans.map((plan, index) => (
+            <div className='selected-courses scrollable'>
+              {userPlans.map((plan, index) => (
               // Someone can do some proper styling here at some point
-              // This is a placeholder until the plan data is sorted out
-              <div key={index} className="plan-item" onClick={() => handlePlanSelect(plan.degree, plan.major, plan.courseMap)}>
-                <Text type="h4">{plan.name}</Text>
-                <p>{plan.degree} - {plan.major}</p>
+              <div key={index} className='selected-course-item' onClick={() => handlePlanSelect(plan.degree, plan.major, plan.courseMap)}>
+                  <ul className='cm-ul'>
+                      <li className='course-row'>
+                          <div className='course-id'>
+                              <span>{plan.name}:</span>
+                          </div>
+                          <span className='course-name'>{plan.degree} - {plan.major}</span>
+                          <div className='course-details'>
+                              <button className='remove-btn' onClick={() => handleRemovePlan(plan.name)}>✕</button>
+                          </div>
+                      </li>
+                  </ul>
               </div>
-            ))
+            ))}
+            </div>
           ) : (
             <Text type="h3">No Plans Generated</Text>
           )}

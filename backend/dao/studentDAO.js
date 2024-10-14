@@ -109,4 +109,24 @@ export default class studentsDAO{
             return { error: e };
         }
     }
+
+    static async removePlanFromUser(studentId, planName){
+        try {
+
+            let studentData = await student.findOne({ 
+                student_id: studentId
+            });
+            if (!studentData) throw new Error("Student not found");
+
+            let result = await studentData.plans.deleteOne({
+                name: planName
+            })
+
+            return result;
+
+        } catch (e) {
+            console.error(`Unable to remove plan from user: ${e}`);
+            return { error: e };
+        }
+    }
 };

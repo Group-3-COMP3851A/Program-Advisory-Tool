@@ -11,6 +11,7 @@ router.route("/").get(studentCtrl.apiGetStudent); //get requests to get a studen
 router.route("/login").post(studentCtrl.apiLogin); //api login post request
 router.route("/getUserPlans").post(studentCtrl.apiGetUserPlans); //api request to get a list of user plans
 router.route("/addPlanToUser").post(studentCtrl.apiAddPlanToUser); //api request which adds a plan to the specified user
+router.route("/removePlanFromUser").post(studentCtrl.apiRemovePlanFromUser); //api request which adds a plan to the specified user
 
 router.route("")
 

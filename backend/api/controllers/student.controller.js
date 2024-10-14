@@ -77,4 +77,17 @@ export default class studentCtrl {
             res.status(500).json({ error: e.message });
         }
     }
+
+    static async apiRemovePlanFromUser (req, res, next){
+        const { studentId, planName } = req.body;
+
+        try{
+
+            const result = await studentDAO.removePlanFromUser(studentId, planName);
+
+            res.json({ success: true, result });
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
+    }
 }
