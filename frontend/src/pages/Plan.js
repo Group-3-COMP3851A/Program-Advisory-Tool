@@ -41,7 +41,7 @@ const Plan = () => {
         if (!courseMap){
             getCourseList(degree, major, coursesPerSem, completedCourses);
         }
-    }, [degree, major, coursesPerSem, completedCourses]);
+    }, [degree, major, coursesPerSem, completedCourses, courseMap]);
 
     const findCourse = (courseId) => {
         if (!courseId) {
