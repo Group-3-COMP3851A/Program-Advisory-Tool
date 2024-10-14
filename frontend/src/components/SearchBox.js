@@ -48,7 +48,7 @@ function getFullCourseCode(internalId)
     case "el":
       fullName = "ELEC";
       break;
-      case "st":
+    case "st":
       fullName = "STAT";
       break;
     case "le":
