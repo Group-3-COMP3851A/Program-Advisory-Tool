@@ -81,6 +81,9 @@ function getFullCourseCode(internalId)
         case "sc":
         fullName = "SCIE";
         break;
+        case "eb":
+        fullName = "EBUS";
+        break;
         default:
         fullName = courseId;
     }
