@@ -70,7 +70,7 @@ const Profile = () => {
             <div className='selected-courses scrollable'>
               {userPlans.map((plan, index) => (
               // Someone can do some proper styling here at some point
-              // Fix 
+              // Fix remove plan not working when wrapped in by div
               <div key={index} className='selected-course-item' onClick={() => handlePlanSelect(plan.degree, plan.major, plan.courseMap)}>
                   <ul className='cm-ul'>
                       <li className='course-row'>
