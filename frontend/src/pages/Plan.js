@@ -15,8 +15,8 @@ import { AppContext } from '../AppContext';
 const Plan = () => {
     const location = useLocation();
     const { studentId } = useContext(AppContext);
-    const { degree, major, coursesPerSem, completedCourses } = location.state || {};
-    const [courseList, setCourseList] = useState([]);
+    const { degree, major, coursesPerSem, completedCourses, courseMap } = location.state || {};
+    const [courseList, setCourseList] = useState(courseMap || []);
     const [activeId, setActiveId] = useState(null);
     const [dndDisabled, setDndDisabled] = useState(true);
 
@@ -38,7 +38,9 @@ const Plan = () => {
     }
 
     useEffect(() => {
-        getCourseList(degree, major, coursesPerSem, completedCourses);
+        if (!courseMap){
+            getCourseList(degree, major, coursesPerSem, completedCourses);
+        }
     }, [degree, major, coursesPerSem, completedCourses]);
 
     const findCourse = (courseId) => {

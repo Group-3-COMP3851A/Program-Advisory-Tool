@@ -3,10 +3,12 @@ import '../styles/style.css';
 import Menu from '../components/Menu'; // Importing the Menu component
 import Text from '../components/Text'; // Importing the Text component
 import { AppContext } from '../AppContext';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const { studentId } = useContext(AppContext);
   const [userPlans, setUserPlans] = useState([]);
+  const navigate = useNavigate();
 
   const getUserPlans = (studentId) => {
     fetch('http://localhost:3001/api/student/getUserPlans', {
@@ -25,6 +27,10 @@ const Profile = () => {
     getUserPlans(studentId);
   }, [studentId]);
 
+  const handlePlanSelect = (degree, major, courseMap) => {
+    navigate('/plan', { state: { degree, major, courseMap } });
+  };
+
   return (
 	<div className='global'>
 		<div className='main-section'>
@@ -37,10 +43,9 @@ const Profile = () => {
             userPlans.map((plan, index) => (
               // Someone can do some proper styling here at some point
               // This is a placeholder until the plan data is sorted out
-              <div key={index} className="plan-item">
+              <div key={index} className="plan-item" onClick={() => handlePlanSelect(plan.degree, plan.major, plan.courseMap)}>
                 <Text type="h4">{plan.name}</Text>
-                <p>Degree: {plan.degree}</p>
-                <p>Major: {plan.major}</p>
+                <p>{plan.degree} - {plan.major}</p>
               </div>
             ))
           ) : (
