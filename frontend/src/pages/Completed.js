@@ -63,6 +63,24 @@ function getFullCourseCode(internalId)
         case "el":
         fullName = "ELEC";
         break;
+        case "st":
+        fullName = "STAT";
+        break;
+        case "le":
+        fullName = "LEGL";
+        break;
+        case "mk":
+        fullName = "MKTG";
+        break;
+        case "mn":
+        fullName = "MNGT";
+        break;
+        case "ac":
+        fullName = "ACFI";
+        break;
+        case "sc":
+        fullName = "SCIE";
+        break;
         default:
         fullName = courseId;
     }
