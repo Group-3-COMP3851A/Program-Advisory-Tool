@@ -324,7 +324,7 @@ const checkEveryCourse = (newSchedule, changedCourse, conflicts, completedCourse
                         if (course.course_follow) {
                             if (i === newSchedule.length - 1 && j === 0 || i < newSchedule.length - 1) {
                                 //check if the next semester has the course that follows
-                                checkFollowerCourse(course, j === 0 ? newSchedule[i][j+1] : newSchedule[i+1][j], conflicts);
+                                checkFollowerCourse(course, j === 0 ? newSchedule[i][1] : newSchedule[i+1][0], conflicts);
                             } else {
                                 //the course has a follower course but there is no position for the course to go, add a conflict
                                 conflicts.push(["followRequirement", course.course_follow]);
