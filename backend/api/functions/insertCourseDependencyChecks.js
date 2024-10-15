@@ -170,7 +170,11 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
     //checking that any follower courses are present
     if (changedCourse.course_follow) {
         let nextLocation;
-        if (destinationLocation.semesterIndex === 1) nextLocation = {yearIndex: destinationLocation.yearIndex + 1, semesterIndex: 0};
+        if (destinationLocation.semesterIndex === 1 && destinationLocation.yearIndex === newSchedule.length - 1) {
+            conflicts.push(["followRequirement", changedCourse.course_follow]);
+            changedCourse.conflicts.push(["followRequirement", changedCourse.course_follow]);
+        }
+        else {if (destinationLocation.semesterIndex === 1) nextLocation = {yearIndex: destinationLocation.yearIndex + 1, semesterIndex: 0};
         else nextLocation = {yearIndex: destinationLocation.yearIndex, semesterIndex: 1};
         //if the next semester does not exist then can just return the conflict straight away
         if (nextLocation.yearIndex > newSchedule.length) {
@@ -189,7 +193,7 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
                 conflicts.push(["followRequirement", changedCourse.course_follow]);
                 changedCourse.conflicts.push(["followRequirement", changedCourse.course_follow]);
             }
-        }
+        }}
     }
 
     //------------------------------------END OF CHANGEDCOURSE CHECKING------------------------------------------------
@@ -253,7 +257,7 @@ const checkForDependencies = (coursesToPoint, course, conflicts, completedCourse
                 conflicts.push(["ass", course._id]);
                 course.conflicts.push(["ass", assumed]);
             }
-        else if (!Array.isArray(assumed) && !coursesToPoint.includes(assumed) && !completedCourseCodes.includes(assumed) && !assumed.substring(assumed.length-2) === "us")
+        else if (!Array.isArray(assumed) && !coursesToPoint.includes(assumed) && !completedCourseCodes.includes(assumed) && !(assumed.substring(assumed.length-2) === "us"))
         {
             conflicts.push(["ass", course._id]);
             course.conflicts.push(["ass", assumed]);
