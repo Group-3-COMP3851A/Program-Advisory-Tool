@@ -122,6 +122,24 @@ const Plan = () => {
         const { yearIndex, semesterIndex } = findCourse(directedCourse.code+directedCourse.number);
         const updatedCourseList = [...courseList];
         updatedCourseList[yearIndex][semesterIndex][courseList[yearIndex][semesterIndex].findIndex((c) => c.code+c.number === directedCourse.code+directedCourse.number)] = course; //find the location of the directed and put it into the list
+        if (course._id){
+            const courseLocation = findCourse(course._id);
+            fetch('http://localhost:3001/api/feasibility/checkDirectedFeasibility', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    studentId: 12345,
+                    degree,
+                    major,
+                    completedCourses,
+                    course: courseLocation,
+                    schedule: updatedCourseList
+                }),
+            })
+            .then(response => response.json())
+            .then(data => setCourseList(data.courseList || []))
+            .catch((error) => console.error('Error:', error));
+        }
         setCourseList(updatedCourseList);
     }
 

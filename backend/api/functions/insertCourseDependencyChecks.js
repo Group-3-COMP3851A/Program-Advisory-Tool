@@ -51,7 +51,6 @@
  * Inserts checks for normal course dependencies
  * @param {Array} newSchedule the entire plan - THIS SCHEDULE NEEDS TO BE SENT BACK TO THE FRONTEND BECAUSE IT CONTAINS ALL THE CONFLICTS
  * @param {Object} changedCourse the course that has been changed
- * @param {Object} sourceLocation the original location of the changed course
  * @param {Object} destinationLocation the new location of the changed course
  * @param {Array} courseArray all the courses in the plan
  * @param {Array} completedCourses All the completed courses that a student has done
@@ -64,7 +63,7 @@
  *      req: the course is missing requisite knowledge
  *      followRequirement: the course has a follower course that is not present in the following semester
  */
-export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, sourceLocation, destinationLocation, courseArray, completedCourses) => {
+export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, destinationLocation, courseArray, completedCourses) => {
     //update the schedule with the new information from the db in case anything has changed
     changedCourse = updateCourses(newSchedule, courseArray, changedCourse);
 
