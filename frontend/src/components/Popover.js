@@ -3,9 +3,9 @@ import Popover from '@mui/material/Popover';
 import Link from '@mui/material/Link';
 import '../styles/style.css';
 
-function getCourseID(id)
+function getCourseID(internalId)
 {
-  let courseString = String(id);
+  let courseString = String(internalId);
   let courseId = courseString.slice(-2);
   let courseName = courseString.slice(0, -2);
   let fullName = "";
@@ -28,9 +28,31 @@ function getCourseID(id)
     case "el":
       fullName = "ELEC";
       break;
+    case "st":
+      fullName = "STAT";
+      break;
+    case "le":
+      fullName = "LEGL";
+      break;
+    case "mk":
+      fullName = "MKTG";
+      break;
+    case "mn":
+      fullName = "MNGT";
+      break;
+    case "ac":
+      fullName = "ACFI";
+      break;
+    case "sc":
+      fullName = "SCIE";
+      break;
+    case "eb":
+      fullName = "EBUS";
+      break;
     default:
       fullName = courseId;
   }
+
   return fullName + courseName;
 }
 
