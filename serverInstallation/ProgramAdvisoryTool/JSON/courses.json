@@ -4594,7 +4594,7 @@
   "requisites_warning": "",
   "semester_offered": 1,
   "assumed_warning": "",
-  "assumed_knowledge": [],
+  "assumed_knowledge": ["2150in"],
   "course_follow": "",
   "course_replacement": [],
   "require_degree": [],
