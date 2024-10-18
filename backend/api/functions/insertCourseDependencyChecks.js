@@ -51,7 +51,6 @@
  * Inserts checks for normal course dependencies
  * @param {Array} newSchedule the entire plan - THIS SCHEDULE NEEDS TO BE SENT BACK TO THE FRONTEND BECAUSE IT CONTAINS ALL THE CONFLICTS
  * @param {Object} changedCourse the course that has been changed
- * @param {Object} sourceLocation the original location of the changed course
  * @param {Object} destinationLocation the new location of the changed course
  * @param {Array} courseArray all the courses in the plan
  * @param {Array} completedCourses All the completed courses that a student has done
@@ -64,7 +63,7 @@
  *      req: the course is missing requisite knowledge
  *      followRequirement: the course has a follower course that is not present in the following semester
  */
-export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, sourceLocation, destinationLocation, courseArray, completedCourses) => {
+export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, destinationLocation, courseArray, completedCourses) => {
     //update the schedule with the new information from the db in case anything has changed
     changedCourse = updateCourses(newSchedule, courseArray, changedCourse);
 
@@ -170,7 +169,11 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
     //checking that any follower courses are present
     if (changedCourse.course_follow) {
         let nextLocation;
-        if (destinationLocation.semesterIndex === 1) nextLocation = {yearIndex: destinationLocation.yearIndex + 1, semesterIndex: 0};
+        if (destinationLocation.semesterIndex === 1 && destinationLocation.yearIndex === newSchedule.length - 1) {
+            conflicts.push(["followRequirement", changedCourse.course_follow]);
+            changedCourse.conflicts.push(["followRequirement", changedCourse.course_follow]);
+        }
+        else {if (destinationLocation.semesterIndex === 1) nextLocation = {yearIndex: destinationLocation.yearIndex + 1, semesterIndex: 0};
         else nextLocation = {yearIndex: destinationLocation.yearIndex, semesterIndex: 1};
         //if the next semester does not exist then can just return the conflict straight away
         if (nextLocation.yearIndex > newSchedule.length) {
@@ -189,7 +192,7 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
                 conflicts.push(["followRequirement", changedCourse.course_follow]);
                 changedCourse.conflicts.push(["followRequirement", changedCourse.course_follow]);
             }
-        }
+        }}
     }
 
     //------------------------------------END OF CHANGEDCOURSE CHECKING------------------------------------------------
@@ -253,7 +256,7 @@ const checkForDependencies = (coursesToPoint, course, conflicts, completedCourse
                 conflicts.push(["ass", course._id]);
                 course.conflicts.push(["ass", assumed]);
             }
-        else if (!Array.isArray(assumed) && !coursesToPoint.includes(assumed) && !completedCourseCodes.includes(assumed) && !assumed.substring(assumed.length-2) === "us")
+        else if (!Array.isArray(assumed) && !coursesToPoint.includes(assumed) && !completedCourseCodes.includes(assumed) && !(assumed.substring(assumed.length-2) === "us"))
         {
             conflicts.push(["ass", course._id]);
             course.conflicts.push(["ass", assumed]);
@@ -324,7 +327,7 @@ const checkEveryCourse = (newSchedule, changedCourse, conflicts, completedCourse
                         if (course.course_follow) {
                             if (i === newSchedule.length - 1 && j === 0 || i < newSchedule.length - 1) {
                                 //check if the next semester has the course that follows
-                                checkFollowerCourse(course, j === 0 ? newSchedule[i][j+1] : newSchedule[i+1][j], conflicts);
+                                checkFollowerCourse(course, j === 0 ? newSchedule[i][1] : newSchedule[i+1][0], conflicts);
                             } else {
                                 //the course has a follower course but there is no position for the course to go, add a conflict
                                 conflicts.push(["followRequirement", course.course_follow]);

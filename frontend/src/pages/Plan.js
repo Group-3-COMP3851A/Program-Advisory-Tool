@@ -41,7 +41,7 @@ const Plan = () => {
         if (!courseMap){
             getCourseList(degree, major, coursesPerSem, completedCourses);
         }
-    }, [degree, major, coursesPerSem, completedCourses]);
+    }, [degree, major, coursesPerSem, completedCourses, courseMap]);
 
     const findCourse = (courseId) => {
         if (!courseId) {
@@ -122,6 +122,24 @@ const Plan = () => {
         const { yearIndex, semesterIndex } = findCourse(directedCourse.code+directedCourse.number);
         const updatedCourseList = [...courseList];
         updatedCourseList[yearIndex][semesterIndex][courseList[yearIndex][semesterIndex].findIndex((c) => c.code+c.number === directedCourse.code+directedCourse.number)] = course; //find the location of the directed and put it into the list
+        if (course._id){
+            const courseLocation = findCourse(course._id);
+            fetch('http://localhost:3001/api/feasibility/checkDirectedFeasibility', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    studentId: 12345,
+                    degree,
+                    major,
+                    completedCourses,
+                    course: courseLocation,
+                    schedule: updatedCourseList
+                }),
+            })
+            .then(response => response.json())
+            .then(data => setCourseList(data.courseList || []))
+            .catch((error) => console.error('Error:', error));
+        }
         setCourseList(updatedCourseList);
     }
 
@@ -161,8 +179,8 @@ const Plan = () => {
 
     return (
         <div className='global'>
-			<HelpIcon text1="to swap courses click and drap it to another semester and drop it on the first course in that semester"
-				text2="4 Courses is considered full-time study."/>
+			<HelpIcon text1="To adjust your plan, press the 'edit plan' button and drag courses into another semester."
+				text2="If any course cards have a red information icon, you might be doing courses in the wrong order."/>
             <div className='gen-section'>
                 <Text type="h1" className='page-title'>This program plan is for an student in the {degree} with a major in {major}. Completed courses are not shown in the plan.</Text>
                 <div><Text type="h2" className='S1'>Each box represents a semester. You can click on the course name to show details about the course. By hovering over the information icon, any conflicts that may not allow you to complete the course can be shown</Text></div>
