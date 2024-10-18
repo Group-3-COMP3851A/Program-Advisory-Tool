@@ -708,14 +708,7 @@
   font-family: Arial, "Helvetica", sans-serif;
   transition: all 0.3s ease;
 }
-.card-subtitle:hover{
-  transform: perspective(1000px) translateZ(10px); 
-  box-shadow: 0 25px 45px rgba(0, 102, 255, 0.3), 0 15px 30px rgba(0, 238, 255, 0.2); 
-  background-color: rgba(211, 211, 211, 0.596);
-  border-radius: 10px;
-  font-weight: bold;
-  color: #0F82E4;
-}
+
 .essentials{
   opacity: 0; 
   background-color: rgba(211, 211, 211, 0.596);
@@ -815,7 +808,6 @@ svg{
 .cardPopover{
   background-color: rgba(211, 211, 211, 0.596);
   font-family: Arial, "Helvetica", sans-serif;
-  padding: 1%;
 }
 
 /* Responsive behavior for small screens like chrome book with the width of 1366px */
@@ -910,7 +902,7 @@ svg{
   }
   /*pop over style*/
   .css-j459o-MuiSvgIcon-root{
-    padding-left: 94% !important;
+    padding-left: 92% !important;
   
   
   }
