@@ -80,7 +80,7 @@ class Algorithm {
     }
 
     addElective = (schedule, directeds) => {
-        let remainingElectives = 24 - (this.courseCodeList.length + this.completedCourses.length + directeds.semester_placements.length);
+        let remainingElectives = 24 - (this.courseCodeList.length + this.completedCourses.length + (directeds ? directeds.semester_placements.length : 0));
             //courseCodeList is only an array of courses to be completed, completedCourses is an array of completed courses, the number of directed placements is the number of directeds
         for (let i = 0; i < schedule.length && remainingElectives > 0; i++) {
             const element = schedule[i];
