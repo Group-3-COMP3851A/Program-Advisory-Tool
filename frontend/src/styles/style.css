@@ -660,7 +660,7 @@
 
 /* Card wrapper */
 .card-wrapper{
-	flex: 1 1 calc(23% - 10px); /* 4 cards per row with spacing */
+  flex: 1 1 calc(23% - 10px); /* 4 cards per row with spacing */
   margin: 1rem;
   background-color: #e0e0e086;
   border-radius: 8px;
@@ -815,7 +815,10 @@ svg{
 .cardPopover{
   background-color: rgba(211, 211, 211, 0.596);
   font-family: Arial, "Helvetica", sans-serif;
-  padding: 1%;
+  padding-top: 1%;
+  padding-bottom: 5%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 /* Responsive behavior for small screens like chrome book with the width of 1366px */
