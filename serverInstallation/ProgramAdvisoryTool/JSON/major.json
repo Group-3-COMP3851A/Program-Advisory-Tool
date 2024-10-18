@@ -79,6 +79,6 @@
   "_id": "11497M1",
   "major_name": "ICT Developer Major",
   "degree_id": 11497,
-  "elective_count": 0,
-  "directed_count": 5
+  "elective_count": 5,
+  "directed_count": 0
 }]
