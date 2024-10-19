@@ -148,6 +148,7 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
     case "elective":
       return (
         <Card className="card-container">
+		<Box className="elective-card-additional"/>
           <CardContent className="card-content">
             <Typography className="card-title" variant="h5">
               Elective
