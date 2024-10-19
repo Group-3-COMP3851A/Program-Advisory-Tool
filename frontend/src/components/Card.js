@@ -208,6 +208,7 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
         <Card className="card-container">
           <Box className='d-pop'>
           <InfoOutlinedIcon onMouseEnter={handleConflictHoverEnter} onMouseLeave={handleConflictHoverExit} sx={{color:"black"}}/>
+          
              <Popover
                 open={Boolean(conflictAnchorEl)}
                 anchorEl={conflictAnchorEl}

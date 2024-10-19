@@ -662,9 +662,8 @@
 .card-wrapper {
   flex: 1 1 calc(100% / var(--courses-per-sem) - 1rem); 
   margin: 0.5rem; 
-  background-color: #ffffff;
+  background-color: rgba(190, 186, 186, 0.596) !important;
   border-radius: 8px;
-  
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   box-sizing: border-box;
@@ -677,7 +676,7 @@
 /* Hover effect for card-wrapper */
 .card-wrapper:hover {
   transform: translateY(-5px);
-
+ 
 }
 
 /* Styling for the card content */
@@ -685,6 +684,8 @@
   flex: 1 1 calc(23% - 10px); 
   width: calc(100% / var(--courses-per-sem));
   position: relative;
+  height: 170px;
+  background-color: rgba(211, 211, 211, 0.596) !important;
 }
 
 .elective-card-additional{
@@ -696,7 +697,7 @@
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-  background-color: rgba(211, 211, 211, 0.596);
+
 }
 
 
@@ -749,7 +750,7 @@
 }
 /*pop over style for plan page*/
 .css-j459o-MuiSvgIcon-root{
-  padding-left: 88%;
+  margin-left: 80%;
 }
 .d-pop, .c-pop{
   background-color: rgb(211, 211, 211, 0.596) !important;
@@ -910,7 +911,7 @@ svg{
   }
   /*pop over style*/
   .css-j459o-MuiSvgIcon-root{
-    padding-left: 92% !important;
+   margin-left: 85% ;
   
   
   }
