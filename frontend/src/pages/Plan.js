@@ -79,20 +79,22 @@ const Plan = () => {
             // Find the source and destination courses once
             const sourceCourse = findCourse(active.id);
             const destinationCourse = findCourse(over?.id);
-            const transition = { sourceCourse, destinationCourse };
-            if (courseList[destinationCourse.yearIndex][destinationCourse.semesterIndex].length === 5) {
-                setSemesterFull(true);
-                return;
-            }
-            console.log(transition);
             
             
             if (sourceCourse && destinationCourse) {
+                const transition = { sourceCourse, destinationCourse };
+                if (courseList[destinationCourse.yearIndex][destinationCourse.semesterIndex].length === 5) {
+                    setSemesterFull(true);
+                    setActiveId(null);
+                    return;
+                }
+                console.log(transition);
                 if (sourceCourse.yearIndex === destinationCourse.yearIndex && sourceCourse.semesterIndex === destinationCourse.semesterIndex) {
                     const updatedCourseList = [...courseList];
                     const { yearIndex, semesterIndex } = sourceCourse;
                     updatedCourseList[yearIndex][semesterIndex] = arrayMove(updatedCourseList[yearIndex][semesterIndex], updatedCourseList[yearIndex][semesterIndex].indexOf(sourceCourse.course), updatedCourseList[yearIndex][semesterIndex].indexOf(destinationCourse.course));
                     setCourseList(updatedCourseList);
+                    setActiveId(null);
                     return
                 }
                 const { yearIndex: sourceYear, semesterIndex: sourceSemester, course } = sourceCourse;

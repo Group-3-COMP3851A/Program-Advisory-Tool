@@ -37,9 +37,13 @@ export const OutlinedCard = ({text, semesterIndex, setDirected}) => {
 
   const handleDirectedSelectionClose = (value) => {
     setDirectedSelectionOpen(false);
-    value["code"] = "directed";
-    value["number"] = text.number;
-    setDirected(text, value);
+    if (!(value.length === 0))
+    {
+      console.log("win")
+      value["code"] = "directed";
+      value["number"] = text.number;
+      setDirected(text, value);
+    }
   }
 
   let colourOfInfo = {color: 'black'}
