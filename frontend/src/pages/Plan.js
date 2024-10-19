@@ -5,7 +5,7 @@ import DropArea from '../components/DropArea';
 import Text from '../components/Text';
 import { useLocation } from 'react-router-dom';
 import { defaultDropAnimation, defaultDropAnimationSideEffects, DndContext, DragOverlay } from '@dnd-kit/core';
-import { Box } from '@mui/material';
+import { Alert, Box, Collapse } from '@mui/material';
 import { CardWrapper } from '../components/CardWrapper';
 import HelpIcon from '../components/Tooltip';
 import Button from '../components/Button';
@@ -19,6 +19,7 @@ const Plan = () => {
     const [courseList, setCourseList] = useState(courseMap || []);
     const [activeId, setActiveId] = useState(null);
     const [dndDisabled, setDndDisabled] = useState(true);
+    const [semesterFull, setSemesterFull] = useState(false);
 
     const getCourseList = (degree, major, coursesPerSem, completedCourses) => {
         fetch('http://localhost:3001/api/algorithm/getCourseList', {
@@ -79,6 +80,10 @@ const Plan = () => {
             const sourceCourse = findCourse(active.id);
             const destinationCourse = findCourse(over?.id);
             const transition = { sourceCourse, destinationCourse };
+            if (courseList[destinationCourse.yearIndex][destinationCourse.semesterIndex].length === 5) {
+                setSemesterFull(true);
+                return;
+            }
             console.log(transition);
             
             
@@ -224,6 +229,19 @@ const Plan = () => {
                         </div>
                     ))}
                 </DndContext>
+                <Collapse in={semesterFull}
+                    timeout={{enter: 1000, exit: 1000}}
+                    addEndListener={() => {
+                        setTimeout(() => setSemesterFull(false), 3000);
+                    }}
+                >
+                    <Alert
+                        severity='error'
+                        sx={{position: "fixed", bottom: "10px", left: "15%", zIndex: "100222", width: '80%'}}                          
+                    >
+                        Taking more than 5 courses per semester is not possible
+                    </Alert>
+                </Collapse>
             </div>
         </div>
     );

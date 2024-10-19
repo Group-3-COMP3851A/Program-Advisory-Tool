@@ -687,8 +687,7 @@
 .card-content{
   text-align: center;
   background-color: rgba(211, 211, 211, 0.596);
-  height: 110px !important; /* this adjust the course cards height % seems fine to me but the fixed value would look better
-  because of the arrgrnement for esstienal needs to be work needs to be work on*/
+  height: 110px !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -708,14 +707,7 @@
   font-family: Arial, "Helvetica", sans-serif;
   transition: all 0.3s ease;
 }
-.card-subtitle:hover{
-  transform: perspective(1000px) translateZ(10px); 
-  box-shadow: 0 25px 45px rgba(0, 102, 255, 0.3), 0 15px 30px rgba(0, 238, 255, 0.2); 
-  background-color: rgba(211, 211, 211, 0.596);
-  border-radius: 10px;
-  font-weight: bold;
-  color: #0F82E4;
-}
+
 .essentials{
   opacity: 0; 
   background-color: rgba(211, 211, 211, 0.596);
@@ -811,7 +803,7 @@ svg{
   gap: 10px; 
 }
 
-/*Card popover styling*/
+/*Card styling*/
 .cardPopover{
   background-color: rgba(211, 211, 211, 0.596);
   font-family: Arial, "Helvetica", sans-serif;
@@ -913,7 +905,7 @@ svg{
   }
   /*pop over style*/
   .css-j459o-MuiSvgIcon-root{
-    padding-left: 94% !important;
+    padding-left: 92% !important;
   
   
   }

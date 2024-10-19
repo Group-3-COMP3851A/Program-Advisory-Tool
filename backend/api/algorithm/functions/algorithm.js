@@ -68,17 +68,19 @@ class Algorithm {
         //the way to handle a schedule that has already begun would be to subtract the number of courses completed divided by the coursesPerSem from the semester count OR handle it beforehand somehow
         //this would also have to be passed through to the placeDirecteds somehow
         this.coursesPerSem = coursesPerSem;
-        if (coursesPerSem < 4) {
-            //if the student is doing a less than full time plan, need to find where the directeds would fit given the reqs
-            this.sortDirected(directedCourses);
-        } else this.placeDirecteds(directedCourses, schedule) //if we're doing a full time plan, can just place the directeds where they belong normally
+        if (directedCourses){
+            if (coursesPerSem < 4) {
+                //if the student is doing a less than full time plan, need to find where the directeds would fit given the reqs
+                this.sortDirected(directedCourses);
+            } else this.placeDirecteds(directedCourses, schedule) //if we're doing a full time plan, can just place the directeds where they belong normally}
+        }
         this.findEarliestSemester(schedule, directedCourses);
         this.addElective(schedule, directedCourses);
         this.planSchedule = schedule;
     }
 
     addElective = (schedule, directeds) => {
-        let remainingElectives = 24 - (this.courseCodeList.length + this.completedCourses.length + directeds.semester_placements.length);
+        let remainingElectives = 24 - (this.courseCodeList.length + this.completedCourses.length + (directeds ? directeds.semester_placements.length : 0));
             //courseCodeList is only an array of courses to be completed, completedCourses is an array of completed courses, the number of directed placements is the number of directeds
         for (let i = 0; i < schedule.length && remainingElectives > 0; i++) {
             const element = schedule[i];
