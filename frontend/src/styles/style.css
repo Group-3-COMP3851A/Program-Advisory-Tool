@@ -2,6 +2,7 @@
 /*edited by Muhammad  06/10/24: responsive design for smaller screens upto 1490px */
 /*edited by Muhammad  12/10/24: styled completed page and planned page as well as designed it for small screens */
 /*edited by Muhammad  13/10/24: edited the completed courses rows design and adjust the buttons as well as the completed courses container for both large screens and small screens*/
+/*edited by Muhammad 19/10/24: changed the styling of the card wrapper and card content so each card will adjust width based on the number of semester in the semester container.*/
 .App {
   background-color: transparent;
   display: flex;
@@ -658,21 +659,25 @@
 	width: 100%;
 }
 
-/* Card wrapper */
-.card-wrapper{
-  flex: 1 1 calc(23% - 10px); /* 4 cards per row with spacing */
-  margin: 1rem;
-  background-color: #e0e0e086;
+.card-wrapper {
+  flex: 1 1 calc(100% / var(--courses-per-sem) - 1rem); 
+  margin: 0.5rem; 
+  background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.card-wrapper:hover{
+
+/* Hover effect for card-wrapper */
+.card-wrapper:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+
 }
 
 /* Styling for the card content */
@@ -687,13 +692,11 @@
   height: 29px;
 }
 
-.card-content{
-  text-align: center;
+.card-content {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
   background-color: rgba(211, 211, 211, 0.596);
-  height: 110px !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 

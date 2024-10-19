@@ -1,36 +1,29 @@
+// Editted by Muhammad 19/10/24: added class to control with css
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { useContext } from "react";
 import { AppContext } from '../AppContext';
 
 export function CardWrapper(props) {
-    let { coursesPerSem } = useContext(AppContext);
-        if (!coursesPerSem) {
-            coursesPerSem = localStorage.getItem('coursesPerSem');
-        } else localStorage.setItem('coursesPerSem', coursesPerSem);
-
+    const { coursesPerSem } = useContext(AppContext);
     const {
         attributes,
         listeners,
         setNodeRef,
         transform,
         transition,
-      } = useSortable({id: props.id, disabled: props.disabled});
-    
-      const style = {
+    } = useSortable({ id: props.id, disabled: props.disabled });
+
+    const style = {
         transform: CSS.Transform.toString(transform),
         transition,
-        width: `${100/coursesPerSem}%`, margin: '1%'
-      }
-      if (!props.children) {
-        style.width = "100%";
-        style.height = "150px";
-      }
+        '--courses-per-sem': coursesPerSem || 4, // Dynamically set based on number of courses
+        margin: '0.5rem',
+    };
 
     return (
-        <div ref={setNodeRef} {...attributes} {...listeners} style={style} >
+        <div ref={setNodeRef} {...attributes} {...listeners} style={style} className="card-wrapper">
             {props.children}
         </div>
-    )
+    );
 }
-
