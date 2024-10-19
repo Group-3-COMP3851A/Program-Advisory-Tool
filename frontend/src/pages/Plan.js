@@ -189,9 +189,9 @@ const Plan = () => {
 			<HelpIcon text1="To adjust your plan, press the 'edit plan' button and drag courses into another semester."
 				text2="If any course cards have a red information icon, you might be doing courses in the wrong order."/>
             <div className='gen-section'>
-                <Text type="h1" className='page-title'>This program plan is for an student in the {degree} with a major in {major}. Completed courses are not shown in the plan.</Text>
-                <div><Text type="h2" className='S1'>Each box represents a semester. You can click on the course name to show details about the course. By hovering over the information icon, any conflicts that may not allow you to complete the course can be shown</Text></div>
-                <div><Text type="h2" className='S1'>The plan can be edited by clicking on the "Edit Plan" button and stopped by clicking on the "Stop Editing" button. You can select your directed by clicking on the "Directed" course and choosing from the list.</Text></div>
+                <Text type="h1" className='page-title'>This program plan is for a student in the {degree} with a major in {major}. Completed courses are not shown in the plan.</Text>
+                <div><Text type="h2" className='S1'>Each box represents a semester. Clicking on a course name will reveal information about the course. By hovering over the information icon, any conflicts that may not allow you to complete the course can be shown</Text></div>
+                <div><Text type="h2" className='S1'>The plan can be edited by clicking on the "Edit Plan" button and stopped by clicking on the "Stop Editing" button. You can select directed courses by clicking on the Directed Course and choosing from the list of available courses.</Text></div>
                 <div className="popup-buttons">
                     <Button onClick={() => setDndDisabled(!dndDisabled)} text={dndDisabled ? "Edit Plan" : "Stop Editing"} color="#28a745"/>
                     <Button onClick={() => savePlan(studentId, degree, major, courseList)} text={"Save Plan"} color="#28a745"/>
