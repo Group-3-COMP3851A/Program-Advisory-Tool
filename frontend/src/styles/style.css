@@ -662,7 +662,6 @@
 .card-wrapper {
   flex: 1 1 calc(100% / var(--courses-per-sem) - 1rem); 
   margin: 0.5rem; 
-  background-color: rgba(190, 186, 186, 0.596) !important;
   border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
@@ -689,7 +688,6 @@
 }
 
 .elective-card-additional{
-  background-color: rgba(211, 211, 211, 0.596);
   height: 29px;
 }
 
@@ -697,7 +695,6 @@
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-
 }
 
 
@@ -753,7 +750,6 @@
   margin-left: 80%;
 }
 .d-pop, .c-pop{
-  background-color: rgb(211, 211, 211, 0.596) !important;
   outline: transparent;
 }
 .card-link{
