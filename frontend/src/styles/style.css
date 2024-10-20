@@ -751,6 +751,7 @@
 }
 .d-pop, .c-pop{
   outline: transparent;
+  text-align: right;
 }
 .card-link{
   color: #0F82E4;
@@ -912,7 +913,6 @@ svg{
   
   }
   .d-pop, .c-pop{
-    background-color: rgb(211, 211, 211, 0.596) !important;
     outline: transparent;
     
   }
