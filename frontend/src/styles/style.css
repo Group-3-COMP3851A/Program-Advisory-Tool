@@ -1,3 +1,8 @@
+/*edited by Muhammad  04/10/24*/
+/*edited by Muhammad  06/10/24: responsive design for smaller screens upto 1490px */
+/*edited by Muhammad  12/10/24: styled completed page and planned page as well as designed it for small screens */
+/*edited by Muhammad  13/10/24: edited the completed courses rows design and adjust the buttons as well as the completed courses container for both large screens and small screens*/
+/*edited by Muhammad 19/10/24: changed the styling of the card wrapper and card content so each card will adjust width based on the number of semester in the semester container.*/
 .App {
   background-color: transparent;
   display: flex;
@@ -18,6 +23,7 @@
   position: relative;
   width: 1759px;
 }
+
 
 .app .bodybg {
   background-color: #1090d54c;
@@ -242,45 +248,22 @@
   padding: 0rem;
   width: 100%;
 }
-
-/*menu starts here*/
+/* General menu styling for large screens */
 .menu {
+  z-index: 1000; 
   top: 0;
-  left: 0;
+  left: 0; 
   width: 10%;
-  height: 100vh; /* Full viewport height */
-  background-color: black; /* White background for contrast */
+  height: 100vh; 
+  background-color: black;
   padding: 1rem;
-  position: fixed; /* Stick to the left */
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: left 0.3s ease-in-out; /* Smooth sliding transition */
   font-family: Arial, "Helvetica", sans-serif;
 }
-
-/* menu Logo styling */
-.menu-logo {
-  width: 105%; 
-  margin-bottom: 0.5rem;
-  margin-left: 0rem;
-  margin-right: 0rem;
-}
-
-
-/* Menu List */
-.menu {
-  top: 0;
-  left: 0;
-  width: 10%;
-  height: 100vh; /* Full viewport height */
-  background-color: black; /* White background for contrast */
-  padding: 1rem;
-  position: fixed; /* Stick to the left */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 /* Logo styling */
 .menu-logo {
   width: 100%;
@@ -293,17 +276,15 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  width: 100%; /* Ensure it takes full width of menu */
+  width: 100%; /* Ensure it takes full width of the menu */
 }
 
 /* Menu Items */
 .menu-list li {
   margin-bottom: 1rem;
-  background-color: rgb(16, 144, 213, 0.5); /* Dark background for items */
+  background-color: rgba(16, 144, 213, 0.5); /* Dark background for items */
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 15px 30px rgba(175, 176, 176, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1); 
-  transform: perspective(1000px) translateZ(0); /* Initial position */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
 }
 
@@ -327,7 +308,34 @@
   transform: scale(1.05); 
   border-radius: 10px;
 }
+/*logout style*/
+.logout li{
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  background-color: rgb(139, 6, 6);
+  margin-top: 110px;
+  margin-right: 40px;
+  list-style-type: none;
+}
+.logout li:hover {
+  transform: perspective(1000px) translateZ(10px); 
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 15px 30px rgba(0, 0, 0, 0.2); 
+  border-radius: 10px;
+}
+.logout a {
+  color: rgb(255, 255, 255); 
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem;
+  transition: background-color 0.3s ease; 
+}
 
+.logout a:hover {
+  background-color: #640202; 
+  transform: scale(1.05); 
+  border-radius: 10px;
+}
 /*  select Content Area */
 .main-section {
   width: 60%;
@@ -378,7 +386,7 @@
   margin-top: 5%;
   margin-bottom: 5%;
   background-color: #add8e6; 
-  height: 90vh; 
+  height: 80vh; 
   color: black;
   display: flex;
   flex-direction: column;
@@ -411,67 +419,188 @@
   font-size: 1rem;
   line-height: 1.5;
 }
-/* Responsive Design */
-@media (max-width: 768px) {
-  .menu {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .main-section {
-    width: 50%;
-    height: 50%;
-    margin-left: 0;
-  }
+.selected-courses{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1px;
+  margin-top: 10px;
+  justify-content: left;
+}
+
+/* Styling for the Selected Course Card */
+.selected-course-item{
+  color: #4a4a4a;
+  border-radius: 16px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  cursor: default;
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+
+/* Remove Button Styling */
+.remove-btn{
+  background-color: transparent;
+  border: none;
+  color: #555;
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Hover Effect for Remove Button */
+.remove-btn:hover{
+  background-color: #ed8a8a;
+  transition: color 0.3s;
+}
+
+/* Search Box at the Top Styling */
+.MultiSearchBox{
+  margin-top: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    
+}
+.MuiInputBase-input, .MuiInputBase-root{
+  background-color: #ffffff !important;
+  border-radius: 50px !important;
+}
+.cm-ul{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; 
+  float: left;
+  width: 100%;
+   
+}
+.cm-ul li{
+  flex: 1 1 100%; 
+  display: flex;
+  flex-direction: row;  
+  border-radius: 5px;
+  box-shadow: #000000;
+}
+
+.cm-g1{
+  width: 70% ;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.selected-courses{
+  margin-top: 10px;
+}
+
+/* Scrollable container with a max-height of 300px */
+.scrollable{
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 15px;
+}
+
+.selected-course-item{
+  background-color: rgba(224, 231, 255, 0.4);
+  padding: 0px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.course-id{
+  margin-right: 5px;
+  font-weight: bold;
+  color: #333;
+
+}
+/* Align course */
+.course-row{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+.course-name{
+  flex-grow: 1;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Align units and remove button next to each other on the right */
+.course-details{
+  display: flex;
+  text-align: right;
+   
+}
+
+.course-units{
+  font-weight: normal;
+  color: #555;
+  margin-right: 15px;
+}
+
+.remove-btn{
+  background-color: transparent;
+  border: none;
+  color: #ff6b6b;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.remove-btn:hover{
+  color: #ff3b3b;
 }
 
 /*generated planner page css starts here*/
-.global {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    height: 40vh;
-    background-color: #ffffff93; /* Light background */
-    box-sizing: border-box;
-    font-family: Arial, "Helvetica", sans-serif;
+.global{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 40vh;
+  background-color: #ffffff93; /* Light background */
+  box-sizing: border-box;
+  font-family: Arial, "Helvetica", sans-serif;
     
 }
 
 /* Main content section */
-.gen-section {
-    width: 90%;
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 2rem;
-    
-    box-sizing: border-box;
+.gen-section{
+  width: 90%;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 2rem; 
+  box-sizing: border-box;
 }
 
 /* Page title */
-.page-title {
-    margin-bottom: 1%;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #002B5B; /* Dark blue color for header */
-    text-align: center;
-    text-transform: uppercase;
-    font-family: Arial, "Helvetica", sans-serif;
+.page-title{
+  margin-bottom: 1%;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #002B5B; /* Dark blue color for header */
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Arial, "Helvetica", sans-serif;
 }
 
 /* Year container */
-.year-container {
+.year-container{
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin: 0.5%;
   width: auto;
   font-family: Arial, "Helvetica", sans-serif;
   color: #000000;
 }
 
 /* Year title */
-.year-title {
+.year-title{
   font-size: 1.8rem;
   font-weight: bold;
   background-color: #000000;
@@ -481,7 +610,7 @@
   font-family: Arial, "Helvetica", sans-serif;
   margin-right: auto; 
 }
-.S1 {
+.S1{
   font-size: 1.8rem;
   font-weight: bold;
   background-color: #000000;
@@ -493,104 +622,97 @@
 
 
 /* Semester container */
-.semester-container {
-    display: flex;
-    justify-content: space-between; /* Separate the boxes within each year */
-    width: 100rem;
-    height: 25rem;
+.semester-container{
+  display: flex;
+  height: 15rem;
 }
 
 /* Semester section styling to give each box a distinct look */
-.semester-section {
-    padding: 3rem;
-    border-radius: 3rem;
-    width: 48%; /* Two boxes should fit side by side */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Shadow to lift the box */
-    display: flex;
-    flex-direction: left;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
-    
+.semester-section{
+  border-radius: 1rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Shadow to lift the box */
+	margin-right: 1%;
+  display: flex;
+  flex-direction: left;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+  margin: 20px;
+  width: 100%;
 }
-
-.semester-section:hover {
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+.semester-text{
+	writing-mode: vertical-lr;
+	text-orientation: upright;
+	margin: 0;
+	color: gray;
 }
 
 /* Drop area */
-.drop-area {
-    min-height: 200px;
-    width: 100%;
-    border: 1px solid #004961; /* Blue dashed border for drop areas */
-    border-radius: 8px;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
+.drop-area{
+  min-height: 200px;
+  border: 1px solid #004961; 
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+	width: 100%;
 }
 
-/* Card wrapper */
 .card-wrapper {
-  flex: 1 1 calc(23% - 10px); /* 4 cards per row with spacing */
-    margin: 1rem;
-    background-color: #e0e0e086;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box;
+  flex: 1 1 calc(100% / var(--courses-per-sem) - 1rem); 
+  margin: 0.5rem; 
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+
+/* Hover effect for card-wrapper */
 .card-wrapper:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+ 
 }
 
 /* Styling for the card content */
-.card-container {
+.card-container{
   flex: 1 1 calc(23% - 10px); 
   width: calc(100% / var(--courses-per-sem));
   position: relative;
-  
+  height: 170px;
+  background-color: rgba(211, 211, 211, 0.596) !important;
 }
 
+.elective-card-additional{
+  height: 29px;
+}
 
 .card-content {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
   text-align: center;
-  background-color: rgba(211, 211, 211, 0.596);
-  height: 100px !important; /* this adjust the course cards height % seems fine to me but the fixed value would look better
-  because of the arrgrnement for esstienal needs to be work needs to be work on*/
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-
 }
 
 
-.card-title {
+.card-title{
   color: #0F82E4;
   font-weight: bold;
   font-family: Arial, "Helvetica", sans-serif;
-  
 }
 
-.card-subtitle {
+.card-subtitle{
   color: var(--text-secondary-color, gray);
   font-size: 0.9rem !important;
   font-family: Arial, "Helvetica", sans-serif;
   transition: all 0.3s ease;
 }
-.card-subtitle:hover {
-  transform: perspective(1000px) translateZ(10px); 
-  box-shadow: 0 25px 45px rgba(0, 102, 255, 0.3), 0 15px 30px rgba(0, 238, 255, 0.2); 
-  background-color: rgba(211, 211, 211, 0.596);
-  border-radius: 10px;
-  font-weight: bold;
-  color: #0F82E4;
-}
-.essentials {
+
+.essentials{
   opacity: 0; 
   background-color: rgba(211, 211, 211, 0.596);
   color: #7e8081;
@@ -599,7 +721,7 @@
   font-family: Arial, "Helvetica", sans-serif;
   
 }
-.card-container:hover .essentials {
+.card-container:hover .essentials{
   opacity: 1; 
   transform: perspective(1000px) translateZ(10px); 
   box-shadow: 0 25px 45px rgba(0, 102, 255, 0.3), 0 15px 30px rgba(0, 238, 255, 0.2); 
@@ -608,75 +730,57 @@
   font-weight: bold;
   color: #0F82E4;
 }
-.directed-course {
+.directed-course{
   font-size: 0.9rem !important;
   font-family: Arial, "Helvetica", sans-serif;
 }
 
-.small-title {
+.small-title{
   font-size: 1.3rem !important;
   font-family: Arial, "Helvetica", sans-serif;
 }
 
-.underline-title {
+.underline-title{
   text-decoration: underline;
   font-weight: bold;
   font-family: Arial, "Helvetica", sans-serif;
   font-size: 1.3rem !important;
 }
-
-.card-link {
+/*pop over style for plan page*/
+.css-j459o-MuiSvgIcon-root{
+  margin-left: 80%;
+}
+.d-pop, .c-pop{
+  outline: transparent;
+  text-align: right;
+}
+.card-link{
   color: #0F82E4;
   text-decoration: underline;
   cursor: pointer;
 }
-
-
-
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .gen-section {
-    margin-left: 0; /* Remove space for sidebar */
-    width: 100%; /* Full width on smaller screens */
-    padding: 10px;
-  }
-
-  .semester-column {
-    max-width: 100%; /* Make columns full width */
-  }
-
-  .semester-section {
-    flex-direction: column;
-  }
-
-  .OutlinedCard {
-    width: 100%; /* Make cards take full width on small screens */
-  }
+.helpIcon{
+	z-index: 2;
+	position: fixed;
+	bottom: 2%;
+	right: 2%;
 }
-
-.helpIcon {
+.CIcon{
 	position: absolute;
+  margin: 50px ;
 	bottom: 0;
-	right: 0;
   
-}
-.CIcon {
-	position: absolute;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-	bottom: 0;
 }
 svg{
   transform: scale(0.9) !important;
 }
-.search-container {
+.search-container{
   width: 100%;
   max-width: 600px; /* Set a max width if needed */
   margin: 20px 0;
   position: relative;
 }
-.popup {
+.popup{
   position: fixed; 
   top: 50%; 
   left: 50%; 
@@ -692,14 +796,132 @@ svg{
   align-items: center; 
 }
 
-.popup-message {
+.popup-message{
   margin-bottom: 20px; 
   text-align: center; 
 }
 
-.popup-buttons {
+.popup-buttons{
   display: flex; 
   justify-content: center; 
   gap: 10px; 
 }
+
+/*Card styling*/
+.cardPopover{
+  background-color: rgba(211, 211, 211, 0.596);
+  font-family: Arial, "Helvetica", sans-serif;
+  padding-top: 1%;
+  padding-bottom: 5%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+/* Responsive behavior for small screens like chrome book with the width of 1366px */
+@media (max-width: 1490px){
+  .completed-section{
+    width: 75%;
+    margin-left: 5%; 
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: #add8e6; 
+    height: 85vh; 
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1); 
+    transform: perspective(1000px) translateZ(20px); 
+    font-family: Arial, "Helvetica", sans-serif;
+  }
+  .CIcon{
+    position: absolute;
+    margin: 4% ;
+    bottom: 0;
+   
+    
+  }
+  .cm-g1{
+    width: 90%;
+    border: 1px solid black;
+  }
+  /* Scrollable container with a max-height of 300px */
+  .scrollable{
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 15px;
+  }
+    /*slect page starts here*/
+  .main-section{
+      width: 70%;
+      margin-left: 10%; 
+      margin-right: 10%;
+      margin-top: 5%;
+      margin-bottom: 5%;
+      background-color: #add8e6; 
+      height: 80vh; 
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 30px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1); 
+      transform: perspective(1000px) translateZ(20px); 
+      font-family: Arial, "Helvetica", sans-serif;
+      text-align: center;
+    }
+
+    .main-section h1{
+      font-size: 2.5rem;
+    }
+    .main-section h2{
+      font-size: 1.5rem;
+    }
+  /*plan page starts here*/
+  /* Semester container */
+  .semester-container {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row; 
+      gap: 1rem; 
+      height: 100%;
+      width: 100%;
+  }
+
+  /* Semester section styling */
+  .semester-section{
+      flex: 1 1 100%; 
+      border-radius: 1rem;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
+      margin-bottom: 2rem; 
+      display: flex;
+      flex-direction: row; 
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .year-container{
+    margin-top: 50px;
+  }
+  /*pop over style*/
+  .css-j459o-MuiSvgIcon-root{
+   margin-left: 85% ;
+  
+  
+  }
+  .d-pop, .c-pop{
+    outline: transparent;
+    
+  }
+
+}
+
+
+
+
+
 

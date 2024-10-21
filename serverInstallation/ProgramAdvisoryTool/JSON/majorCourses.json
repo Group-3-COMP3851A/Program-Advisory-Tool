@@ -237,4 +237,532 @@
   "course_id": "4430se",
   "major_id": "40103M5",
   "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571a1"
+  },
+  "course_id": "1002mn",
+  "major_id": "12238M7",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571a2"
+  },
+  "course_id": "2002mn",
+  "major_id": "12238M7",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571a3"
+  },
+  "course_id": "2007mn",
+  "major_id": "12238M7",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571a4"
+  },
+  "course_id": "3016mn",
+  "major_id": "12238M7",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571a5"
+  },
+  "course_id": "3002mn",
+  "major_id": "12238M7",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571a6"
+  },
+  "course_id": "3007mn",
+  "major_id": "12238M7",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571a7"
+  },
+  "course_id": "3008mn",
+  "major_id": "12238M7",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571a8"
+  },
+  "course_id": "3009mn",
+  "major_id": "12238M7",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571a9"
+  },
+  "course_id": "1002ir",
+  "major_id": "12238M9",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571aa"
+  },
+  "course_id": "2010ir",
+  "major_id": "12238M9",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571ab"
+  },
+  "course_id": "2270ir",
+  "major_id": "12238M9",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571ac"
+  },
+  "course_id": "3000ir",
+  "major_id": "12238M9",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571ad"
+  },
+  "course_id": "3111le",
+  "major_id": "12238M9",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571ae"
+  },
+  "course_id": "3001bu",
+  "major_id": "12238M9",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571af"
+  },
+  "course_id": "3035ir",
+  "major_id": "12238M9",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571b0"
+  },
+  "course_id": "3040ir",
+  "major_id": "12238M9",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571b1"
+  },
+  "course_id": "3510ir",
+  "major_id": "12238M9",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571b2"
+  },
+  "course_id": "3540ir",
+  "major_id": "12238M9",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571b3"
+  },
+  "course_id": "1000ib",
+  "major_id": "12238M2",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571b4"
+  },
+  "course_id": "2001ib",
+  "major_id": "12238M2",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571b5"
+  },
+  "course_id": "2003ib",
+  "major_id": "12238M2",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571b6"
+  },
+  "course_id": "3000ib",
+  "major_id": "12238M2",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571b7"
+  },
+  "course_id": "3140ac",
+  "major_id": "12238M2",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571b8"
+  },
+  "course_id": "3600bu",
+  "major_id": "12238M2",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571b9"
+  },
+  "course_id": "3003ec",
+  "major_id": "12238M2",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571ba"
+  },
+  "course_id": "3540ir",
+  "major_id": "12238M2",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571bb"
+  },
+  "course_id": "3060mk",
+  "major_id": "12238M2",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571bc"
+  },
+  "course_id": "3140po",
+  "major_id": "12238M2",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571bd"
+  },
+  "course_id": "3160po",
+  "major_id": "12238M2",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571be"
+  },
+  "course_id": "2005mn",
+  "major_id": "12238M4",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571bf"
+  },
+  "course_id": "3011mn",
+  "major_id": "12238M4",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571c0"
+  },
+  "course_id": "3012mn",
+  "major_id": "12238M4",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571c1"
+  },
+  "course_id": "3001bu",
+  "major_id": "12238M4",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571c2"
+  },
+  "course_id": "2270ir",
+  "major_id": "12238M4",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571c3"
+  },
+  "course_id": "3035ir",
+  "major_id": "12238M4",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571c4"
+  },
+  "course_id": "3510ir",
+  "major_id": "12238M4",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571c5"
+  },
+  "course_id": "2002mn",
+  "major_id": "12238M4",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571c6"
+  },
+  "course_id": "2006mn",
+  "major_id": "12238M4",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571c7"
+  },
+  "course_id": "3002mn",
+  "major_id": "12238M4",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571c8"
+  },
+  "course_id": "3008mn",
+  "major_id": "12238M4",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571c9"
+  },
+  "course_id": "3009mn",
+  "major_id": "12238M4",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571ca"
+  },
+  "course_id": "2010mk",
+  "major_id": "12238M6",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571cb"
+  },
+  "course_id": "2101mk",
+  "major_id": "12238M6",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571cc"
+  },
+  "course_id": "3000mk",
+  "major_id": "12238M6",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571cd"
+  },
+  "course_id": "3001bu",
+  "major_id": "12238M6",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571ce"
+  },
+  "course_id": "3040ir",
+  "major_id": "12238M6",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571cf"
+  },
+  "course_id": "3002mk",
+  "major_id": "12238M6",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571d0"
+  },
+  "course_id": "3003mk",
+  "major_id": "12238M6",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571d1"
+  },
+  "course_id": "3004mk",
+  "major_id": "12238M6",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571d2"
+  },
+  "course_id": "3040mk",
+  "major_id": "12238M6",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571d3"
+  },
+  "course_id": "3060mk",
+  "major_id": "12238M6",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571d4"
+  },
+  "course_id": "2203po",
+  "major_id": "12238M8",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571d5"
+  },
+  "course_id": "3180po",
+  "major_id": "12238M8",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571d6"
+  },
+  "course_id": "1010po",
+  "major_id": "12238M8",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571d7"
+  },
+  "course_id": "1020po",
+  "major_id": "12238M8",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571d8"
+  },
+  "course_id": "3002po",
+  "major_id": "12238M8",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571d9"
+  },
+  "course_id": "3140po",
+  "major_id": "12238M8",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571da"
+  },
+  "course_id": "3150po",
+  "major_id": "12238M8",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571db"
+  },
+  "course_id": "3160po",
+  "major_id": "12238M8",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "6700938cb4120a1ad76571dc"
+  },
+  "course_id": "3200po",
+  "major_id": "12238M8",
+  "directed_status": true
+},
+{
+  "_id": {
+    "$oid": "670a853387fc1dc790d79644"
+  },
+  "course_id": "1120se",
+  "major_id": "11497M1",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "670a853387fc1dc790d79645"
+  },
+  "course_id": "3050eb",
+  "major_id": "11497M1",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "670a853387fc1dc790d79646"
+  },
+  "course_id": "2051in",
+  "major_id": "11497M1",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "670a853387fc1dc790d79647"
+  },
+  "course_id": "3050in",
+  "major_id": "11497M1",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "670a853387fc1dc790d79648"
+  },
+  "course_id": "3950in",
+  "major_id": "11497M1",
+  "directed_status": false
+},
+{
+  "_id": {
+    "$oid": "670a853387fc1dc790d79649"
+  },
+  "course_id": "1510ma",
+  "major_id": "11497M1",
+  "directed_status": false
 }]

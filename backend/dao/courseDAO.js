@@ -122,7 +122,7 @@ export default class courseDAO{
             let majorCourseIds = majorCoursesData.map(mc => mc.course_id);
             
             let coursesData = await courses
-                .find({ _id: { $in: majorCourseIds }, semester_offered: semester })
+                .find({ _id: { $in: majorCourseIds }, semester_offered: {$in: [semester, 0]},})
                 .toArray();
 
             let completedCourseIds = completedCourses.map(course => course._id);

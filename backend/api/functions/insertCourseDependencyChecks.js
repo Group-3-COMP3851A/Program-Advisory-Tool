@@ -51,7 +51,6 @@
  * Inserts checks for normal course dependencies
  * @param {Array} newSchedule the entire plan - THIS SCHEDULE NEEDS TO BE SENT BACK TO THE FRONTEND BECAUSE IT CONTAINS ALL THE CONFLICTS
  * @param {Object} changedCourse the course that has been changed
- * @param {Object} sourceLocation the original location of the changed course
  * @param {Object} destinationLocation the new location of the changed course
  * @param {Array} courseArray all the courses in the plan
  * @param {Array} completedCourses All the completed courses that a student has done
@@ -64,7 +63,7 @@
  *      req: the course is missing requisite knowledge
  *      followRequirement: the course has a follower course that is not present in the following semester
  */
-export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, sourceLocation, destinationLocation, courseArray, completedCourses) => {
+export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, destinationLocation, courseArray, completedCourses) => {
     //update the schedule with the new information from the db in case anything has changed
     changedCourse = updateCourses(newSchedule, courseArray, changedCourse);
 
@@ -84,13 +83,10 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
     //dependencies[1] is requisites 
     const dependencies = [[], []];
 
-    //create array with all dependencies - this is maybe not as efficient as
+    //create array with all dependencies - this is maybe not as efficient as it could be
     changedCourse.assumed_knowledge.forEach(assumed => {
-        if (Array.isArray(assumed) && !assumed.find((item) => completedCourseIds.includes(item))) dependencies[0].push(assumed);
-        else if (Array.isArray(assumed) && assumed.substring(assumed.length-2, assumed.length) !== "us" && !completedCourseIds.includes(assumed)) {
-            dependencies[0].push(assumed);
-        }
-        else if (!Array.isArray(assumed) && !completedCourseIds.includes(assumed)) dependencies[0].push(assumed);
+        if (Array.isArray(assumed) && !assumed.find((item) => completedCourseIds.includes(item))) dependencies[0].push(assumed); //if there is an array dependency and none of the courses are completed, add it
+        else if (!Array.isArray(assumed) && !completedCourseIds.includes(assumed) && assumed.substring(assumed.length-2) !== "us") dependencies[0].push(assumed);
     });
     changedCourse.requisites.forEach(requisite => {
         if (!completedCourseIds.includes(requisite)) dependencies[1].push(requisite);
@@ -98,14 +94,17 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
 
     const conflicts = [];
     //2 different units of study variables, one to keep track of every course found, another to keep track of how many units would have been studied up until the given semester
-    let unitsStudied = completedCourseIds.length;
-    let unitsStudiedBeforeSem = completedCourseIds.length;
+    let unitsStudied = completedCourseIds.length*10;
+    let unitsStudiedBeforeSem = completedCourseIds.length*10;
 
     //checking if the semester is valid
     //if the semester can be either 1 or 2 or if the semester matches the sourcelocation semester, there's no issue
-    if (!(changedCourse.semester_offered === 0 || destinationLocation.semesterIndex === sourceLocation.semesterIndex)) {
+    if (!(changedCourse.semester_offered === 0 || changedCourse.semester_offered === destinationLocation.semesterIndex + 1)) {
         conflicts.push(["semester"]);
+        changedCourse.conflicts.push(["semester"]);
     }
+
+    console.log(newSchedule)
 
     //dependency and units of study checking for the changed course
     //for loops will search each year and semester up until the destination
@@ -170,7 +169,11 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
     //checking that any follower courses are present
     if (changedCourse.course_follow) {
         let nextLocation;
-        if (destinationLocation.semesterIndex === 1) nextLocation = {yearIndex: destinationLocation.yearIndex + 1, semesterIndex: 0};
+        if (destinationLocation.semesterIndex === 1 && destinationLocation.yearIndex === newSchedule.length - 1) {
+            conflicts.push(["followRequirement", changedCourse.course_follow]);
+            changedCourse.conflicts.push(["followRequirement", changedCourse.course_follow]);
+        }
+        else {if (destinationLocation.semesterIndex === 1) nextLocation = {yearIndex: destinationLocation.yearIndex + 1, semesterIndex: 0};
         else nextLocation = {yearIndex: destinationLocation.yearIndex, semesterIndex: 1};
         //if the next semester does not exist then can just return the conflict straight away
         if (nextLocation.yearIndex > newSchedule.length) {
@@ -189,7 +192,7 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
                 conflicts.push(["followRequirement", changedCourse.course_follow]);
                 changedCourse.conflicts.push(["followRequirement", changedCourse.course_follow]);
             }
-        }
+        }}
     }
 
     //------------------------------------END OF CHANGEDCOURSE CHECKING------------------------------------------------
@@ -202,6 +205,16 @@ export const insertNormalCourseDependencyCheck = (newSchedule, changedCourse, so
 }
 
 //for elective and directed movement checking, can just use the checkallcourses for everything pretty much
+
+export const insertElectiveDependencyChecks = (newSchedule, changedCourse, courseArray, completedCourses) => {
+    updateCourses(newSchedule, courseArray, changedCourse);
+
+    const completedCourseIds = completedCourses.map(course => course._id);
+    //electives have nothing to check, just need to check every course
+    const conflicts = [];
+    checkEveryCourse(newSchedule, changedCourse, conflicts, completedCourseIds)
+    return newSchedule
+}
 
 //add a way to preserve any existing conflicts
 //function will update all the courses with their up-to-date versions from the database.
@@ -217,11 +230,15 @@ const updateCourses = (schedule, courseArray, changedCourse) => {
                     let somecourse = {...newCourse, conflicts: []};
                     if (newCourse) schedule [i][j][k] = somecourse; //only replace the course if it exists in the array (in the case of a course being deleted or something, the plan should still function)
                     else schedule [i][j][k] = {...currentCourse, conflicts: []};
-                    if (currentCourse._id === changedCourse._id) changedCourse = somecourse;
+                    if (changedCourse._id && currentCourse._id === changedCourse._id) {
+                        if (changedCourse.code) somecourse.code = changedCourse.code //if the course was a directed, make sure we keep that knowledge
+                        changedCourse = somecourse;
+                    }
                 }
             }
         }
     }
+    console.log(changedCourse)
     return changedCourse
 }
 
@@ -239,7 +256,7 @@ const checkForDependencies = (coursesToPoint, course, conflicts, completedCourse
                 conflicts.push(["ass", course._id]);
                 course.conflicts.push(["ass", assumed]);
             }
-        else if (!Array.isArray(assumed) && !coursesToPoint.includes(assumed) && !completedCourseCodes.includes(assumed))
+        else if (!Array.isArray(assumed) && !coursesToPoint.includes(assumed) && !completedCourseCodes.includes(assumed) && !(assumed.substring(assumed.length-2) === "us"))
         {
             conflicts.push(["ass", course._id]);
             course.conflicts.push(["ass", assumed]);
@@ -247,7 +264,7 @@ const checkForDependencies = (coursesToPoint, course, conflicts, completedCourse
     });
     //checking requisites
     course.requisites.forEach(requisite => {
-        if (!coursesToPoint.includes(assumed) && !completedCourseCodes.indcludes(assumed)) {
+        if (!coursesToPoint.includes(assumed) && !completedCourseCodes.includes(assumed)) {
             conflicts.push(["req", course._id]);
             course.conflicts.push(["req", requisite]);}
     });
@@ -269,7 +286,7 @@ const checkFollowerCourse = (course, nextSemester, conflicts) => {
 //code to check for UOS requirements
 const checkForUOS = (course, unitsStudied, conflicts) => {
     course.assumed_knowledge.forEach(assumed => {
-        if (!Array.isArray(assumed) && assumed.substring(assumed.length-2) === "us" && parseInt(assumed.substring(0, assumed.length-2)) > unitsStudied)
+        if (!Array.isArray(assumed) && assumed.substring(assumed.length-2) === "us" && (parseInt(assumed.substring(0, assumed.length-2)) > unitsStudied))
         {
             conflicts.push(["uos", course._id]);
             course.conflicts.push(["uos", parseInt(assumed.substring(0, assumed.length-2))]);
@@ -292,8 +309,8 @@ const checkEveryCourse = (newSchedule, changedCourse, conflicts, completedCourse
     const coursesBeforeCurrentSemester = [];
     let coursesInCurrentSemester = [];
 
-    let unitsStudied = completedCourseIds.length;
-    let unitsStudiedBeforeSem = completedCourseIds.length;
+    let unitsStudied = completedCourseIds.length*10;
+    let unitsStudiedBeforeSem = completedCourseIds.length*10;
 
     //checking for any courses that have a dependency on the moved course
     for (let i = 0; i < newSchedule.length; i++) {
@@ -310,7 +327,7 @@ const checkEveryCourse = (newSchedule, changedCourse, conflicts, completedCourse
                         if (course.course_follow) {
                             if (i === newSchedule.length - 1 && j === 0 || i < newSchedule.length - 1) {
                                 //check if the next semester has the course that follows
-                                checkFollowerCourse(course, j === 0 ? newSchedule[i][j+1] : newSchedule[i+1][j], conflicts);
+                                checkFollowerCourse(course, j === 0 ? newSchedule[i][1] : newSchedule[i+1][0], conflicts);
                             } else {
                                 //the course has a follower course but there is no position for the course to go, add a conflict
                                 conflicts.push(["followRequirement", course.course_follow]);

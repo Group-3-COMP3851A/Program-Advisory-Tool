@@ -25,4 +25,60 @@
   "degree_id": 40103,
   "elective_count": 1,
   "directed_count": 2
+},
+{
+  "_id": "12238M7",
+  "major_name": "Entrepreneurship & Innovation",
+  "degree_id": 12238,
+  "elective_count": 4,
+  "directed_count": 2
+},
+{
+  "_id": "12238M9",
+  "major_name": "Human Resource Management",
+  "degree_id": 12238,
+  "elective_count": 5,
+  "directed_count": 1
+},
+{
+  "_id": "12238M2",
+  "major_name": "International Business",
+  "degree_id": 12238,
+  "elective_count": 4,
+  "directed_count": 2
+},
+{
+  "_id": "12238M4",
+  "major_name": "Leadership and Management",
+  "degree_id": 12238,
+  "elective_count": 3,
+  "directed_count": 2
+},
+{
+  "_id": "12238M6",
+  "major_name": "Marketing",
+  "degree_id": 12238,
+  "elective_count": 3,
+  "directed_count": 4
+},
+{
+  "_id": "12238M8",
+  "major_name": "Politics and International Relations",
+  "degree_id": 12238,
+  "elective_count": 2,
+  "directed_count": 3
+},
+{
+  "_id": "12238M10",
+  "major_name": "Tourism and Event Management",
+  "degree_id": 12238,
+  "elective_count": 4,
+  "directed_count": 2
+},
+{
+  "_id": "11497M1",
+  "major_name": "ICT Developer Major",
+  "degree_id": 11497,
+  "elective_count": 5,
+  "directed_count": 0
 }]

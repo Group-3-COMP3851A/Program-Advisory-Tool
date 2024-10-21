@@ -92,4 +92,102 @@
   "assumed_knowledge": [
     ""
   ]
+},
+{
+  "_id": "12238M7p",
+  "semester_placements": [
+    {
+      "year": 3,
+      "semester": 1
+    },
+    {
+      "year": 3,
+      "semester": 2
+    }
+  ],
+  "assumed_knowledge": []
+},
+{
+  "_id": "12238M9p",
+  "semester_placements": [
+    {
+      "year": 3,
+      "semester": 1
+    }
+  ],
+  "assumed_knowledge": []
+},
+{
+  "_id": "12238M2p",
+  "semester_placements": [
+    {
+      "year": 3,
+      "semester": 1
+    },
+    {
+      "year": 3,
+      "semester": 2
+    }
+  ],
+  "assumed_knowledge": []
+},
+{
+  "_id": "12238M4p",
+  "semester_placements": [
+    {
+      "year": 3,
+      "semester": 1
+    },
+    {
+      "year": 3,
+      "semester": 2
+    }
+  ],
+  "assumed_knowledge": []
+},
+{
+  "_id": "12238M6p",
+  "semester_placements": [
+    {
+      "year": 3,
+      "semester": 1
+    },
+    {
+      "year": 3,
+      "semester": 2
+    }
+  ],
+  "assumed_knowledge": []
+},
+{
+  "_id": "12238M8p",
+  "semester_placements": [
+    {
+      "year": 3,
+      "semester": 1
+    },
+    {
+      "year": 3,
+      "semester": 2
+    },
+    {
+      "year": 2,
+      "semester": 1
+    }
+  ],
+  "assumed_knowledge": []
+},
+{
+  "_id": "12238M10p",
+  "semester_placements": [
+    {
+      "year": 3,
+      "semester": 1
+    },
+    {
+      "year": 3,
+      "semester": 2
+    }
+  ],
+  "assumed_knowledge": []
 }]

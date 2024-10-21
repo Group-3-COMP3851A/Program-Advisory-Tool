@@ -68,17 +68,19 @@ class Algorithm {
         //the way to handle a schedule that has already begun would be to subtract the number of courses completed divided by the coursesPerSem from the semester count OR handle it beforehand somehow
         //this would also have to be passed through to the placeDirecteds somehow
         this.coursesPerSem = coursesPerSem;
-        if (coursesPerSem < 4) {
-            //if the student is doing a less than full time plan, need to find where the directeds would fit given the reqs
-            this.sortDirected(directedCourses);
-        } else this.placeDirecteds(directedCourses, schedule) //if we're doing a full time plan, can just place the directeds where they belong normally
+        if (directedCourses){
+            if (coursesPerSem < 4) {
+                //if the student is doing a less than full time plan, need to find where the directeds would fit given the reqs
+                this.sortDirected(directedCourses);
+            } else this.placeDirecteds(directedCourses, schedule) //if we're doing a full time plan, can just place the directeds where they belong normally}
+        }
         this.findEarliestSemester(schedule, directedCourses);
         this.addElective(schedule, directedCourses);
         this.planSchedule = schedule;
     }
 
     addElective = (schedule, directeds) => {
-        let remainingElectives = 24 - (this.courseCodeList.length + this.completedCourses.length + directeds.semester_placements.length);
+        let remainingElectives = 24 - (this.courseCodeList.length + this.completedCourses.length + (directeds ? directeds.semester_placements.length : 0));
             //courseCodeList is only an array of courses to be completed, completedCourses is an array of completed courses, the number of directed placements is the number of directeds
         for (let i = 0; i < schedule.length && remainingElectives > 0; i++) {
             const element = schedule[i];
@@ -254,11 +256,11 @@ class Algorithm {
     sortDirected = (directedCourses) => {
         //doesn't matter which directed course we get the assumed knowledge of, they're all the same
         //checking if any assumed knowledge is in completed courses
-        const completedCourseCodes = this.completedCourses.map(course => course.code);
-        directedCourses.assumed_knowledge.forEach((assumedCourse) => {
+        const completedCourseCodes = this.completedCourses.map(course => course._id);
+        directedCourses.assumed_knowledge.forEach((assumedCourse, i) => {
             if (Array.isArray(assumedCourse) && assumedCourse.some(item => completedCourseCodes.includes(item))) { //if the assumed knowledge is an array and it contains the courseCode, remove it from the assumed knowledge
                 directedCourses.assumed_knowledge.splice(i, 1);
-            } else if (completedCourseCodes.includes(assumedCourse)) { //if the assumed knowledge is just the courseCode, remove it from the assumed knowledge
+            } else if (!Array.isArray(assumedCourse) && completedCourseCodes.includes(assumedCourse)) { //if the assumed knowledge is just the courseCode, remove it from the assumed knowledge
                 directedCourses.assumed_knowledge.splice(i, 1);
             }
         });
@@ -272,7 +274,7 @@ class Algorithm {
                 if (Array.isArray(assumedCourse) && assumedCourse.includes(course.code)) { //if the assumed knowledge is an array and it contains the courseCode, remove it from the assumed knowledge
                     assumedKnowledge.splice(i, 1);
                 }
-                else if (assumedCourse === course.code) { //if the assumed knowledge is just the courseCode, remove it from the assumed knowledge
+                else if (!Array.isArray(assumedCourse) && assumedCourse === course.code) { //if the assumed knowledge is just the courseCode, remove it from the assumed knowledge
                     assumedKnowledge.splice(i, 1);
                 }
             })
