@@ -78,7 +78,7 @@ function getFullCourseCode(internalId)
 
 //The main degree select bar
 export function SearchBox(props) {
-	  const { options, value, onChange } = props;
+	  const { options, onChange } = props;
 
   return (
     <div className="search-container">
@@ -86,8 +86,11 @@ export function SearchBox(props) {
         options={options}
 		getOptionLabel={(option) => option.degree_name}
 		onChange={(event, newValue) => {
-			newValue = newValue.degree_name;
-			onChange(newValue);
+      if (newValue && newValue.degree_name)
+			{
+        newValue = newValue.degree_name;
+			  onChange(newValue);
+      } else onChange("");
 		}}
         sx={{ width: '100%' }}  
         renderInput={(params) => <TextField {...params} label={props.label} />}

@@ -34,7 +34,9 @@ const Select = () => {
     }, [coursesPerSemOptions]);
 
     const showMajor = (selectedDegree) => {
-		setDegree(selectedDegree);
+		if (selectedDegree)setDegree(selectedDegree);
+        else setDegree('');
+        console.log(selectedDegree)
         setMajor('');
 		//console.log(selectedDegree);
         if (selectedDegree) {
