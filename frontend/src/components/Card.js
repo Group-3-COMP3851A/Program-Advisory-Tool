@@ -302,6 +302,9 @@ function getFullCourseCode(internalId)
     case "co":
       fullName = "COMP";
       break;
+    case "en":
+      fullName = "ENGG";
+      break;
     case "se":
       fullName = "SENG";
       break;
