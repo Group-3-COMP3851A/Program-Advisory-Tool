@@ -102,7 +102,8 @@ const Plan = () => {
     
                 // Update the course list
                 const updatedCourseList = [...courseList];
-                updatedCourseList[sourceYear][sourceSemester] = updatedCourseList[sourceYear][sourceSemester].filter(c => c._id !== course._id);
+                if (course._id) updatedCourseList[sourceYear][sourceSemester] = updatedCourseList[sourceYear][sourceSemester].filter(c => c._id !== course._id);
+                else updatedCourseList[sourceYear][sourceSemester] = updatedCourseList[sourceYear][sourceSemester].filter(c => c.code+c.number !== course.code+course.number);
                 updatedCourseList[destYear][destSemester].push(course);
 
                 fetch('http://localhost:3001/api/feasibility/checkFeasibility', {
