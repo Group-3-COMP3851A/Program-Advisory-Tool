@@ -50,7 +50,7 @@ const Plan = () => {
             return null;
         }
         if (courseId.substring(0, courseId.length-2) === "PLACEHOLDER_KEY") {
-            return {yearIndex: courseId.substring(courseId.length-2, courseId.length-1), semesterIndex: courseId.substring(courseId.length-1)};
+            return {yearIndex: parseInt(courseId.substring(courseId.length-2, courseId.length-1)), semesterIndex: parseInt(courseId.substring(courseId.length-1))};
         }
         for (let yearIndex = 0; yearIndex < courseList.length; yearIndex++) {
             for (let semesterIndex = 0; semesterIndex < courseList[yearIndex].length; semesterIndex++) {
