@@ -90,4 +90,26 @@ export default class studentCtrl {
             res.status(500).json({ error: e.message });
         }
     }
+
+    static async apiVerifyUser (req, res, next){
+        const { studentId, password } = req.body;
+
+        try{
+            const studentInfo = await studentDAO.getStudentId(studentId);
+
+            if (!studentInfo){
+                return res.status(404).json({ error: "Student ID not found"});
+            }
+
+            const studentPassword = await studentDAO.getStudentPassword(studentId, password);
+
+            if (!studentPassword){
+                return res.status(401).json({ error: "Incorrect Password" });
+            }
+
+            res.json({ success: true, message: "Login successful"});
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
+    }
 }

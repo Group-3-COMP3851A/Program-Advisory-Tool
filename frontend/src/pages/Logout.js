@@ -20,20 +20,32 @@ const Logout = () => {
     setPassword(''); // Reset password
   }, [setStudentId]);
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     // Handler function for form submission
     e.preventDefault(); // Prevent the default form submission behavior
-    //console.log('Username:', studentId); // Log the username to the console
-    //console.log('Password:', password); // Log the password to the console
 
-    // TODO: Replace with an API request which verifies the specified student id and password
-    // Basically just look for the student object with a matching student id, and check if the password for that object matches the input password
-    if (!studentId && !password){
+    if (!studentId || !password){
       setErrorMessage('Please input your Student ID and your Password');
       return;
     }
 
-    navigate('/profile', { state: { studentId } });
+    try {
+      const response = await fetch('http://localhost:3001/api/student/verifyUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ studentId, password }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        navigate('/profile', { state: { studentId } });
+      } else {
+        setErrorMessage(data.error);
+      }
+    } catch (error) {
+      setErrorMessage('An error occurred. Please try again.');
+    }
   };
 
   return (

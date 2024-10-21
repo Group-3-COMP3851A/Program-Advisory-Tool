@@ -126,4 +126,36 @@ export default class studentsDAO{
             return { error: e };
         }
     }
+
+    static async getStudentId(studentId){
+        try {
+            let studentData = await student.findOne({ 
+                student_id: studentId
+            });
+
+            //console.log(studentData);
+
+            return studentData;
+
+        }catch (e) {
+            console.error(`Unable to get student id: ${e}`);
+            return { error: e };
+        }
+    }
+
+    static async getStudentPassword(studentId, password){
+        try {
+            let studentData = await student.findOne({ 
+                student_id: studentId,
+                password: password
+            });
+
+            //console.log(studentData);
+
+            return studentData;
+        }catch (e) {
+            console.error(`Unable to get password: ${e}`);
+            return { error: e };
+        }
+    }
 };
