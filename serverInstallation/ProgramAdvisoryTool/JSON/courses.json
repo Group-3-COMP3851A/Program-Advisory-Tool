@@ -21078,7 +21078,7 @@
   "requisites_warning": "",
   "semester_offered": 1,
   "assumed_warning": "",
-  "assumed_knowledge": [],
+  "assumed_knowledge": ["1120se", "1110se"],
   "course_follow": "",
   "course_replacement": [],
   "require_degree": [],
