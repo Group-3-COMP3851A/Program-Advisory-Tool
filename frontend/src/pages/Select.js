@@ -33,7 +33,7 @@ const Select = () => {
         setDegree('');
         setMajor('');
         setDropdownOptions(coursesPerSemOptions);			
-    }, [coursesPerSemOptions, setDegree]);
+    }, [coursesPerSemOptions, setDegree, setMajor]);
 
     const showMajor = (selectedDegree) => {
 		if (selectedDegree)setDegree(selectedDegree);
