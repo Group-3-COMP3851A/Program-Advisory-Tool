@@ -31,6 +31,7 @@ const Select = () => {
     useEffect(() => {
         getDegreeList();
         setDegree('');
+        setMajor('');
         setDropdownOptions(coursesPerSemOptions);			
     }, [coursesPerSemOptions, setDegree]);
 
