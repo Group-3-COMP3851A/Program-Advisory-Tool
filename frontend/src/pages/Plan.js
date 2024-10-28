@@ -11,6 +11,7 @@ import HelpIcon from '../components/Tooltip';
 import Button from '../components/Button';
 import { arrayMove } from '@dnd-kit/sortable';
 import { AppContext } from '../AppContext';
+import PopUp from '../components/PopUp';
 
 const Plan = () => {
     const location = useLocation();
@@ -20,6 +21,9 @@ const Plan = () => {
     const [activeId, setActiveId] = useState(null);
     const [dndDisabled, setDndDisabled] = useState(true);
     const [semesterFull, setSemesterFull] = useState(false);
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [planName, setPlanName] = useState('');
 
     const getCourseList = (degree, major, coursesPerSem, completedCourses) => {
         fetch('http://localhost:3001/api/algorithm/getCourseList', {
@@ -42,6 +46,7 @@ const Plan = () => {
         if (!courseMap){
             getCourseList(degree, major, coursesPerSem, completedCourses);
         }
+        setErrorMessage('');
     }, [degree, major, coursesPerSem, completedCourses, courseMap]);
 
     const findCourse = (courseId) => {
@@ -152,11 +157,7 @@ const Plan = () => {
     }
 
     // TODO: Clean up this function a little bit
-    const savePlan = async (studentId, degree, major, courseMap) => {
-
-        // Ideally we will have a pop up which allows the user to input the plan name
-        const planName = "Plan 1 Test";
-
+    const savePlan = async (studentId, degree, major, courseMap, planName) => {
         try {
           const response = await fetch('http://localhost:3001/api/student/addPlanToUser', {
             method: 'POST',
@@ -171,19 +172,19 @@ const Plan = () => {
                 courseMap,
             }),
           });
-    
-          if (!response.ok) {
-            throw new Error('Failed to save plan');
+          const data = await response.json();
+
+          if (response.ok) {
+            setIsPopupVisible(false);
+            return data;
+          }else{
+            setErrorMessage(data.error);
           }
-    
-          const result = await response.json();
-          return result;
+
         } catch (error) {
-          throw error;
+          setErrorMessage('An error occurred. Please try again.');
         }
     }
-
-    // TODO: Add function which allows a user to load a plan from thier profile
 
     return (
         <div className='global'>
@@ -195,7 +196,7 @@ const Plan = () => {
                 <div><Text type="h2" className='S1'>The plan can be edited by clicking on the "Edit Plan" button and stopped by clicking on the "Stop Editing" button. You can select directed courses by clicking on the Directed Course text and selecting from the list of available courses.</Text></div>
                 <div className="popup-buttons">
                     <Button onClick={() => setDndDisabled(!dndDisabled)} text={dndDisabled ? "Edit Plan" : "Stop Editing"} color="#28a745"/>
-                    <Button onClick={() => savePlan(studentId, degree, major, courseList)} text={"Save Plan"} color="#28a745"/>
+                    <Button onClick={() => setIsPopupVisible(true)} text={"Save Plan"} color="#28a745"/>
                 </div>
                 <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
                     {courseList.map((year, yearIndex) => (
@@ -246,6 +247,25 @@ const Plan = () => {
                     </Alert>
                 </Collapse>
             </div>
+            {isPopupVisible && (
+                <PopUp
+                    message="Enter a name for your plan:"
+                    options={null}
+                    value={planName}
+                    onClose={() => setIsPopupVisible(false)}
+                    onConfirmYes={() => {
+                        savePlan(studentId, degree, major, courseList, planName);
+                        setErrorMessage('');
+                    }}
+                    onConfirmNo={() => {
+                        setIsPopupVisible(false);
+                        setErrorMessage('');
+                    }}
+                    onOptionSelect={(e) => setPlanName(e.target.value)}
+                    isSavePlan={true}
+                    errorMessage={errorMessage}
+                />
+            )}
         </div>
     );
 };

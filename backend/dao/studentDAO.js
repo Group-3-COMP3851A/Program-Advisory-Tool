@@ -158,4 +158,25 @@ export default class studentsDAO{
             return { error: e };
         }
     }
+
+    static async getStudentPlan(studentId, planName){
+        try {
+            let studentData = await student.findOne({
+                student_id: studentId,
+            })
+
+            let studentPlans = studentData.plans.map(plan => plan.name);
+
+            //console.log(studentPlans);
+            
+            if (studentPlans.includes(planName)){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (e) {
+            console.error(`Unable to get plan: ${e}`);
+            return { error: e };
+        }
+    }
 };

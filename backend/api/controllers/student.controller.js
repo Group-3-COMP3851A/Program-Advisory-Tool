@@ -70,6 +70,16 @@ export default class studentCtrl {
 
         try{
 
+            if (!planName || planName == ""){
+                return res.status(404).json({ error: "Plan Name Cannot Be Empty"});
+            }
+
+            const plan = await studentDAO.getStudentPlan(studentId, planName);
+
+            if (plan){
+                return res.status(404).json({ error: "Plan Name Already Exists"});
+            }
+
             const result = await studentDAO.addPlanToUser(studentId, planName, degree, major, courseMap);
 
             res.json({ success: true, result });

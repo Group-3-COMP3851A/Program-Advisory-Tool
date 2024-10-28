@@ -4,7 +4,7 @@ import Button from './Button';
 import Dropdown from './Dropdown'; 
 import '../styles/style.css';
 
-const PopUp = ({ message, options, value, onClose, onConfirmYes, onConfirmNo, onOptionSelect }) => {
+const PopUp = ({ message, options, value, onClose, onConfirmYes, onConfirmNo, onOptionSelect, errorMessage, isSavePlan}) => {
   return (
     <div className="popup">
       <Text type="h3" className="popup-message">
@@ -21,8 +21,25 @@ const PopUp = ({ message, options, value, onClose, onConfirmYes, onConfirmNo, on
         />
       )}
 
+      {isSavePlan && (
+        <input
+          type="text"
+          value={value}
+          onChange={onOptionSelect}
+          placeholder="Enter Plan Name"
+          className="popup-input"
+          style={{ padding: '10px', fontSize: '16px', borderRadius: '4px', border: '1px solid #ccc', marginBottom: '20px' }}
+        />
+      )}
+
+      {isSavePlan && errorMessage && (
+        <Text type="p" className="error-message">
+          {errorMessage} 
+        </Text>
+      )}
+
       <div className="popup-buttons">
-        {onConfirmYes && ( 
+        {onConfirmYes && !isSavePlan && ( 
           <Button
             onClick={onConfirmYes} 
             text="Yes" 
@@ -30,7 +47,7 @@ const PopUp = ({ message, options, value, onClose, onConfirmYes, onConfirmNo, on
             className="popup-button" 
           />
         )}
-        {onConfirmNo && ( 
+        {onConfirmNo && !isSavePlan && ( 
           <Button
             onClick={onConfirmNo} 
             text="No" 
@@ -43,6 +60,22 @@ const PopUp = ({ message, options, value, onClose, onConfirmYes, onConfirmNo, on
             onClick={onClose} 
             text="Close" 
             color="#007bff" 
+            className="popup-button" 
+          />
+        )}
+        {onConfirmYes && isSavePlan && ( 
+          <Button
+            onClick={onConfirmYes} 
+            text="Save" 
+            color="#28a745" 
+            className="popup-button" 
+          />
+        )}
+        {onConfirmNo && isSavePlan && ( 
+          <Button
+            onClick={onConfirmNo} 
+            text="Cancel" 
+            color="#dc3545" 
             className="popup-button" 
           />
         )}

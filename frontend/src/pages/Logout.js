@@ -59,12 +59,14 @@ const Logout = () => {
               type="text"
               value={studentId}
               onChange={(e) => setStudentId(e.target.value)}
+              placeholder="Student ID"
               style={{ padding: '10px', fontSize: '16px', borderRadius: '4px', border: '1px solid #ccc', marginBottom: '20px' }}
             />
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
               style={{ padding: '10px', fontSize: '16px', borderRadius: '4px', border: '1px solid #ccc', marginBottom: '20px' }}
             />
           {errorMessage && <Text type="p" style={{ color: 'red' }}>{errorMessage}</Text>}
